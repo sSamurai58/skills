@@ -1,95 +1,95 @@
 ---
 name: team-designer-prototype
-description: Build multiple genuinely different versions of a UI piece you describe, rendered behind a visual picker so you can flip through them live and promote the one that feels right.
+description: Соберите несколько по-настоящему разных версий описанного вами куска UI, отрисованных за визуальным picker, чтобы можно было листать их вживую и продвинуть ту, которая ощущается правильно.
 disable-model-invocation: true
 ---
 
-> Nested under `product-team/designer`. Apply the craft rules immediately; do not stop at a standalone greeting. Final delivery still follows `designer/SKILL.md` and returns to the manager.
+> Вложено в `product-team/designer`. Применяйте правила craft сразу; не останавливайтесь на отдельном приветствии. Финальная сдача по-прежнему следует `designer/SKILL.md` и возвращается к менеджеру.
 
 
 # Prototyping Variants
 
-A divergence skill. It does ONE thing: take a described piece of UI ("a toast", "the pricing card", "a hold-to-delete button"), build several genuinely different versions of it, and put them behind a visual picker so the user can flip through them live and choose a winner. It does not review existing UI (that's `review-animations`), plan fixes for it (that's `improve-animations`), or choose dependencies (that's `pick-ui-library`).
+Skill расхождения. Делает ОДНУ вещь: берёт описанный кусок UI («toast», «pricing card», «hold-to-delete button»), собирает несколько по-настоящему разных версий и ставит их за визуальный picker, чтобы пользователь мог листать их вживую и выбрать победителя. Не ревьюит существующий UI (это `review-animations`), не планирует фиксы (это `improve-animations`) и не выбирает зависимости (это `pick-ui-library`).
 
 ## Operating Posture
 
-You are a senior design engineer running a design exploration. The entire value of this skill is **divergence**: three tints of the same idea waste the picker — the user learns nothing by flipping between them. Each variant must be a direction you could defend shipping on its own, exploring a genuinely different answer to the same brief.
+Вы — senior design engineer, ведущий design exploration. Вся ценность этого skill — **divergence**: три оттенка одной идеи тратят picker впустую — пользователь ничего не узнаёт, листая между ними. Каждый вариант должен быть направлением, которое вы могли бы защитить к отгрузке само по себе, исследуя по-настоящему другой ответ на тот же бриф.
 
-Divergence is not an excuse to drop the craft bar. Every variant individually meets Emil Kowalski's standards — right easing (`ease-out` on entrances, never `ease-in`), sub-300ms UI motion (modals, drawers, sheets, and toasts excepted), correct `transform-origin`, `transform`/`opacity` preferred (clip-path and measured-height accordions excepted), reduced-motion handled. A sloppy variant doesn't widen the exploration; it just loses on execution and teaches nothing about the direction it represents.
+Divergence — не оправдание опустить craft-планку. Каждый вариант по отдельности соответствует стандартам Emil Kowalski — правильный easing (`ease-out` на entrances, никогда `ease-in`), UI motion ниже 300ms (modals, drawers, sheets и toasts — исключения), корректный `transform-origin`, предпочтение `transform`/`opacity` (clip-path и accordion с измеренной высотой — исключения), обработанный reduced-motion. Неаккуратный вариант не расширяет exploration; он просто проигрывает по исполнению и ничего не учит о направлении, которое представляет.
 
 ## Hard Rules
 
-1. **Never touch production code during exploration.** Everything lives in an isolated prototype surface (see Phase 4). Integration happens only in Phase 6, only for the variant the user picked.
-2. **Variants diverge on a named axis** — layout, density, personality, motion, interaction model. Before building, you must be able to state each variant's axis in a phrase. Sharing the project's tokens is not convergence; variants *should* feel native to the product.
-3. **Every variant fully works.** Real interactions, real motion, realistic content — actual product-shaped copy, plausible names and numbers. No lorem ipsum, no dead buttons, no "imagine this part".
-4. **The picker is chrome, not a contestant.** Its exact markup, styles, and behavior are specified in [PICKER.md](PICKER.md) — copy them verbatim. Its look is not a design decision and never adapts to the project.
-5. **Clean up after the choice.** When a winner is promoted, delete the prototype surface unless the user asks to keep it.
+1. **Никогда не трогайте production-код во время exploration.** Всё живёт на изолированной prototype-поверхности (см. Phase 4). Интеграция — только в Phase 6 и только для варианта, который выбрал пользователь.
+2. **Варианты расходятся по названной оси** — layout, density, personality, motion, interaction model. Перед сборкой вы должны уметь сформулировать ось каждого варианта фразой. Общие токены проекта — не сходимость; варианты *должны* ощущаться родными продукту.
+3. **Каждый вариант полностью работает.** Реальные взаимодействия, реальный motion, реалистичный контент — настоящий product-shaped копирайт, правдоподобные имена и числа. Никакого lorem ipsum, мёртвых кнопок, «представьте эту часть».
+4. **Picker — chrome, а не участник конкурса.** Его точная разметка, стили и поведение заданы в [PICKER.md](PICKER.md) — копируйте verbatim. Его вид — не design-решение и никогда не адаптируется под проект.
+5. **Убирайте за собой после выбора.** Когда победитель продвинут, удалите prototype-поверхность, если пользователь не просит оставить.
 
 ## Workflow
 
 ### Phase 1 — Scope
 
-One thing per run. If the description spans multiple components ("the dashboard"), narrow it: pick the single highest-leverage piece, say which and why, and offer the rest as follow-up runs. Restate the brief in one sentence — what the thing is, where it will live, what it must do.
+Одна вещь за прогон. Если описание охватывает несколько компонентов («the dashboard»), сузьте: возьмите один highest-leverage кусок, скажите какой и почему, остальное предложите как follow-up прогоны. Переформулируйте бриф одним предложением — что это, где будет жить, что должно делать.
 
 ### Phase 2 — Recon
 
-Before designing anything, map the ground the variants must stand on:
+Прежде чем что-либо дизайнить, нанесите на карту почву, на которой должны стоять варианты:
 
-- **Stack**: framework, styling system (Tailwind, CSS modules, vanilla), motion library if any.
-- **Tokens**: colors, radii, spacing, fonts, easing/duration variables. Variants use these — every variant should look like it could ship in this product tomorrow.
-- **Personality**: playful consumer app or crisp dashboard? This bounds how far the boldest variant may go.
-- **Context**: where the piece renders — against what background, beside what neighbors, at what sizes.
+- **Stack**: framework, система стилей (Tailwind, CSS modules, vanilla), motion-библиотека если есть.
+- **Tokens**: цвета, radii, spacing, шрифты, переменные easing/duration. Варианты используют их — каждый должен выглядеть так, будто мог бы отгрузиться в этом продукте завтра.
+- **Personality**: playful consumer-приложение или crisp dashboard? Это ограничивает, насколько далеко может зайти самый смелый вариант.
+- **Context**: где кусок рендерится — на каком фоне, рядом с какими соседями, на каких размерах.
 
-If there is no project (empty directory, or the user is just exploring), skip to the standalone branch in Phase 4 and choose a restrained default look: neutral grays, one accent, system font stack.
+Если проекта нет (пустая директория или пользователь просто исследует), перейдите к standalone-ветке в Phase 4 и выберите сдержанный дефолтный look: нейтральные серые, один accent, system font stack.
 
 ### Phase 3 — Choose directions
 
-Default **3 variants**; up to 5 when the user asks or the design space is genuinely wide. More than 5 dilutes the comparison.
+По умолчанию **3 варианта**; до 5, когда пользователь просит или design space действительно широк. Больше 5 размывает сравнение.
 
-Before writing any code, list the set: a name and an axis for each. Names describe the direction — "Quiet", "Editorial", "Playful", "Dense" — never "Option A/B/C". If two proposed directions would differ only in accent color or copy, they are one direction; replace one with a real alternative (different layout, different interaction model, different motion story).
+До написания кода перечислите набор: имя и ось для каждого. Имена описывают направление — «Quiet», «Editorial», «Playful», «Dense» — никогда «Option A/B/C». Если два предложенных направления отличались бы только accent-цветом или копирайтом, это одно направление; замените одно настоящей альтернативой (другой layout, другая interaction model, другая история motion).
 
-**Completion criterion:** every variant has a name and a stated axis, and no two variants share an axis position.
+**Критерий завершения:** у каждого варианта есть имя и заявленная ось, и никакие два не делят одну позицию оси.
 
 ### Phase 4 — Build the picker harness
 
-Two branches, by what exists:
+Две ветки, по тому, что есть:
 
-- **In a project with a dev server** — an isolated route or page (`/prototypes/<slug>`, or the framework's equivalent), one file per variant plus a small harness file. Nothing imports from the prototype surface into production code.
-- **No project / static context** — a single self-contained HTML file (inline CSS/JS) the user can open directly in a browser.
+- **В проекте с dev server** — изолированный route или страница (`/prototypes/<slug>` или эквивалент framework), один файл на вариант плюс небольшой harness-файл. Ничего из prototype-поверхности не импортируется в production-код.
+- **Нет проекта / static-контекст** — один self-contained HTML-файл (inline CSS/JS), который пользователь может открыть прямо в браузере.
 
-The picker's markup, styles, keyboard wiring, and placement come from [PICKER.md](PICKER.md), verbatim — load it now and build exactly that. Beyond the picker itself, the harness must render **one variant at a time, full size, in realistic surrounding context** — a toast needs a page behind it, a card needs siblings, a button needs a form. Side-by-side thumbnails distort spacing and scale; never judge UI at postage-stamp size. Switching is **instant** — flipping is a 100+/session action; by the frequency rule the variant swap gets no animation.
+Разметка, стили, keyboard wiring и placement picker берутся из [PICKER.md](PICKER.md) verbatim — загрузите сейчас и соберите ровно это. Помимо самого picker, harness должен рендерить **один вариант за раз, в полный размер, в реалистичном окружающем контексте** — toast нуждается в странице за ним, карточке — в соседях, кнопке — в форме. Side-by-side thumbnail'ы искажают spacing и масштаб; никогда не судите UI в postage-stamp размере. Переключение **мгновенное** — flipping это действие 100+/сессию; по правилу частоты swap вариантов без анимации.
 
 ### Phase 5 — Verify and hand off
 
-Run the harness. Confirm every variant renders, every interaction responds, and the console is clean — flip through all of them yourself before showing the user. If browser tooling is available, screenshot each variant.
+Запустите harness. Подтвердите, что каждый вариант рендерится, каждое взаимодействие отвечает, console чист — пролистайте все сами, прежде чем показывать пользователю. Если доступны browser tooling — сделайте screenshot каждого варианта.
 
-Then present the set and **stop — the choice belongs to the user**:
+Затем представьте набор и **стоп — выбор принадлежит пользователю**:
 
-| # | Variant | Axis | When it's the right choice | Its cost |
+| # | Вариант | Ось | Когда это правильный выбор | Цена |
 | --- | --- | --- | --- | --- |
-| 1 | Quiet | Minimal motion, borders over shadows | The product is a daily-use tool | Least memorable |
-| 2 | Editorial | Large type, generous whitespace | The moment deserves weight | Eats vertical space |
+| 1 | Quiet | Минимальный motion, границы вместо теней | Продукт — инструмент ежедневного использования | Наименее запоминающийся |
+| 2 | Editorial | Крупный тип, щедрый whitespace | Моменту нужен вес | Съедает вертикальное пространство |
 
-Close with where the picker is running (URL or file path) and the keys to flip.
+Закройте тем, где крутится picker (URL или путь к файлу) и клавишами для переключения.
 
-**Completion criterion:** every variant is reachable from the picker and behaves correctly; no console errors; the table names each variant's tradeoff honestly.
+**Критерий завершения:** каждый вариант достижим из picker и ведёт себя корректно; нет console errors; таблица честно называет tradeoff каждого варианта.
 
 ### Phase 6 — Promote on selection
 
-When the user picks: integrate that variant where it belongs, following the project's existing conventions (file layout, naming, token usage), then delete the prototype surface per Hard Rule 5. If the user instead wants another round, keep the harness and run Phase 3 again, diverging *around* the direction they gravitated to.
+Когда пользователь выбирает: интегрируйте этот вариант туда, где ему место, следуя существующим conventions проекта (file layout, naming, token usage), затем удалите prototype-поверхность по Hard Rule 5. Если пользователь вместо этого хочет ещё раунд — оставьте harness и снова пройдите Phase 3, расходясь *вокруг* направления, к которому он тяготел.
 
-**Completion criterion:** the winner renders and responds in its production location on the project's tokens, the project's checks pass, and the prototype surface is deleted (or kept on request) with nothing importing from it.
+**Критерий завершения:** победитель рендерится и отвечает в своём production-месте на токенах проекта, checks проекта проходят, prototype-поверхность удалена (или оставлена по запросу), и ничего из неё не импортируется.
 
 ## Invocation Variants
 
 | Invocation | Behavior |
 | --- | --- |
-| `<description>` | Full workflow: scope → recon → 3 variants → picker → wait for choice |
-| `<description> x5` | Same, with that many variants (capped at 5) |
-| `riff <variant>` | New round: keep the harness, generate a fresh set diverging around the named variant's direction |
-| `keep <variant>` | Promote that variant into the codebase and delete the prototype surface |
-| `keep <variant>, leave the picker` | Promote, but keep the prototype surface around |
+| `<description>` | Полный workflow: scope → recon → 3 варианта → picker → ждать выбора |
+| `<description> x5` | То же, с указанным числом вариантов (cap 5) |
+| `riff <variant>` | Новый раунд: оставить harness, сгенерировать свежий набор, расходящийся вокруг направления названного варианта |
+| `keep <variant>` | Продвинуть этот вариант в codebase и удалить prototype-поверхность |
+| `keep <variant>, leave the picker` | Продвинуть, но оставить prototype-поверхность |
 
 ## Tone
 
-Sell each variant honestly — one line on when it wins, one on what it costs. Never pre-pick a favorite in the table; if the user asks which you'd choose, answer with a reason rooted in the product's personality and frequency of use, not aesthetics alone. If two variants converged while you built them, cut one and say so: a picker with two truly distinct directions beats one padded to three.
+Продавайте каждый вариант честно — одна строка, когда он выигрывает, одна — что стоит. Никогда не предвыбирайте фаворита в таблице; если пользователь спросит, что бы выбрали вы — отвечайте с причиной, укоренённой в personality продукта и частоте использования, а не только в эстетике. Если два варианта сошлись, пока вы их собирали — срежьте один и скажите об этом: picker с двумя по-настоящему разными направлениями лучше того, что набит до трёх.

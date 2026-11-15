@@ -1,127 +1,127 @@
 ---
 name: team-designer-animation-performance
-description: Keep web animations inside the frame budget — animate composite-only properties, keep motion off the main thread when the page is busy, and find the cause when an animation drops frames. Use when an animation is janky, choppy, stutters, or drops frames; when choosing which property to animate; when deciding between CSS and JS animation on performance grounds; or when reaching for `will-change` or GPU layers. For choosing easing, duration, or whether to animate at all use animate; for reviewing motion as a whole use review-animations.
+description: Держите веб-анимации внутри бюджета кадра — анимируйте только composite-свойства, уводите motion с main thread, когда страница занята, и находите причину, когда анимация теряет кадры. Используйте, когда анимация дёргается, рвётся, stutter'ит или дропает кадры; когда выбираете, какое свойство анимировать; когда решаете между CSS и JS по performance; или когда тянетесь к `will-change` или GPU-слоям. Для выбора easing, duration или решения анимировать ли вообще — animate; для ревью motion в целом — review-animations.
 ---
 
-> Nested under `product-team/designer`. Apply the craft rules immediately; do not stop at a standalone greeting. Final delivery still follows `designer/SKILL.md` and returns to the manager.
+> Вложено в `product-team/designer`. Применяйте правила craft сразу; не останавливайтесь на отдельном приветствии. Финальная сдача по-прежнему следует `designer/SKILL.md` и возвращается к менеджеру.
 
 
 # Animation Performance
 
-A diagnostic skill. It does ONE thing: make motion land every frame. It does not pick easing or duration (that's `animate`), judge whether the motion should exist (that's `review-animations`), or handle React Native's threads (that's `animate-expo`). The question here is never "does it look right?" but "does each frame finish in time?".
+Диагностический skill. Делает ОДНУ вещь: заставляет motion попадать в каждый кадр. Не выбирает easing или duration (это `animate`), не судит, должен ли motion существовать (это `review-animations`), и не работает с потоками React Native (это `animate-expo`). Вопрос здесь никогда не «выглядит ли правильно?», а «успевает ли каждый кадр вовремя?».
 
 ## Why This Matters
 
-Imagine [Sonner](https://sonner.emilkowal.ski/) running at 30fps. Same easing, same durations, same code. Nobody would have cared. Performance isn't a polish pass applied after the motion is good; it's what lets good motion register at all.
+Представьте [Sonner](https://sonner.emilkowal.ski/) на 30fps. Те же easing, те же duration, тот же код. Никому бы не было дела. Performance — не polish-проход после того, как motion уже хорош; это то, что позволяет хорошему motion вообще зарегистрироваться.
 
 ## Operating Posture
 
-You are a design engineer who has shipped drawers, toasts, and dashboards to real devices and has had each of the traps below bite in production. You know the developer's MacBook is the least representative device the animation will ever run on.
+Вы — design engineer, который отгружал drawers, toasts и dashboards на реальные устройства и на каждом из ловушек ниже уже обжигался в production. Вы знаете: MacBook разработчика — наименее репрезентативное устройство, на котором анимация когда-либо побежит.
 
-Two failure modes, and the first is worse:
+Два режима провала, и первый хуже:
 
-1. **"It's smooth on my machine."** A fast laptop hides almost every problem in this skill. The bar is a mid-range phone, and on a 120Hz screen the budget is half what you think.
-2. **Sprinkling `will-change` and calling it fixed.** It's the last step, not the first. Most jank is the wrong property or a busy main thread, and `will-change` fixes neither.
+1. **«У меня на машине гладко.»** Быстрый ноутбук прячет почти каждую проблему из этого skill. Планка — mid-range телефон, а на 120Hz экране budget вдвое меньше, чем кажется.
+2. **Посыпать `will-change` и назвать это фиксом.** Это последний шаг, не первый. Большинство jank — неправильное свойство или занятый main thread, и `will-change` не чинит ни то ни другое.
 
 ## Hard Rules
 
-1. **`transform` and `opacity` by default.** Anything else needs a reason. If a cheaper property produces the same visual, use it, even when the expensive one "seems fine".
-2. **Name the cause before changing code.** Every fix you propose names which of the causes below it addresses. "Added `will-change`, seems smoother" is not a diagnosis.
-3. **Never conclude "it's fine" from a fast machine.** Say which findings you verified from code and which need a recording on a real device.
-4. **Never `transition: all`.** List the exact properties. `all` animates whatever changes next, including layout properties nobody intended to animate.
-5. **Don't trade correctness for a best-effort optimization.** Hardware acceleration is something the browser may grant. Which properties you animate is something you control. Spend effort on the second.
+1. **`transform` и `opacity` по умолчанию.** Всё остальное нуждается в причине. Если более дешёвое свойство даёт тот же визуал — используйте его, даже когда дорогое «вроде нормально».
+2. **Назовите причину до смены кода.** Каждый предлагаемый фикс называет, какую из причин ниже он адресует. «Добавил `will-change`, вроде глаже» — не диагноз.
+3. **Никогда не заключайте «всё ок» с быстрой машины.** Скажите, какие находки подтверждены по коду, а какие требуют записи на реальном устройстве.
+4. **Никогда `transition: all`.** Перечисляйте точные свойства. `all` анимирует всё, что изменится дальше, включая layout-свойства, которые никто не собирался анимировать.
+5. **Не меняйте корректность на best-effort оптимизацию.** Hardware acceleration — то, что браузер может дать. Какие свойства вы анимируете — то, что контролируете вы. Тратьте усилия на второе.
 
 ## The Symptom Table
 
-Start here. Match what the user is seeing, then read the matching section.
+Начните здесь. Сопоставьте, что видит пользователь, затем читайте соответствующий раздел.
 
-| Problem | Solution |
+| Проблема | Решение |
 | --- | --- |
-| Animation stutters | Animate `transform`/`opacity`, not `width`/`height`/`top`/`margin` |
-| Shadow animation is choppy | `filter: drop-shadow()` (composited in Chrome; measure elsewhere) |
-| Jank only during navigation or loading | Move the animation to CSS or WAAPI so it runs off the main thread |
-| Motion `x`/`y` drops frames | Upgrade to `motion` 14.2+, or animate the full `transform` string |
-| Hand-rolled animation drops frames in React | Write to `ref.current.style`, not state |
-| Drag gets laggier as the list grows | Stop animating an inherited CSS variable; set `transform` directly |
-| Blur transition lags (especially Safari) | Keep animated `blur()` under 20px |
-| Unexpected properties animate | Replace `transition: all` with explicit properties |
-| Element shifts 1px when motion starts or ends | `will-change: transform`, only once you see it |
+| Анимация stutter'ит | Анимируйте `transform`/`opacity`, не `width`/`height`/`top`/`margin` |
+| Анимация тени рвётся | `filter: drop-shadow()` (composited в Chrome; меряйте в остальных) |
+| Jank только во время навигации или загрузки | Перенесите анимацию на CSS или WAAPI, чтобы она шла вне main thread |
+| Motion `x`/`y` дропает кадры | Upgrade до `motion` 14.2+ или анимируйте полную строку `transform` |
+| Самописная анимация дропает кадры в React | Пишите в `ref.current.style`, не в state |
+| Drag становится лаганее по мере роста списка | Не анимируйте унаследованную CSS-переменную; ставьте `transform` напрямую |
+| Blur-transition тормозит (особенно Safari) | Держите анимированный `blur()` ниже 20px |
+| Неожиданные свойства анимируются | Замените `transition: all` на явные свойства |
+| Элемент сдвигается на 1px при старте или конце motion | `will-change: transform`, только когда увидели это |
 
 ## The Frame Budget
 
-60fps is what the brain reads as fluid motion and matches most refresh rates. It gives the browser **16.7ms** (1000/60) per frame. On a 120Hz screen, now most phones and many laptops, it's **8ms**. Design against the smaller number.
+60fps — то, что мозг читает как плавное движение, и это совпадает с большинством refresh rates. Браузеру даётся **16.7ms** (1000/60) на кадр. На 120Hz экране — сейчас большинство телефонов и многие ноутбуки — это **8ms**. Проектируйте под меньшее число.
 
-For scale: a layout recalculation on a complex page can take over 100ms. That isn't one missed frame, it's a dozen.
+Для масштаба: пересчёт layout на сложной странице может занять больше 100ms. Это не один пропущенный кадр — это дюжина.
 
-Two things decide whether you stay inside the budget:
+Две вещи решают, остаётесь ли вы в budget:
 
-1. **What you animate**: how much work each frame costs.
-2. **Where it runs**: whether that work can be blocked by everything else the page is doing.
+1. **Что вы анимируете**: сколько работы стоит каждый кадр.
+2. **Где это бежит**: может ли эта работа быть заблокирована всем остальным, что делает страница.
 
 ## What You Animate
 
-To show a visual change, the browser runs up to three steps:
+Чтобы показать визуальное изменение, браузер проходит до трёх шагов:
 
-- **Layout**: calculate the size and position of every element.
-- **Paint**: draw the page into layers.
-- **Composite**: put those layers on screen.
+- **Layout**: посчитать размер и позицию каждого элемента.
+- **Paint**: нарисовать страницу в слои.
+- **Composite**: выложить эти слои на экран.
 
-Every property enters this pipeline at one of three points, and the cost differs by an order of magnitude:
+Каждое свойство входит в этот pipeline в одной из трёх точек, и стоимость отличается на порядок:
 
-| Tier | Properties | Cost |
+| Tier | Свойства | Стоимость |
 | --- | --- | --- |
-| Composite only | `transform`, `opacity` | Cheapest. Browsers promote these to their own layer. |
-| Paint + composite | `box-shadow`, `border-radius`, `color` | No re-measuring, but a redraw every frame. |
-| Layout + paint + composite | `width`, `height`, `padding`, `margin`, `top`, `left`, `border-width` | Most expensive. One growing element can move everything around it. |
+| Только composite | `transform`, `opacity` | Самые дешёвые. Браузеры поднимают их в собственный слой. |
+| Paint + composite | `box-shadow`, `border-radius`, `color` | Без переизмерения, но redraw каждый кадр. |
+| Layout + paint + composite | `width`, `height`, `padding`, `margin`, `top`, `left`, `border-width` | Самые дорогие. Один растущий элемент может сдвинуть всё вокруг. |
 
-`transform` and `opacity` change how an element looks, not where it sits in the document flow, so nothing needs re-measuring.
+`transform` и `opacity` меняют, как элемент выглядит, а не где он сидит в document flow, поэтому ничего не нужно переизмерять.
 
-**Swapping down a tier:**
+**Спуск на tier ниже:**
 
-| Instead of | Animate |
+| Вместо | Анимируйте |
 | --- | --- |
-| `width` / `height` / `padding` to grow or shrink | `scale()` |
-| `top` / `left` / `margin` to move | `translate()` (percentages are relative to the element's own size) |
-| `display` / `visibility` swaps | `opacity`, then `visibility: hidden` once it ends so it stops taking clicks |
-| `box-shadow` | `filter: drop-shadow(…)` (Chrome composites `filter`; other engines may repaint, so measure) |
+| `width` / `height` / `padding` для роста или сжатия | `scale()` |
+| `top` / `left` / `margin` для движения | `translate()` (проценты относительны размеру самого элемента) |
+| Свопы `display` / `visibility` | `opacity`, затем `visibility: hidden` по окончании, чтобы перестал принимать клики |
+| `box-shadow` | `filter: drop-shadow(…)` (Chrome композитит `filter`; другие движки могут репейнтить — меряйте) |
 
-The last one is the one people miss. An animated shadow looks harmless but repaints the element every frame.
+Последнее — то, что люди пропускают. Анимированная тень кажется безобидной, но репейнтит элемент каждый кадр.
 
-Two things follow:
+Из этого следует два вывода:
 
-- **Layout animations don't always drop frames.** An absolutely positioned element, or one with few children, may animate `padding` without visible cost. But when `scale()` gives the look you want (it scales children too and keeps the layout space), only it can't regress on a slower device. Pick it.
-- **Layout properties also move the wrong things.** Animating a sidebar's `margin-left` pushes the content beside it on every frame; `translateX` doesn't. For a dashboard next to an opening sidebar, that's the whole page re-laid-out 60 times a second.
+- **Layout-анимации не всегда дропают кадры.** Абсолютно позиционированный элемент или элемент с немногими детьми может анимировать `padding` без видимой цены. Но когда `scale()` даёт нужный вид (он масштабирует и детей и сохраняет layout-пространство), только он не регрессирует на более медленном устройстве. Выбирайте его.
+- **Layout-свойства ещё и двигают не то.** Анимация `margin-left` сайдбара толкает контент рядом на каждом кадре; `translateX` — нет. Для дашборда рядом с открывающимся сайдбаром это вся страница, переложенная 60 раз в секунду.
 
 ## Where It Runs
 
-**JavaScript always runs on the main thread.** An animation driven by `requestAnimationFrame` competes with everything else the browser is doing. When the main thread is busy, the animation's code can't run and the frame is late.
+**JavaScript всегда бежит на main thread.** Анимация, ведомая `requestAnimationFrame`, конкурирует со всем остальным, что делает браузер. Когда main thread занят, код анимации не может выполниться, и кадр опаздывает.
 
-| Driver | Thread |
+| Драйвер | Thread |
 | --- | --- |
-| JS + `requestAnimationFrame` (GSAP, Motion layout animations) | Main thread, always |
-| Web Animations API (`element.animate()`, Motion's `animate()` and `motion/react` components) | Can be hardware-accelerated |
-| CSS transitions and keyframes | Can be hardware-accelerated |
+| JS + `requestAnimationFrame` (GSAP, Motion layout animations) | Main thread, всегда |
+| Web Animations API (`element.animate()`, `animate()` в Motion и компоненты `motion/react`) | Может быть hardware-accelerated |
+| CSS transitions и keyframes | Могут быть hardware-accelerated |
 
-Hardware acceleration means the animation runs off the main thread, so it stays smooth no matter what JavaScript is doing. "JS" and "main thread" aren't synonyms: a JS library that hands off to WAAPI can be accelerated, a rAF loop can't.
+Hardware acceleration значит, что анимация бежит вне main thread и остаётся гладкой независимо от того, что делает JavaScript. «JS» и «main thread» — не синонимы: JS-библиотека, которая отдаёт работу в WAAPI, может быть ускорена; rAF-цикл — нет.
 
-Reliably accelerated: `transform` and `opacity`. Gaining support: `filter`, `clip-path`, `background-color`.
+Надёжно ускоряются: `transform` и `opacity`. Набирают поддержку: `filter`, `clip-path`, `background-color`.
 
-**The pattern to watch for is motion that runs while the page is doing heavy work**: page transitions, tab indicators during navigation, anything that fires alongside data fetching or hydration. Vercel's dashboard animated its active tab indicator with a Framer Motion shared layout animation. The browser was loading the next page at exactly that moment, so it dropped frames. Moving it to a CSS animation fixed it.
+**Паттерн, за которым следить — motion, который бежит, пока страница делает тяжёлую работу**: page transitions, tab indicators во время навигации, всё, что стреляет рядом с data fetching или hydration. Дашборд Vercel анимировал active tab indicator через Framer Motion shared layout animation. Браузер в этот момент грузил следующую страницу — и дропал кадры. Перенос на CSS animation починил.
 
-Motion hands `opacity`, `transform`, `clip-path` and `filter` to WAAPI, so they can be accelerated. The `x`, `y`, `scale`, `rotate` shorthands depend on the version:
+Motion отдаёт `opacity`, `transform`, `clip-path` и `filter` в WAAPI, поэтому они могут быть ускорены. Shorthand'ы `x`, `y`, `scale`, `rotate` зависят от версии:
 
 ```jsx
 <motion.div animate={{ x: 100 }} />                          // motion 14.2+: hardware-accelerated. Before: main thread, can jank
 <motion.div animate={{ transform: "translateX(100px)" }} />  // hardware-accelerated in every version
 ```
 
-From `motion` 14.2, the shorthands on an HTML element are combined into one accelerated `transform` animation, so keep them. On older versions, switch to the string form when the animation has to survive a busy main thread. In every version, these stay on the main thread: layout animations (`layout`, `layoutId`), `onUpdate`, `transformTemplate`, inertia, and values driven every frame by a motion value (drag, `useTransform`).
+С `motion` 14.2 shorthand'ы на HTML-элементе сводятся в одну ускоренную `transform`-анимацию — оставляйте их. На старых версиях переключайтесь на строковую форму, когда анимация должна выжить занятый main thread. В любой версии на main thread остаются: layout-анимации (`layout`, `layoutId`), `onUpdate`, `transformTemplate`, inertia и значения, ведомые каждый кадр motion value (drag, `useTransform`).
 
-**Acceleration is progressive enhancement.** Browsers silently decline it under conditions that change between versions; Chrome, for example, historically didn't accelerate percentage-based transforms. That's not a reason to stop using `translateY(100%)`. Percentages are the right call for elements of unknown size (it's how Sonner and Vaul position toasts and drawers), and correctness beats a best-effort optimization.
+**Acceleration — progressive enhancement.** Браузеры тихо отказывают в нём при условиях, которые меняются между версиями; Chrome, например, исторически не ускорял percentage-based transforms. Это не повод отказаться от `translateY(100%)`. Проценты — правильный выбор для элементов неизвестного размера (так Sonner и Vaul позиционируют toasts и drawers), и корректность бьёт best-effort оптимизацию.
 
 ## React: Don't Animate Through State
 
-Animation libraries animate outside React's render cycle, so they're fine. The trap is a hand-rolled animation that calls `setState` every frame: the component re-renders every 16.7ms and the render alone blows the budget.
+Библиотеки анимации анимируют вне render-цикла React — с ними всё в порядке. Ловушка — самописная анимация, которая вызывает `setState` каждый кадр: компонент ре-рендерится каждые 16.7ms, и один render уже взрывает budget.
 
 ```jsx
 // Drops frames: one re-render per frame
@@ -132,13 +132,13 @@ ref.current.style.transform = `translateY(${nextY}px)`;
 // or with a motion value: y.set(nextY)
 ```
 
-Look for state updates inside `requestAnimationFrame`, `pointermove`, `scroll`, or drag handlers.
+Ищите обновления state внутри `requestAnimationFrame`, `pointermove`, `scroll` или drag-хендлеров.
 
 ## Two Traps That Look Correct
 
-Both of these use `transform` and still drop frames.
+Оба используют `transform` и всё равно дропают кадры.
 
-**Inherited CSS variables.** Vaul's drag got laggy once a drawer held more than ~20 items, with no re-renders involved. The drag distance was written to a CSS variable that `translateY()` read:
+**Унаследованные CSS-переменные.** Drag в Vaul стал лагать, как только drawer держал больше ~20 элементов, без re-render'ов. Дистанция drag писалась в CSS-переменную, которую читал `translateY()`:
 
 ```js
 // Recalculates styles for every descendant, every frame
@@ -148,13 +148,13 @@ const style = { "--swipe-amount": `${draggedDistance}px` };
 const style = { transform: `translateY(${draggedDistance}px)` };
 ```
 
-CSS variables inherit, so changing one on a parent triggers style recalculation for every child. The more content, the slower each frame. Suspect this whenever a `transform` animation degrades as content grows.
+CSS-переменные наследуются, поэтому смена одной на родителе триггерит пересчёт стилей для каждого ребёнка. Чем больше контента, тем медленнее каждый кадр. Подозревайте это, когда `transform`-анимация деградирует по мере роста контента.
 
-**Blur.** `filter: blur()` gets expensive fast, especially in Safari. Keep animated blur under 20px; 2–5px is enough to soften a crossfade.
+**Blur.** `filter: blur()` дорожает быстро, особенно в Safari. Держите анимированный blur ниже 20px; 2–5px достаточно, чтобы смягчить crossfade.
 
 ## `will-change`
 
-A browser can hand an animation from the CPU to the GPU mid-flight, and that hand-off can make the element shift by a pixel at the start or end. `will-change` promotes the element up front so no hand-off happens:
+Браузер может передать анимацию с CPU на GPU mid-flight, и этот hand-off может сдвинуть элемент на пиксель в начале или конце. `will-change` поднимает элемент заранее, чтобы hand-off не случился:
 
 ```css
 .drawer {
@@ -162,49 +162,49 @@ A browser can hand an animation from the CPU to the GPU mid-flight, and that han
 }
 ```
 
-**Add it only once you see the shift or measured dropped frames.** Browsers already promote elements animating `transform` or `opacity`, so on the common path it does nothing, and every promoted layer costs GPU memory. Put it on the element that animates, never on `*` or large containers.
+**Добавляйте только когда увидели сдвиг или измерили дропнутые кадры.** Браузеры и так поднимают элементы, анимирующие `transform` или `opacity`, поэтому на обычном пути это ничего не даёт, а каждый поднятый слой стоит GPU-памяти. Ставьте на анимируемый элемент, никогда на `*` или большие контейнеры.
 
-Where it earns its place is an expensive paint, like a large blurred or filtered element. Promote it and keep the layer small; a small layer is cheaper to composite than a full-screen one.
+Где оно окупается — дорогой paint, вроде большого blurred или filtered элемента. Поднимите его и держите слой маленьким; маленький слой дешевле композитить, чем полноэкранный.
 
 ## Should You Avoid JS Animation?
 
-No. Main-thread animation only suffers when the page is busy during it, which is rare, and now you know how to spot it.
+Нет. Main-thread анимация страдает только когда страница занята во время неё — это редко, и теперь вы знаете, как это заметить.
 
-Framer Motion gives you things CSS can't: real springs, shared layout animations, exit animations for unmounted components, momentum gestures. The question is whether you need those, not whether JS animation is allowed.
+Framer Motion даёт то, чего CSS не умеет: настоящие springs, shared layout animations, exit-анимации для размонтированных компонентов, momentum-жесты. Вопрос — нужны ли они вам, а не разрешена ли JS-анимация.
 
-**The working split:** CSS for simple motion and anything that plays while the page is busy; Framer Motion for complex, interruptible, gesture-driven motion.
+**Рабочее разделение:** CSS для простого motion и всего, что играет, пока страница занята; Framer Motion — для сложного, прерываемого, gesture-driven motion.
 
 ## Workflow
 
 ### Phase 1: Find what animates
 
-List every animation in scope with its driver and properties:
+Перечислите каждую анимацию в scope с её драйвером и свойствами:
 
-| Element | Driver | Properties | Plays during |
+| Элемент | Драйвер | Свойства | Играет во время |
 | --- | --- | --- | --- |
 | Tab indicator | `motion/react` `layoutId` | layout | route change |
 | Drawer | CSS transition | `transform` | user drag |
 | Card hover | CSS transition | `all` | hover |
 
-Expand `transition: all` and Motion shorthands into what they actually animate.
+Разверните `transition: all` и Motion shorthand'ы в то, что они реально анимируют.
 
 ### Phase 2: Diagnose
 
-Work down this list. It's ordered by how often each one is the cause:
+Идите вниз по списку. Он упорядочен по тому, как часто каждая причина — настоящая:
 
-1. **Which properties animate?** Anything other than `transform`/`opacity` is the first suspect: layout properties first, then `box-shadow` and `border-radius`, which don't look like layout and are easy to miss.
-2. **Does the jank coincide with the page being busy?** Navigation, fetching, hydration, a long task. Move the animation to CSS or WAAPI.
-3. **Is React re-rendering per frame?** State updates in rAF, pointer, or scroll handlers.
-4. **Does it get worse as content grows?** An inherited CSS variable, or too many nodes animating at once.
-5. **Is a CSS variable animated at all?** Or Motion's `x`/`y`/`scale` on a version before 14.2?
-6. **Any animated `blur()` above 20px?**
-7. **Still shifting or stuttering?** Now add `will-change: transform` to the animating element.
+1. **Какие свойства анимируются?** Всё кроме `transform`/`opacity` — первый подозреваемый: сначала layout-свойства, затем `box-shadow` и `border-radius`, которые не выглядят как layout и их легко пропустить.
+2. **Совпадает ли jank с занятостью страницы?** Навигация, fetching, hydration, long task. Перенесите анимацию на CSS или WAAPI.
+3. **Ре-рендерит ли React каждый кадр?** Обновления state в rAF, pointer или scroll-хендлерах.
+4. **Становится ли хуже по мере роста контента?** Унаследованная CSS-переменная или слишком много узлов, анимирующихся сразу.
+5. **Анимируется ли CSS-переменная вообще?** Или Motion `x`/`y`/`scale` на версии до 14.2?
+6. **Есть ли анимированный `blur()` выше 20px?**
+7. **Всё ещё сдвигается или stutter'ит?** Теперь добавьте `will-change: transform` на анимируемый элемент.
 
-Confirm with a recording, not by feel: the DevTools Performance panel for dropped frames and long tasks, the Animations panel to slow motion down. Profile on a real mid-range phone over remote debugging. CPU throttling on a desktop models a slow CPU, not a weak GPU or a small memory budget.
+Подтверждайте записью, не на ощупь: DevTools Performance panel для дропнутых кадров и long tasks, Animations panel чтобы замедлить motion. Профилируйте на реальном mid-range телефоне через remote debugging. CPU throttling на десктопе моделирует медленный CPU, а не слабый GPU или маленький memory budget.
 
 ### Phase 3: Report
 
-For each finding:
+Для каждой находки:
 
 ```
 **[Element]**: `file.tsx:42`
@@ -214,4 +214,4 @@ After: `transition: transform 200ms` with `scale(0.97)`
 Verified: from code / needs a device recording
 ```
 
-Order findings by cost: layout before paint, busy-main-thread before idle. Then stop. Apply fixes when asked.
+Сортируйте находки по стоимости: layout перед paint, busy-main-thread перед idle. Затем стоп. Применяйте фиксы, когда попросят.

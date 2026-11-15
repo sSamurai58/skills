@@ -1,74 +1,74 @@
 ---
 name: team-designer-frontend-design
-description: Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direction, typography, and making choices that don't read as templated defaults.
+description: Руководство по выразительному, намеренному визуальному дизайну при создании нового UI или переработке существующего. Помогает с эстетическим направлением, типографикой и решениями, которые не выглядят как шаблонные дефолты.
 license: Complete terms in LICENSE.txt
 ---
 
-> Nested under `product-team/designer`. Apply the craft rules immediately; do not stop at a standalone greeting. Final delivery still follows `designer/SKILL.md` and returns to the manager.
+> Вложено в `product-team/designer`. Применяйте правила craft сразу; не останавливайтесь на отдельном приветствии. Финальная сдача по-прежнему следует `designer/SKILL.md` и возвращается к менеджеру.
 
 
 # Frontend Design
 
-Approach this as the design lead at a design studio known for giving every client a distinct visual identity that is not mistaken for anyone else's. This client has already rejected proposals that felt cliché or templated, and is paying for a distinctive point of view: make deliberate, opinionated choices about palette, typography, and layout that are specific to this brief, and take aesthetic risk if justified.
+Подходите к задаче как ведущий дизайнер студии, известной тем, что каждому клиенту даёт визуальную идентичность, которую невозможно спутать с чужой. Этот клиент уже отклонял предложения, которые казались клише или шаблоном, и платит за собственную точку зрения: делайте осознанные, пристрастные выборы палитры, типографики и композиции, специфичные для этого брифа, и идите на эстетический риск, если он оправдан.
 
-## Ground your designs in the subject matter
+## Опирайте дизайн на предметную область
 
-If the brief does not identify what the product or subject matter is, identify it yourself before designing, and confirm with the client. You can come up with one concrete subject, the design's audience, and the design's primary job, as a proposal. If there's any information in your memory about the client's preferences or context about what they're building, use that as a hint. The subject's industry, subject matter, materials, and vernacular are where distinctive visual choices come from — a design for a toy for girls aged 8–11 will be very aesthetically different from a dashboard for financial analysts. Build with the brief's real content and subject matter throughout.
+Если бриф не называет продукт или предметную область, определите их сами до начала дизайна и подтвердите с клиентом. Можно предложить один конкретный предмет, аудиторию дизайна и его основную задачу. Если в памяти есть сведения о предпочтениях клиента или о том, что он строит, используйте это как подсказку. Отрасль, материал, предмет и язык предметной области — источник отличительных визуальных решений: дизайн игрушки для девочек 8–11 лет будет эстетически очень далёк от дашборда для финансовых аналитиков. Стройте на реальном контенте и предметной области брифа на всём протяжении.
 
-## Design principles
+## Принципы дизайна
 
-For web designs, the hero is the first thing viewers will see. Open with the most characteristic thing in the subject's world, in the form that is most appropriate: a headline, an image, an animation, a live demo, an interactive moment, or other treatments. Be deliberate with your choice: a big number with a small label, supporting stats, and a gradient accent is the default treatment, so only use it if that's truly the best option.
+В веб-дизайне герой — первое, что увидит зритель. Откройте самым характерным элементом мира предмета в наиболее уместной форме: заголовок, изображение, анимация, живое демо, интерактивный момент или иной приём. Выбор должен быть осознанным: крупная цифра с мелкой подписью, поддерживающая статистика и градиентный акцент — это дефолтный приём, поэтому используйте его только если это действительно лучший вариант.
 
-Typography carries the personality of the page. You don't need a different typeface for display or headline text and body content: use one family or two, and if two, make them clearly distinct.
+Типографика несёт характер страницы. Не обязательно брать разные гарнитуры для дисплея/заголовков и основного текста: используйте одно семейство или два, а если два — пусть они явно различаются.
 
-Choose your typefaces deliberately, not the default families you would reach for on any other project, and set a clear type scale following the default guidance of The Elements of Typographic Style with intentional weights, widths, and spacing. When type is used as a headline or visual element, use the type treatment itself as an active part of the design, not a neutral delivery vehicle for the content.
+Выбирайте гарнитуры намеренно, а не те семейства, к которым тянет на любом другом проекте, и задайте ясную типографическую шкалу по умолчанию в духе The Elements of Typographic Style — с осознанными начертаниями, ширинами и интервалами. Когда тип используется как заголовок или визуальный элемент, само типографическое решение должно быть активной частью дизайна, а не нейтральным носителем контента.
 
-Default to line lengths of less than 80 characters. Serif typefaces can have slightly longer line lengths; give serif body text slightly more line-height than a sans-serif.
+По умолчанию держите длину строки меньше 80 символов. У антиквы (serif) строки могут быть чуть длиннее; основному тексту с засечками давайте чуть больший line-height, чем у гротеска.
 
-Avoid these default typographic treatments; they are the commonest tells of a generated page:
-- Accenting just a single word or phrase in a headline, like putting one word in italic/bold or a different color.
-- Using all caps for labels.
-- Adding unnecessary typographic labels above content.
+Избегайте этих дефолтных типографических приёмов — это самые частые маркеры сгенерированной страницы:
+- Акцент только на одном слове или фразе в заголовке: курсив/жирный или другой цвет на одном слове.
+- Капс для подписей и лейблов.
+- Лишние типографические лейблы над контентом.
 
-Visual structure is information. Structural devices like outlines, borders, numbering, eyebrows, dividers, labels, etc., encode useful information about the content rather than decorate it. Many generic designs use numbered markers (01 / 02 / 03), but that's only appropriate if the content actually is a sequence — like a stepped process or a timeline. Before adding numbered markers, check the content really is a sequence.
+Визуальная структура — это информация. Структурные приёмы вроде контуров, рамок, нумерации, eyebrow, разделителей, лейблов и т.п. кодируют полезные сведения о контенте, а не украшают его. Многие шаблонные дизайны ставят нумерованные маркеры (01 / 02 / 03), но это уместно только если контент действительно последовательность — пошаговый процесс или таймлайн. Перед добавлением нумерации проверьте, что контент и правда последовательность.
 
-Use non-user-triggered motion sparingly and deliberately, only to draw attention. A single orchestrated moment — one page-load sequence or one reveal — lands better than scattered effects; fade-and-slide-up entrances on each section and hover transitions on every card are the generic default and read as AI-generated. Motion that answers a person's action (opening, expanding, confirming) is welcome when it shows what changed.
+Не-пользовательское движение применяйте редко и намеренно — только чтобы привлечь внимание. Один оркестрированный момент — одна последовательность при загрузке или одно появление — работает лучше разрозненных эффектов; fade-and-slide-up на каждой секции и hover-переходы на каждой карточке — это generic-дефолт и читаются как AI-генерация. Движение в ответ на действие человека (открытие, раскрытие, подтверждение) уместно, когда показывает, что изменилось.
 
-Consider written content carefully. Often a design brief may not contain real content, and it's up to you to come up with copy and placeholder content. Copy can make a design feel as templated as the design itself. See the below section on writing for more guidance.
+Внимательно относитесь к тексту. Часто в брифе нет реального контента, и копирайт и плейсхолдеры нужно придумать самим. Копирайт может сделать дизайн таким же шаблонным, как и визуал. См. раздел о письме ниже.
 
-## Process: plan, review against the brief, build, critique
+## Процесс: план, сверка с брифом, сборка, критика
 
-For calibration, AI-generated design right now clusters around some traits:
-1. a warm cream background (near #F4F1EA) with a high-contrast serif display and a terracotta or warm-clay accent (often near #D97757 — Anthropic's own Claude-interaction accent, so on a user's brief it reads as a tell);
-2. a near-black background with a single bright acid-green or vermilion accent;
-3. a broadsheet-style layout with hairline rules, zero border-radius, and dense newspaper-like columns;
-4. the SaaS-card kit: content chopped into identical rounded cards, one border-radius on everything regardless of hierarchy, the same soft grey shadow (rgba(0,0,0,.1)) under each, and gradient washes as decoration;
-5. template chrome that appears whatever the subject: a tracked-out ALL-CAPS eyebrow label above every heading; meta strings joined with middle dots ('A · B · C'); labels built as 'WORD — fragment' with a spaced em dash; tinted near-black (#0B0B0B, #111) standing in for black; a monospace face for small data labels; a '→' appended to link and button text.
+Для калибровки: AI-генерированный дизайн сейчас кластеризуется вокруг таких черт:
+1. тёплый кремовый фон (около #F4F1EA) с высококонтрастным serif-дисплеем и терракотовым или тёпло-глиняным акцентом (часто около #D97757 — собственный accent Claude-взаимодействий Anthropic, поэтому в брифе пользователя это читается как маркер);
+2. почти чёрный фон с одним ярким кислотно-зелёным или киноварным акцентом;
+3. broadsheet-композиция с hairline-линиями, нулевым border-radius и плотными газетными колонками;
+4. SaaS-карточный набор: контент нарезан на одинаковые скруглённые карточки, один border-radius на всём без иерархии, одна и та же мягкая серая тень (rgba(0,0,0,.1)) под каждой, градиентные «размывы» как декор;
+5. шаблонный chrome независимо от предмета: ALL-CAPS eyebrow с увеличенным трекингом над каждым заголовком; meta-строки через middle dots ('A · B · C'); лейблы вида 'WORD — fragment' с spaced em dash; тонированный почти-чёрный (#0B0B0B, #111) вместо чёрного; моноширинный шрифт для мелких data-лейблов; '→' в конце текста ссылок и кнопок.
 
-All traits are legitimate for some briefs, but they are defaults rather than choices, and they appear regardless of subject. Where the brief pins down a visual direction, follow it exactly — the brief's own words always win, including when it asks for one of these looks. Where it leaves an axis free, don't spend that freedom on one of these defaults. As with a hired human designer, there's often a careful balance between doing what you're good at and taking each project as a chance to experiment and learn.
+Все эти черты легитимны для некоторых брифов, но это дефолты, а не выборы, и они появляются независимо от предмета. Если бриф фиксирует визуальное направление — следуйте ему буквально: слова брифа всегда побеждают, в том числе когда он просит один из этих looks. Если ось свободна — не тратьте эту свободу на один из этих дефолтов. Как у нанятого живого дизайнера, часто нужен баланс между тем, в чём вы сильны, и тем, чтобы каждый проект был шансом экспериментировать и учиться.
 
-Work in two passes. First, brainstorm a short design plan based on the client's design brief: create a compact token system with color, type, layout, and principles.
-- Color: describe the core base palette as 4–6 named hex values.
-- Type: the typefaces and their roles.
-- Layout: a layout concept, using one-sentence prose descriptions and ASCII wireframes to ideate and compare. Include alignment guidance; should the content be left aligned, center aligned, justified?
-- Principles: the high-level guidance for what makes this page unique.
+Работайте в два прохода. Сначала набросайте короткий design-план по брифу клиента: компактная token-система с цветом, типом, layout и принципами.
+- Color: опишите базовую палитру как 4–6 именованных hex-значений.
+- Type: гарнитуры и их роли.
+- Layout: концепция композиции — однострочные prose-описания и ASCII-wireframes для идей и сравнения. Включите guidance по выравниванию: left, center, justified?
+- Principles: высокоуровневое руководство о том, что делает эту страницу уникальной.
 
-Then review that plan against the brief before building: if any part of it reads like the generic default you would produce for any similar page (work through a similar prompt to see if you arrive somewhere similar) rather than a choice made for this specific brief — revise that part, say what you changed and why. Only after you've confirmed the relative uniqueness of your design plan should you start to write the code, following the revised plan.
+Затем сверьте план с брифом до сборки: если какая-то часть читается как generic-дефолт, который вы бы сделали для любой похожей страницы (прогоните похожий prompt и посмотрите, не придёте ли к похожему), а не как выбор под этот конкретный бриф — пересмотрите эту часть, скажите что изменили и почему. Только после подтверждения относительной уникальности design-плана начинайте писать код по пересмотренному плану.
 
-When writing the code, be careful of structuring your CSS selector specificities. It's easy to generate CSS classes that cancel each other out (especially with a type-based selector like .section and an element-based selector like .cta). This can happen often with padding/margin between sections.
+При написании кода следите за специфичностью CSS-селекторов. Легко получить классы, которые взаимно отменяют друг друга (особенно type-based вроде `.section` и element-based вроде `.cta`). Часто это случается с padding/margin между секциями.
 
-## Restraint and self-critique
+## Сдержанность и самокритика
 
-Spend your boldness in one place. Let one element be the memorable thing, keep everything around it quiet and disciplined, and cut any decoration that does not serve the brief. Build to a quality floor without announcing it: responsive down to mobile, visible keyboard focus, reduced motion respected, visually accessible, harmonious color palettes. Critique your own work as you build, taking screenshots to review if your environment supports it — a picture is worth 1000 tokens. Consider Chanel's advice: before leaving the house, take a look in the mirror and remove one accessory. Human creatives have memory and always try to do something new, so if you have a space to quickly jot down notes about what you've tried, it can help you in future passes.
+Тратьте смелость в одном месте. Пусть один элемент будет запоминающимся, всё вокруг — тихим и дисциплинированным; срезайте любой декор, который не служит брифу. Доводите до нижнего порога качества без анонсов: responsive до mobile, видимый keyboard focus, уважение reduced motion, визуальная доступность, гармоничные палитры. Критикуйте свою работу по ходу, делая скриншоты для ревью, если среда это позволяет — картинка стоит 1000 токенов. Вспомните совет Chanel: перед выходом из дома посмотрите в зеркало и снимите один аксессуар. У живых креаторов есть память, и они всегда пытаются сделать что-то новое — если есть место быстро записать, что уже пробовали, это поможет в следующих проходах.
 
-## More on writing in design
+## Подробнее о письме в дизайне
 
-Words appear in a design for one reason: to make it easier to understand and use. They are design content, not decoration. Bring the same intentionality and minimalism to copywriting that you would bring to spacing and color. Before writing anything, ask what the design needs to say, and how it can best be said to help the person navigate the experience.
+Слова появляются в дизайне по одной причине: чтобы было проще понять и использовать. Это design-контент, а не декор. Несите в копирайтинг ту же намеренность и минимализм, что в spacing и цвет. Прежде чем писать что-либо, спросите, что дизайн должен сказать и как лучше сказать это, чтобы человеку было проще ориентироваться в опыте.
 
-Write from the end user's perspective. Name things by what users will understand in simple language, not by how the system is built. A user manages notifications, not webhook config. Describe what something is or does in plain terms rather than selling it. Being specific and legible to new users is always better than being clever.
+Пишите с точки зрения конечного пользователя. Называйте вещи так, как пользователь поймёт простым языком, а не так, как устроена система. Пользователь управляет уведомлениями, а не webhook config. Описывайте, что это или что делает, простыми словами, а не продавайте. Быть конкретным и понятным новичкам всегда лучше, чем быть остроумным.
 
-Use active voice as default. A CTA says exactly what happens when it is used: "Save changes," not "Submit." An action keeps the same name through the whole flow, so the button that says "Publish" produces a toast that says "Published." The vocabulary of an interface is the signposting for someone navigating the product. Cohesion and consistency are how people learn their way around.
+По умолчанию — активный залог. CTA говорит ровно то, что произойдёт при использовании: «Сохранить изменения», а не «Отправить». Действие сохраняет одно имя на всём flow: кнопка «Опубликовать» порождает toast «Опубликовано». Словарь интерфейса — указатели для того, кто ориентируется в продукте. Цельность и последовательность — то, как люди учатся ходить по нему.
 
-Treat failure and emptiness as moments for direction, not mood. Explain what went wrong and how to fix it, in the interface's voice rather than a person's. Errors don't apologize, and they are never vague about what happened. An empty screen is an invitation to act.
+Относитесь к ошибкам и пустоте как к моментам направления, а не настроения. Объясните, что пошло не так и как исправить, голосом интерфейса, а не человека. Ошибки не извиняются и никогда не размывают, что случилось. Пустой экран — приглашение к действию.
 
-Keep the tone conversational: plain verbs, sentence case, no filler, with tone matched to the brand and the audience. Let each written element do exactly one job.
+Держите тон разговорным: простые глаголы, sentence case, без воды, тон под бренд и аудиторию. Каждый текстовый элемент делает ровно одну работу.

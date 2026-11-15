@@ -1,110 +1,110 @@
 ---
 name: team-designer-animate
-description: Build an animation from scratch, making the decisions in the order that determines whether it feels right — should it animate at all, what purpose, which tool, which properties, which curve and duration, how it interrupts, how it exits. Writes the implementation. Use when asked to animate something, add motion, make a component feel alive, or build a transition. For critiquing existing motion use review-animations; for auditing a whole codebase use improve-animations.
+description: Соберите анимацию с нуля, принимая решения в том порядке, от которого зависит, «попадёт» ли она — нужно ли анимировать вообще, какова цель, какой инструмент, какие свойства, какая кривая и длительность, как прерывается, как выходит. Пишет реализацию. Используйте, когда просят анимировать что-то, добавить motion, оживить компонент или собрать transition. Для критики существующего motion — review-animations; для аудита всего codebase — improve-animations.
 ---
 
-> Nested under `product-team/designer`. Apply the craft rules immediately; do not stop at a standalone greeting. Final delivery still follows `designer/SKILL.md` and returns to the manager.
+> Вложено в `product-team/designer`. Применяйте правила craft сразу; не останавливайтесь на отдельном приветствии. Финальная сдача по-прежнему следует `designer/SKILL.md` и возвращается к менеджеру.
 
 
 # Building Animations
 
-A construction skill. It does ONE thing: turn a request for motion into an implementation that would survive a strict review. It does not audit a codebase (that's `improve-animations`), critique a diff (that's `review-animations`), hunt for places that could animate (that's `find-animation-opportunities`), or build for React Native (that's `animate-expo`).
+Строительный skill. Делает ОДНУ вещь: превращает запрос на motion в реализацию, которая выдержит строгий review. Не аудитит codebase (это `improve-animations`), не критикует diff (это `review-animations`), не ищет места, которые можно анимировать (это `find-animation-opportunities`), и не строит для React Native (это `animate-expo`).
 
 ## Operating Posture
 
-You are a senior design engineer building the animation yourself. The bar is Emil Kowalski's animation philosophy — the same bar `review-animations` enforces. Write it so it passes that review the first time.
+Вы — senior design engineer, который сам собирает анимацию. Планка — философия анимации Emil Kowalski: та же, что enforced в `review-animations`. Пишите так, чтобы пройти этот review с первого раза.
 
-Two failure modes, and the first is worse:
+Два режима провала, и первый хуже:
 
-1. **Animating something that shouldn't animate.** The gate below exists to produce zero lines of code sometimes. That's a success, not a dodge.
-2. **Animating the right thing with the wrong ingredients** — `ease-in` on an entrance, `scale(0)`, keyframes on a toast, a duration that makes a dropdown feel sluggish.
+1. **Анимировать то, что не должно анимироваться.** Gate ниже существует и для того, чтобы иногда выдавать ноль строк кода. Это успех, а не уклонение.
+2. **Анимировать правильное с неправильными ингредиентами** — `ease-in` на entrance, `scale(0)`, keyframes на toast, длительность, из-за которой dropdown кажется вязким.
 
-Never present motion options as a menu. Make the call, state the reasoning in one line, write the code.
+Никогда не подавайте варианты motion как меню. Примите решение, в одну строку сформулируйте обоснование, напишите код.
 
 ## Hard Rules
 
-1. **Run the sequence in order.** Steps 1 and 2 gate everything. Don't reach for a curve before you know whether it animates at all.
-2. **No approximated values.** Every curve, duration, and spring config comes from the codebase's existing tokens or the tables below. Never invent `cubic-bezier(0.4, 0, 0.2, 1)` because it looks familiar.
-3. **Extend the codebase's tokens, don't fork them.** If `--ease-out` or a duration scale already exists, use it. Adding a parallel system is a defect.
-4. **Reduced motion and hover gating ship with the animation**, not as a follow-up.
-5. **Cheapest tool that works.** Don't install a motion library for a fade.
+1. **Идите по последовательности по порядку.** Шаги 1 и 2 — gate для всего. Не беритесь за кривую, пока не ясно, анимируется ли вообще.
+2. **Никаких приближённых значений.** Каждая кривая, длительность и spring-конфиг — из существующих токенов codebase или из таблиц ниже. Никогда не выдумывайте `cubic-bezier(0.4, 0, 0.2, 1)`, потому что «знакомо выглядит».
+3. **Расширяйте токены codebase, не форкайте их.** Если уже есть `--ease-out` или шкала длительностей — используйте. Параллельная система — дефект.
+4. **Reduced motion и hover-gating идут вместе с анимацией**, а не follow-up.
+5. **Самый дешёвый инструмент, который работает.** Не ставьте motion-библиотеку ради fade.
 
 ## The Build Sequence
 
-### 1. Should this animate at all?
+### 1. Нужно ли это анимировать вообще?
 
-| Frequency | Decision |
+| Частота | Решение |
 | --- | --- |
-| 100+ times/day (keyboard shortcuts, command palette toggle) | **No animation. Ever.** Stop here. |
-| Tens of times/day (hover effects, list navigation) | Near-imperceptible only — fast and subtle, or nothing |
-| Occasional (modals, drawers, toasts) | Standard animation |
-| Rare / first-time (onboarding, success, celebration) | The delight budget lives here |
+| 100+ раз/день (keyboard shortcuts, переключение command palette) | **Без анимации. Никогда.** Стоп здесь. |
+| Десятки раз/день (hover-эффекты, навигация по списку) | Только почти незаметное — быстро и тонко, либо ничего |
+| Иногда (modals, drawers, toasts) | Стандартная анимация |
+| Редко / в первый раз (onboarding, success, celebration) | Здесь живёт budget на delight |
 
-**Keyboard-initiated actions are a disqualifier, not a judgment call.** Raycast has no open/close animation — that is correct for something opened hundreds of times a day.
+**Действия, инициированные с клавиатуры — дисквалификатор, а не предмет суждения.** У Raycast нет open/close-анимации — это правильно для того, что открывают сотни раз в день.
 
-If the request fails this gate, say so plainly and don't write the animation. Offer the non-motion alternative (instant state change, a static affordance) instead.
+Если запрос не проходит этот gate — скажите прямо и не пишите анимацию. Вместо этого предложите альтернативу без motion (мгновенная смена состояния, статичный affordance).
 
-### 2. What is the purpose?
+### 2. Какова цель?
 
-Name it in one of these words before continuing:
+Назовите её одним из этих слов, прежде чем продолжать:
 
-- **Feedback** — confirming the interface heard the user
-- **Spatial consistency** — showing where something came from or went
-- **State indication** — making a state change legible
-- **Preventing a jarring change** — bridging content that would otherwise teleport
-- **Explanation** — demonstrating how something works (marketing/onboarding only)
-- **Delight** — allowed *only* at the rare/first-time tier
+- **Feedback** — подтверждение, что интерфейс услышал пользователя
+- **Spatial consistency** — показать, откуда что-то пришло или куда ушло
+- **State indication** — сделать смену состояния читаемой
+- **Preventing a jarring change** — связать контент, который иначе телепортировался бы
+- **Explanation** — показать, как что-то работает (только marketing/onboarding)
+- **Delight** — разрешён *только* на уровне rare/first-time
 
-Can't name it? Don't build it. "It looks cool" on a frequently-seen element is a reason to stop.
+Не можете назвать? Не стройте. «Выглядит круто» на часто видимом элементе — повод остановиться.
 
-Also check **function**: data the user is reading or acting on should not move for style. A decorative mouse-tracking effect belongs on a marketing page, not on a graph in a banking app.
+Также проверьте **функцию**: данные, которые пользователь читает или по которым действует, не должны двигаться ради стиля. Декоративный mouse-tracking уместен на marketing-странице, а не на графике в banking-приложении.
 
-### 3. Pick the tool — cheapest that works
+### 3. Выберите инструмент — самый дешёвый, который работает
 
-Walk down; stop at the first that fits.
+Идите вниз; остановитесь на первом подходящем.
 
-| Need | Tool |
+| Нужно | Инструмент |
 | --- | --- |
-| Hover, press, color, a state toggle you control with a class or attribute | **CSS transition** |
-| Entry animation on mount, no JS state | **CSS `@starting-style`** |
-| Predetermined motion that must stay smooth while the page is busy loading | **CSS animation** (`transform`/`opacity` run on the compositor) |
-| Programmatic control with CSS performance, no library | **WAAPI** (`element.animate()`) |
-| Springs, layout animations, exit animations, gesture-driven values | **Motion** (`motion.dev`) |
+| Hover, press, цвет, toggle состояния через class или attribute | **CSS transition** |
+| Entry-анимация при mount, без JS state | **CSS `@starting-style`** |
+| Заранее заданный motion, который должен оставаться плавным, пока страница занята загрузкой | **CSS animation** (`transform`/`opacity` идут на compositor) |
+| Программный контроль с CSS-производительностью, без библиотеки | **WAAPI** (`element.animate()`) |
+| Springs, layout-анимации, exit-анимации, gesture-driven значения | **Motion** (`motion.dev`) |
 
-CSS animations beat JS under load — on `transform`/`opacity` they run on the compositor, while `requestAnimationFrame`-based animation drops frames while the browser loads, scripts, or paints. Use CSS for predetermined motion, JS for dynamic and interruptible motion.
+CSS-анимации выигрывают у JS под нагрузкой — на `transform`/`opacity` они идут на compositor, а анимация на `requestAnimationFrame` теряет кадры, пока браузер грузит, исполняет скрипты или красит. Используйте CSS для заранее заданного motion, JS — для динамического и прерываемого.
 
-If the task needs a *component* rather than an animation — a toast, a drawer, a command menu, a dropdown — stop and read `../pick-ui-library/SKILL.md` to pick one. Hand-rolling those is how you end up with a `<div>` dropdown and no focus management.
+Если нужна *компонента*, а не анимация — toast, drawer, command menu, dropdown — остановитесь и прочитайте `../pick-ui-library/SKILL.md`, чтобы выбрать. Самописные варианты часто заканчиваются `<div>`-dropdown без focus management.
 
-### 4. Pick the properties
+### 4. Выберите свойства
 
-- **`transform` and `opacity` only.** They skip layout and paint and run on the GPU. `width`/`height`/`margin`/`padding`/`top`/`left` trigger all three. (`clip-path` is the sanctioned fourth — see RECIPES.md. `height` is tolerated only for accordions, where there's no transform equivalent.)
-- **Never `scale(0)`.** Start from `scale(0.9–0.97)` + `opacity: 0`. Nothing in the real world appears from nothing.
-- **`transform-origin` at the trigger** for popovers, dropdowns, menus, tooltips — `var(--transform-origin)` in Base UI. **Modals are exempt**; they're not anchored to a trigger, so they stay centered.
-- **Percentages in `translate()`** are relative to the element's own size — `translateY(100%)` moves by its own height whatever the content. Prefer over hardcoded pixels.
-- **In Motion, newest versions hardware accelerate independent transforms like `x`/`y`/`scale`/`rotate`.**
+- **Только `transform` и `opacity`.** Они пропускают layout и paint и идут на GPU. `width`/`height`/`margin`/`padding`/`top`/`left` триггерят все три. (`clip-path` — санкционированное четвёртое — см. RECIPES.md. `height` допустим только для accordion, где нет эквивалента на transform.)
+- **Никогда `scale(0)`.** Стартуйте с `scale(0.9–0.97)` + `opacity: 0`. В реальном мире ничто не появляется из ничего.
+- **`transform-origin` у trigger** для popovers, dropdowns, menus, tooltips — `var(--transform-origin)` в Base UI. **Modals исключены**; они не привязаны к trigger, поэтому остаются по центру.
+- **Проценты в `translate()`** относительны размеру самого элемента — `translateY(100%)` сдвигает на его высоту независимо от контента. Предпочитайте hardcoded-пикселям.
+- **В Motion новейшие версии аппаратно ускоряют независимые transforms вроде `x`/`y`/`scale`/`rotate`.**
 
 ```jsx
 <motion.div animate={{ x: 100 }} />                          // motion 14.2+: hardware accelerated
 <motion.div animate={{ transform: "translateX(100px)" }} />  // hardware accelerated in every version
 ```
 
-- **Never drive a child's transform from a CSS variable on the parent** — it recalculates styles for every child. Set `transform` on the element directly.
+- **Никогда не ведите transform ребёнка из CSS-переменной на родителе** — это пересчитывает стили для каждого ребёнка. Ставьте `transform` прямо на элемент.
 
-### 5. Easing and duration — or a spring
+### 5. Easing и duration — или spring
 
-**Easing**, in decision order:
+**Easing**, в порядке решений:
 
-| Situation | Easing |
+| Ситуация | Easing |
 | --- | --- |
-| Entering or exiting | `ease-out` |
-| Moving / morphing on screen | `ease-in-out` |
-| Hover / color change | `ease` |
-| Constant motion (marquee, progress) | `linear` |
+| Entering или exiting | `ease-out` |
+| Moving / morphing на экране | `ease-in-out` |
+| Hover / смена цвета | `ease` |
+| Постоянное движение (marquee, progress) | `linear` |
 | Default | `ease-out` |
 
-**Never `ease-in` on UI.** It starts slow, delaying the exact moment the user is watching. `ease-out` at 200ms *feels* faster than `ease-in` at 200ms.
+**Никогда `ease-in` на UI.** Он стартует медленно и откладывает именно тот момент, который смотрит пользователь. `ease-out` на 200ms *ощущается* быстрее, чем `ease-in` на 200ms.
 
-Built-in CSS easings are too weak. Use these:
+Встроенные CSS-easing слишком слабые. Используйте эти:
 
 ```css
 --ease-out: cubic-bezier(0.23, 1, 0.32, 1);        /* strong ease-out for UI */
@@ -112,39 +112,39 @@ Built-in CSS easings are too weak. Use these:
 --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);     /* iOS-like drawer curve (Ionic) */
 ```
 
-Need a curve that isn't here? Take it from [easing.dev](https://easing.dev/) or [easings.co](https://easings.co/). Don't hand-roll one.
+Нужна кривая, которой здесь нет? Берите с [easing.dev](https://easing.dev/) или [easings.co](https://easings.co/). Не катите свою вручную.
 
 **Duration:**
 
-| Element | Duration |
+| Элемент | Duration |
 | --- | --- |
-| Button press feedback | 100–160ms |
-| Tooltips, small popovers | 125–200ms |
+| Feedback нажатия кнопки | 100–160ms |
+| Tooltips, мелкие popovers | 125–200ms |
 | Dropdowns, selects | 150–250ms |
 | Modals, drawers | 200–500ms |
-| Marketing / explanatory | Can be longer |
+| Marketing / explanatory | Может быть длиннее |
 
-**UI animations stay under 300ms. Modals, drawers, sheets, and toasts are the documented exceptions.** A 180ms dropdown feels more responsive than a 400ms one.
+**UI-анимации остаются под 300ms. Modals, drawers, sheets и toasts — документированные исключения.** Dropdown на 180ms ощущается отзывчивее, чем на 400ms.
 
-**Reach for a spring instead** when the motion is drag with momentum, an element that should feel alive, a gesture the user can interrupt or reverse, or decorative mouse-tracking:
+**Беритесь за spring вместо этого**, когда motion — drag с импульсом, элемент должен ощущаться «живым», жест пользователь может прервать или развернуть, или декоративный mouse-tracking:
 
 ```js
 { type: "spring", duration: 0.5, bounce: 0.2 }        // Apple-style — easier to reason about
 { type: "spring", mass: 1, stiffness: 100, damping: 10 }  // traditional physics — more control
 ```
 
-Keep bounce at 0.1–0.3, and avoid bounce in most UI — reserve it for drag-to-dismiss and playful interactions.
+Держите bounce в 0.1–0.3 и избегайте bounce в большинстве UI — оставляйте его для drag-to-dismiss и игровых взаимодействий.
 
-### 6. Interruption and exit
+### 6. Прерывание и выход
 
-- **Transitions, not keyframes, for anything triggered rapidly** — toasts, toggles, anything a user can fire twice in a second. Transitions retarget from the current value; keyframes restart from zero.
-- **Springs for gestures**, because they carry velocity through an interruption.
-- **Exit the way it entered.** A toast that slides in from the bottom leaves through the bottom. Symmetric paths are what make swipe-to-dismiss feel obvious.
-- **Asymmetric timing where the user is deciding.** Slow on the deliberate phase (a hold-to-confirm press: 2s linear), snappy on the system response (release: 200ms ease-out).
+- **Transitions, не keyframes, для всего, что триггерится часто** — toasts, toggles, всё, что пользователь может запустить дважды за секунду. Transitions перенацеливаются с текущего значения; keyframes стартуют с нуля.
+- **Springs для жестов**, потому что они несут velocity через прерывание.
+- **Выходите так же, как входили.** Toast, который въезжает снизу, уходит вниз. Симметричные пути делают swipe-to-dismiss очевидным.
+- **Асимметричный timing там, где решает пользователь.** Медленно на осознанной фазе (hold-to-confirm: 2s linear), snappy на ответе системы (release: 200ms ease-out).
 
-### 7. Reduced motion and pointer gating
+### 7. Reduced motion и pointer gating
 
-Ships with the animation, every time.
+Идут с анимацией каждый раз.
 
 ```css
 @media (prefers-reduced-motion: reduce) {
@@ -163,42 +163,42 @@ const reduce = useReducedMotion();
 const closedX = reduce ? 0 : '-100%';
 ```
 
-Reduced motion means **fewer and gentler** animations, not zero — keep transitions that aid comprehension, remove movement and position changes.
+Reduced motion значит **меньше и мягче** анимаций, не ноль — оставляйте transitions, которые помогают пониманию, убирайте движение и смену позиции.
 
 ## Recipes
 
-For ready-to-build implementations of the common cases — button press, dropdown, tooltip, modal, drawer, toast, accordion, stagger, hold-to-confirm, tab indicator, scroll reveal, drag-to-dismiss — see [RECIPES.md](RECIPES.md). Load it whenever the request matches one of those components; start from the recipe rather than from a blank file.
+Готовые к сборке реализации типичных кейсов — button press, dropdown, tooltip, modal, drawer, toast, accordion, stagger, hold-to-confirm, tab indicator, scroll reveal, drag-to-dismiss — см. [RECIPES.md](RECIPES.md). Подгружайте, когда запрос совпадает с одним из этих компонентов; стартуйте с recipe, а не с пустого файла.
 
 ## Never Ship
 
-Self-check before you finish. Each of these is an automatic block in `review-animations`:
+Self-check перед финишем. Каждый пункт — автоматический блок в `review-animations`:
 
-| Never | Instead |
+| Никогда | Вместо этого |
 | --- | --- |
-| `transition: all` | Name the exact properties |
-| `transform: scale(0)` entrance | `scale(0.95)` + `opacity: 0` |
-| `ease-in` on a UI element | `ease-out` or a strong custom curve |
-| Built-in `ease-out` on a deliberate animation | `cubic-bezier(0.23, 1, 0.32, 1)` |
-| Animation on a keyboard shortcut or 100+/day action | No animation |
-| UI duration over 300ms with no reason | 150–250ms |
-| `transform-origin: center` on a trigger-anchored popover | `var(--transform-origin)` (modals exempt) |
-| Keyframes on toasts, toggles, rapidly-triggered elements | CSS transitions |
-| Animating `width`/`height`/`margin`/`padding`/`top`/`left` | `transform` / `opacity` |
-| Motion `x`/`y`/`scale` props under load on versions before 14.2 | Upgrade to 14.2+, or a full `transform` string |
+| `transition: all` | Назовите точные свойства |
+| `transform: scale(0)` на entrance | `scale(0.95)` + `opacity: 0` |
+| `ease-in` на UI-элементе | `ease-out` или сильная custom-кривая |
+| Встроенный `ease-out` на осознанной анимации | `cubic-bezier(0.23, 1, 0.32, 1)` |
+| Анимация на keyboard shortcut или действии 100+/день | Без анимации |
+| UI duration свыше 300ms без причины | 150–250ms |
+| `transform-origin: center` на popover, привязанном к trigger | `var(--transform-origin)` (modals exempt) |
+| Keyframes на toasts, toggles, часто триггерящихся элементах | CSS transitions |
+| Анимация `width`/`height`/`margin`/`padding`/`top`/`left` | `transform` / `opacity` |
+| Motion-пропсы `x`/`y`/`scale` под нагрузкой на версиях до 14.2 | Upgrade до 14.2+ или полная строка `transform` |
 | Ungated `:hover` motion | `@media (hover: hover) and (pointer: fine)` |
-| Missing `prefers-reduced-motion` | Gentler variant, not zero |
-| Everything entering at once | 30–80ms stagger |
+| Нет `prefers-reduced-motion` | Более мягкий вариант, не ноль |
+| Всё входит сразу | Stagger 30–80ms |
 
 ## Output
 
-Write the code. Then, in at most a few lines:
+Напишите код. Затем максимум в несколько строк:
 
-- **The gate result** — frequency tier and the named purpose. If something in the request was rejected, say which and why.
-- **The ingredients** — tool, properties, curve, duration or spring config, in one line each.
-- **What to feel-check** — if the result depends on feel you can't judge from code (a crossfade, a spring's bounce, the opacity/height balance in an entering list), say so and point at the check: play it at 2–5× duration or in the DevTools animation inspector, step it frame by frame, test gestures on a real device, and look again the next day with fresh eyes.
+- **Результат gate** — tier частоты и названная цель. Если что-то в запросе отклонено — скажите что и почему.
+- **Ингредиенты** — инструмент, свойства, кривая, duration или spring-конфиг, по одной строке каждый.
+- **Что проверить на ощупь** — если результат зависит от feel, который нельзя судить по коду (crossfade, bounce spring, баланс opacity/height во входящем списке), скажите это и укажите проверку: проиграйте на 2–5× duration или в DevTools animation inspector, пройдите кадр за кадром, протестируйте жесты на реальном устройстве и посмотрите снова на следующий день свежим взглядом.
 
-Don't pad this into a report. The code is the deliverable.
+Не раздувайте это в отчёт. Код — deliverable.
 
 ## Tone
 
-Opinionated and brief. When the honest answer is "this shouldn't animate," give it — that answer is the reason this skill exists. When feel genuinely can't be settled from code, say so instead of guessing at a value.
+Opinionated и кратко. Когда честный ответ — «это не должно анимироваться», дайте его: этот ответ — причина существования skill. Когда feel действительно нельзя зафиксировать по коду — скажите так, вместо угадывания значения.

@@ -1,14 +1,14 @@
 # Animation Recipes
 
-Ready-to-build implementations for the cases that come up most. Start from the recipe, then adapt — don't rebuild from scratch.
+Готовые к сборке реализации для самых частых кейсов. Стартуйте с recipe, затем адаптируйте — не собирайте с нуля.
 
-Curves are the `--ease-out`, `--ease-in-out`, and `--ease-drawer` tokens defined in SKILL.md.
+Кривые — токены `--ease-out`, `--ease-in-out` и `--ease-drawer`, определённые в SKILL.md.
 
 ---
 
 ## Button press
 
-Any pressable element. Instant feedback that the interface heard the user.
+Любой нажимаемый элемент. Мгновенный feedback, что интерфейс услышал пользователя.
 
 ```css
 .button {
@@ -20,15 +20,15 @@ Any pressable element. Instant feedback that the interface heard the user.
 }
 ```
 
-`scale()` scales children too — the label and icons come along, which is what makes it read as a physical press.
+`scale()` масштабирует и детей — лейбл и иконки едут вместе; именно это читается как физическое нажатие.
 
-No hover gating needed here: `:active` is a real press on touch. Gate any `:hover` styling separately.
+Hover-gating здесь не нужен: `:active` — настоящее нажатие и на touch. Любые `:hover`-стили гейтите отдельно.
 
 ---
 
 ## Dropdown, popover, menu, select
 
-Scales out of its trigger, not out of thin air.
+Масштабируется из своего trigger, а не из воздуха.
 
 ```css
 .popover {
@@ -45,13 +45,13 @@ Scales out of its trigger, not out of thin air.
 }
 ```
 
-The `transform-origin` is the whole point — the panel should look like it came out of the thing you clicked.
+`transform-origin` — вся суть: панель должна выглядеть так, будто вышла из того, что кликнули.
 
 ---
 
 ## Tooltip
 
-Same shape as a popover, faster, plus the detail most implementations miss.
+Та же форма, что у popover, быстрее, плюс деталь, которую большинство реализаций пропускает.
 
 ```css
 .tooltip {
@@ -73,13 +73,13 @@ Same shape as a popover, faster, plus the detail most implementations miss.
 }
 ```
 
-The initial delay prevents accidental activation. After that, skipping both the delay and the animation makes the whole toolbar feel faster.
+Начальная задержка предотвращает случайную активацию. После этого пропуск и задержки, и анимации делает всю toolbar быстрее на ощупь.
 
 ---
 
 ## Modal
 
-The one popover that stays centered.
+Единственный popover, который остаётся по центру.
 
 ```css
 .modal {
@@ -100,7 +100,7 @@ The one popover that stays centered.
 }
 ```
 
-Animate the backdrop's opacity alongside it so they read as one surface.
+Анимируйте opacity backdrop вместе с ним, чтобы они читались как одна поверхность.
 
 ---
 
@@ -117,9 +117,9 @@ Animate the backdrop's opacity alongside it so they read as one surface.
 }
 ```
 
-This is how Vaul hides a drawer before animating it in.
+Так Vaul прячет drawer перед анимацией входа.
 
-Add drag and it becomes a gesture problem — see **Drag to dismiss** below.
+Добавьте drag — и это уже задача жеста; см. **Drag to dismiss** ниже.
 
 ---
 
@@ -140,15 +140,15 @@ Add drag and it becomes a gesture problem — see **Drag to dismiss** below.
 }
 ```
 
-- `ease` rather than `ease-out`, slightly slower than typical UI: Sonner reads as elegant partly because its motion is tuned to the component's personality rather than to the generic UI budget.
-- If `@starting-style` isn't available, fall back to the mount flag:
+- `ease`, а не `ease-out`, чуть медленнее типичного UI: Sonner читается элегантно отчасти потому, что motion подогнан под характер компонента, а не под общий UI-budget.
+- Если `@starting-style` недоступен, fallback на mount-флаг:
 
 ```jsx
 useEffect(() => { setMounted(true); }, []);
 // <div data-mounted={mounted}>
 ```
 
-When toasts stack and the list reflows, the opacity change has to work against the height change. There's no formula for that pair — adjust until it feels right, then check it again the next day.
+Когда toasts складываются в стек и список перетекает, смена opacity должна работать против смены height. Формулы для этой пары нет — подкручивайте, пока не «сядет», и проверяйте снова на следующий день.
 
 ---
 
@@ -163,13 +163,13 @@ When toasts stack and the list reflows, the opacity change has to work against t
 }
 ```
 
-Keep it short — this is one of the few animations that costs layout on every frame, so a long duration is expensive as well as sluggish. Measure the content height in JS (or use a headless primitive that supplies it) rather than animating to `auto`.
+Держите коротко — это одна из немногих анимаций, которая стоит layout на каждом кадре, поэтому длинная duration дорога и вяла. Измеряйте высоту контента в JS (или используйте headless-примитив, который её даёт), а не анимируйте к `auto`.
 
 ---
 
 ## Stagger a group entrance
 
-For a list or grid the user sees occasionally — not for a list they scroll past all day. For group entrances, follow `../choreograph/SKILL.md` (one entrance per container, non-uniform delays).
+Для списка или сетки, которые пользователь видит иногда — не для списка, мимо которого скроллит весь день. Для group entrances следуйте `../choreograph/SKILL.md` (один entrance на контейнер, неравномерные delays).
 
 ```css
 .item {
@@ -190,13 +190,13 @@ For a list or grid the user sees occasionally — not for a list they scroll pas
 }
 ```
 
-Stagger is decorative — it must never block interaction while it plays.
+Stagger декоративен — он никогда не должен блокировать взаимодействие, пока играет.
 
 ---
 
 ## Hold to confirm
 
-For destructive actions where a plain click is too easy to fire by accident.
+Для destructive-действий, где обычный клик слишком легко срабатывает случайно.
 
 ```css
 .overlay {
@@ -214,15 +214,15 @@ For destructive actions where a plain click is too easy to fire by accident.
 }
 ```
 
-`linear` is correct here — the fill is a progress indicator, and progress shouldn't ease.
+`linear` здесь правилен — заливка это progress-индикатор, и progress не должен easing'иться.
 
 ---
 
 ## Tab indicator with a color transition
 
-Timing individual color transitions across a tab list never quite lands. Clip instead.
+Таймить отдельные цветовые transitions по списку табов почти никогда не «садится». Вместо этого — clip.
 
-Duplicate the tab list. Style the copy as the active state — different background, different text color. Clip the copy so only the active tab shows, and animate the clip on change:
+Дублируйте список табов. Стилизуйте копию как active-состояние — другой фон, другой цвет текста. Клипуйте копию так, чтобы был виден только active-таб, и анимируйте clip при смене:
 
 ```css
 .tabs-active-copy {
@@ -231,13 +231,13 @@ Duplicate the tab list. Style the copy as the active state — different backgro
 }
 ```
 
-The text and background change together, in perfect sync, because they're one element being revealed rather than two colors being interpolated.
+Текст и фон меняются вместе, в идеальной синхронизации, потому что это один элемент, который раскрывают, а не два цвета, которые интерполируют.
 
 ---
 
 ## Scroll reveal
 
-Marketing surfaces only. Don't do this to functional UI a user visits daily.
+Только marketing-поверхности. Не делайте это с функциональным UI, который пользователь открывает ежедневно.
 
 ```css
 .reveal {
@@ -250,13 +250,13 @@ Marketing surfaces only. Don't do this to functional UI a user visits daily.
 }
 ```
 
-Trigger with `IntersectionObserver`, or Motion's `useInView` with `{ once: true, margin: "-100px" }`. Fire it once — re-animating on every scroll-by is an interface fighting its reader.
+Триггерьте через `IntersectionObserver` или `useInView` из Motion с `{ once: true, margin: "-100px" }`. Срабатывайте один раз — повторная анимация при каждом проезде скролла это интерфейс, который борется с читателем.
 
 ---
 
 ## Drag to dismiss
 
-The gesture recipe. Springs, not durations, because the user can reverse mid-motion.
+Recipe жеста. Springs, не durations, потому что пользователь может развернуть mid-motion.
 
 ```js
 // Dismiss on a flick, not just on distance
@@ -274,14 +274,14 @@ if (Math.abs(swipeAmount) >= SWIPE_THRESHOLD || velocity > 0.11) {
 element.style.transform = `translateY(${distance}px)`;
 ```
 
-Four details that separate a good drag from a bad one:
+Четыре детали, которые отделяют хороший drag от плохого:
 
-- **Pointer capture** once the drag starts, so it continues when the pointer leaves the element's bounds.
-- **Multi-touch protection** — `if (isDragging) return` on new touch points, or switching fingers mid-drag makes the element jump.
-- **Damping past boundaries** — dragging beyond a natural edge moves the element less the further it goes. Real things slow before they stop.
-- **Friction, not a wall** — allow the over-drag with rising resistance rather than refusing it.
+- **Pointer capture**, как только drag начался, чтобы он продолжался, когда указатель выходит за границы элемента.
+- **Защита от multi-touch** — `if (isDragging) return` на новых touch-точках, иначе смена пальцев mid-drag заставляет элемент прыгать.
+- **Damping за границами** — тяга за естественный край двигает элемент тем меньше, чем дальше. Реальные вещи замедляются перед остановкой.
+- **Friction, а не стена** — разрешайте over-drag с растущим сопротивлением, а не запрещайте его.
 
-Settle with a spring so an interrupted drag keeps its velocity:
+Усаживайте spring'ом, чтобы прерванный drag сохранил velocity:
 
 ```js
 { type: "spring", duration: 0.5, bounce: 0.2 }
@@ -291,7 +291,7 @@ Settle with a spring so an interrupted drag keeps its velocity:
 
 ## Masking a crossfade that won't settle
 
-When two states overlap visibly during a transition and no amount of easing or duration tuning fixes it, blur the seam:
+Когда два состояния заметно перекрываются во время transition и никакая подкрутка easing или duration не чинит это — размойте шов:
 
 ```css
 .content {
@@ -306,13 +306,13 @@ When two states overlap visibly during a transition and no amount of easing or d
 }
 ```
 
-Without blur the eye reads two distinct objects swapping. Blur blends them into one perceived transformation. Keep it under 20px — heavy blur is expensive, especially in Safari.
+Без blur глаз читает два отдельных объекта, которые меняются местами. Blur сливает их в одно воспринимаемое превращение. Держите ниже 20px — тяжёлый blur дорог, особенно в Safari.
 
 ---
 
 ## Programmatic, without a library
 
-When the motion needs JS control but not a dependency, WAAPI gives you CSS-grade performance:
+Когда motion нужен JS-контроль, но не зависимость, WAAPI даёт производительность уровня CSS:
 
 ```js
 element.animate(
@@ -321,4 +321,4 @@ element.animate(
 );
 ```
 
-Hardware-accelerated, interruptible, no bundle cost.
+Hardware-accelerated, прерываемо, без стоимости бандла.
