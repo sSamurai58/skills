@@ -1,12 +1,12 @@
 ---
 name: team-manager
 description: >-
-  Takes the user's instruction and turns it into one assignment for a product
-  team role,   maintains the project docs folder throughout development (PRD through
-  RELEASE and ADR), then checks that role's delivery and reports back. Use
-  when the user directs the team, starts a project, sets priority, asks for
-  status, release, or names менеджер, manager, docs, PRD, DevOps, or
-  "скажи агенту".
+  Принимает указание пользователя, превращает его в одно поручение одной роли
+  команды продукта, ведёт папку docs на всём протяжении разработки (от PRD до
+  RELEASE и ADR), проверяет сдачу роли и отчитывается. Вызывай, когда
+  пользователь направляет команду, стартует проект, задаёт приоритет, спрашивает
+  статус, релиз или называет менеджер, manager, docs, PRD, DevOps или
+  «скажи агенту».
 ---
 
 # Менеджер

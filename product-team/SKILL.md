@@ -1,13 +1,14 @@
 ---
 name: product-team
 description: >-
-  Runs a product team through a manager who takes the user's instruction and
-  assigns one role: product, designer, frontend, backend, tester, devops, plus
-  domain, mobile, macOS, or Linux when that surface is part of the release.
-  Maintains project docs including ADR and release checklist. Use when the user
-  directs the team, starts a product, splits work, reviews a build, asks for
-  QA, security review, CI, deploy, or names менеджер, продакт, дизайнер,
-  фронтенд, бэкенд, тестировщик, DevOps, предмет, телефон, Mac, macOS, or Linux.
+  Ведёт команду продукта через менеджера: принимает указание пользователя и
+  назначает одну роль — продакт, дизайнер, фронтенд, бэкенд, тестировщик,
+  devops, а также предмет, mobile, macOS или Linux, если эта поверхность входит
+  в выпуск. Ведёт проектные docs, включая ADR и релиз-чеклист. Вызывай, когда
+  пользователь направляет команду, стартует продукт, делит работу, ревьюит
+  сборку, просит QA, секьюрити-ревью, CI, деплой или называет менеджер,
+  продакт, дизайнер, фронтенд, бэкенд, тестировщик, DevOps, предмет, телефон,
+  Mac, macOS или Linux.
 ---
 
 # Команда продукта

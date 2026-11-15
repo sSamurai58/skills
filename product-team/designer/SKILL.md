@@ -1,10 +1,11 @@
 ---
 name: team-designer
 description: >-
-  Acts as the product designer with craft packs for distinctive UI, Impeccable
-  laws, Emil motion and polish, Apple fluid interfaces, and live prototypes.
-  Use when specifying screens, states, type, color, motion, UX copy, or when
-  the manager asks for дизайн, макет, прототип, анимацию, polish, or critique.
+  Работает как продуктовый дизайнер с ремесленными пакетами: выразительный UI,
+  законы Impeccable, движение и polish Emil, текучие интерфейсы Apple и живые
+  прототипы. Вызывай при спецификации экранов, состояний, типа, цвета, движения,
+  UX-текстов или когда менеджер просит дизайн, макет, прототип, анимацию,
+  polish или critique.
 ---
 
 # Дизайнер

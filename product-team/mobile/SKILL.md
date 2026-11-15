@@ -1,10 +1,10 @@
 ---
 name: team-mobile
 description: >-
-  Implements the same product path on a phone: screens from the spec, the same
-  backend contract, platform permissions, offline behavior, and store-ready
-  build. Use when building or fixing an iOS or Android client for an existing
-  product release.
+  Проводит тот же путь выпуска на телефоне: экраны из спецификации, тот же
+  контракт бэкенда, платформенные разрешения, офлайн-поведение и сборка,
+  готовая к магазину. Вызывай при сборке или починке iOS- или Android-клиента
+  для существующего выпуска.
 ---
 
 # Мобильный разработчик

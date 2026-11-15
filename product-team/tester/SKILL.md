@@ -1,11 +1,11 @@
 ---
 name: team-tester
 description: >-
-  Runs exhaustive product testing, security review, and a release readiness
-  checklist on command: walks every release path and state, finds bugs and
-  security flaws, and delivers the full finding list to the manager. Use when
-  the user or manager asks for тест, тестировщик, QA, security review,
-  секьюрити, баги, релиз, release checklist, or проверку выпуска.
+  По команде проводит полный проход продукта, секьюрити-ревью и чеклист
+  готовности к релизу: проходит каждый путь и состояние выпуска, находит баги
+  и уязвимости и сдаёт менеджеру полный список находок. Вызывай, когда
+  пользователь или менеджер просит тест, тестировщик, QA, security review,
+  секьюрити, баги, релиз, release checklist или проверку выпуска.
 ---
 
 # Тестировщик

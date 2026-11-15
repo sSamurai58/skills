@@ -1,9 +1,9 @@
 ---
 name: team-backend
 description: >-
-  Acts as the backend engineer: entities, rules, API contract, persistence,
-  errors, and auth for one product release. Use when designing or implementing
-  server data, operations, and the contract the client calls.
+  Работает как бэкенд-инженер: сущности, правила, API-контракт, хранение,
+  ошибки и auth для одного выпуска. Вызывай при проектировании или реализации
+  серверных данных, операций и контракта, который вызывает клиент.
 ---
 
 # Бэкенд

@@ -1,9 +1,9 @@
 ---
 name: team-frontend
 description: >-
-  Implements the product interface from the designer spec and the backend
-  contract: screens, states, keyboard, focus, and the real user path. Use when
-  building or fixing the client UI, components, or client-side behavior.
+  Собирает интерфейс продукта по спецификации дизайнера и контракту бэкенда:
+  экраны, состояния, клавиатура, фокус и реальный путь пользователя. Вызывай
+  при сборке или починке клиентского UI, компонентов или поведения на клиенте.
 ---
 
 # Фронтенд

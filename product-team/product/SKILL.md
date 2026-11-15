@@ -1,10 +1,10 @@
 ---
 name: team-product
 description: >-
-  Acts as the product owner for one product: user, job to be done, this
-  release, out-of-scope list, and the check that the release worked. Use when
-  deciding what to build, cutting scope, ordering work, or writing the
-  one-page product decision.
+  Работает как продакт одного продукта: пользователь, работа (job to be done),
+  этот выпуск, список «снаружи» и проверка, что выпуск удался. Вызывай, когда
+  решают, что строить, режут объём, упорядочивают работу или пишут
+  одностраничное продуктовое решение.
 ---
 
 # Продакт

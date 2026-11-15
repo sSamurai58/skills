@@ -1,10 +1,10 @@
 ---
 name: team-linux
 description: >-
-  Implements the same product path as a Linux desktop app: screens from the
-  spec, the same backend contract, portals instead of raw disk access, and a
-  package that opens on a named desktop. Use when building or fixing a Linux
-  client for an existing product release.
+  Проводит тот же путь выпуска как приложение Linux: экраны из спецификации,
+  тот же контракт бэкенда, порталы вместо прямого доступа к диску и пакет,
+  который открывается на названном рабочем столе. Вызывай при сборке или
+  починке Linux-клиента для существующего выпуска.
 ---
 
 # Разработчик Linux

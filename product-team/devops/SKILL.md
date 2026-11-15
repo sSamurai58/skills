@@ -1,9 +1,9 @@
 ---
 name: team-devops
 description: >-
-  Sets up CI, environments, deploy, secrets handling, and rollback for one
-  product release. Use when the manager asks for пайплайн, CI, CD, деплой,
-  окружения, rollback, DevOps, or platform plumbing before a release.
+  Настраивает CI, окружения, деплой, работу с секретами и откат для одного
+  выпуска. Вызывай, когда менеджер просит пайплайн, CI, CD, деплой,
+  окружения, rollback, DevOps или платформенную обвязку перед релизом.
 ---
 
 # DevOps / платформа

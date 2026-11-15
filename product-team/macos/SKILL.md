@@ -1,10 +1,10 @@
 ---
 name: team-macos
 description: >-
-  Implements the same product path as a Mac app: screens from the spec, the
-  same backend contract, App Sandbox permissions, menus, windows, and a
-  build that opens on macOS. Use when building or fixing a Mac client for an
-  existing product release.
+  Проводит тот же путь выпуска как приложение Mac: экраны из спецификации,
+  тот же контракт бэкенда, разрешения App Sandbox, меню, окна и сборка,
+  которая открывается на macOS. Вызывай при сборке или починке Mac-клиента
+  для существующего выпуска.
 ---
 
 # Разработчик macOS
