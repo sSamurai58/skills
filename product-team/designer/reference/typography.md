@@ -1,12 +1,12 @@
-# Typography
+# Типографика
 
-## Classic Typography Principles
+## Классические принципы типографики
 
-### Vertical Rhythm
+### Вертикальный ритм
 
 Ваш line-height должен быть базовой единицей для ВСЕХ вертикальных отступов. Если у body-текста `line-height: 1.5` при кегле `16px` (= 24px), значения spacing должны быть кратны 24px. Это создаёт подсознательную гармонию: текст и пространство делят одну математическую основу.
 
-### Modular Scale & Hierarchy
+### Модульная шкала и иерархия
 
 Типичная ошибка: слишком много размеров шрифта, слишком близких друг к другу (14px, 15px, 16px, 18px...). Это даёт мутную иерархию.
 
@@ -22,7 +22,7 @@
 
 Популярные ratios: 1.25 (major third), 1.333 (perfect fourth), 1.5 (perfect fifth). Выберите один и придерживайтесь.
 
-### Readability & Measure
+### Читаемость и мера строки
 
 Используйте единицы `ch` для character-based measure (`max-width: 65ch`). Line-height масштабируется обратно длине строки: узким колонкам нужен более плотный leading, широким — больший.
 
@@ -30,11 +30,11 @@
 
 **Ритм абзацев**: выберите либо space между абзацами, ЛИБО first-line indentation. Никогда оба. В digital обычно нужен space; editorial/long-form может оправдать только indent.
 
-## Font Selection & Pairing
+## Выбор и сочетание шрифтов
 
 Тактическая процедура выбора и список reflex-reject живут в [reference/brand.md](brand.md) в разделах **Font selection procedure** и **Reflex-reject list** (подгружаются для brand-register задач). Остаток этого раздела — смежные знания: anti-reflex коррекции, использование system fonts и правила pairing.
 
-### Anti-reflexes worth defending against
+### Анти-рефлексы, от которых стоит защищаться
 
 - Техническому/утилитарному брифу НЕ нужен serif «для тепла». Большинство tech-инструментов должны выглядеть как tech-инструменты.
 - Editorial/premium брифу НЕ нужен тот же expressive serif, которым все пользуются прямо сейчас. Premium может быть Swiss-modern, neo-grotesque, буквальным monospace, тихим humanist sans.
@@ -43,7 +43,7 @@
 
 **System fonts недооценены**: `-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui` выглядит нативно, грузится мгновенно и хорошо читается. Рассмотрите это для приложений, где performance > personality.
 
-### Pairing Principles
+### Принципы pairing
 
 **Неочевидная правда**: часто второй шрифт не нужен. Одно хорошо выбранное семейство в нескольких weights даёт более чистую иерархию, чем две конкурирующие гарнитуры. Добавляйте второй шрифт только когда нужен настоящий контраст (например, display headlines + body serif).
 
@@ -54,7 +54,7 @@
 
 **Никогда не pairing'ите шрифты, которые похожи, но не идентичны** (например, два geometric sans-serif). Они создают визуальное напряжение без ясной иерархии.
 
-### Web Font Loading
+### Загрузка веб-шрифтов
 
 Проблема layout shift: шрифты грузятся поздно, текст перетекает, пользователи видят скачок контента. Вот фикс:
 
@@ -89,9 +89,9 @@ body {
 
 **Variable fonts для 3+ weights или styles**: один файл variable font обычно меньше трёх static weight файлов, даёт дробный контроль weight и хорошо сочетается с `font-optical-sizing: auto`. Для 1–2 weights static достаточно.
 
-## Modern Web Typography
+## Современная веб-типографика
 
-### Fluid Type
+### Fluid type
 
 Fluid typography через `clamp(min, preferred, max)` плавно масштабирует текст с viewport. Среднее значение (например, `5vw + 1rem`) контролирует скорость масштабирования (выше vw = быстрее). Добавляйте rem-offset, чтобы на маленьких экранах не схлопывалось в 0.
 
@@ -103,7 +103,7 @@ Fluid typography через `clamp(min, preferred, max)` плавно масшт
 
 **Масштабируйте ширину контейнера и font-size вместе**, чтобы эффективный character measure оставался в полосе 45–75ch на каждом viewport. Заголовок, который расширяется быстрее своего контейнера, уезжает из комфортного measure на верхнем конце.
 
-### OpenType Features
+### Возможности OpenType
 
 Большинство разработчиков не знает, что они существуют. Используйте их для polish:
 
@@ -126,7 +126,7 @@ body { font-kerning: normal; }
 
 Проверяйте, какие features поддерживает ваш шрифт, на [Wakamai Fondue](https://wakamaifondue.com/).
 
-### Rendering polish
+### Полировка рендеринга
 
 ```css
 /* Even out heading line lengths (browser picks better break points) */
@@ -141,11 +141,11 @@ body { font-optical-sizing: auto; }
 
 **Трекинг ALL-CAPS**: капитель сидит слишком плотно при дефолтном spacing. Добавляйте 5–12% letter-spacing (`letter-spacing: 0.05em` до `0.12em`) к коротким all-caps лейблам, eyebrows и мелким заголовкам. Настоящие small caps (через `font-variant-caps`) нуждаются в том же, чуть мягче.
 
-## Typography System Architecture
+## Архитектура типографической системы
 
 Называйте токены семантически (`--text-body`, `--text-heading`), а не по значению (`--font-size-16`). Включите в token-систему font stacks, size scale, weights, line-heights и letter-spacing.
 
-## Accessibility Considerations
+## Доступность
 
 Помимо contrast ratios (которые хорошо задокументированы), учитывайте:
 
