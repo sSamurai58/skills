@@ -1,8 +1,8 @@
-### Purpose
+### Цель
 
 Resolve один stable target, запустите две независимые assessments, синтезируйте design critique, сохраните snapshot и спросите пользователя, что улучшать дальше. Chat response — primary deliverable; snapshot — archive/backlog для будущих команд.
 
-### Hard Invariants
+### Жёсткие инварианты
 
 - Assessment A (design review) и Assessment B (detector/browser evidence) оба обязательны.
 - Assessment A должна завершиться до того, как detector findings попадут в parent synthesis context. Detector output детерминирован, но всё равно anchors judgment.

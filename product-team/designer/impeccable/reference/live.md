@@ -1,10 +1,10 @@
 Interactive live variant mode: выбирайте элементы в browser, выбирайте design action и получайте AI-generated HTML+CSS variants, hot-swapped через HMR dev server.
 
-## Prerequisites
+## Предпосылки
 
 Running dev server с hot module replacement (Vite, Next.js, Bun и т.д.), ИЛИ static HTML file, открытый в browser.
 
-## The contract (read once)
+## Контракт (прочитать один раз)
 
 Execute по порядку. Никакой step не skipped, никакой step не reordered.
 

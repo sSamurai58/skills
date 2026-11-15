@@ -4,7 +4,7 @@
 
 ---
 
-## Register
+## Регистр
 
 Brand: оркестрированные page-load sequences, staggered reveals, scroll-driven animation. Motion — часть voice; один хорошо отрепетированный entrance бьёт разбросанные micro-interactions.
 
@@ -48,13 +48,13 @@ Product: 150–250 ms на большинстве transitions. Motion перед
 
 Добавляйте motion системно по этим категориям:
 
-### Entrance Animations
+### Анимации появления
 - **Page load choreography**: Stagger element reveals (задержки 100–150ms), комбинации fade + slide
 - **Hero section**: Dramatic entrance для primary content (scale, parallax или creative effects)
 - **Content reveals**: Scroll-triggered animations с intersection observer
 - **Modal/drawer entry**: Smooth slide + fade, backdrop fade, focus management
 
-### Micro-interactions
+### Микро-взаимодействия
 - **Button feedback**:
   - Hover: Subtle scale (1.02–1.05), color shift, shadow increase
   - Click: Quick scale down then up (0.95 → 1), ripple effect
@@ -66,20 +66,20 @@ Product: 150–250 ms на большинстве transitions. Motion перед
 - **Checkboxes/radio**: Check mark animation, ripple effect
 - **Like/favorite**: Scale + rotation, particle effects, color transition
 
-### State Transitions
+### Переходы состояний
 - **Show/hide**: Fade + slide (не instant), appropriate timing (200–300ms)
 - **Expand/collapse**: Height transition с overflow handling, icon rotation
 - **Loading states**: Skeleton screen fades, spinner animations, progress bars
 - **Success/error**: Color transitions, icon animations, gentle scale pulse
 - **Enable/disable**: Opacity transitions, cursor changes
 
-### Navigation & Flow
+### Навигация и поток
 - **Page transitions**: Crossfade между routes, shared element transitions
 - **Tab switching**: Slide indicator, content fade/slide
 - **Carousel/slider**: Smooth transforms, snap points, momentum
 - **Scroll effects**: Parallax layers, sticky headers с state changes, scroll progress indicators
 
-### Feedback & Guidance
+### Обратная связь и подсказки
 - **Hover hints**: Tooltip fade-ins, cursor changes, element highlights
 - **Drag & drop**: Lift effect (shadow + scale), drop zone highlights, smooth repositioning
 - **Copy/paste**: Brief highlight flash on paste, «copied» confirmation

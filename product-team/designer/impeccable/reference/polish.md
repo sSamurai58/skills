@@ -74,7 +74,7 @@ Detector и automated QA — только доказательства дефе�
 - **Empty, loading и arrival transitions**: как контент появляется, обновляется и уходит — как в соседних фичах.
 - **Naming and mental model**: фича использует те же существительные и глаголы, что остальная система. «Workspace» здесь не должен быть «Project» тремя экранами дальше.
 
-### Typography Refinement
+### Типографика Refinement
 
 - **Hierarchy consistency**: одни и те же элементы — одни размеры/веса повсюду
 - **Line length**: 45–75 символов для body text

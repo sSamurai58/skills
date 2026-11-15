@@ -103,7 +103,7 @@ Register на этом этапе — гипотеза, не решение; Ste
 ```markdown
 # Product
 
-## Register
+## Регистр
 
 product
 

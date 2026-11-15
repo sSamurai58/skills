@@ -1,14 +1,14 @@
-# Product register
+# Регистр product
 
 Когда дизайн СЛУЖИТ продукту: app UIs, admin dashboards, settings panels, data tables, tools, authenticated surfaces — всё, где пользователь в задаче.
 
-## The product slop test
+## Тест product-slop
 
 Не «скажут ли, что это сделал AI». Знакомость здесь часто фича. Тест: сядет ли пользователь, владеющий лучшими инструментами категории (Linear, Figma, Notion, Raycast, Stripe), и доверится ли интерфейсу — или будет спотыкаться о каждый чуть «не тот» компонент?
 
 Failure mode product UI — не плоскость, а странность без цели: переукрашенные кнопки, несогласованные form controls, бессмысленный motion, display fonts там, где должны быть labels, выдуманные affordances для стандартных задач. Планка — earned familiarity. Инструмент должен раствориться в задаче.
 
-## Typography
+## Типографика
 
 - **System fonts легитимны.** `-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif` даёт native feel на каждой платформе. Inter — распространённый cross-platform default не зря.
 - **Одной семьи часто достаточно.** Product UI не нужны пары display/body. Хорошо настроенный sans несёт headings, buttons, labels, body, data.

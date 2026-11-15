@@ -52,7 +52,7 @@ Rules that matter:
 
 1. `## Overview`
 2. `## Colors`
-3. `## Typography`
+3. `## Типографика`
 4. `## Elevation`
 5. `## Components`
 6. `## Do's and Don'ts`

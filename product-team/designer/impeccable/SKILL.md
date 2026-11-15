@@ -12,7 +12,7 @@ description: Используйте, когда пользователь хоч�
 
 Проектирует и итерирует production-grade frontend interfaces. Реальный working code, committed дизайн-решения, exceptional craft.
 
-## Setup
+## Настройка
 
 Перед любой дизайн-работой или правками файлов:
 
@@ -55,11 +55,11 @@ Consume полный JSON output. Никогда не pipe через `head`, `t
 
 Загрузите matching reference: [reference/brand.md](reference/brand.md) или [reference/product.md](reference/product.md). Shared design laws ниже применяются к обоим.
 
-## Shared design laws
+## Общие законы дизайна
 
 Применяйте к каждому дизайну, обоим registers. Match complexity реализации aesthetic vision: maximalism нуждается в elaborate code, minimalism — в precision. Интерпретируйте creatively. Варьируйте across projects; никогда не сходитесь к одним и тем же choices. GPT способен на extraordinary work. Не сдерживайтесь.
 
-### Color
+### Цвет
 
 - Используйте OKLCH. Снижайте chroma, когда lightness приближается к 0 или 100; высокая chroma на extremes выглядит garish.
 - Никогда не используйте `#000` или `#fff`. Тонируйте каждый neutral в сторону brand hue (chroma 0.005–0.01 достаточно).
@@ -70,7 +70,7 @@ Consume полный JSON output. Никогда не pipe через `head`, `t
   - **Drenched**: поверхность И ЕСТЬ цвет. Brand heroes, campaign pages.
 - Правило «один accent ≤10%» — только для Restrained. Committed / Full palette / Drenched превышают его намеренно. Не схлопывайте каждый дизайн к Restrained по рефлексу.
 
-### Theme
+### Тема
 
 Dark vs. light никогда не дефолт. Не dark «потому что tools выглядят cool dark». Не light «чтобы быть safe».
 
@@ -78,23 +78,23 @@ Dark vs. light никогда не дефолт. Не dark «потому что
 
 «Observability dashboard» не форсирует ответ. «SRE glancing at incident severity on a 27-inch monitor at 2am in a dim room» — форсирует. Запускайте предложение, а не категорию.
 
-### Typography
+### Типографика
 
 - Ограничьте body line length 65–75ch.
 - Hierarchy через scale + weight contrast (соотношение ≥1.25 между steps). Избегайте flat scales.
 
-### Layout
+### Раскладка
 
 - Варьируйте spacing для ритма. Одинаковый padding everywhere — monotony.
 - Cards — lazy answer. Используйте их только когда они действительно лучший affordance. Nested cards всегда wrong.
 - Не оборачивайте всё в container. Большинству вещей он не нужен.
 
-### Motion
+### Движение
 
 - Не анимируйте CSS layout properties.
 - Ease out с exponential curves (ease-out-quart / quint / expo). Нет bounce, нет elastic.
 
-### Absolute bans
+### Абсолютные запреты
 
 Match-and-refuse. Если вы собираетесь написать любое из этого — перепишите элемент с другой структурой.
 
@@ -105,12 +105,12 @@ Match-and-refuse. Если вы собираетесь написать любо
 - **Identical card grids.** Same-sized cards с icon + heading + text, repeated endlessly.
 - **Modal as first thought.** Modals обычно laziness. Сначала исчерпайте inline / progressive alternatives.
 
-### Copy
+### Тексты
 
 - Каждое слово заслуживает место. Нет restated headings, нет intros, повторяющих title.
 - **Нет em dashes.** Используйте commas, colons, semicolons, periods или parentheses. Также не `--`.
 
-### The AI slop test
+### Тест AI-slop
 
 Если кто-то может посмотреть на этот интерфейс и без сомнения сказать «это сделал AI» — провал. Cross-register failures — absolute bans выше. Register-specific failures живут в каждом reference.
 
@@ -119,7 +119,7 @@ Match-and-refuse. Если вы собираетесь написать любо
 - **First-order:** если кто-то может угадать theme + palette только из категории («observability → dark blue», «healthcare → white + teal», «finance → navy + gold», «crypto → neon on black») — это first training-data reflex. Переработайте scene sentence и color strategy, пока ответ не станет неочевидным из domain.
 - **Second-order:** если кто-то может угадать aesthetic family из category-plus-anti-references («AI workflow tool that's not SaaS-cream → editorial-typographic», «fintech that's not navy-and-gold → terminal-native dark mode») — это ловушка на уровень глубже. Первый рефлекс избежали; второй — нет. Переработайте, пока оба ответа не станут неочевидными. Список [reflex-reject aesthetic lanes](reference/brand.md) brand register ловит currently-saturated families.
 
-## Commands
+## Команды
 
 | Command | Category | Description | Reference |
 |---|---|---|---|
@@ -149,7 +149,7 @@ Match-and-refuse. Если вы собираетесь написать любо
 
 Плюс две management commands: `pin <command>` и `unpin <command>`, detailed ниже.
 
-### Routing rules
+### Правила маршрутизации
 
 1. **Нет аргумента**: отрендерите таблицу выше как user-facing command menu, сгруппированную по category. Спросите, что они хотят сделать.
 2. **Первое слово matches команду**: загрузите её reference file и следуйте инструкциям. Всё после имени команды — target.

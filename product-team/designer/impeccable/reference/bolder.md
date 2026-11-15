@@ -2,7 +2,7 @@
 
 ---
 
-## Register
+## Регистр
 
 Brand: «bolder» значит distinctive. Экстремальный scale, неожиданный цвет, типографический риск, committed POV.
 

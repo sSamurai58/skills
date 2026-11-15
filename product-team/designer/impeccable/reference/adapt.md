@@ -33,7 +33,7 @@
 
 Создайте context-appropriate стратегию:
 
-### Mobile Adaptation (Desktop → Mobile)
+### Адаптация под mobile (Desktop → Mobile)
 
 **Layout Strategy**:
 - Single column вместо multi-column
@@ -60,7 +60,7 @@
 - Sticky headers для context
 - Back button в navigation flow
 
-### Tablet Adaptation (Hybrid Approach)
+### Адаптация под tablet (гибридный подход)
 
 **Layout Strategy**:
 - Two-column layouts (не single и не three-column)
@@ -74,7 +74,7 @@
 - Side navigation drawers
 - Multi-column forms где appropriate
 
-### Desktop Adaptation (Mobile → Desktop)
+### Адаптация под desktop (Mobile → Desktop)
 
 **Layout Strategy**:
 - Multi-column layouts (используйте horizontal space)
@@ -95,7 +95,7 @@
 - Richer visualizations
 - More detailed descriptions
 
-### Print Adaptation (Screen → Print)
+### Адаптация под печать (Screen → Print)
 
 **Layout Strategy**:
 - Page breaks в logical points
@@ -109,7 +109,7 @@
 - Включите metadata (print date, page title)
 - Конвертируйте charts в print-friendly versions
 
-### Email Adaptation (Web → Email)
+### Адаптация под email (Web → Email)
 
 **Layout Strategy**:
 - Narrow width (макс. 600px)
@@ -126,7 +126,7 @@
 
 Применяйте изменения системно:
 
-### Responsive Breakpoints
+### Responsive-брейкпоинты
 
 Выберите appropriate breakpoints:
 - Mobile: 320px–767px
@@ -134,7 +134,7 @@
 - Desktop: 1024px+
 - Или content-driven breakpoints (где design breaks)
 
-### Layout Adaptation Techniques
+### Техники адаптации раскладки
 
 - **CSS Grid/Flexbox**: Reflow layouts автоматически
 - **Container Queries**: Адаптируйте based on container, не viewport
@@ -142,7 +142,7 @@
 - **Media queries**: Разные styles для разных contexts
 - **Display properties**: Show/hide elements per context
 
-### Touch Adaptation
+### Адаптация под touch
 
 - Увеличьте touch target sizes (минимум 44x44px)
 - Добавьте больше spacing между interactive elements
@@ -150,14 +150,14 @@
 - Добавьте touch feedback (ripples, highlights)
 - Учитывайте thumb zones (легче дотянуться до bottom, чем top)
 
-### Content Adaptation
+### Адаптация контента
 
 - Используйте `display: none` sparingly (всё равно downloads)
 - Progressive enhancement (core content first, enhancements на larger screens)
 - Lazy loading для off-screen content
 - Responsive images (`srcset`, `picture` element)
 
-### Navigation Adaptation
+### Адаптация навигации
 
 - Transform complex nav в hamburger/drawer на mobile
 - Bottom nav bar для mobile apps

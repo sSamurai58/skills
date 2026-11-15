@@ -2,7 +2,7 @@ Typography несёт большую часть информации на стр
 
 ---
 
-## Register
+## Регистр
 
 Brand: выполните процедуру выбора шрифта в [brand.md](brand.md). Pairing следует lane бренда (display serif + sans body для editorial/luxury, один committed sans для tech и т.д.). Fluid `clamp()` scale, соотношение ≥1.25 между ступенями.
 

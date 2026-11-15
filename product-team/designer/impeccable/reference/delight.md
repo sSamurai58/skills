@@ -4,7 +4,7 @@
 
 ---
 
-## Register
+## Регистр
 
 Brand: delight может распределяться по copy voice, переходам секций, discovery rewards, сезонным touches, personality по всей поверхности.
 

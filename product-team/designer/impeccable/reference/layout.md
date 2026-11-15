@@ -2,7 +2,7 @@
 
 ---
 
-## Register
+## Регистр
 
 Brand: асимметричные композиции, fluid spacing с `clamp()`, intentional grid-breaking для emphasis. Ритм через контраст: tight groupings paired с generous separations.
 

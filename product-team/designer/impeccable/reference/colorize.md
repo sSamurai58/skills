@@ -4,7 +4,7 @@
 
 ---
 
-## Register
+## Регистр
 
 Brand: палитра И ЕСТЬ voice. Сначала выберите color strategy по SKILL.md (Restrained / Committed / Full palette / Drenched) и следуйте её dosage. Committed, Full palette и Drenched намеренно превышают правило ≤10%; это правило только для Restrained. Неожиданные комбинации разрешены; dominant color может владеть страницей, когда выбранная стратегия этого требует.
 
@@ -89,7 +89,7 @@ Product: semantic-first и почти всегда Restrained. Accent color за
 
 **НИКОГДА**: `border-left` или `border-right` greater than 1px как colored accent stripe. Это один из трёх absolute bans в родительском skill. Если хотите пометить card как «active» или «warning», используйте full hairline border, background tint, leading glyph или numbered prefix. Не side stripe.
 
-### Typography Color
+### Типографика Color
 - **Colored headings**: Используйте brand colors для section headings (maintain contrast)
 - **Highlight text**: Цвет для emphasis или categories
 - **Labels & tags**: Small colored labels для metadata или categories

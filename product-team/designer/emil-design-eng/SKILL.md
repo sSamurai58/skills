@@ -521,7 +521,7 @@ element.animate([{ clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0 0)'
 });
 ```
 
-## Accessibility
+## Доступность
 
 ### prefers-reduced-motion
 

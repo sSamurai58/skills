@@ -1,4 +1,4 @@
-# Typography
+# Типографика
 
 ## Classic Typography Principles
 
@@ -141,7 +141,7 @@ body { font-optical-sizing: auto; }
 
 **ALL-CAPS tracking**: capitals сидят слишком близко при default spacing. Добавьте 5–12% letter-spacing (`letter-spacing: 0.05em` до `0.12em`) коротким all-caps labels, eyebrows и мелким headings. Настоящие small caps (через `font-variant-caps`) нуждаются в том же, чуть мягче.
 
-## Typography System Architecture
+## Типографика System Architecture
 
 Именуйте токены семантически (`--text-body`, `--text-heading`), не по значению (`--font-size-16`). Включайте font stacks, size scale, weights, line-heights и letter-spacing в вашу token system.
 
