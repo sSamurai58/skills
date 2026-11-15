@@ -23,7 +23,7 @@
 
 Создайте системный план улучшений:
 
-### Loading Performance
+### Производительность загрузки
 
 **Оптимизируйте изображения**:
 - Используйте современные форматы (WebP, AVIF)
@@ -84,7 +84,7 @@ const HeavyChart = lazy(() => import('./HeavyChart'));
 - Service worker для offline/caching
 - HTTP/2 или HTTP/3 для multiplexing
 
-### Rendering Performance
+### Производительность рендеринга
 
 **Избегайте Layout Thrashing**:
 ```javascript

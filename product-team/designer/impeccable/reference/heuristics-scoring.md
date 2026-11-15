@@ -4,7 +4,7 @@
 
 ## 10 Heuristics Нильсена
 
-### 1. Visibility of System Status
+### 1. Видимость статуса системы
 
 Держите пользователей informed о том, что происходит, через timely, appropriate feedback.
 
@@ -24,7 +24,7 @@
 | 3 | Good; большинство operations дают clear feedback, minor gaps |
 | 4 | Excellent; каждое действие confirms, progress всегда visible |
 
-### 2. Match Between System and Real World
+### 2. Соответствие системе и реальному миру
 
 Говорите языком пользователя. Следуйте real-world conventions. Информация появляется в natural, logical order.
 
@@ -44,7 +44,7 @@
 | 3 | Mostly natural; occasional term нуждается в context |
 | 4 | Говорит языком пользователя fluently throughout |
 
-### 3. User Control and Freedom
+### 3. Контроль и свобода пользователя
 
 Пользователям нужен ясный «emergency exit» из unwanted states без extended dialogue.
 
@@ -64,7 +64,7 @@
 | 3 | Good control; пользователи могут exit и undo most actions |
 | 4 | Full control; undo, cancel, back и escape everywhere |
 
-### 4. Consistency and Standards
+### 4. Последовательность и стандарты
 
 Пользователи не должны гадать, означают ли разные слова, ситуации или действия одно и то же.
 
@@ -84,7 +84,7 @@
 | 3 | Mostly consistent; occasional deviation, ничего confusing |
 | 4 | Fully consistent; cohesive system, predictable behavior |
 
-### 5. Error Prevention
+### 5. Предотвращение ошибок
 
 Лучше good error messages — дизайн, который предотвращает проблемы заранее.
 
@@ -104,7 +104,7 @@
 | 3 | Good prevention; большинство error paths blocked proactively |
 | 4 | Excellent; errors nearly impossible через smart constraints |
 
-### 6. Recognition Rather Than Recall
+### 6. Узнавание вместо припоминания
 
 Минимизируйте memory load. Делайте objects, actions и options visible или easily retrievable.
 
@@ -124,7 +124,7 @@
 | 3 | Good recognition; большинство вещей discoverable, мало memory demands |
 | 4 | Everything discoverable; пользователям никогда не нужно memorize |
 
-### 7. Flexibility and Efficiency of Use
+### 7. Гибкость и эффективность использования
 
 Accelerators, невидимые для novices, ускоряют expert interaction.
 
@@ -144,7 +144,7 @@ Accelerators, невидимые для novices, ускоряют expert interac
 | 3 | Good accelerators; keyboard nav, некоторая customization |
 | 4 | Highly flexible; multiple paths, power features, customizable |
 
-### 8. Aesthetic and Minimalist Design
+### 8. Эстетичный и минималистичный дизайн
 
 Интерфейсы не должны содержать irrelevant или rarely needed information. Каждый элемент должен служить цели.
 
@@ -164,7 +164,7 @@ Accelerators, невидимые для novices, ускоряют expert interac
 | 3 | Mostly clean; focused design, minor visual noise |
 | 4 | Perfectly minimal; каждый элемент earns its pixel |
 
-### 9. Help Users Recognize, Diagnose, and Recover from Errors
+### 9. Помогайте распознавать, диагностировать и исправлять ошибки
 
 Error messages должны использовать plain language, precisely указывать проблему и constructively предлагать решение.
 
@@ -184,7 +184,7 @@ Error messages должны использовать plain language, precisely �
 | 3 | Clear with suggestions; identifies problem и offers next steps |
 | 4 | Perfect recovery; pinpoints issue, suggests fix, preserves user work |
 
-### 10. Help and Documentation
+### 10. Справка и документация
 
 Даже если система usable без docs, help должен быть easy to find, task-focused и concise.
 
@@ -206,7 +206,7 @@ Error messages должны использовать plain language, precisely �
 
 ---
 
-## Score Summary
+## Сводка оценок
 
 **Total possible**: 40 points (10 heuristics × 4 max)
 
@@ -220,7 +220,7 @@ Error messages должны использовать plain language, precisely �
 
 ---
 
-## Issue Severity (P0–P3)
+## Severity проблем (P0–P3)
 
 Тегируйте каждый individual issue, найденный во время scoring, уровнем priority:
 

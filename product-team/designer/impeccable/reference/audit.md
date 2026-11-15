@@ -6,7 +6,7 @@
 
 Запустите comprehensive checks по 5 измерениям. Оцените каждое измерение 0–4 по критериям ниже.
 
-### 1. Accessibility (A11y)
+### 1. Доступность (A11y)
 
 **Проверяйте**:
 - **Проблемы контраста**: Text contrast ratios < 4.5:1 (или 7:1 для AAA)
@@ -18,7 +18,7 @@
 
 **Оценка 0–4**: 0=Inaccessible (fails WCAG A), 1=Major gaps (мало ARIA labels, нет keyboard nav), 2=Partial (есть a11y effort, значительные gaps), 3=Good (WCAG AA mostly met, minor gaps), 4=Excellent (WCAG AA fully met, approaches AAA)
 
-### 2. Performance
+### 2. Производительность
 
 **Проверяйте**:
 - **Layout thrashing**: Reading/writing layout properties в циклах
@@ -29,7 +29,7 @@
 
 **Оценка 0–4**: 0=Severe issues (layout thrash, unoptimized everything), 1=Major problems (нет lazy loading, expensive animations), 2=Partial (есть optimization, gaps remain), 3=Good (mostly optimized, minor improvements possible), 4=Excellent (fast, lean, well-optimized)
 
-### 3. Theming
+### 3. Темы
 
 **Проверяйте**:
 - **Hard-coded colors**: Цвета без design tokens
@@ -39,7 +39,7 @@
 
 **Оценка 0–4**: 0=No theming (hard-coded everything), 1=Minimal tokens (mostly hard-coded), 2=Partial (tokens exist but inconsistently used), 3=Good (tokens used, minor hard-coded values), 4=Excellent (full token system, dark mode works perfectly)
 
-### 4. Responsive Design
+### 4. Адаптивный дизайн
 
 **Проверяйте**:
 - **Fixed widths**: Hard-coded widths, ломающиеся на mobile
@@ -50,7 +50,7 @@
 
 **Оценка 0–4**: 0=Desktop-only (breaks on mobile), 1=Major issues (some breakpoints, many failures), 2=Partial (works on mobile, rough edges), 3=Good (responsive, minor touch target or overflow issues), 4=Excellent (fluid, all viewports, proper touch targets)
 
-### 5. Anti-Patterns (CRITICAL)
+### 5. Антипаттерны (КРИТИЧНО)
 
 Проверьте против ВСЕХ **DON'T** guidelines из родительского impeccable skill (уже загружены в этом контексте). Ищите AI slop tells (AI color palette, gradient text, glassmorphism, hero metrics, card grids, generic fonts) и общие design anti-patterns (gray on color, nested cards, bounce easing, redundant copy).
 
@@ -58,7 +58,7 @@
 
 ## Сгенерируйте Report
 
-### Audit Health Score
+### Оценка здоровья аудита
 
 | # | Dimension | Score | Key Finding |
 |---|-----------|-------|-------------|
@@ -71,16 +71,16 @@
 
 **Rating bands**: 18–20 Excellent (minor polish), 14–17 Good (address weak dimensions), 10–13 Acceptable (significant work needed), 6–9 Poor (major overhaul), 0–5 Critical (fundamental issues)
 
-### Anti-Patterns Verdict
+### Вердикт по антипаттернам
 **Начните здесь.** Pass/fail: Выглядит ли это AI-generated? Перечислите конкретные tells. Будьте brutally honest.
 
-### Executive Summary
+### Краткое резюме
 - Audit Health Score: **??/20** ([rating band])
 - Всего найдено issues (count by severity: P0/P1/P2/P3)
 - Top 3–5 critical issues
 - Recommended next steps
 
-### Detailed Findings by Severity
+### Детальные находки по severity
 
 Тегируйте каждый issue **severityстью P0–P3**:
 - **P0 Blocking**: Мешает завершению задачи. Исправляйте immediately
@@ -97,17 +97,17 @@
 - **Recommendation**: Как исправить
 - **Suggested command**: Какую команду использовать (prefer: $impeccable adapt, $impeccable animate, $impeccable audit, $impeccable bolder, $impeccable clarify, $impeccable colorize, $impeccable critique, $impeccable delight, $impeccable distill, $impeccable document, $impeccable harden, $impeccable layout, $impeccable onboard, $impeccable optimize, $impeccable overdrive, $impeccable polish, $impeccable quieter, $impeccable shape, $impeccable typeset)
 
-### Patterns & Systemic Issues
+### Паттерны и системные проблемы
 
 Выявите recurring problems, указывающие на systemic gaps, а не one-off mistakes:
 - «Hard-coded colors appear in 15+ components, should use design tokens»
 - «Touch targets consistently too small (<44px) throughout mobile experience»
 
-### Positive Findings
+### Положительные находки
 
 Отметьте, что работает хорошо: good practices для поддержания и replication.
 
-## Recommended Actions
+## Рекомендуемые действия
 
 Перечислите recommended commands в порядке приоритета (P0 first, затем P1, затем P2):
 

@@ -1,6 +1,6 @@
-# Spatial Design
+# Пространственный дизайн
 
-## Spacing Systems
+## Системы отступов
 
 ### Используйте базу 4pt, не 8pt
 
@@ -10,15 +10,15 @@
 
 Именуйте по отношению (`--space-sm`, `--space-lg`), не по значению (`--spacing-8`). Используйте `gap` вместо margins для spacing между siblings; это устраняет margin collapse и cleanup hacks.
 
-## Grid Systems
+## Системы сеток
 
-### Self-Adjusting Grid
+### Самоподстраивающаяся сетка
 
 Используйте `repeat(auto-fit, minmax(280px, 1fr))` для responsive grids без breakpoints. Колонки минимум 280px, столько, сколько помещается в ряд, остатки растягиваются. Для сложных layouts используйте named grid areas (`grid-template-areas`) и переопределяйте их на breakpoints.
 
-## Visual Hierarchy
+## Визуальная иерархия
 
-### The Squint Test
+### Squint-тест
 
 Размойте глаза (или сделайте screenshot и blur). Всё ещё можете определить:
 - Самый важный элемент?
@@ -45,7 +45,7 @@
 
 Cards переиспользуют слишком часто. Spacing и alignment создают visual grouping естественно. Используйте cards только когда контент действительно distinct и actionable, элементам нужно визуальное сравнение в grid, или контенту нужны ясные границы взаимодействия. **Никогда не вкладывайте cards в cards.** Используйте spacing, typography и тонкие dividers для иерархии внутри card.
 
-## Container Queries
+## Запросы контейнера (container queries)
 
 Viewport queries — для page layouts. **Container queries — для компонентов**:
 
@@ -69,11 +69,11 @@ Viewport queries — для page layouts. **Container queries — для ком�
 
 **Почему это важно**: card в узком sidebar остаётся компактной, а та же card в main content area расширяется автоматически — без viewport hacks.
 
-## Optical Adjustments
+## Оптические корректировки
 
 Текст при `margin-left: 0` выглядит с отступом из-за whitespace букв; используйте negative margin (`-0.05em`) для оптического выравнивания. Геометрически центрированные иконки часто выглядят off-center; play-иконкам нужен сдвиг вправо, стрелкам — в направлении.
 
-### Touch Targets vs Visual Size
+### Touch targets vs визуальный размер
 
 Кнопки могут выглядеть маленькими, но нуждаются в больших touch targets (минимум 44px). Используйте padding или pseudo-elements:
 
@@ -91,7 +91,7 @@ Viewport queries — для page layouts. **Container queries — для ком�
 }
 ```
 
-## Depth & Elevation
+## Глубина и elevation
 
 Создавайте семантические z-index scales (dropdown → sticky → modal-backdrop → modal → toast → tooltip) вместо произвольных чисел. Для теней — согласованная elevation scale (sm → md → lg → xl). **Ключевой insight**: тени должны быть тонкими. Если её явно видно — вероятно, слишком сильная.
 

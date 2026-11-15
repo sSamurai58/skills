@@ -10,7 +10,7 @@ Product: system fonts и знакомые sans stacks здесь легитим�
 
 ---
 
-## Assess Current Typography
+## Оцените текущую типографику
 
 Проанализируйте, что слабо или generic в текущем type:
 
@@ -41,7 +41,7 @@ Product: system fonts и знакомые sans stacks здесь легитим�
 
 **КРИТИЧНО**: цель — не сделать текст «fancier». Цель — сделать его яснее, читаемее и более намеренным. Хорошая typography невидима; плохая — отвлекает.
 
-## Plan Typography Improvements
+## Спланируйте улучшения типографики
 
 Обратитесь к [typography reference](typography.md) за детальным guidance по scales, pairing и стратегиям loading.
 
@@ -52,16 +52,16 @@ Product: system fonts и знакомые sans stacks здесь легитим�
 - **Weight strategy**: какие веса для каких ролей? (Regular для body, Semibold для labels, Bold для headings — или что подходит)
 - **Spacing**: line-heights, letter-spacing и margins между типографическими элементами
 
-## Improve Typography Systematically
+## Улучшайте типографику системно
 
-### Font Selection
+### Выбор шрифтов
 
 Если шрифты нужно заменить:
 - Выбирайте шрифты, отражающие brand personality
 - Pair с настоящим контрастом (serif + sans, geometric + humanist), или используйте одну семью в нескольких весах
 - Обеспечьте, чтобы web font loading не вызывал layout shift (`font-display: swap`, metric-matched fallbacks)
 
-### Establish Hierarchy
+### Выстройте иерархию
 
 Постройте ясную type scale:
 - **5 размеров покрывают большинство нужд**: caption, secondary, body, subheading, heading
@@ -70,21 +70,21 @@ Product: system fonts и знакомые sans stacks здесь легитим�
 - **App UIs**: используйте фиксированную `rem`-based type scale, опционально скорректированную на 1–2 breakpoints. Fluid sizing подрывает spatial predictability, нужную dense container-based layouts
 - **Marketing / content pages**: используйте fluid sizing через `clamp(min, preferred, max)` для headings и display text. Body text оставляйте фиксированным
 
-### Fix Readability
+### Исправьте читаемость
 
 - Задавайте `max-width` на текстовых контейнерах в единицах `ch` (`max-width: 65ch`)
 - Корректируйте line-height по контексту: плотнее для headings (1.1–1.2), свободнее для body (1.5–1.7)
 - Чуть увеличьте line-height для light-on-dark текста
 - Обеспечьте body text минимум 16px / 1rem
 
-### Refine Details
+### Уточните детали
 
 - Используйте `tabular-nums` для data tables и чисел, которые должны выравниваться
 - Применяйте правильный `letter-spacing`: чуть открытый для small caps и uppercase, default или tight для крупного display text
 - Используйте семантические имена токенов (`--text-body`, `--text-heading`), не value names (`--font-16`)
 - Задайте `font-kerning: normal` и рассмотрите OpenType features где уместно
 
-### Weight Consistency
+### Согласованность начертаний
 
 - Определите ясные роли для каждого веса и придерживайтесь их
 - Не используйте больше 3–4 весов (Regular, Medium, Semibold, Bold достаточно)
@@ -100,7 +100,7 @@ Product: system fonts и знакомые sans stacks здесь легитим�
 - Не default на Inter/Roboto/Open Sans, когда personality важна
 - Не pair шрифты, похожие, но не идентичные (два geometric sans-serifs)
 
-## Verify Typography Improvements
+## Проверьте улучшения типографики
 
 - **Hierarchy**: мгновенно отличите heading vs body vs caption?
 - **Readability**: комфортно ли читать body text длинными пассажами?
@@ -111,7 +111,7 @@ Product: system fonts и знакомые sans stacks здесь легитим�
 
 Когда type сам несёт иерархию — передайте `$impeccable polish` для финального прохода.
 
-## Live-mode signature params
+## Сигнатурные параметры live-mode
 
 Каждый variant ОБЯЗАН объявить param `scale`, управляющий hierarchy ratio. Выражайте все размеры шрифта в scoped CSS variant через `calc(var(--p-scale, 1) * <base>)` или, лучше, масштабируйте type ramp через `clamp(min, calc(var(--p-scale, 1) * Npx), max)`. Пользователи двигают слайдер от subdued к commanding.
 

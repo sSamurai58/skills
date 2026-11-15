@@ -1,10 +1,10 @@
-# Brand register
+# Регистр brand
 
 Когда дизайн И ЕСТЬ продукт: brand sites, landing pages, marketing surfaces, campaign pages, portfolios, long-form content, about pages. Deliverable — сам дизайн; впечатление посетителя — то, что создаётся.
 
 Register охватывает каждый жанр. Tech-бренд (Stripe, Linear, Vercel). Luxury-бренд (отель, fashion house). Consumer product (ресторан, travel site, CPG packaging page). Creative studio, agency portfolio, album page группы. Все они разделяют stance (*communicate, not transact*) и дико расходятся в aesthetic. Не схлопывайте их в один look.
 
-## Brand slop test
+## Тест brand-slop
 
 Если кто-то может посмотреть и без колебаний сказать «это сделал AI» — провал. Планка — distinctiveness; посетитель должен спросить «как это сделано?», а не «какой AI это сделал?»
 
@@ -25,13 +25,13 @@ Brand — не нейтральный register. AI-generated landing pages за�
 3. Просмотрите реальный каталог (Google Fonts, Pangram Pangram, Future Fonts, Adobe Fonts, ABC Dinamo, Klim, Velvetyne) с тремя словами в уме. Найдите шрифт для бренда как *физического объекта*: музейная подпись, manual терминала 1970-х, тканевый ярлык, дешёвая детская книга на newsprint, концертный постер, чек mid-century diner. Отвергните первое, что «looks designy».
 4. Перепроверьте. «Elegant» не обязательно serif. «Technical» не обязательно sans. «Warm» не Fraunces. Если финальный выбор совпадает с исходным рефлексом — начните заново.
 
-### Reflex-reject list
+### Список reflex-reject
 
 Training-data defaults. Ban list. Смотрите дальше:
 
 Fraunces · Newsreader · Lora · Crimson · Crimson Pro · Crimson Text · Playfair Display · Cormorant · Cormorant Garamond · Syne · IBM Plex Mono · IBM Plex Sans · IBM Plex Serif · Space Mono · Space Grotesk · Inter · DM Sans · DM Serif Display · DM Serif Text · Outfit · Plus Jakarta Sans · Instrument Sans · Instrument Serif
 
-### Reflex-reject aesthetic lanes
+### Эстетические дорожки reflex-reject
 
 Параллельно списку шрифтов. Сейчас насыщенные aesthetic families, затопившие brand-поверхности. Если бриф попадает в одну из этих lanes без register-причины, которая *требует* этого (буквальный magazine, буквальный terminal, буквальная industrial signage system) — это second-order training reflex: ловушка на уровень глубже выбора Fraunces. Смотрите дальше.
 
@@ -54,7 +54,7 @@ Distinctive + refined — цель. Конкретная форма зависи
 
 Варьируйте между проектами. Если прошлый бриф был serif-display landing page — этот не такой.
 
-### Scale
+### Масштаб
 
 Modular scale, fluid `clamp()` для headings, соотношение ≥1.25 между шагами. Плоские шкалы (разница 1.1×) читаются как uncommitted.
 
@@ -70,7 +70,7 @@ Brand-поверхности имеют разрешение на стратег
 - Не сходитесь между проектами. Если последняя brand-поверхность была restrained-on-cream — эта нет.
 - Когда cultural-symbol palette — очевидный pull, уйдите дальше. Пусть cultural reading идёт от типографики, imagery и копирайта, а не от палитры.
 
-## Layout
+## Раскладка
 
 - Асимметричные композиции — один из вариантов. Намеренно ломайте сетку для emphasis.
 - Fluid spacing с `clamp()`, который дышит на больших viewports. Варьируйте для ритма: щедрые separations, tight groupings.
@@ -78,7 +78,7 @@ Brand-поверхности имеют разрешение на стратег
 - Не центрируйте всё по умолчанию. Left-aligned с асимметричными layouts ощущается более designed; строгая сетка читается как уверенная структура. Centered-stack hero с icon-title-subtitle cards читается как template.
 - Когда cards ДЕЙСТВИТЕЛЬНО правильный affordance, используйте `grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))` для breakpoint-free responsiveness.
 
-## Imagery
+## Изображения
 
 Brand-поверхности опираются на imagery. Ресторан, отель, magazine или product landing page без какого-либо imagery читается как незавершённый, а не как restrained. Solid-color rectangle там, где должно быть hero image — хуже representative stock photo.
 
@@ -91,7 +91,7 @@ Brand-поверхности опираются на imagery. Ресторан, 
 
 «Imagery» здесь шире stock photography: product screenshots, custom data visualizations, сгенерированный SVG и canvas/WebGL scenes — всё это imagery. Text-only страницы, где типографика одна несёт весь визуальный вес — failure mode.
 
-## Motion
+## Движение
 
 - Одна хорошо оркестрированная page-load со staggered reveals бьёт разбросанные micro-interactions, когда бренд это приглашает. Tech-minimal бренды часто полностью пропускают entrance motion; restraint и есть voice.
 - Для collapsing/expanding секций transition'ьте `grid-template-rows`, а не `height`.
@@ -107,7 +107,7 @@ Brand-поверхности опираются на imagery. Ресторан, 
 - Дефолт к editorial-magazine aesthetics (display serif + italic + drop caps + broadsheet grid) на брифах, которые не magazine-shaped. Editorial — ОДНА aesthetic lane, не дефолтная brand aesthetic.
 - Повторяющиеся мелкие uppercase tracked labels над каждым section heading. Один сильный kicker может быть voice; повторение как section grammar — AI scaffolding, если это не deliberate, именованная brand system.
 
-## Brand permissions
+## Разрешения brand-регистра
 
 Brand может себе позволить то, чего product не может. Берите.
 

@@ -49,7 +49,7 @@ Product: semantic-first и почти всегда Restrained. Accent color за
 
 Добавляйте цвет системно по этим измерениям:
 
-### Semantic Color
+### Семантический цвет
 - **State indicators**:
   - Success: Green tones (emerald, forest, mint)
   - Error: Red/pink tones (rose, crimson, coral)
@@ -67,7 +67,7 @@ Product: semantic-first и почти всегда Restrained. Accent color за
 - **Headers/titles**: Добавляйте цвет к section headers или key labels
 - **Hover states**: Вводите цвет при interaction
 
-### Background & Surfaces
+### Фон и поверхности
 - **Tinted backgrounds**: Замените pure gray (`#f5f5f5`) тёплыми нейтралами (`oklch(97% 0.01 60)`) или cool tints (`oklch(97% 0.01 250)`)
 - **Colored sections**: Используйте subtle background colors для разделения областей
 - **Gradient backgrounds**: Добавляйте depth subtle, intentional gradients (не generic purple-blue)
@@ -75,12 +75,12 @@ Product: semantic-first и почти всегда Restrained. Accent color за
 
 **Используйте OKLCH для цвета**: Он perceptually uniform — равные шаги lightness *выглядят* равными. Отлично для генерации гармоничных scales.
 
-### Data Visualization
+### Визуализация данных
 - **Charts & graphs**: Используйте цвет для encoding categories или values
 - **Heatmaps**: Color intensity показывает density или importance
 - **Comparison**: Color coding для разных datasets или timeframes
 
-### Borders & Accents
+### Границы и акценты
 - **Hairline borders**: 1px colored borders по полному периметру (не side-stripes; см. absolute ban на `border-left/right > 1px`)
 - **Underlines**: Color underlines для emphasis или active states
 - **Dividers**: Subtle colored dividers вместо gray lines
@@ -94,28 +94,28 @@ Product: semantic-first и почти всегда Restrained. Accent color за
 - **Highlight text**: Цвет для emphasis или categories
 - **Labels & tags**: Small colored labels для metadata или categories
 
-### Decorative Elements
+### Декоративные элементы
 - **Illustrations**: Добавляйте colored illustrations или icons
 - **Shapes**: Geometric shapes в brand colors как background elements
 - **Gradients**: Colorful gradient overlays или mesh backgrounds
 - **Blobs/organic shapes**: Soft colored shapes для visual interest
 
-## Balance & Refinement
+## Баланс и уточнение
 
 Убедитесь, что добавление цвета улучшает, а не overwhelms:
 
-### Maintain Hierarchy
+### Сохраняйте иерархию
 - **Dominant color** (60%): Primary brand color или most used accent
 - **Secondary color** (30%): Supporting color для variety
 - **Accent color** (10%): High contrast для key moments
 - **Neutrals** (остальное): Gray/black/white для structure
 
-### Accessibility
+### Доступность
 - **Contrast ratios**: Обеспечьте WCAG compliance (4.5:1 для text, 3:1 для UI components)
 - **Не полагайтесь только на цвет**: Используйте icons, labels или patterns alongside color
 - **Тестируйте на color blindness**: Проверьте, что red/green combinations работают для всех пользователей
 
-### Cohesion
+### Целостность
 - **Consistent palette**: Используйте цвета из определённой палитры, не arbitrary choices
 - **Systematic application**: Одинаковые значения цветов throughout (green always = success)
 - **Temperature consistency**: Warm palette остаётся warm, cool остаётся cool
@@ -143,7 +143,7 @@ Product: semantic-first и почти всегда Restrained. Accent color за
 
 Когда палитра заслуживает своё место, передайте `$impeccable polish` для финального прохода.
 
-## Live-mode signature params
+## Сигнатурные параметры live-mode
 
 Когда вызван из live mode, каждый variant MUST declare `color-amount` param, чтобы пользователь мог dial между restrained accent и drenched surface без regeneration. Author CSS варианта против `var(--p-color-amount, 0.5)`, обычно как alpha multiplier на backgrounds или как scaling factor на chroma axis в OKLCH expression. 0 = neutral/monochrome, 1 = full saturation / dominant coverage.
 

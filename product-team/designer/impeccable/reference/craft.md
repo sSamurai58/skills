@@ -80,7 +80,7 @@ Default: Astro для brand-брифов, существующий framework п�
 
 Реализуйте фичу по дизайн-брифу. Стройте проходами, чтобы структура, visual system, states, motion/media и responsive behavior каждый получили deliberate внимание. Список ниже — definition of done, а не inspiration.
 
-### Production bar
+### Production-планка
 
 - **Реальный контент.** Нет placeholder copy, placeholder images, dead links, fake controls или unused scaffold к моменту презентации.
 - **Сохраните основные ингредиенты одобренного мока.** Missing hero objects, world/product imagery, section structure, CTA/nav treatment или distinctive motifs — blocking defects, если пользователь не принял изменение.

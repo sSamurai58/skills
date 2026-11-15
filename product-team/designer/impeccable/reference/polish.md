@@ -4,7 +4,7 @@
 
 Detector и automated QA — только доказательства дефектов. Чистый результат скрипта никогда не доказывает сильный дизайн; соберите browser evidence и проверьте реальный путь взаимодействия.
 
-## Design System Discovery
+## Обнаружение дизайн-системы
 
 Выравнивание фичи под design system — **не опционально**. Polish без выравнивания — декор поверх drift, и усложняет работу следующему. Discovery идёт до любой другой polish-работы.
 
@@ -14,7 +14,7 @@ Detector и automated QA — только доказательства дефе�
 
 Если design system есть, polish **должен** выровнять фичу под него. Если нет — polish против conventions, видимых в кодовой базе. **Если что-то в системе неоднозначно — спросите. Никогда не угадывайте принципы design system.**
 
-## Pre-Polish Assessment
+## Оценка до polish
 
 Поймите текущее состояние и цели, прежде чем трогать что-либо:
 
@@ -50,7 +50,7 @@ Detector и automated QA — только доказательства дефе�
 
 Проходите эти измерения методично:
 
-### Visual Alignment & Spacing
+### Визуальное выравнивание и отступы
 
 - **Pixel-perfect alignment**: всё выровнено по сетке
 - **Consistent spacing**: все gaps из spacing scale (никаких случайных 13px)
@@ -64,7 +64,7 @@ Detector и automated QA — только доказательства дефе�
 - Тестируйте на нескольких размерах viewport
 - Ищите элементы, которые «ощущаются» не так
 
-### Information Architecture & Flow
+### Информационная архитектура и поток
 
 Визуальный polish на кривом flow — впустую. Сопоставляйте *форму* опыта с системой, не только поверхность.
 
@@ -84,7 +84,7 @@ Detector и automated QA — только доказательства дефе�
 - **Kerning**: корректируйте letter spacing где нужно (особенно headlines)
 - **Font loading**: нет вспышек FOUT/FOIT
 
-### Color & Contrast
+### Цвет и контраст
 
 - **Contrast ratios**: весь текст соответствует WCAG
 - **Consistent token usage**: нет hard-coded цветов, всё через design tokens
@@ -94,7 +94,7 @@ Detector и automated QA — только доказательства дефе�
 - **Tinted neutrals**: никакого pure gray или pure black; лёгкий цветовой tint (0.01 chroma)
 - **Gray on color**: никогда серый текст на цветных фонах; используйте оттенок этого цвета или transparency
 
-### Interaction States
+### Состояния взаимодействия
 
 У каждого interactive element должны быть все состояния:
 
@@ -109,7 +109,7 @@ Detector и automated QA — только доказательства дефе�
 
 **Пропущенные состояния создают путаницу и сломанный опыт**.
 
-### Micro-interactions & Transitions
+### Микро-взаимодействия и переходы
 
 - **Smooth transitions**: все смены состояний анимированы уместно (150–300ms)
 - **Consistent easing**: используйте ease-out-quart/quint/expo для естественного замедления. Никогда bounce или elastic; они выглядят устаревшими.
@@ -117,7 +117,7 @@ Detector и automated QA — только доказательства дефе�
 - **Appropriate motion**: motion служит цели, не декору
 - **Reduced motion**: уважает `prefers-reduced-motion`
 
-### Content & Copy
+### Контент и копирайт
 
 - **Consistent terminology**: одно и то же называется одинаково повсюду
 - **Consistent capitalization**: Title Case vs Sentence case применяется согласованно
@@ -125,7 +125,7 @@ Detector и automated QA — только доказательства дефе�
 - **Appropriate length**: не слишком многословно, не слишком сжато
 - **Punctuation consistency**: точки в предложениях, не на labels (если только все labels не с точками)
 
-### Icons & Images
+### Иконки и изображения
 
 - **Consistent style**: все иконки из одной семьи или matching style
 - **Appropriate sizing**: иконки согласованно размера для контекста
@@ -134,7 +134,7 @@ Detector и automated QA — только доказательства дефе�
 - **Loading states**: изображения не вызывают layout shift, правильные aspect ratios
 - **Retina support**: 2x assets для high-DPI экранов
 
-### Forms & Inputs
+### Формы и поля ввода
 
 - **Label consistency**: все inputs правильно подписаны
 - **Required indicators**: ясные и согласованные
@@ -143,7 +143,7 @@ Detector и automated QA — только доказательства дефе�
 - **Auto-focus**: уместно (не злоупотребляйте)
 - **Validation timing**: согласованно (on blur vs on submit)
 
-### Edge Cases & Error States
+### Edge cases и состояния ошибок
 
 - **Loading states**: у всех async-действий есть loading feedback
 - **Empty states**: полезные empty states, не просто пустое место
@@ -153,7 +153,7 @@ Detector и automated QA — только доказательства дефе�
 - **No content**: изящно обрабатывает отсутствующие данные
 - **Offline**: уместная offline-обработка (если применимо)
 
-### Responsiveness
+### Адаптивность
 
 - **All breakpoints**: тестируйте mobile, tablet, desktop
 - **Touch targets**: минимум 44x44px на touch-устройствах
@@ -161,7 +161,7 @@ Detector и automated QA — только доказательства дефе�
 - **No horizontal scroll**: контент помещается в viewport
 - **Appropriate reflow**: контент адаптируется логично
 
-### Performance
+### Производительность
 
 - **Fast initial load**: оптимизируйте critical path
 - **No layout shift**: элементы не прыгают после загрузки (CLS)
@@ -169,7 +169,7 @@ Detector и automated QA — только доказательства дефе�
 - **Optimized images**: подходящие форматы и размеры
 - **Lazy loading**: off-screen контент грузится лениво
 
-### Code Quality
+### Качество кода
 
 - **Remove console logs**: нет debug logging в production
 - **Remove commented code**: уберите мёртвый код
@@ -178,7 +178,7 @@ Detector и automated QA — только доказательства дефе�
 - **Type safety**: нет TypeScript `any` или игнорируемых ошибок
 - **Accessibility**: правильные ARIA labels и semantic HTML
 
-## Polish Checklist
+## Чеклист polish
 
 Проходите системно:
 
@@ -221,7 +221,7 @@ Detector и automated QA — только доказательства дефе�
 - Не hard-code значений, которые должны быть design tokens
 - Не вводите новые паттерны или flows, расходящиеся с устоявшимися
 
-## Final Verification
+## Финальная проверка
 
 Перед тем как отметить done:
 
@@ -232,7 +232,7 @@ Detector и automated QA — только доказательства дефе�
 - **Проверьте все состояния**: не только happy path.
 - **Осторожно с automation**: запускайте detector или QA, когда доступны и уместны, чините их дефекты, но никогда не цитируйте чистый результат как доказательство, что работа polished.
 
-## Clean Up
+## Очистка
 
 После polish обеспечьте качество кода:
 

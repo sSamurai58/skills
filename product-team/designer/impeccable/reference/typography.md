@@ -1,12 +1,12 @@
 # Типографика
 
-## Classic Typography Principles
+## Классические принципы типографики
 
-### Vertical Rhythm
+### Вертикальный ритм
 
 Ваш line-height должен быть базовой единицей ВСЕХ вертикальных отступов. Если body text имеет `line-height: 1.5` на type `16px` (= 24px), значения spacing должны быть кратны 24px. Это создаёт подсознательную гармонию; текст и пространство делят математическую основу.
 
-### Modular Scale & Hierarchy
+### Модульная шкала и иерархия
 
 Частая ошибка: слишком много размеров шрифта, слишком близких друг к другу (14px, 15px, 16px, 18px...). Это создаёт muddy hierarchy.
 
@@ -22,7 +22,7 @@
 
 Популярные соотношения: 1.25 (major third), 1.333 (perfect fourth), 1.5 (perfect fifth). Выберите одно и придерживайтесь.
 
-### Readability & Measure
+### Читаемость и мера строки
 
 Используйте единицы `ch` для character-based measure (`max-width: 65ch`). Line-height масштабируется обратно длине строки: узким колонкам нужен tighter leading, широким — больше.
 
@@ -30,7 +30,7 @@
 
 **Paragraph rhythm**: выбирайте либо space между абзацами, ЛИБО first-line indentation. Никогда оба. Digital обычно хочет space; editorial/long-form может оправдать только indent.
 
-## Font Selection & Pairing
+## Выбор и сочетание шрифтов
 
 Тактическая процедура выбора и reflex-reject list живут в [reference/brand.md](brand.md) в секциях **Font selection procedure** и **Reflex-reject list** (загружаются для brand-register задач). Остальная часть этой секции покрывает смежные знания: anti-reflex corrections, использование system fonts и правила pairing.
 
@@ -43,7 +43,7 @@
 
 **System fonts недооценены**: `-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui` выглядит native, грузится мгновенно и очень читаем. Рассмотрите для apps, где performance > personality.
 
-### Pairing Principles
+### Принципы сочетания
 
 **Неочевидная правда**: часто второй шрифт не нужен. Одна хорошо выбранная font family в нескольких весах создаёт более чистую иерархию, чем два конкурирующих typefaces. Добавляйте второй шрифт только когда нужен настоящий контраст (например display headlines + body serif).
 
@@ -54,7 +54,7 @@
 
 **Никогда не pair шрифты, похожие, но не идентичные** (например два geometric sans-serifs). Они создают visual tension без ясной иерархии.
 
-### Web Font Loading
+### Загрузка веб-шрифтов
 
 Проблема layout shift: шрифты грузятся поздно, текст перетекает, пользователи видят прыжок контента. Вот фикс:
 
@@ -89,9 +89,9 @@ body {
 
 **Variable fonts для 3+ весов или стилей**: один файл variable font обычно меньше трёх static weight files, даёт fractional weight control и хорошо сочетается с `font-optical-sizing: auto`. Для 1–2 весов static достаточно.
 
-## Modern Web Typography
+## Современная веб-типографика
 
-### Fluid Type
+### Плавная типографика (fluid type)
 
 Fluid typography через `clamp(min, preferred, max)` плавно масштабирует текст с viewport. Среднее значение (например `5vw + 1rem`) контролирует скорость масштабирования (выше vw = быстрее). Добавьте rem offset, чтобы не схлопывалось в 0 на маленьких экранах.
 
@@ -103,7 +103,7 @@ Fluid typography через `clamp(min, preferred, max)` плавно масшт
 
 **Масштабируйте container width и font-size вместе**, чтобы effective character measure оставался в диапазоне 45–75ch на каждом viewport. Заголовок, который расширяется быстрее контейнера, уходит из комфортного measure на верхнем конце.
 
-### OpenType Features
+### Возможности OpenType
 
 Большинство разработчиков не знают, что они существуют. Используйте для polish:
 
@@ -126,7 +126,7 @@ body { font-kerning: normal; }
 
 Проверяйте, какие features поддерживает ваш шрифт, на [Wakamai Fondue](https://wakamaifondue.com/).
 
-### Rendering polish
+### Полировка рендеринга
 
 ```css
 /* Even out heading line lengths (browser picks better break points) */
@@ -145,7 +145,7 @@ body { font-optical-sizing: auto; }
 
 Именуйте токены семантически (`--text-body`, `--text-heading`), не по значению (`--font-size-16`). Включайте font stacks, size scale, weights, line-heights и letter-spacing в вашу token system.
 
-## Accessibility Considerations
+## Соображения доступности
 
 Помимо contrast ratios (которые хорошо задокументированы), учитывайте:
 

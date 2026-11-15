@@ -41,7 +41,7 @@
 
 Уточняйте текст по этим распространённым областям:
 
-### Error Messages
+### Сообщения об ошибках
 **Bad**: "Error 403: Forbidden"
 **Good**: "You don't have permission to view this page. Contact your admin for access."
 
@@ -55,7 +55,7 @@
 - Включайте examples, когда helpful
 - Ссылайтесь на help/support, если applicable
 
-### Form Labels & Instructions
+### Лейблы и инструкции форм
 **Bad**: "DOB (MM/DD/YYYY)"
 **Good**: "Date of birth" (with placeholder showing format)
 
@@ -69,7 +69,7 @@
 - Ставьте instructions before the field, не after
 - Держите required field indicators ясными
 
-### Button & CTA Text
+### Текст кнопок и CTA
 **Bad**: "Click here" | "Submit" | "OK"
 **Good**: "Create account" | "Save changes" | "Got it, thanks"
 
@@ -79,7 +79,7 @@
 - Match mental model пользователя
 - Будьте specific («Save» лучше «OK»)
 
-### Help Text & Tooltips
+### Справочный текст и тултипы
 **Bad**: "This is the username field"
 **Good**: "Choose a username. You can change this later in Settings."
 
@@ -89,7 +89,7 @@
 - Держите brief but complete
 - Ссылайтесь на detailed docs при необходимости
 
-### Empty States
+### Пустые состояния
 **Bad**: "No items"
 **Good**: "No projects yet. Create your first project to get started."
 
@@ -98,7 +98,7 @@
 - Ясно показывайте next action
 - Делайте welcoming, не dead-end
 
-### Success Messages
+### Сообщения об успехе
 **Bad**: "Success"
 **Good**: "Settings saved! Your changes will take effect immediately."
 
@@ -108,7 +108,7 @@
 - Будьте brief but complete
 - Match эмоциональный момент пользователя (celebrate big wins)
 
-### Loading States
+### Состояния загрузки
 **Bad**: "Loading..." (for 30+ seconds)
 **Good**: "Analyzing your data... this usually takes 30-60 seconds"
 
@@ -118,7 +118,7 @@
 - Показывайте progress когда возможно
 - Предлагайте escape hatch если appropriate («Cancel»)
 
-### Confirmation Dialogs
+### Диалоги подтверждения
 **Bad**: "Are you sure?"
 **Good**: "Delete 'Project Alpha'? This can't be undone."
 
@@ -128,7 +128,7 @@
 - Используйте clear button labels («Delete project» не «Yes»)
 - Не overuse confirmations (только для risky actions)
 
-### Navigation & Wayfinding
+### Навигация и ориентация
 **Bad**: Generic labels like "Items" | "Things" | "Stuff"
 **Good**: Specific labels like "Your projects" | "Team members" | "Settings"
 

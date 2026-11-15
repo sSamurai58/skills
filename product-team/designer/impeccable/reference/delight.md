@@ -12,7 +12,7 @@ Product: delight в конкретных моментах, не на стран�
 
 ---
 
-## Assess Delight Opportunities
+## Оцените возможности для delight
 
 Определите, где delight усилит (а не отвлечёт от) опыт:
 
@@ -41,39 +41,39 @@ Product: delight в конкретных моментах, не на стран�
 
 **КРИТИЧНО**: delight должен усиливать usability, никогда не заслонять её. Если пользователи замечают delight больше, чем достижение цели — вы зашли слишком далеко.
 
-## Delight Principles
+## Принципы delight
 
 Следуйте этим guidelines:
 
-### Delight Amplifies, Never Blocks
+### Delight усиливает, никогда не блокирует
 - Моменты delight должны быть быстрыми (< 1 секунды)
 - Никогда не задерживайте core functionality ради delight
 - Делайте delight skippable или subtle
 - Уважайте время пользователя и фокус на задаче
 
-### Surprise and Discovery
+### Сюрприз и discovery
 - Прячьте delightful details для discovery
 - Награждайте exploration и curiosity
 - Не анонсируйте каждый момент delight
 - Пусть пользователи делятся discoveries с другими
 
-### Appropriate to Context
+### Уместность в контексте
 - Сопоставляйте delight эмоциональному моменту (celebrate success, empathize with errors)
 - Уважайте состояние пользователя (не будьте playful при критических ошибках)
 - Сопоставляйте brand personality и ожидания аудитории
 - Cultural sensitivity (что delightful, зависит от культуры)
 
-### Compound Over Time
+### Накопление со временем
 - Delight должен оставаться свежим при повторном использовании
 - Варьируйте responses (не одна и та же анимация каждый раз)
 - Раскрывайте более глубокие слои при продолжении использования
 - Стройте anticipation через паттерны
 
-## Delight Techniques
+## Техники delight
 
 Добавляйте personality и радость этими методами:
 
-### Micro-interactions & Animation
+### Микро-взаимодействия и анимация
 
 **Button delight**:
 ```css
@@ -112,7 +112,7 @@ Product: delight в конкретных моментах, не на стран�
 - Tooltip reveals с personality
 - Cursor changes (custom cursors для branded experiences)
 
-### Personality in Copy
+### Характер в копирайте
 
 **Playful error messages**:
 ```
@@ -143,7 +143,7 @@ Product: delight в конкретных моментах, не на стран�
 
 **ВАЖНО**: сопоставляйте copy personality бренду. Банки не должны быть wacky, но могут быть warm.
 
-### Illustrations & Visual Personality
+### Иллюстрации и визуальный характер
 
 **Custom illustrations**:
 - Empty state illustrations (не stock icons)
@@ -164,7 +164,7 @@ Product: delight в конкретных моментах, не на стран�
 - Parallax depth
 - Time-of-day themes (morning vs night)
 
-### Satisfying Interactions
+### Приятные взаимодействия
 
 **Drag and drop delight**:
 - Lift effect при drag (shadow, scale)
@@ -190,7 +190,7 @@ Product: delight в конкретных моментах, не на стран�
 - Success state, празднующий valid input
 - Auto-grow textareas
 
-### Sound Design
+### Звуковой дизайн
 
 **Subtle audio cues** (когда уместно):
 - Notification sounds (distinctive, но не раздражающие)
@@ -205,7 +205,7 @@ Product: delight в конкретных моментах, не на стран�
 - Держите громкость тихой (subtle cues, не alarms)
 - Не играйте на каждом взаимодействии (sound fatigue реальна)
 
-### Easter Eggs & Hidden Delights
+### Пасхалки и скрытые delight
 
 **Discovery rewards**:
 - Konami code разблокирует special theme
@@ -226,7 +226,7 @@ Product: delight в конкретных моментах, не на стран�
 - Randomized variations (не одно и то же каждый раз)
 - Progressive reveals при продолжении использования
 
-### Loading & Waiting States
+### Состояния загрузки и ожидания
 
 **Сделайте ожидание engaging**:
 - Interesting loading messages, которые ротируются
@@ -245,7 +245,7 @@ Loading messages: write ones specific to your product, not generic AI filler:
 
 **ПРЕДУПРЕЖДЕНИЕ**: избегайте клишированных loading messages вроде «Herding pixels», «Teaching robots to dance», «Consulting the magic 8-ball», «Counting backwards from infinity». Это AI-slop copy, мгновенно узнаваемая как machine-generated. Пишите сообщения, специфичные для того, что продукт реально делает.
 
-### Celebration Moments
+### Моменты celebration
 
 **Success celebrations**:
 - Confetti для major milestones
@@ -260,7 +260,7 @@ Loading messages: write ones specific to your product, not generic AI filler:
 - Progress toward goals
 - Anniversary celebrations
 
-## Implementation Patterns
+## Паттерны реализации
 
 **Animation libraries**:
 - Framer Motion (React)
@@ -288,7 +288,7 @@ Loading messages: write ones specific to your product, not generic AI filler:
 - Не жертвуйте performance ради delight
 - Не будьте неуместны для контекста (read the room)
 
-## Verify Delight Quality
+## Проверьте качество delight
 
 Проверьте, что delight реально радует:
 

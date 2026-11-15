@@ -2,7 +2,7 @@
 
 DESIGN.md следует [официальному формату Google Stitch DESIGN.md](https://stitch.withgoogle.com/docs/design-md/format/): YAML frontmatter с machine-readable design tokens, затем markdown body ровно с шестью секциями в фиксированном порядке. **Tokens нормативны; prose даёт контекст, как их применять.** Секции могут быть опущены, когда не relevant, но **не переупорядочивайте их и не переименовывайте**. Section headers должны совпадать со spec character-for-character, чтобы файл оставался parseable другими DESIGN.md-aware tools (Stitch itself, awesome-design-md, skill-rest и т.д.).
 
-## The frontmatter: token schema
+## Frontmatter: схема токенов
 
 YAML frontmatter — machine-readable слой. Это то, что валидирует linter Stitch и из чего live panel рендерит tiles. Держите tight; каждая entry должна соответствовать token, который проект действительно использует.
 
@@ -48,7 +48,7 @@ Rules that matter:
 - **Scale keys open-ended.** Используйте любые имена, которые проект уже использует (`warm-ash-cream`, `surface-container-low`). Не переименовывайте в Material defaults.
 - **Variants — naming convention, не schema.** `button-primary` / `button-primary-hover` / `button-primary-active` как sibling keys.
 
-## The markdown body: six sections (exact order)
+## Markdown-тело: шесть секций (точный порядок)
 
 1. `## Overview`
 2. `## Colors`
@@ -59,7 +59,7 @@ Rules that matter:
 
 Optional evocative subtitles разрешены в форме `## 2. Colors: The [Name] Palette` (собственные outputs Stitch так делают), но literal word в каждом header (Overview, Colors, Typography, Elevation, Components, Do's and Don'ts) должен присутствовать. НЕ добавляйте extra top-level sections (Layout Principles, Responsive Behavior, Motion, Agent Prompt Guide). Fold этот контент в шесть spec sections, куда он naturally принадлежит.
 
-## When to run
+## Когда запускать
 
 - Пользователь только что запустил `$impeccable teach` и нуждается в documented visual side.
 - Skill заметил, что `DESIGN.md` не существует, и nudged пользователя создать.
@@ -68,16 +68,16 @@ Optional evocative subtitles разрешены в форме `## 2. Colors: The
 
 Если `DESIGN.md` уже существует, **не silently overwrite его**. Покажите пользователю existing file и STOP и используйте структурированный инструмент вопросов Codex, когда доступен; если недоступен, спросите напрямую в чате, чтобы уточнить то, что нельзя вывести. — refresh, overwrite или merge.
 
-## Two paths
+## Два пути
 
 - **Scan mode** (default): у проекта есть design tokens, components или rendered output. Extract, затем confirm descriptive language. Используйте, когда есть code to analyze.
 - **Seed mode**: проект pre-implementation (fresh teach, ничего ещё не построено). Interview для пяти high-level answers, напишите minimal DESIGN.md с маркером `<!-- SEED -->`. Re-run в scan mode, когда появится code.
 
 Decide, сначала просканировав (Scan mode Step 1). Если scan не находит tokens, component files и rendered site — предложите seed mode; не silently switch. `$impeccable document --seed` форсирует seed mode независимо от наличия code.
 
-## Scan mode (approach C: auto-extract, then confirm descriptive language)
+## Режим scan (подход C: auto-extract, затем подтверждение descriptive language)
 
-### Step 1: Find the design assets
+### Шаг 1: найдите design assets
 
 Ищите в codebase в priority order:
 
@@ -89,7 +89,7 @@ Decide, сначала просканировав (Scan mode Step 1). Если s
 6. **Global stylesheet**: root CSS file обычно содержит base typography и color assignments.
 7. **Visible rendered output**: если browser automation tools доступны, загрузите live site и sample computed styles с key elements (body, h1, a, button, .card). Это ловит values, которые tokens miss.
 
-### Step 2: Auto-extract what can be auto-extracted
+### Шаг 2: auto-extract всего, что можно извлечь автоматически
 
 Постройте structured draft из discovered tokens. Для каждого token class:
 
@@ -99,7 +99,7 @@ Decide, сначала просканировав (Scan mode Step 1). Если s
 - **Components**: Для каждого common component (button, card, input, chip, list item, tooltip, nav) extract shape (radius), color assignment, hover/focus treatment, internal padding.
 - **Spacing + layout**: Fold в Overview или relevant Components. У spec НЕТ Layout section.
 
-### Step 2b: Stage the frontmatter
+### Шаг 2b: подготовьте frontmatter
 
 Из auto-extracted tokens draft YAML frontmatter сейчас (запишете его в top of DESIGN.md в Step 4). Это machine-readable слой: то, что consume live panel и linter Stitch.
 
@@ -110,7 +110,7 @@ Decide, сначала просканировав (Scan mode Step 1). Если s
 
 Skip всё, чего у проекта нет. Empty scale keys или fabricated tokens pollute the spec.
 
-### Step 3: Ask the user for qualitative language
+### Шаг 3: спросите у пользователя qualitative language
 
 Следующее требует creative input, который нельзя auto-extract. Группируйте в один `AskUserQuestion` interaction:
 
@@ -122,7 +122,7 @@ Skip всё, чего у проекта нет. Empty scale keys или fabricat
 
 Цитируйте строку из PRODUCT.md когда возможно, чтобы пользователь видел, как их strategic language несётся дальше.
 
-### Step 4: Write DESIGN.md
+### Шаг 4: напишите DESIGN.md
 
 Файл открывается YAML frontmatter, staged в Step 2b (schema documented в top этого reference), затем markdown body со структурой ниже. Headers должны совпадать character-for-character. Optional evocative subtitles (например `## 2. Colors: The Coastal Palette`) разрешены.
 
@@ -237,13 +237,13 @@ Concrete, forceful guardrails. Lead each with "Do" or "Don't". Be specific: incl
 - **Don't** [...]
 ```
 
-### Step 4b: Write .impeccable/design.json sidecar (extensions only)
+### Шаг 4b: напишите sidecar `.impeccable/design.json` (только extensions)
 
 Frontmatter владеет token primitives (colors, typography, rounded, spacing, components). Sidecar в `.impeccable/design.json` несёт **то, что schema Stitch не может держать**: tonal ramps per color, shadow/elevation tokens, motion tokens, breakpoints, full component HTML/CSS snippets (panel рендерит их в shadow DOM) и narrative (north star, rules, do's/don'ts). Он extends frontmatter, не duplicates его.
 
 Regenerate sidecar whenever вы regenerate root `DESIGN.md`. Если пользователь просит только refresh sidecar (например из stale-hint live panel) — preserve `DESIGN.md` и пишите только `.impeccable/design.json`.
 
-#### Schema
+#### Схема
 
 ```json
 {
@@ -291,7 +291,7 @@ Regenerate sidecar whenever вы regenerate root `DESIGN.md`. Если поль�
 
 **What changed from schemaVersion 1.** Старый sidecar нёс token primitive arrays (`tokens.colors[]`, `tokens.typography[]` и т.д.). Эти values теперь живут в frontmatter. Sidecar несёт только metadata, которая не может жить в frontmatter (tonal ramps, canonical OKLCH когда hex — approximation, display names, role hints), keyed по frontmatter token name (`colorMeta.<token-name>`, `typographyMeta.<token-name>`). Components всё ещё несут full HTML/CSS, потому что 8-prop set Stitch не может их держать.
 
-#### Component translation rules
+#### Правила перевода компонентов
 
 Поля `html` и `css` должны быть **self-contained, drop-in snippets**, которые рендерятся корректно при injection в shadow DOM. Panel применяет их напрямую: нет post-processing, нет framework runtime.
 
@@ -302,7 +302,7 @@ Regenerate sidecar whenever вы regenerate root `DESIGN.md`. Если поль�
 5. **Reset bloat.** Extract только *distinctive* CSS компонента (background, color, padding, border-radius, typography, transition). Skip universal resets (`box-sizing: border-box`, `line-height: inherit`, `-webkit-font-smoothing`). У panel уже есть neutral canvas; не re-ship resets.
 6. **Scoped class names.** Prefix каждый class с `ds-` (например `ds-btn-primary`, `ds-input-search`), чтобы CSS компонентов не collide с CSS других компонентов в том же shadow DOM.
 
-#### What to include
+#### Что включать
 
 Aim на tight set из **5–10 components**, которые лучше всего представляют visual system:
 
@@ -312,11 +312,11 @@ Aim на tight set из **5–10 components**, которые лучше все�
 
 Если у проекта **ещё нет component library** (bare landing page, new project) — synthesize canonical primitives из tokens, используя best-practice defaults, consistent с rules DESIGN.md. Каждый `.impeccable/design.json` имеет *что-то* для render, даже on day zero.
 
-#### Tonal ramps
+#### Тональные рампы
 
 Для каждого color token сгенерируйте 8-step массив `tonalRamp`: dark to light, same hue и chroma, stepped lightness от ~15% до ~95%. Panel рендерит это как strip under the swatch. Если проект уже определяет tonal scale (Material `surface-container-low` family, Tailwind-style `blue-50..blue-900`) — используйте эти values. Иначе synthesize в OKLCH.
 
-#### Narrative mapping
+#### Narrative-мэппинг
 
 Pull напрямую из DESIGN.md, который вы только что написали:
 
@@ -328,24 +328,24 @@ Pull напрямую из DESIGN.md, который вы только что н
 
 Не reword. Panel показывает это как secondary collapsible context; тот же voice, что в Markdown, несётся дальше.
 
-### Step 5: Confirm, refine, and refresh session cache
+### Шаг 5: подтвердите, уточните и обновите session cache
 
 1. Покажите пользователю full DESIGN.md, который написали. Кратко highlight non-obvious creative choices (descriptive color names, atmosphere language, named rules).
 2. Упомяните, что `.impeccable/design.json` тоже записан alongside; live panel теперь отрендерит actual button/input/nav primitives этого проекта вместо generic approximations.
 3. Предложите refine любую секцию: «Want me to revise a section, add component patterns I missed, or adjust the atmosphere language?»
 4. **Refresh the session cache.** Запустите `node .agents/skills/impeccable/scripts/load-context.mjs` один финальный раз, чтобы newly-written DESIGN.md попал в conversation. Subsequent commands в этой сессии будут использовать fresh version автоматически без re-reading.
 
-## Seed mode
+## Режим seed
 
 Для проектов, у которых ещё нет visual system to extract. Производит minimal scaffold, не full spec.
 
-### Step 1: Confirm seed mode
+### Шаг 1: подтвердите режим seed
 
 Перед interviewing: «There's no existing visual system to scan. I'll ask five quick questions to seed a starter DESIGN.md. You can re-run `$impeccable document` once there's code, to capture the real tokens and components. OK?»
 
 Если пользователь предпочитает skip — stop. Нет файла.
 
-### Step 2: Five questions
+### Шаг 2: пять вопросов
 
 Группируйте в один `AskUserQuestion` interaction. Options должны быть concrete.
 
@@ -373,7 +373,7 @@ Pull напрямую из DESIGN.md, который вы только что н
 
 5. **One anti-reference.** Чем оно НЕ должно ощущаться. Also named.
 
-### Step 3: Write seed DESIGN.md
+### Шаг 3: напишите seed DESIGN.md
 
 Используйте six-section spec из Scan mode. Populate то, что дали interview answers; остальное оставьте как honest placeholders. Seed — scaffold, не fabricated spec.
 
@@ -394,13 +394,13 @@ Per-section guidance в seed mode:
 
 Seed mode пишет minimal frontmatter только с `name` и `description`; пока нет colors, typography, rounded, spacing или components. Real tokens появятся на следующем Scan-mode run. Skip sidecar `.impeccable/design.json` в seed mode по той же причине: нечего рендерить.
 
-### Step 4: Confirm and refresh session cache
+### Шаг 4: подтвердите и обновите session cache
 
 1. Покажите seed DESIGN.md. Call out, что это seed (marker — literal commitment).
 2. Скажите пользователю: «Re-run `$impeccable document` once you have some code. That pass will extract real tokens and generate the sidecar.»
 3. Запустите `node .agents/skills/impeccable/scripts/load-context.mjs` один раз, чтобы seed попал в conversation на остаток сессии.
 
-## Style guidelines
+## Руководство по стилю
 
 - **Frontmatter first, prose second.** Tokens идут в YAML frontmatter; prose contextualizes их. Не redefine token value в двух местах; frontmatter нормативен.
 - **Cite PRODUCT.md anti-references by name** в секции Do's and Don'ts. Если PRODUCT.md lists «SaaS landing-page clichés» или «generic AI tool marketing» как anti-references, Don'ts в DESIGN.md должны repeat эти phrases verbatim, чтобы visual spec enforced strategic line.
@@ -414,7 +414,7 @@ Seed mode пишет minimal frontmatter только с `name` и `description`
 - **Reference PRODUCT.md**. Секция anti-references PRODUCT.md должна напрямую inform секцию Do's and Don'ts здесь. Quote или paraphrase.
 - **Group colors by role**, не by hex-order или hue-order. Primary / Secondary / Tertiary / Neutral — spec ordering.
 
-## Pitfalls
+## Ловушки
 
 - Не paste raw CSS class names. Translate в descriptive language.
 - Не extract каждый token. Stop на том, что действительно reused; one-offs pollute the system.

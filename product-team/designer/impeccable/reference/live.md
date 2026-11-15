@@ -24,7 +24,7 @@ Harness policy:
 
 Chat — overhead. Нет recap, нет tutorial output, нет pasting PRODUCT / DESIGN bodies. Тратьте tokens на tools и edits; при failure — одно-два short sentences.
 
-## Start
+## Старт
 
 ```bash
 node .agents/skills/impeccable/scripts/live.mjs
@@ -36,7 +36,7 @@ Output JSON: `{ ok, serverPort, serverToken, pageFiles, hasProduct, product, pro
 
 Если output — `{ ok: false, error: "config_missing" | "config_invalid", path }`, этот проект не configured для live mode (или config stale). См. **First-time setup** внизу.
 
-## Poll loop
+## Цикл опроса
 
 ```
 LOOP:
@@ -51,7 +51,7 @@ LOOP:
   "exit"      → break → Cleanup
 ```
 
-## Recovery commands
+## Команды восстановления
 
 Live helper persists append-only journal под `.impeccable/live/sessions/`. Browser checkpoints advisory, но durable; journal canonical. Это local durable recovery state, не project source.
 
@@ -69,13 +69,13 @@ node .agents/skills/impeccable/scripts/live-complete.mjs --id SESSION_ID
 
 Server restart rule: снова запустите `live-server.mjs`, затем poll. Startup requeues unacknowledged pending events из journal, так что не просите пользователя кликнуть Go again, если только `live-resume.mjs` не говорит, что active session не существует.
 
-## Handle `generate`
+## Обработка `generate`
 
 Event: `{id, action, freeformPrompt?, count, pageUrl, element, screenshotPath?, comments?, strokes?}`.
 
 Speed matters; пользователь смотрит на spinner. Minimize tool calls, используя `wrap` helper и writing all variants в single edit.
 
-### 1. Read the screenshot (if present)
+### 1. Прочитайте скриншот (если есть)
 
 `event.screenshotPath` **отправляется только когда пользователь разместил хотя бы один comment или stroke before Go.** Когда present — это absolute path к PNG элемента as rendered с baked-in annotations. **Прочитайте его before planning**: annotations encode user intent, не recoverable только из `element.outerHTML`.
 
@@ -90,7 +90,7 @@ Reading annotations precisely:
 - **Strokes — gestures; читайте их по shape.** Closed loop = «this thing» (emphasis / focus); arrow = direction (move / point to); cross или slash = delete; free scribble = emphasis или delete depending on context. Loop around region X значит «pay attention to X», не «only change pixels inside X».
 - **Когда intent stroke ambiguous** (circle или arrow? emphasis или move?) — state ваш reading одним предложением rationale, а не silently guessing. Если uncertainty materially меняет brief — ask one short clarifying question before generating.
 
-### 2. Wrap the element
+### 2. Оберните элемент
 
 ```bash
 node .agents/skills/impeccable/scripts/live-wrap.mjs --id EVENT_ID --count EVENT_COUNT --element-id "ELEMENT_ID" --classes "class1,class2" --tag "div" --text "TEXT_SNIPPET"
@@ -124,19 +124,19 @@ Output on success: `{ file, insertLine, commentSyntax, styleMode, styleTag, cssS
 
 Все три несут `fallback: "agent-driven"`. Следуйте **Handle fallback** ниже.
 
-### 3. Load the action's reference
+### 3. Загрузите reference действия
 
 Если `event.action` — `impeccable` (default freeform action), используйте shared laws из SKILL.md плюс загруженный register reference (`brand.md` или `product.md`). Не загружайте sub-command reference. **Freeform — не pass, чтобы skip parameters:** вы всё равно следуете composition budget и freeform bias в **§7 Parameters** ниже. Sub-command files list'ят MUST-have signature knobs; у freeform нет такого файла, так что sizing knobs из surface weight и primary axes полностью на вас.
 
 Любой другой `event.action` (`bolder`, `quieter`, `distill`, `polish`, `typeset`, `colorize`, `layout`, `adapt`, `animate`, `delight`, `overdrive`): прочитайте `reference/<action>.md` before planning. Каждый sub-command encodes specific discipline; skipping его reference даёт generic output. Эти files могут требовать specific params; layer их поверх §7 budget, не вместо него.
 
-### 4. Plan three variants: identity first, then mode, then axes
+### 4. Спланируйте три варианта: сначала identity, затем mode, затем оси
 
 Wrong frame для live mode — «show three different design directions». Live runs на existing surface; brand уже выбран. Job — variation **within identity**, не selection between identities. Failure mode: три editorial-typographic variants на brief, который не был editorial. Bigger failure mode: три off-brand variants, которые пользователь не может accept, потому что они не выглядят как их product.
 
 Four phases. Делайте по порядку.
 
-#### Phase A: Extract the identity (non-skippable)
+#### Фаза A: извлеките identity (нельзя пропустить)
 
 Existing surface уже имеет identity. Прочитайте её before planning чего-либо. Sources, в priority order:
 
@@ -159,7 +159,7 @@ Existing surface уже имеет identity. Прочитайте её before pl
 
 Это предложение — **identity lock**. Каждый variant должен быть readable как тот же brand, если rendered side by side. Skipping этой phase — primary cause of off-brand variants. Absence of DESIGN.md никогда не excuse; extract из CSS и computed styles вместо этого.
 
-#### Phase B: Pick mode (default vs departure)
+#### Фаза B: выберите mode (default vs departure)
 
 **Default mode**: existing identity preserved. Variants варьируют expression axes within it. *Это правильный mode для ~90% live sessions.* Пользователь picked element на real product, который они shipping; они ожидают variants *их* hero, не героев трёх разных brands.
 
@@ -170,7 +170,7 @@ Existing surface уже имеет identity. Прочитайте её before pl
 
 Если unsure — вы в default mode. Cost of being wrong about default — «three on-brand variants with similar feel»: recoverable, пользователь picks none. Cost of being wrong about departure — «three off-brand variants»: unrecoverable, пользователь annoyed.
 
-#### Phase C: Plan three variants
+#### Фаза C: спланируйте три варианта
 
 **Default mode.** Каждый variant commits к разному **primary axis** of difference, сохраняя identity sentence. Шесть axes:
 
@@ -195,7 +195,7 @@ Three variants → three DIFFERENT axes. Trio читается как *the same 
 4. Каждое direction должно быть expressible одним concrete предложением, называющим real-world referent («a museum exhibition label system for a contemporary art gallery» не «clean and minimal»). Если предложение содержит только adjectives — недостаточно concrete.
 5. **While planning каждого direction также name его 2–3 parameter knobs** (per §7 budget table). Тот же principle, что в default mode: decide «what's tunable» during planning, не after writing HTML. Departure-mode hero с 0 parameters — не «bold creative vision», а missed opportunity для пользователя fine-tune выбранное direction.
 
-#### Phase D: Squint test
+#### Фаза D: squint-тест
 
 **Default mode squint.** Прочитайте identity sentence каждого variant и сравните с locked identity из Phase A. Если любой variant drifted к другой palette, type voice или visual rhetoric — он accidentally crossed в departure mode; rework. Затем проверьте, что каждый variant commits к разному primary axis. Три «tighter density» variants — failure.
 
@@ -220,7 +220,7 @@ Three variants → three DIFFERENT axes. Trio читается как *the same 
 - `delight`: разный flavor of personality (unexpected micro-interaction / typographic surprise / illustrated accent / sonic-or-haptic moment / easter-egg interaction).
 - `overdrive`: разный convention broken (scale / structure / motion / input model / state transitions). Skip шаг «propose and ask» из `overdrive.md`; live mode non-interactive.
 
-### 5. Apply the freeform prompt (if present)
+### 5. Примените freeform prompt (если есть)
 
 `event.freeformPrompt` — ceiling пользователя на direction (все variants должны honor его), но всё равно explore meaningfully different *interpretations*. Interpretations остаются within того mode, который вы picked в Phase B.
 
@@ -230,7 +230,7 @@ Three variants → three DIFFERENT axes. Trio читается как *the same 
 
 Когда prompt и PRODUCT.md anti-references conflict (prompt asks for X, anti-references ban X) — anti-references win; они описывают standing position бренда, prompt — один момент.
 
-### 6. Write all variants in a single edit
+### 6. Запишите все варианты одним edit
 
 Complete HTML replacement original element для каждого variant, не CSS-only patch. Учитывайте context элемента (computed styles, parent structure, CSS variables из `event.element`).
 
@@ -279,7 +279,7 @@ One edit, all variants; MutationObserver browser picks everything up in one pass
 
 Wrap script уже даёт вам single-rooted JSX wrapper: outer element `<div data-impeccable-variants="…">` с marker comments tucked inside. Drop блок variants выше в comment «Variants: insert below this line», и source остаётся valid TSX.
 
-### 7. Parameters (composition-sized, 0–4 per variant)
+### 7. Параметры (composition-sized, 0–4 на вариант)
 
 Каждый variant может expose **coarse** knobs alongside full HTML/CSS replacement. Browser docks small panel справа от outline с одним control per parameter. Пользователь drags/clicks и видит instant feedback: zero regeneration cost, потому что knob toggles CSS variable или data attribute, против которого scoped CSS варианта уже authored.
 
@@ -334,7 +334,7 @@ Wrap script уже даёт вам single-rooted JSX wrapper: outer element `<di
 
 Carbonize cleanup step (см. ниже) читает этот comment и bakes chosen values в final CSS. Для `steps`/`toggle` attribute selectors: keep только branch matching chosen value, drop others, collapse `:scope[data-p-density="packed"] .grid` к semantic class rule. Для `range` vars: либо substitute literal, либо keep var с chosen value как new default.
 
-### 8. Signal done
+### 8. Сигнал о завершении
 
 ```bash
 node .agents/skills/impeccable/scripts/live-poll.mjs --reply EVENT_ID done --file RELATIVE_PATH
@@ -344,7 +344,7 @@ node .agents/skills/impeccable/scripts/live-poll.mjs --reply EVENT_ID done --fil
 
 Затем сразу снова запустите `live-poll.mjs`.
 
-### Aborting an in-flight session
+### Прерывание активной сессии
 
 Если wrap или generation fails после того, как browser flipped к GENERATING (например wrap landed на wrong source branch и вы уже reverted его, или generation hit unrecoverable error) — скажите **browser**, чтобы его bar reset к PICKING:
 
@@ -354,13 +354,13 @@ node .agents/skills/impeccable/scripts/live-poll.mjs --reply EVENT_ID error "Sho
 
 Не запускайте `live-accept --discard` для этого; это pure file mutator, browser его не видит, и bar stuck на GENERATING dots forever (пользователю приходится refresh). `--discard` correct только когда **browser** инициировал discard (пользователь кликнул ✕ during CYCLING) и agent просто запускает source-side cleanup, который browser уже triggered.
 
-## Handle fallback
+## Обработка fallback
 
 Когда wrap returns `fallback: "agent-driven"`, deterministic flow не применяется. Pick up здесь.
 
 Goal тот же: дать пользователю three variants to choose from И persist accepted один в месте, которое next build не wipe'нет. Difference — вы должны pick правильный source file сами.
 
-### Step 1: Identify where the element actually lives
+### Шаг 1: определите, где элемент реально живёт
 
 Используйте error payload:
 
@@ -370,7 +370,7 @@ Goal тот же: дать пользователю three variants to choose fro
 
 Читайте candidate source, пока не уверены, куда принадлежит change к element. Если change purely visual — source может быть shared stylesheet, не template.
 
-### Step 2: Show three variants in the DOM for preview
+### Шаг 2: покажите три варианта в DOM для preview
 
 Browser bar ждёт variants. Даже без wrapper в source вам всё равно нужно show something:
 
@@ -380,7 +380,7 @@ Browser bar ждёт variants. Даже без wrapper в source вам всё �
 
 Этот served-file edit **temporary**: next regen wipe'нет его, и это fine. Real work происходит on accept.
 
-### Step 3: On accept, write to true source
+### Шаг 3: при accept запишите в настоящий source
 
 Когда accept event arrives (`_acceptResult.handled` обычно будет `false` здесь, потому что accept тоже refuses persist в generated files; см. Handle accept для carbonize branch) — extract content accepted variant и напишите в source, identified в Step 1:
 
@@ -390,11 +390,11 @@ Browser bar ждёт variants. Даже без wrapper в source вам всё �
 
 Затем remove temporary wrapper из served file, если он ещё там.
 
-### Step 4: On discard, clean up the served file
+### Шаг 4: при discard очистите served file
 
 Remove wrapper, который вы inserted в Step 2. Больше нечего делать.
 
-## Handle `accept`
+## Обработка `accept`
 
 Event: `{id, variantId, _acceptResult, _completionAck}`. Poll script уже запустил `live-accept.mjs`, чтобы handle file operation deterministically, затем acknowledged event delivery helper'у. Browser DOM уже updated.
 
@@ -404,7 +404,7 @@ Event: `{id, variantId, _acceptResult, _completionAck}`. Poll script уже за
 - `_acceptResult.handled: false, mode: "fallback"`: session жила в generated file, и script refused persist туда. Вы уже написали accepted variant в true source during Handle fallback Step 3; просто clean up temporary wrapper в served file если есть, и poll again.
 - `_acceptResult.handled: false` без `mode`: manual cleanup: read file, find markers, edit.
 
-### Required after accept (carbonize)
+### Обязательно после accept (carbonize)
 
 Когда `_acceptResult.carbonize === true`, accepted variant был stitched в source с helper markers и inline CSS, чтобы browser мог render его immediately без visual gap. Этот stitch-in **temporary**. Agent должен rewrite его в permanent form before doing anything else. Skipping оставляет dead `@scope` rules для unaccepted variants, pointless `data-impeccable-variant` wrapper и `impeccable-carbonize-start/end` comment noise в source file; всё это accumulate across sessions.
 
@@ -420,11 +420,11 @@ Event: `{id, variantId, _acceptResult, _completionAck}`. Poll script уже за
 
 Background agent может быть использован для rewrite, но current thread ответственен за verifying, что five steps complete before issuing next poll. На практике inline обычно faster и less error-prone.
 
-## Handle `discard`
+## Обработка `discard`
 
 Event: `{id, _acceptResult, _completionAck}`. Poll script уже restored original, removed all variant markers и acknowledged `discarded` durable completion. Нечего делать, если только `_completionAck.ok !== true`; в этом случае запустите `live-complete.mjs --id EVENT_ID --discarded`, затем poll again.
 
-## Handle `prefetch`
+## Обработка `prefetch`
 
 Event: `{pageUrl}`. Browser fires это в первый раз, когда пользователь selects element на данном route, как latency shortcut; сигнализирует, что пользователь likely about to Go на странице, которую вы ещё не читали.
 
@@ -437,7 +437,7 @@ Resolve `pageUrl` к underlying file:
 
 Dedupe — job browser (один prefetch per unique pathname per session); trust it. Если тот же file shows up twice из разных routes, mapping к тому же file — второй Read всё равно cached.
 
-## Exit
+## Выход
 
 Пользователь может stop live mode через:
 - Saying «stop live mode» / «exit live» в chat
@@ -446,7 +446,7 @@ Dedupe — job browser (один prefetch per unique pathname per session); trus
 
 Когда poll returns `exit` — proceed к cleanup. Если poll всё ещё running как background task — kill его first.
 
-## Cleanup
+## Очистка
 
 ```bash
 node .agents/skills/impeccable/scripts/live-server.mjs stop
@@ -458,7 +458,7 @@ Stops HTTP server и запускает `live-inject.mjs --remove`, чтобы s
 - Remove любые leftover variant wrappers (search for `impeccable-variants-start` markers).
 - Remove любые leftover carbonize blocks (search for `impeccable-carbonize-start` markers).
 
-## First-time setup (config missing or invalid)
+## Первичная настройка (config отсутствует или невалиден)
 
 Если `live.mjs` outputs `{ ok: false, error: "config_missing" | "config_invalid", path }` — напишите live config по reported path. По умолчанию это `.impeccable/live/config.json`.
 
@@ -500,7 +500,7 @@ Pick anchor, который существует в каждом file (`</body>`
 
 Для multi-page sites, чьи pages *rebuilt* generator'ом (Astro, static-site generators, custom scripts вроде `build-sub-pages.js`), inject survives только until next regeneration. Re-run `live.mjs` после каждого build. Accept unaffected; он пишет в true source через fallback flow.
 
-### Drift-heal warning
+### Предупреждение drift-heal
 
 На каждом boot `live.mjs`, после inject, проект сканируется на HTML files под common page-source roots (`public/`, `src/`, `app/`, `pages/`). Если существуют какие-то, не covered resolved `files` list — output включает поле `configDrift`:
 
@@ -528,7 +528,7 @@ Pick anchor, который существует в каждом file (`</body>`
 
 Не auto-update config; let the user decide. `configDrift` — `null`, когда drift нет.
 
-### CSP detection (first-time only)
+### Обнаружение CSP (только при первом запуске)
 
 Если `config.cspChecked === true` — skip эту entire section. Вы уже спрашивали этого пользователя once; answer sticks.
 
@@ -550,7 +550,7 @@ Output: `{ shape, signals }`, где `shape` — одно из `append-arrays`, 
   - Nuxt `routeRules` / `nitro.routeRules` headers
 - **`middleware`** или **`meta-tag`**: rarer. Detected, но не auto-patched в v1. Покажите пользователю detected files и попросите добавить `http://localhost:8400` к `script-src` и `connect-src` manually, затем mark `cspChecked: true` и proceed.
 
-#### Consent prompt template
+#### Шаблон consent prompt
 
 Используйте эту phrasing, чтобы experience был consistent across agents:
 
@@ -615,7 +615,7 @@ Reference outputs:
 - `tests/framework-fixtures/nextjs-inline-csp/expected-after-patch.js` (Next.js)
 - `tests/framework-fixtures/nuxt-csp/expected-after-patch.ts` (Nuxt)
 
-### Troubleshooting
+### Устранение неполадок
 
 Если пользователь сказал «no» CSP patch at setup time и later complains, что live doesn't work: их dev CSP blocks `http://localhost:8400`. Fix: delete `cspChecked` из `.impeccable/live/config.json` и re-run `live.mjs`: setup спросит again.
 

@@ -1,6 +1,6 @@
 Дизайны, работающие только с идеальными данными, не production-ready. Harden интерфейс против inputs, ошибок, языков и сетевых условий, которые бросят на него реальные пользователи.
 
-## Assess Hardening Needs
+## Оцените потребности в hardening
 
 Выявите слабости и edge cases:
 
@@ -30,11 +30,11 @@
 
 **КРИТИЧНО**: дизайны, работающие только с идеальными данными, не production-ready. Harden против реальности.
 
-## Hardening Dimensions
+## Измерения hardening
 
 Системно повышайте resilience:
 
-### Text Overflow & Wrapping
+### Переполнение и перенос текста
 
 **Long text handling**:
 ```css
@@ -82,7 +82,7 @@
 - Тестируйте text scaling (zoom до 200%)
 - Обеспечьте, что контейнеры расширяются с текстом
 
-### Internationalization (i18n)
+### Интернационализация (i18n)
 
 **Text expansion**:
 - Заложите 30–40% space budget на переводы
@@ -136,7 +136,7 @@ new Intl.NumberFormat('en-US', {
 t('items', { count }) // Handles complex plural rules
 ```
 
-### Error Handling
+### Обработка ошибок
 
 **Network errors**:
 - Показывайте ясные сообщения об ошибках
@@ -177,7 +177,7 @@ t('items', { count }) // Handles complex plural rules
 - Progressive enhancement
 - Fallbacks для неподдерживаемых features
 
-### Edge Cases & Boundary Conditions
+### Edge cases и граничные условия
 
 **Empty states**:
 - Нет элементов в списке
@@ -217,7 +217,7 @@ t('items', { count }) // Handles complex plural rules
 - Feature detection (не browser detection)
 - Тестируйте в целевых браузерах
 
-### Input Validation & Sanitization
+### Валидация и санитизация ввода
 
 **Client-side validation**:
 - Required fields
@@ -247,7 +247,7 @@ t('items', { count }) // Handles complex plural rules
 </small>
 ```
 
-### Accessibility Resilience
+### Устойчивость доступности
 
 **Keyboard navigation**:
 - Вся функциональность доступна с клавиатуры
@@ -277,7 +277,7 @@ t('items', { count }) // Handles complex plural rules
 - Не опирайтесь только на цвет
 - Давайте альтернативные visual cues
 
-### Performance Resilience
+### Устойчивость производительности
 
 **Slow connections**:
 - Progressive image loading
@@ -300,7 +300,7 @@ const debouncedSearch = debounce(handleSearch, 300);
 const throttledScroll = throttle(handleScroll, 100);
 ```
 
-## Testing Strategies
+## Стратегии тестирования
 
 **Manual testing**:
 - Тестируйте с extreme data (очень длинные, очень короткие, empty)
@@ -330,7 +330,7 @@ const throttledScroll = throttle(handleScroll, 100);
 - Не предполагайте English-length text
 - Не блокируйте весь интерфейс, когда ошибается один компонент
 
-## Verify Hardening
+## Проверьте hardening
 
 Тщательно тестируйте с edge cases:
 

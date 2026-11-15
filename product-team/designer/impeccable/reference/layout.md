@@ -94,7 +94,7 @@ Product: предсказуемые grids, consistent densities, знакомы�
 - Постройте consistent shadow scale (sm → md → lg → xl); shadows должны быть subtle
 - Используйте elevation для усиления иерархии, а не как decoration
 
-### Optical Adjustments
+### Оптические корректировки
 
 - Если icon выглядит visually off-center несмотря на геометрический центр — сдвиньте. Но только если уверены, что действительно выглядит неправильно. Не adjust'ьте speculative.
 
@@ -120,7 +120,7 @@ Product: предсказуемые grids, consistent densities, знакомы�
 
 Когда ритм и иерархия сели, передайте `$impeccable polish` для финального прохода.
 
-## Live-mode signature params
+## Сигнатурные параметры live-mode
 
 Каждый variant MUST declare `density` param. Drive all spacing tokens в scoped CSS варианта через `calc(var(--p-density, 1) * <base>)`: paddings, gaps, column widths. Пользователи скользят от airy к packed и видят, как layout re-breathe без regeneration.
 

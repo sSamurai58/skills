@@ -45,7 +45,7 @@ Consume полный JSON output. Никогда не pipe через `head`, `t
 
 Если DESIGN.md отсутствует: nudge один раз за сессию (*«Запустите `$impeccable document` для более on-brand output»*), затем продолжайте.
 
-### 2. Register
+### 2. Регистр
 
 Каждая дизайн-задача — **brand** (marketing, landing, campaign, long-form content, portfolio: дизайн И ЕСТЬ продукт) или **product** (app UI, admin, dashboard, tool: дизайн СЛУЖИТ продукту).
 
@@ -159,7 +159,7 @@ Setup (сбор контекста, register) к этому моменту уж�
 
 Если первое слово — `craft`, setup всё равно запускается первым, но [reference/craft.md](reference/craft.md) владеет остальным потоком. Если setup вызывает `teach` как blocker — завершите teach, обновите контекст, затем возобновите исходную команду и target.
 
-## Pin / Unpin
+## Закрепить / открепить (pin / unpin)
 
 **Pin** создаёт standalone shortcut, чтобы `$<command>` вызывал `$impeccable <command>` напрямую. **Unpin** удаляет его. Script пишет во все harness directories, присутствующие в проекте.
 

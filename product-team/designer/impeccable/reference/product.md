@@ -16,7 +16,7 @@ Failure mode product UI — не плоскость, а странность б�
 - **Более плотный scale ratio.** Типично 1.125–1.2 между ступенями. Типографических элементов здесь больше, чем на brand surfaces; преувеличенный контраст создаёт шум.
 - **Длина строки всё ещё важна для prose** (65–75ch). Data и компактный UI могут быть плотнее; таблицы на 120ch+ — нормально.
 
-## Color
+## Цвет
 
 Product по умолчанию Restrained. Одна поверхность может заработать Committed (dashboard, где один category color несёт отчёт; onboarding с drenched welcome screen), но Restrained — пол.
 
@@ -24,13 +24,13 @@ Product по умолчанию Restrained. Одна поверхность мо
 - Accent color — только для primary actions, текущего selection и state indicators, не для декора.
 - Второй нейтральный слой для sidebars, toolbars и panels (чуть холоднее или теплее поверхности контента).
 
-## Layout
+## Раскладка
 
 - Предсказуемые grids. Consistency И ЕСТЬ affordance; пользователи ориентируются быстрее, когда структура ожидаема.
 - Знакомые паттерны — фичи. Стандартная навигация (top bar, side nav), breadcrumbs, tabs и form layouts имеют устоявшиеся ожидания. Не изобретайте ради вкуса.
 - Responsive behavior — структурный (свернуть sidebar, responsive table, колонки по breakpoints), не fluid typography.
 
-## Components
+## Компоненты
 
 У каждого interactive component есть: default, hover, focus, active, disabled, loading, error. Не шипьте с половиной из них.
 
@@ -38,7 +38,7 @@ Product по умолчанию Restrained. Одна поверхность мо
 - Empty states, которые учат интерфейсу, а не «nothing here».
 - Согласованные affordances по всей поверхности. Одна форма кнопки. Один словарь form-control. Один стиль иконок.
 
-## Motion
+## Движение
 
 - 150–250 ms на большинстве transitions. Пользователи в потоке; не заставляйте ждать хореографию.
 - Motion передаёт состояние, не декор. Смена состояния, feedback, loading, reveal — больше ничего.
@@ -52,7 +52,7 @@ Product по умолчанию Restrained. Одна поверхность мо
 - Изобретение стандартных affordances ради вкуса (кастомные scrollbars, странные form controls, нестандартные modals).
 - Тяжёлый цвет или full-saturation accents на неактивных состояниях.
 
-## Product permissions
+## Разрешения product-регистра
 
 Product может себе то, чего не могут brand surfaces.
 

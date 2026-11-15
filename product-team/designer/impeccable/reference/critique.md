@@ -12,7 +12,7 @@ Resolve один stable target, запустите две независимые
 - Любой local server, запущенный только для critique visualization, должен работать в background, иметь записанный stop method и быть остановлен до final reporting, если пользователь не просит оставить.
 - Не утверждайте, что user-visible overlay существует, пока script injection не succeeded и detector не ran в странице.
 
-### Setup
+### Настройка
 
 1. **Resolve the target** до concrete file path или URL. Prefer source path над dev-server URL, когда оба идентифицируют одну поверхность; ports drift, paths — нет.
    - «the homepage» -> `site/pages/index.astro` или `index.html`
@@ -25,7 +25,7 @@ Resolve один stable target, запустите две независимые
    Сохраните его. Если команда exits non-zero, пропустите persistence и trend для этого run, но продолжайте critique.
 3. **Прочитайте `.impeccable/critique/ignore.md`**, если существует. Drop matching findings silently; это единственный prior-run input, который critique consumes.
 
-### Assessment Orchestration
+### Оркестрация оценки
 
 Делегируйте Assessment A и Assessment B отдельным sub-agents, когда возможно. Они не должны видеть output друг друга. Не показывайте findings пользователю до synthesis.
 
@@ -39,7 +39,7 @@ Prefer `fork_context: false` с self-contained prompts, содержащими c
 
 Если browser automation доступна, каждая assessment создаёт свою new tab. Never reuse existing tab, даже если она уже на правильном URL.
 
-### Assessment A: Design Review
+### Оценка A: дизайн-ревью
 
 Прочитайте relevant source files и visually inspect live page, когда browser automation доступна. Думайте как design director.
 
@@ -52,7 +52,7 @@ Evaluate:
 
 Return: AI slop verdict, heuristic scores, cognitive load, emotional journey, 2–3 strengths, 3–5 priority issues, persona red flags, minor observations и provocative questions.
 
-### Assessment B: Detector + Browser Evidence
+### Оценка B: детектор + browser evidence
 
 Запустите bundled detector и browser visualization evidence. Assessment B обязательна и должна оставаться isolated от Assessment A, пока обе не complete.
 
@@ -83,7 +83,7 @@ Return: CLI findings JSON/counts, browser console findings если applicable, 
 
 Codex failure accounting: final Run Notes должны включать target slug, ignore list, assessment independence, CLI detector, browser visibility, overlay injection, live-server cleanup, temp-file cleanup и любой использованный fallback signal. Не запускайте repo status checks, late API spelunking или unrelated verification после того, как report assembled.
 
-### Generate Combined Critique Report
+### Сгенерируйте объединённый critique-отчёт
 
 Синтезируйте обе assessments в один report. НЕ просто concatenate. Weave findings вместе, отмечая где LLM review и detector согласны, где detector поймал issues, которые LLM пропустил, и где detector findings — false positives.
 
@@ -93,7 +93,7 @@ Codex final-answer note: `$impeccable critique` производит report arti
 
 Структурируйте feedback как design director:
 
-#### Design Health Score
+#### Оценка здоровья дизайна
 > *Consult [heuristics-scoring](heuristics-scoring.md)*
 
 Представьте scores по 10 heuristics Нильсена как таблицу:
@@ -114,7 +114,7 @@ Codex final-answer note: `$impeccable critique` производит report arti
 
 Будьте honest со scores. 4 значит genuinely excellent. Большинство real interfaces score 20–32.
 
-#### Anti-Patterns Verdict
+#### Вердикт по антипаттернам
 
 **Начните здесь.** Выглядит ли это AI-generated?
 
@@ -124,13 +124,13 @@ Codex final-answer note: `$impeccable critique` производит report arti
 
 **Visual overlays** (если injection succeeded): Скажите пользователю, что overlays теперь visible во вкладке **[Human]** в browser, highlighting detected issues. Суммируйте, что репортил console output. Если browser visualization attempted, но injection failed — скажите, что reliable user-visible overlay недоступен, и репортите fallback signal вместо этого.
 
-#### Overall Impression
+#### Общее впечатление
 Краткая gut reaction: что работает, что нет, и single biggest opportunity.
 
-#### What's Working
+#### Что работает
 Highlight 2–3 вещи, сделанные well. Будьте specific, почему они работают.
 
-#### Priority Issues
+#### Приоритетные проблемы
 3–5 самых impactful design problems, ordered by importance.
 
 Для каждого issue тегируйте **P0–P3 severity** (consult [heuristics-scoring](heuristics-scoring.md) для severity definitions):
@@ -139,7 +139,7 @@ Highlight 2–3 вещи, сделанные well. Будьте specific, поч
 - **Fix**: Что делать (be concrete)
 - **Suggested command**: Какая команда могла бы address это (из: $impeccable adapt, $impeccable animate, $impeccable audit, $impeccable bolder, $impeccable clarify, $impeccable colorize, $impeccable critique, $impeccable delight, $impeccable distill, $impeccable document, $impeccable harden, $impeccable layout, $impeccable onboard, $impeccable optimize, $impeccable overdrive, $impeccable polish, $impeccable quieter, $impeccable shape, $impeccable typeset)
 
-#### Persona Red Flags
+#### Красные флаги персон
 > *Consult [personas](personas.md)*
 
 Auto-select 2–3 personas, most relevant к этому interface type (используйте selection table в reference). Если `AGENTS.md` содержит секцию `## Design Context` из `impeccable teach`, также generate 1–2 project-specific personas из audience/brand info.
@@ -152,16 +152,16 @@ Auto-select 2–3 personas, most relevant к этому interface type (испо
 
 Будьте specific. Называйте exact elements и interactions, которые fail каждой persona. Не пишите generic persona descriptions; пишите, что broke для них.
 
-#### Minor Observations
+#### Мелкие наблюдения
 Quick notes по smaller issues, worth addressing.
 
-#### Questions to Consider
+#### Вопросы к размышлению
 Provocative questions, которые могут unlock better solutions:
 - «What if the primary action were more prominent?»
 - «Does this need to feel this complex?»
 - «What would a confident version of this look like?»
 
-#### Run Notes
+#### Заметки запуска
 Держите compact. Включите status для target slug, ignore list, assessment independence, CLI detector, browser visibility, overlay injection, live server cleanup и temp-file cleanup. Для failed или skipped steps давайте concrete observed reason и использованный fallback signal. В final chat response также включите snapshot write и trend read status после того, как persistence ran.
 
 Codex Run Notes — final-chat only. Не включайте эту секцию в persisted snapshot body, потому что persistence, trend read и temp cleanup происходят после snapshot write и иначе заархивировали бы stale status вроде «pending after persistence».
@@ -174,7 +174,7 @@ Codex Run Notes — final-chat only. Не включайте эту секцию
 - Prioritize ruthlessly. Если всё important — ничего не important.
 - Не soften criticism. Developers нуждаются в honest feedback, чтобы ship great design.
 
-### Persist the Snapshot
+### Сохраните снимок
 
 Когда report выше finalized, запишите его в `.impeccable/critique/`, чтобы пользователь мог refer back, и чтобы `$impeccable polish` мог pick up priority issues без copy-paste.
 
@@ -208,7 +208,7 @@ Codex Run Notes — final-chat only. Не включайте эту секцию
 
 Это fire-and-forget. Не показывайте пользователю helper's JSON output; только human-readable trend line и written path. Failures здесь не должны block остальной flow; print the error и move on.
 
-### Ask the User
+### Спросите пользователя
 
 **После presenting findings** используйте targeted questions based on том, что actually found. STOP и используйте структурированный инструмент вопросов Codex, когда доступен; если недоступен — спросите напрямую в чате, чтобы уточнить то, что нельзя вывести. Эти answers сформируют action plan.
 
@@ -230,11 +230,11 @@ Codex Run Notes — final-chat only. Не включайте эту секцию
 
 Codex final-question gate: User-visible response должен либо включать targeted questions, либо явно сказать `Questions skipped: <reason>`, потому что findings были straightforward. Каждый вопрос должен включать 2–3 concrete answer options, привязанных к actual critique findings. Не заканчивайте только open-ended questions.
 
-### Recommended Actions
+### Рекомендуемые действия
 
 **После получения answers пользователя** представьте prioritized action summary, отражающий priorities и scope пользователя из Ask the User.
 
-#### Action Summary
+#### Сводка действий
 
 Перечислите recommended commands в priority order, based on answers пользователя:
 

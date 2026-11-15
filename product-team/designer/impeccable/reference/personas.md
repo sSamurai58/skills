@@ -1,4 +1,4 @@
-# Persona-Based Design Testing
+# Тестирование дизайна по персонам
 
 Тестируйте интерфейс глазами 5 разных пользовательских архетипов. Каждая персона раскрывает разные failure modes, которые упускает единый взгляд «design director».
 
@@ -6,7 +6,7 @@
 
 ---
 
-## 1. Impatient Power User: "Alex"
+## 1. Нетерпеливый power user: «Alex»
 
 
 **Profile**: эксперт в похожих продуктах. Ждёт эффективности, ненавидит hand-holding. Найдёт shortcuts или уйдёт.
@@ -34,7 +34,7 @@
 
 ---
 
-## 2. Confused First-Timer: "Jordan"
+## 2. Растерянный новичок: «Jordan»
 
 **Profile**: никогда не пользовался продуктами такого типа. Нуждается в guidance на каждом шаге. Скорее уйдёт, чем разберётся.
 
@@ -61,7 +61,7 @@
 
 ---
 
-## 3. Accessibility-Dependent User: "Sam"
+## 3. Пользователь, зависящий от доступности: «Sam»
 
 **Profile**: использует screen reader (VoiceOver/NVDA), только keyboard navigation. Может иметь low vision, motor impairment или cognitive differences.
 
@@ -89,7 +89,7 @@
 
 ---
 
-## 4. Deliberate Stress Tester: "Riley"
+## 4. Намеренный stress-тестер: «Riley»
 
 **Profile**: методичный пользователь, который выводит интерфейсы за happy path. Проверяет edge cases, вводит неожиданные данные и ищет пробелы в опыте.
 
@@ -116,7 +116,7 @@
 
 ---
 
-## 5. Distracted Mobile User: "Casey"
+## 5. Отвлечённый mobile-пользователь: «Casey»
 
 **Profile**: пользуется телефоном одной рукой на ходу. Часто прерывается. Возможно, на медленном соединении.
 
@@ -158,7 +158,7 @@
 
 ---
 
-## Project-Specific Personas
+## Персоны конкретного проекта
 
 Если в `AGENTS.md` есть секция `## Design Context` (созданная `impeccable teach`), выведите 1–2 дополнительные персоны из данных об аудитории и бренде:
 

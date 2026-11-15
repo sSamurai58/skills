@@ -16,11 +16,11 @@
 - «Delete», не «Remove» (delete постоянно, remove подразумевает recoverable)
 - «Delete 5 items», не «Delete selected» (показывайте count)
 
-## Error Messages: The Formula
+## Сообщения об ошибках: формула
 
 Каждое сообщение об ошибке должно отвечать: (1) Что случилось? (2) Почему? (3) Как исправить? Пример: «Email address isn't valid. Please include an @ symbol.» — не «Invalid input».
 
-### Error Message Templates
+### Шаблоны сообщений об ошибках
 
 | Situation | Template |
 |-----------|----------|
@@ -30,15 +30,15 @@
 | **Network error** | "We couldn't reach [thing]. Check your connection and [action]." |
 | **Server error** | "Something went wrong on our end. We're looking into it. [Alternative action]" |
 
-### Don't Blame the User
+### Не вините пользователя
 
 Переформулируйте ошибки: «Please enter a date in MM/DD/YYYY format» — не «You entered an invalid date».
 
-## Empty States Are Opportunities
+## Пустые состояния — это возможности
 
 Empty states — моменты онбординга: (1) Кратко признайте, (2) Объясните ценность заполнения, (3) Дайте ясное действие. «No projects yet. Create your first one to get started.» — не просто «No items».
 
-## Voice vs Tone
+## Голос и тон (Voice vs Tone)
 
 **Voice** — personality бренда, согласованный повсюду.
 **Tone** адаптируется к моменту.
@@ -52,13 +52,13 @@ Empty states — моменты онбординга: (1) Кратко приз�
 
 **Никогда не используйте humor для ошибок.** Пользователи уже раздражены. Будьте helpful, не cute.
 
-## Writing for Accessibility
+## Пишите для доступности
 
 **Link text** должен иметь standalone meaning: «View pricing plans», не «Click here». **Alt text** описывает информацию, не изображение: «Revenue increased 40% in Q4», не «Chart». Используйте `alt=""` для decorative images. **Icon buttons** нуждаются в `aria-label` для контекста screen reader.
 
-## Writing for Translation
+## Пишите для перевода
 
-### Plan for Expansion
+### Планируйте расширение
 
 Немецкий текст ~на 30% длиннее английского. Закладывайте место:
 
@@ -69,11 +69,11 @@ Empty states — моменты онбординга: (1) Кратко приз�
 | Finnish | +30-40% |
 | Chinese | -30% (fewer chars, but same width) |
 
-### Translation-Friendly Patterns
+### Паттерны, дружественные к переводу
 
 Держите числа отдельно («New messages: 3», не «You have 3 new messages»). Используйте полные предложения как единые строки (порядок слов зависит от языка). Избегайте abbreviations («5 minutes ago», не «5 mins ago»). Давайте переводчикам контекст, где появляются строки.
 
-## Consistency: The Terminology Problem
+## Последовательность: проблема терминологии
 
 Выберите один термин и придерживайтесь его:
 
@@ -86,19 +86,19 @@ Empty states — моменты онбординга: (1) Кратко приз�
 
 Постройте terminology glossary и enforced его. Variety создаёт путаницу.
 
-## Avoid Redundant Copy
+## Избегайте избыточного копирайта
 
 Если заголовок уже объясняет — intro избыточен. Если кнопка ясна — не объясняйте снова. Скажите один раз, скажите хорошо.
 
-## Loading States
+## Состояния загрузки
 
 Будьте конкретны: «Saving your draft...», не «Loading...». Для долгих ожиданий задавайте ожидания («This usually takes 30 seconds») или показывайте progress.
 
-## Confirmation Dialogs: Use Sparingly
+## Диалоги подтверждения: используйте редко
 
 Большинство confirmation dialogs — провал дизайна; рассмотрите undo вместо них. Когда подтверждение необходимо: назовите действие, объясните последствия, используйте конкретные button labels («Delete project» / «Keep project», не «Yes» / «No»).
 
-## Form Instructions
+## Инструкции к формам
 
 Показывайте format через placeholders, не инструкции. Для неочевидных полей объясняйте, зачем спрашиваете.
 

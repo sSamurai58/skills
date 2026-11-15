@@ -1,4 +1,4 @@
-# Responsive Design
+# Адаптивный дизайн
 
 ## Mobile-First: пишите правильно
 

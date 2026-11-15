@@ -77,7 +77,7 @@ Product: «bolder» редко значит театральность; она �
 - **Borders & frames**: толстые borders, decorative frames, custom shapes (не rounded rectangles с цветным border на одной стороне)
 - **Custom elements**: illustrative elements, custom icons, decorative details, усиливающие бренд
 
-### Motion & Animation
+### Движение и анимация
 - **Хореография входа**: staggered, драматические page load animations с задержками 50–100ms
 - **Scroll effects**: parallax, reveal animations, scroll-triggered sequences
 - **Micro-interactions**: satisfying hover effects, click feedback, state changes

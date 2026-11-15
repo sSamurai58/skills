@@ -1,4 +1,4 @@
-# Interaction Design
+# Дизайн взаимодействия
 
 ## Восемь Interactive States
 
@@ -44,7 +44,7 @@ button:focus-visible {
 
 **Placeholders — не labels.** Они исчезают при input. Всегда используйте видимые элементы `<label>`. **Validate on blur**, не на каждом keystroke (exception: password strength). Размещайте errors **ниже** fields с `aria-describedby`, связывающим их.
 
-## Loading States
+## Состояния загрузки
 
 **Optimistic updates**: Показывайте success immediately, rollback при failure. Используйте для low-stakes actions (likes, follows), не для payments или destructive actions. **Skeleton screens > spinners**: они preview форму контента и ощущаются быстрее generic spinners.
 
@@ -70,7 +70,7 @@ const dialog = document.querySelector('dialog');
 dialog.showModal();  // Opens with focus trap, closes on Escape
 ```
 
-## The Popover API
+## Popover API
 
 Для tooltips, dropdowns и non-modal overlays используйте native popovers:
 
@@ -84,7 +84,7 @@ dialog.showModal();  // Opens with focus trap, closes on Escape
 
 **Benefits**: Light-dismiss (click outside closes), proper stacking, нет z-index wars, accessible by default.
 
-## Dropdown & Overlay Positioning
+## Позиционирование dropdown и overlay
 
 Dropdowns, отрендеренные с `position: absolute` внутри container с `overflow: hidden` или `overflow: auto`, будут clipped. Это самый частый dropdown bug в generated code.
 
@@ -113,7 +113,7 @@ Dropdowns, отрендеренные с `position: absolute` внутри conta
 
 Поскольку dropdown использует `position: fixed`, он escapes любой `overflow` clipping на ancestor elements. Блок `@position-try` обрабатывает viewport edges автоматически. **Browser support**: Chrome 125+, Edge 125+. Пока нет в Firefox или Safari — используйте fallback для этих browsers.
 
-### Popover + Anchor Combo
+### Комбо Popover + Anchor
 
 Комбинация Popover API с anchor positioning даёт stacking, light-dismiss, accessibility и correct positioning в одном паттерне:
 
@@ -127,7 +127,7 @@ Dropdowns, отрендеренные с `position: absolute` внутри conta
 
 Атрибут `popover` помещает элемент в **top layer**, который сидит выше всего другого контента независимо от z-index или overflow. Portal не нужен.
 
-### Portal / Teleport Pattern
+### Паттерн Portal / Teleport
 
 В component frameworks рендерите dropdown на document root и позиционируйте через JavaScript:
 
@@ -137,7 +137,7 @@ Dropdowns, отрендеренные с `position: absolute` внутри conta
 
 Считайте position из `getBoundingClientRect()` trigger, затем применяйте `position: fixed` с значениями `top` и `left`. Пересчитывайте на scroll и resize.
 
-### Fixed Positioning Fallback
+### Fallback на fixed positioning
 
 Для browsers без поддержки anchor positioning `position: fixed` с manual coordinates избегает overflow clipping:
 
@@ -150,17 +150,17 @@ Dropdowns, отрендеренные с `position: absolute` внутри conta
 
 Проверяйте viewport boundaries перед rendering. Если dropdown выйдет за bottom edge — flip его выше trigger. Если за right edge — выровняйте к правой стороне trigger.
 
-### Anti-Patterns
+### Антипаттерны
 
 - **`position: absolute` внутри `overflow: hidden`** — Dropdown будет clipped. Используйте `position: fixed` или top layer.
 - **Arbitrary z-index values** вроде `z-index: 9999` — Используйте semantic z-index scale: `dropdown (100) -> sticky (200) -> modal-backdrop (300) -> modal (400) -> toast (500) -> tooltip (600)`.
 - **Rendering dropdown markup inline** без escape hatch из stacking context родителя. Либо используйте `popover` (top layer), portal, либо `position: fixed`.
 
-## Destructive Actions: Undo > Confirm
+## Деструктивные действия: Undo > Confirm
 
 **Undo лучше confirmation dialogs.** Пользователи кликают через confirmations mindlessly. Убирайте из UI immediately, показывайте undo toast, действительно удаляйте после истечения toast. Используйте confirmation только для truly irreversible actions (account deletion), high-cost actions или batch operations.
 
-## Keyboard Navigation Patterns
+## Паттерны клавиатурной навигации
 
 ### Roving Tabindex
 
@@ -176,11 +176,11 @@ Dropdowns, отрендеренные с `position: absolute` внутри conta
 
 Arrow keys перемещают `tabindex="0"` между items. Tab уходит к следующему component целиком.
 
-### Skip Links
+### Ссылки пропуска (skip links)
 
 Предоставляйте skip links (`<a href="#main-content">Skip to main content</a>`) для keyboard users, чтобы прыгать мимо navigation. Прячьте off-screen, показывайте on focus.
 
-## Gesture Discoverability
+## Обнаруживаемость жестов
 
 Swipe-to-delete и похожие gestures невидимы. Намекайте на их существование:
 

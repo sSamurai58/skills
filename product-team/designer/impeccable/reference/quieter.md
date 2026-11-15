@@ -10,7 +10,7 @@ Product: «quieter» значит меньше визуального шума. 
 
 ---
 
-## Assess Current State
+## Оцените текущее состояние
 
 Проанализируйте, что делает дизайн слишком интенсивным:
 
@@ -32,7 +32,7 @@ Product: «quieter» значит меньше визуального шума. 
 
 **КРИТИЧНО**: «Quieter» не значит скучный или generic. Значит refined и легче для глаз. Думайте luxury, не laziness.
 
-## Plan Refinement
+## Спланируйте уточнение
 
 Создайте стратегию снижения интенсивности с сохранением impact:
 
@@ -43,11 +43,11 @@ Product: «quieter» значит меньше визуального шума. 
 
 **ВАЖНО**: тонкость требует точности. Quiet без намерения схлопывается в generic.
 
-## Refine the Design
+## Уточните дизайн
 
 Системно снижайте интенсивность по этим измерениям:
 
-### Color Refinement
+### Уточнение цвета
 - **Reduce saturation**: сдвиг от полной насыщенности к 70–85%
 - **Soften palette**: замените яркие цвета на muted tones
 - **Reduce color variety**: меньше цветов, осознаннее
@@ -56,26 +56,26 @@ Product: «quieter» значит меньше визуального шума. 
 - **Tinted grays**: тёплые или холодные tinted grays вместо pure gray. Добавляют глубину без громкости
 - **Never gray on color**: если серый текст на цветном фоне — используйте более тёмный оттенок этого цвета или transparency
 
-### Visual Weight Reduction
+### Снижение визуального веса
 - **Typography**: снижайте font weights (900 → 600, 700 → 500), уменьшайте размеры где уместно
 - **Hierarchy through subtlety**: вес, размер и пространство вместо цвета и boldness
 - **White space**: больше дыхания, меньше плотности
 - **Borders & lines**: тоньше, ниже opacity, или уберите совсем
 
-### Simplification
+### Упрощение
 - **Remove decorative elements**: градиенты, тени, паттерны, текстуры без цели
 - **Simplify shapes**: меньше крайностей border radius, проще кастомные формы
 - **Reduce layering**: уплощайте visual hierarchy где возможно
 - **Clean up effects**: снижайте или убирайте blur, glows, multiple shadows
 
-### Motion Reduction
+### Снижение движения
 - **Reduce animation intensity**: короче дистанции (10–20px вместо 40px), мягче easing
 - **Remove decorative animations**: оставляйте functional motion, убирайте flourishes
 - **Subtle micro-interactions**: драматичные эффекты → мягкий feedback
 - **Refined easing**: ease-out-quart для плавного, сдержанного motion. Никогда bounce или elastic
 - **Remove animations entirely**, если они не служат ясной цели
 
-### Composition Refinement
+### Уточнение композиции
 - **Reduce scale jumps**: меньший контраст размеров — спокойнее ощущение
 - **Align to grid**: верните rogue-элементы в системное выравнивание
 - **Even out spacing**: крайние вариации spacing → согласованный ритм
@@ -87,7 +87,7 @@ Product: «quieter» значит меньше визуального шума. 
 - Не жертвуйте usability ради эстетики (функциональным элементам нужны ясные affordances)
 - Не делайте всё мелким и лёгким (нужны якоря)
 
-## Verify Quality
+## Проверьте качество
 
 Убедитесь, что refinement сохраняет качество:
 

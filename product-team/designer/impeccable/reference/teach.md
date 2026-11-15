@@ -1,4 +1,4 @@
-# Teach Flow
+# Поток teach
 
 Собирает design context проекта и пишет два взаимодополняющих файла в корне проекта:
 
@@ -7,7 +7,7 @@
 
 Каждая другая команда impeccable читает эти файлы перед любой работой.
 
-## Step 1: Load current state
+## Шаг 1: загрузите текущее состояние
 
 Сначала запустите shared loader, чтобы знать, что уже есть:
 
@@ -28,7 +28,7 @@ Decision tree:
 
 Если teach вызван как setup blocker другой командой, например `$impeccable craft landing page`, поставьте ту команду на паузу здесь. Завершите teach, перезапустите loader, затем возобновите исходную команду со свежезагруженным контекстом. Для craft возобновляйте дальше в shape; teach создаёт project context, но не заменяет task-specific shape interview и подтверждённый design brief.
 
-## Step 2: Explore the codebase
+## Шаг 2: исследуйте кодовую базу
 
 Перед вопросами тщательно просканируйте проект, чтобы обнаружить, что можете:
 
@@ -63,7 +63,7 @@ Register на этом этапе — гипотеза, не решение; Ste
 - Round 1 должен установить register, users/purpose и desired outcome.
 - Round 2 должен установить brand personality или references, anti-references и accessibility needs.
 
-### Minimum viable interview
+### Минимально жизнеспособное интервью
 
 Спросите достаточно, чтобы завершить PRODUCT.md. Как минимум: подтверждение register, users и purpose, brand personality, anti-references и accessibility needs — если каждый ответ не discoverable напрямую из контекста репозитория. После как минимум одного раунда интервью можете предложить выведенные ответы, но пользователь должен подтвердить их до записи PRODUCT.md. Никогда не синтезируйте PRODUCT.md только из исходного task prompt.
 
@@ -75,26 +75,26 @@ Register на этом этапе — гипотеза, не решение; Ste
 
 Если сигнал genuinely split (например product с большим marketing landing), ОСТАНОВИТЕСЬ и используйте structured user-input/question tool Codex, когда доступен; если недоступен — спросите прямо в чате, чтобы прояснить то, что нельзя вывести. Спросите, какой register описывает **primary** поверхность. Register можно переопределить per task позже, но PRODUCT.md несёт один default.
 
-### Users & Purpose
+### Пользователи и цель
 - Кто это использует? В каком контексте?
 - Какую работу они пытаются сделать?
 - Для brand: какие эмоции должен вызывать интерфейс? (confidence, delight, calm, urgency)
 - Для product: в каком workflow они? Какова primary task на данном экране?
 
-### Brand & Personality
+### Бренд и характер
 - Как бы вы описали brand personality в 3 словах?
 - Reference sites или apps, которые передают нужное ощущение? Что конкретно в них?
   - Для brand тяните к real-world references в нужной lane (tech-minimal, editorial-magazine, consumer-warm, brutalist-grid и т.д.), не к generic «modern» прилагательным.
   - Для product тяните к category best-tool references (Linear, Figma, Notion, Raycast, Stripe).
 - Чем это явно НЕ должно выглядеть? Есть anti-references?
 
-### Accessibility & Inclusion
+### Доступность и инклюзия
 - Конкретные требования accessibility? (WCAG level, известные user needs)
 - Соображения по reduced motion, color blindness или другим accommodations?
 
 Пропускайте вопросы, где ответ уже ясен. **НЕ спрашивайте здесь про colors, fonts, radii или visual styling.** Это принадлежит DESIGN.md, не PRODUCT.md.
 
-## Step 4: Write PRODUCT.md
+## Шаг 4: напишите PRODUCT.md
 
 Пишите PRODUCT.md только после того, как пользователь подтвердил стратегические ответы из Step 3. Если выведенный ответ неуверен или неподтверждён — спросите до записи.
 
@@ -130,7 +130,7 @@ Register — либо `brand`, либо `product` как голое значен
 
 Пишите в `PROJECT_ROOT/PRODUCT.md`. Если существовал `.impeccable.md`, loader уже переименовал его; мержите в этот контент, а не начинайте с нуля.
 
-## Step 5: Decide on DESIGN.md
+## Шаг 5: решите по DESIGN.md
 
 Предложите `$impeccable document` в любом случае. Два пути:
 
@@ -141,7 +141,7 @@ Register — либо `brand`, либо `product` как голое значен
 
 Если предпочитает пропустить, упомяните, что можно запустить `$impeccable document` позже в любое время.
 
-## Step 6: Confirm and wrap up
+## Шаг 6: подтвердите и завершите
 
 Резюмируйте:
 - Зафиксированный register (brand / product)

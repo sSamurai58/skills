@@ -85,17 +85,17 @@ Product: 150–250 ms на большинстве transitions. Motion перед
 - **Copy/paste**: Brief highlight flash on paste, «copied» confirmation
 - **Focus flow**: Highlight path через form или workflow
 
-### Delight Moments
+### Моменты delight
 - **Empty states**: Subtle floating animations на illustrations
 - **Completed actions**: Confetti, check mark flourish, success celebrations
 - **Easter eggs**: Hidden interactions для discovery
 - **Contextual animation**: Weather effects, time-of-day themes, seasonal touches
 
-## Technical Implementation
+## Техническая реализация
 
 Используйте appropriate techniques для каждой анимации:
 
-### Timing & Easing
+### Тайминг и easing
 
 **Durations by purpose:**
 - **100–150ms**: Instant feedback (button press, toggle)
@@ -117,7 +117,7 @@ Product: 150–250 ms на большинстве transitions. Motion перед
 
 **Exit animations быстрее entrances.** Используйте ~75% enter duration.
 
-### CSS Animations
+### CSS-анимации
 ```css
 /* Prefer for simple, declarative animations */
 - transitions for state changes
@@ -126,7 +126,7 @@ Product: 150–250 ms на большинстве transitions. Motion перед
 - blur, filters, masks, clip paths, shadows, and color shifts for premium atmospheric effects when verified smooth
 ```
 
-### JavaScript Animation
+### JavaScript-анимация
 ```javascript
 /* Use for complex, interactive animations */
 - Web Animations API for programmatic control
@@ -134,14 +134,14 @@ Product: 150–250 ms на большинстве transitions. Motion перед
 - GSAP for complex sequences
 ```
 
-### Performance
+### Производительность
 - **Motion materials**: Используйте transform/opacity для reliable movement, но используйте blur, filters, masks, shadows и color shifts, когда они materially улучшают эффект
 - **Layout safety**: Избегайте casual animation layout-driving properties (`width`, `height`, `top`, `left`, margins)
 - **will-change**: Добавляйте sparingly для known expensive animations
 - **Bound expensive effects**: Держите blur/filter/shadow areas small или isolated, используйте `contain` где appropriate
 - **Monitor FPS**: Обеспечьте 60fps на target devices
 
-### Accessibility
+### Доступность
 ```css
 @media (prefers-reduced-motion: reduce) {
   * {
