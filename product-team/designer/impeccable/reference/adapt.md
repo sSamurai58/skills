@@ -1,190 +1,190 @@
-> **Additional context needed**: target platforms/devices and usage contexts.
+> **Нужен дополнительный контекст**: целевые platforms/devices и usage contexts.
 
-Adapt an existing design to a different context: another screen size, device, platform, or use case. The trap is treating adaptation as scaling. The job is rethinking the experience for the new context.
+Адаптируйте существующий дизайн к другому контексту: другому screen size, device, platform или use case. Ловушка — считать adaptation масштабированием. Задача — переосмыслить опыт под новый контекст.
 
 
 ---
 
-## Assess Adaptation Challenge
+## Оцените challenge адаптации
 
-Understand what needs adaptation and why:
+Поймите, что нужно адаптировать и почему:
 
-1. **Identify the source context**:
-   - What was it designed for originally? (Desktop web? Mobile app?)
-   - What assumptions were made? (Large screen? Mouse input? Fast connection?)
-   - What works well in current context?
+1. **Определите source context**:
+   - Для чего это было designed originally? (Desktop web? Mobile app?)
+   - Какие assumptions были сделаны? (Large screen? Mouse input? Fast connection?)
+   - Что хорошо работает в текущем контексте?
 
-2. **Understand target context**:
+2. **Поймите target context**:
    - **Device**: Mobile, tablet, desktop, TV, watch, print?
    - **Input method**: Touch, mouse, keyboard, voice, gamepad?
    - **Screen constraints**: Size, resolution, orientation?
    - **Connection**: Fast wifi, slow 3G, offline?
    - **Usage context**: On-the-go vs desk, quick glance vs focused reading?
-   - **User expectations**: What do users expect on this platform?
+   - **User expectations**: Чего пользователи ожидают на этой platform?
 
-3. **Identify adaptation challenges**:
-   - What won't fit? (Content, navigation, features)
-   - What won't work? (Hover states on touch, tiny touch targets)
-   - What's inappropriate? (Desktop patterns on mobile, mobile patterns on desktop)
+3. **Определите challenges адаптации**:
+   - Что не влезет? (Content, navigation, features)
+   - Что не сработает? (Hover states на touch, tiny touch targets)
+   - Что inappropriate? (Desktop patterns на mobile, mobile patterns на desktop)
 
-**CRITICAL**: Adaptation is rethinking the experience for the new context, not scaling pixels.
+**КРИТИЧНО**: Adaptation — это переосмысление опыта для нового контекста, а не масштабирование пикселей.
 
-## Plan Adaptation Strategy
+## Спланируйте стратегию адаптации
 
-Create context-appropriate strategy:
+Создайте context-appropriate стратегию:
 
 ### Mobile Adaptation (Desktop → Mobile)
 
 **Layout Strategy**:
-- Single column instead of multi-column
-- Vertical stacking instead of side-by-side
-- Full-width components instead of fixed widths
-- Bottom navigation instead of top/side navigation
+- Single column вместо multi-column
+- Vertical stacking вместо side-by-side
+- Full-width components вместо fixed widths
+- Bottom navigation вместо top/side navigation
 
 **Interaction Strategy**:
-- Touch targets 44x44px minimum (not hover-dependent)
-- Swipe gestures where appropriate (lists, carousels)
-- Bottom sheets instead of dropdowns
-- Thumbs-first design (controls within thumb reach)
-- Larger tap areas with more spacing
+- Touch targets минимум 44x44px (не hover-dependent)
+- Swipe gestures где appropriate (lists, carousels)
+- Bottom sheets вместо dropdowns
+- Thumbs-first design (controls в зоне большого пальца)
+- Larger tap areas с большим spacing
 
 **Content Strategy**:
-- Progressive disclosure (don't show everything at once)
-- Prioritize primary content (secondary content in tabs/accordions)
-- Shorter text (more concise)
-- Larger text (16px minimum)
+- Progressive disclosure (не показывайте всё сразу)
+- Приоритизируйте primary content (secondary content в tabs/accordions)
+- Shorter text (более concise)
+- Larger text (минимум 16px)
 
 **Navigation Strategy**:
-- Hamburger menu or bottom navigation
-- Reduce navigation complexity
-- Sticky headers for context
-- Back button in navigation flow
+- Hamburger menu или bottom navigation
+- Снизьте navigation complexity
+- Sticky headers для context
+- Back button в navigation flow
 
 ### Tablet Adaptation (Hybrid Approach)
 
 **Layout Strategy**:
-- Two-column layouts (not single or three-column)
-- Side panels for secondary content
+- Two-column layouts (не single и не three-column)
+- Side panels для secondary content
 - Master-detail views (list + detail)
 - Adaptive based on orientation (portrait vs landscape)
 
 **Interaction Strategy**:
-- Support both touch and pointer
-- Touch targets 44x44px but allow denser layouts than phone
+- Поддерживайте и touch, и pointer
+- Touch targets 44x44px, но denser layouts, чем phone
 - Side navigation drawers
-- Multi-column forms where appropriate
+- Multi-column forms где appropriate
 
 ### Desktop Adaptation (Mobile → Desktop)
 
 **Layout Strategy**:
-- Multi-column layouts (use horizontal space)
+- Multi-column layouts (используйте horizontal space)
 - Side navigation always visible
 - Multiple information panels simultaneously
-- Fixed widths with max-width constraints (don't stretch to 4K)
+- Fixed widths с max-width constraints (не растягивайте до 4K)
 
 **Interaction Strategy**:
-- Hover states for additional information
+- Hover states для дополнительной информации
 - Keyboard shortcuts
 - Right-click context menus
-- Drag and drop where helpful
-- Multi-select with Shift/Cmd
+- Drag and drop где helpful
+- Multi-select с Shift/Cmd
 
 **Content Strategy**:
-- Show more information upfront (less progressive disclosure)
-- Data tables with many columns
+- Показывайте больше информации upfront (меньше progressive disclosure)
+- Data tables с many columns
 - Richer visualizations
 - More detailed descriptions
 
 ### Print Adaptation (Screen → Print)
 
 **Layout Strategy**:
-- Page breaks at logical points
-- Remove navigation, footer, interactive elements
-- Black and white (or limited color)
-- Proper margins for binding
+- Page breaks в logical points
+- Уберите navigation, footer, interactive elements
+- Black and white (или limited color)
+- Proper margins для binding
 
 **Content Strategy**:
-- Expand shortened content (show full URLs, hidden sections)
-- Add page numbers, headers, footers
-- Include metadata (print date, page title)
-- Convert charts to print-friendly versions
+- Expand shortened content (показывайте full URLs, hidden sections)
+- Добавьте page numbers, headers, footers
+- Включите metadata (print date, page title)
+- Конвертируйте charts в print-friendly versions
 
 ### Email Adaptation (Web → Email)
 
 **Layout Strategy**:
-- Narrow width (600px max)
-- Single column only
-- Inline CSS (no external stylesheets)
-- Table-based layouts (for email client compatibility)
+- Narrow width (макс. 600px)
+- Только single column
+- Inline CSS (без external stylesheets)
+- Table-based layouts (для совместимости email clients)
 
 **Interaction Strategy**:
-- Large, obvious CTAs (buttons not text links)
-- No hover states (not reliable)
-- Deep links to web app for complex interactions
+- Large, obvious CTAs (buttons не text links)
+- Нет hover states (не reliable)
+- Deep links в web app для сложных interactions
 
-## Implement Adaptations
+## Реализуйте Adaptations
 
-Apply changes systematically:
+Применяйте изменения системно:
 
 ### Responsive Breakpoints
 
-Choose appropriate breakpoints:
-- Mobile: 320px-767px
-- Tablet: 768px-1023px
+Выберите appropriate breakpoints:
+- Mobile: 320px–767px
+- Tablet: 768px–1023px
 - Desktop: 1024px+
-- Or content-driven breakpoints (where design breaks)
+- Или content-driven breakpoints (где design breaks)
 
 ### Layout Adaptation Techniques
 
-- **CSS Grid/Flexbox**: Reflow layouts automatically
-- **Container Queries**: Adapt based on container, not viewport
-- **`clamp()`**: Fluid sizing between min and max
-- **Media queries**: Different styles for different contexts
+- **CSS Grid/Flexbox**: Reflow layouts автоматически
+- **Container Queries**: Адаптируйте based on container, не viewport
+- **`clamp()`**: Fluid sizing между min и max
+- **Media queries**: Разные styles для разных contexts
 - **Display properties**: Show/hide elements per context
 
 ### Touch Adaptation
 
-- Increase touch target sizes (44x44px minimum)
-- Add more spacing between interactive elements
-- Remove hover-dependent interactions
-- Add touch feedback (ripples, highlights)
-- Consider thumb zones (easier to reach bottom than top)
+- Увеличьте touch target sizes (минимум 44x44px)
+- Добавьте больше spacing между interactive elements
+- Уберите hover-dependent interactions
+- Добавьте touch feedback (ripples, highlights)
+- Учитывайте thumb zones (легче дотянуться до bottom, чем top)
 
 ### Content Adaptation
 
-- Use `display: none` sparingly (still downloads)
-- Progressive enhancement (core content first, enhancements on larger screens)
-- Lazy loading for off-screen content
+- Используйте `display: none` sparingly (всё равно downloads)
+- Progressive enhancement (core content first, enhancements на larger screens)
+- Lazy loading для off-screen content
 - Responsive images (`srcset`, `picture` element)
 
 ### Navigation Adaptation
 
-- Transform complex nav to hamburger/drawer on mobile
-- Bottom nav bar for mobile apps
-- Persistent side navigation on desktop
-- Breadcrumbs on smaller screens for context
+- Transform complex nav в hamburger/drawer на mobile
+- Bottom nav bar для mobile apps
+- Persistent side navigation на desktop
+- Breadcrumbs на smaller screens для context
 
-**IMPORTANT**: Test on real devices. Device emulation in DevTools is helpful but not perfect.
+**ВАЖНО**: Тестируйте на real devices. Device emulation в DevTools helpful, но не perfect.
 
-**NEVER**:
-- Hide core functionality on mobile (if it matters, make it work)
-- Assume desktop = powerful device (consider accessibility, older machines)
-- Use different information architecture across contexts (confusing)
-- Break user expectations for platform (mobile users expect mobile patterns)
-- Forget landscape orientation on mobile/tablet
-- Use generic breakpoints blindly (use content-driven breakpoints)
-- Ignore touch on desktop (many desktop devices have touch)
+**НИКОГДА**:
+- Не скрывайте core functionality на mobile (если важно — сделайте так, чтобы работало)
+- Не предполагайте desktop = powerful device (учитывайте accessibility, older machines)
+- Не используйте разную information architecture across contexts (confusing)
+- Не ломайте user expectations для platform (mobile users ожидают mobile patterns)
+- Не забывайте landscape orientation на mobile/tablet
+- Не используйте generic breakpoints вслепую (используйте content-driven breakpoints)
+- Не игнорируйте touch на desktop (многие desktop devices имеют touch)
 
-## Verify Adaptations
+## Проверьте Adaptations
 
-Test thoroughly across contexts:
+Тестируйте thoroughly across contexts:
 
-- **Real devices**: Test on actual phones, tablets, desktops
-- **Different orientations**: Portrait and landscape
+- **Real devices**: Тестируйте на реальных phones, tablets, desktops
+- **Different orientations**: Portrait и landscape
 - **Different browsers**: Safari, Chrome, Firefox, Edge
 - **Different OS**: iOS, Android, Windows, macOS
 - **Different input methods**: Touch, mouse, keyboard
-- **Edge cases**: Very small screens (320px), very large screens (4K)
-- **Slow connections**: Test on throttled network
+- **Edge cases**: Очень маленькие screens (320px), очень большие screens (4K)
+- **Slow connections**: Тестируйте на throttled network
 
-When the adaptation feels native to each context, hand off to `$impeccable polish` for the final pass.
+Когда адаптация ощущается native для каждого контекста, передайте `$impeccable polish` для финального прохода.

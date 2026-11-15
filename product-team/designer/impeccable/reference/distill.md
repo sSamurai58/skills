@@ -1,111 +1,111 @@
-Strip a design to its essence. Remove anything that doesn't earn its place: redundant elements, repeated information, decorative noise, cosmetic complexity.
+Сведите дизайн к сущности. Уберите всё, что не заслуживает места: избыточные элементы, повторённую информацию, декоративный шум, косметическую сложность.
 
 
 ---
 
-## Assess Current State
+## Оцените текущее состояние
 
-Analyze what makes the design feel complex or cluttered:
+Проанализируйте, из-за чего дизайн ощущается сложным или захламлённым:
 
-1. **Identify complexity sources**:
-   - **Too many elements**: Competing buttons, redundant information, visual clutter
-   - **Excessive variation**: Too many colors, fonts, sizes, styles without purpose
-   - **Information overload**: Everything visible at once, no progressive disclosure
-   - **Visual noise**: Unnecessary borders, shadows, backgrounds, decorations
-   - **Confusing hierarchy**: Unclear what matters most
-   - **Feature creep**: Too many options, actions, or paths forward
+1. **Определите источники сложности**:
+   - **Слишком много элементов**: конкурирующие кнопки, избыточная информация, визуальный clutter
+   - **Избыточная вариативность**: слишком много цветов, шрифтов, размеров, стилей без цели
+   - **Information overload**: всё видно сразу, нет progressive disclosure
+   - **Визуальный шум**: ненужные borders, shadows, backgrounds, decorations
+   - **Путаная иерархия**: неясно, что важнее всего
+   - **Feature creep**: слишком много options, действий или путей вперёд
 
-2. **Find the essence**:
-   - What's the primary user goal? (There should be ONE)
-   - What's actually necessary vs nice-to-have?
-   - What can be removed, hidden, or combined?
-   - What's the 20% that delivers 80% of value?
+2. **Найдите сущность**:
+   - Какова основная цель пользователя? (Должна быть ОДНА)
+   - Что действительно необходимо vs nice-to-have?
+   - Что можно убрать, спрятать или объединить?
+   - Что является теми 20%, которые дают 80% ценности?
 
-If any of these are unclear from the codebase, STOP and use Codex's structured user-input/question tool when available; if unavailable, ask directly in chat to clarify what you cannot infer.
+Если что-то из этого неясно из codebase, ОСТАНОВИТЕСЬ и используйте структурированный инструмент вопросов Codex, когда он доступен; если недоступен, спросите напрямую в чате, чтобы уточнить то, что нельзя вывести.
 
-**CRITICAL**: Simplicity is not about removing features. It's about removing obstacles between users and their goals. Every element should justify its existence.
+**КРИТИЧНО**: Простота — не про удаление фич. Это про удаление препятствий между пользователями и их целями. Каждый элемент должен оправдывать своё существование.
 
-## Plan Simplification
+## Спланируйте упрощение
 
-Create a ruthless editing strategy:
+Создайте беспощадную стратегию редактирования:
 
-- **Core purpose**: What's the ONE thing this should accomplish?
-- **Essential elements**: What's truly necessary to achieve that purpose?
-- **Progressive disclosure**: What can be hidden until needed?
-- **Consolidation opportunities**: What can be combined or integrated?
+- **Core purpose**: Что ОДНО это должно достичь?
+- **Essential elements**: Что действительно необходимо для этой цели?
+- **Progressive disclosure**: Что можно спрятать до момента нужды?
+- **Consolidation opportunities**: Что можно объединить или интегрировать?
 
-**IMPORTANT**: Simplification is hard. It requires saying no to good ideas to make room for great execution. Be ruthless.
+**ВАЖНО**: Упрощение трудно. Оно требует говорить «нет» хорошим идеям, чтобы освободить место для отличного исполнения. Будьте беспощадны.
 
-## Simplify the Design
+## Упростите дизайн
 
-Systematically remove complexity across these dimensions:
+Системно убирайте сложность по этим измерениям:
 
 ### Information Architecture
-- **Reduce scope**: Remove secondary actions, optional features, redundant information
-- **Progressive disclosure**: Hide complexity behind clear entry points (accordions, modals, step-through flows)
-- **Combine related actions**: Merge similar buttons, consolidate forms, group related content
-- **Clear hierarchy**: ONE primary action, few secondary actions, everything else tertiary or hidden
-- **Remove redundancy**: If it's said elsewhere, don't repeat it here
+- **Сузьте scope**: уберите secondary actions, optional features, избыточную информацию
+- **Progressive disclosure**: прячьте сложность за ясными точками входа (accordions, modals, step-through flows)
+- **Объединяйте связанные действия**: мержите похожие кнопки, консолидируйте формы, группируйте связанный контент
+- **Ясная иерархия**: ОДНО primary action, мало secondary actions, всё остальное tertiary или скрыто
+- **Уберите redundancy**: если это сказано elsewhere, не повторяйте здесь
 
-### Visual Simplification
-- **Reduce color palette**: Use 1-2 colors plus neutrals, not 5-7 colors
-- **Limit typography**: One font family, 3-4 sizes maximum, 2-3 weights
-- **Remove decorations**: Eliminate borders, shadows, backgrounds that don't serve hierarchy or function
-- **Flatten structure**: Reduce nesting, remove unnecessary containers; never nest cards inside cards
-- **Remove unnecessary cards**: Cards aren't needed for basic layout; use spacing and alignment instead
-- **Consistent spacing**: Use one spacing scale, remove arbitrary gaps
+### Визуальное упрощение
+- **Сократите цветовую палитру**: 1–2 цвета плюс нейтралы, не 5–7 цветов
+- **Ограничьте типографику**: одно font family, максимум 3–4 размера, 2–3 weights
+- **Уберите decorations**: borders, shadows, backgrounds, которые не служат иерархии или функции
+- **Уплощите структуру**: уменьшите nesting, уберите ненужные containers; никогда не вкладывайте cards внутрь cards
+- **Уберите ненужные cards**: cards не нужны для базового layout; используйте spacing и alignment
+- **Consistent spacing**: одна spacing scale, уберите произвольные gaps
 
-### Layout Simplification
-- **Linear flow**: Replace complex grids with simple vertical flow where possible
-- **Remove sidebars**: Move secondary content inline or hide it
-- **Full-width**: Use available space generously instead of complex multi-column layouts
-- **Consistent alignment**: Pick left or center, stick with it
-- **Generous white space**: Let content breathe, don't pack everything tight
+### Упрощение layout
+- **Линейный поток**: где возможно, замените сложные grids простым вертикальным потоком
+- **Уберите sidebars**: перенесите secondary-контент inline или спрячьте
+- **Full-width**: используйте доступное пространство щедро вместо сложных multi-column layouts
+- **Consistent alignment**: выберите left или center и держитесь
+- **Щедрый white space**: дайте контенту дышать, не упаковывайте всё плотно
 
-### Interaction Simplification
-- **Reduce choices**: Fewer buttons, fewer options, clearer path forward (paradox of choice is real)
-- **Smart defaults**: Make common choices automatic, only ask when necessary
-- **Inline actions**: Replace modal flows with inline editing where possible
-- **Remove steps**: Can signup be one step instead of three? Can checkout be simplified?
-- **Clear CTAs**: ONE obvious next step, not five competing actions
+### Упрощение взаимодействия
+- **Меньше выборов**: меньше кнопок, меньше options, яснее путь вперёд (paradox of choice реален)
+- **Smart defaults**: делайте распространённые выборы автоматическими, спрашивайте только когда нужно
+- **Inline actions**: где возможно, заменяйте modal flows на inline editing
+- **Уберите шаги**: может signup быть одним шагом вместо трёх? Можно ли упростить checkout?
+- **Ясные CTA**: ОДИН очевидный следующий шаг, не пять конкурирующих действий
 
-### Content Simplification
-- **Shorter copy**: Cut every sentence in half, then do it again
-- **Active voice**: "Save changes" not "Changes will be saved"
-- **Remove jargon**: Plain language always wins
-- **Scannable structure**: Short paragraphs, bullet points, clear headings
-- **Essential information only**: Remove marketing fluff, legalese, hedging
-- **Remove redundant copy**: No headers restating intros, no repeated explanations, say it once
+### Упрощение контента
+- **Короче копирайт**: урежьте каждое предложение вдвое, затем ещё раз
+- **Active voice**: «Save changes», а не «Changes will be saved»
+- **Уберите jargon**: простой язык всегда побеждает
+- **Сканируемая структура**: короткие абзацы, bullet points, ясные headings
+- **Только essential information**: уберите marketing fluff, legalese, hedging
+- **Уберите redundant copy**: никаких headers, пересказывающих intros, никаких повторённых объяснений — скажите один раз
 
-### Code Simplification
-- **Remove unused code**: Dead CSS, unused components, orphaned files
-- **Flatten component trees**: Reduce nesting depth
-- **Consolidate styles**: Merge similar styles, use utilities consistently
-- **Reduce variants**: Does that component need 12 variations, or can 3 cover 90% of cases?
+### Упрощение кода
+- **Уберите unused code**: мёртвый CSS, неиспользуемые компоненты, orphaned files
+- **Уплощите component trees**: уменьшите глубину nesting
+- **Консолидируйте styles**: мержите похожие стили, используйте utilities согласованно
+- **Сократите variants**: нужны ли компоненту 12 вариаций, или 3 покроют 90% случаев?
 
-**NEVER**:
-- Remove necessary functionality (simplicity ≠ feature-less)
-- Sacrifice accessibility for simplicity (clear labels and ARIA still required)
-- Make things so simple they're unclear (mystery ≠ minimalism)
-- Remove information users need to make decisions
-- Eliminate hierarchy completely (some things should stand out)
-- Oversimplify complex domains (match complexity to actual task complexity)
+**НИКОГДА**:
+- Не убирайте необходимую функциональность (простота ≠ без фич)
+- Не жертвуйте accessibility ради простоты (ясные labels и ARIA всё ещё обязательны)
+- Не делайте вещи настолько простыми, что они неясны (mystery ≠ minimalism)
+- Не убирайте информацию, нужную пользователям для решений
+- Не устраняйте иерархию полностью (что-то должно выделяться)
+- Не сверх-упрощайте сложные domains (сложность должна соответствовать реальной сложности задачи)
 
-## Verify Simplification
+## Проверьте упрощение
 
-Ensure simplification improves usability:
+Убедитесь, что упрощение улучшает usability:
 
-- **Faster task completion**: Can users accomplish goals more quickly?
-- **Reduced cognitive load**: Is it easier to understand what to do?
-- **Still complete**: Are all necessary features still accessible?
-- **Clearer hierarchy**: Is it obvious what matters most?
-- **Better performance**: Does simpler design load faster?
+- **Быстрее выполнение задач**: пользователи достигают целей быстрее?
+- **Сниженная когнитивная нагрузка**: легче понять, что делать?
+- **Всё ещё полнота**: все необходимые фичи доступны?
+- **Яснее иерархия**: очевидно, что важнее всего?
+- **Лучше performance**: более простой дизайн грузится быстрее?
 
-## Document Removed Complexity
+## Задокументируйте убранную сложность
 
-If you removed features or options:
-- Document why they were removed
-- Consider if they need alternative access points
-- Note any user feedback to monitor
+Если вы убрали фичи или options:
+- Задокументируйте, почему они убраны
+- Подумайте, нужны ли альтернативные точки доступа
+- Отметьте любой user feedback для мониторинга
 
-When the cuts feel right, hand off to `$impeccable polish` for the final pass. As Antoine de Saint-Exupéry put it: "Perfection is achieved not when there is nothing more to add, but when there is nothing left to take away."
+Когда срезы ощущаются правильными, передайте `$impeccable polish` для финального прохода. Как писал Антуан де Сент-Экзюпери: «Совершенство достигнуто не тогда, когда нечего добавить, а когда нечего убрать.»

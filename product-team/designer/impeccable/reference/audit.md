@@ -1,62 +1,62 @@
-Run systematic **technical** quality checks and generate a comprehensive report. Don't fix issues; document them for other commands to address.
+Запустите системные **технические** проверки качества и сгенерируйте comprehensive report. Не исправляйте issues; документируйте их для других команд.
 
-This is a code-level audit, not a design critique. Check what's measurable and verifiable in the implementation.
+Это code-level audit, а не design critique. Проверяйте то, что измеримо и верифицируемо в реализации.
 
-## Diagnostic Scan
+## Диагностическое сканирование
 
-Run comprehensive checks across 5 dimensions. Score each dimension 0-4 using the criteria below.
+Запустите comprehensive checks по 5 измерениям. Оцените каждое измерение 0–4 по критериям ниже.
 
 ### 1. Accessibility (A11y)
 
-**Check for**:
-- **Contrast issues**: Text contrast ratios < 4.5:1 (or 7:1 for AAA)
-- **Missing ARIA**: Interactive elements without proper roles, labels, or states
+**Проверяйте**:
+- **Проблемы контраста**: Text contrast ratios < 4.5:1 (или 7:1 для AAA)
+- **Missing ARIA**: Interactive elements без proper roles, labels или states
 - **Keyboard navigation**: Missing focus indicators, illogical tab order, keyboard traps
-- **Semantic HTML**: Improper heading hierarchy, missing landmarks, divs instead of buttons
-- **Alt text**: Missing or poor image descriptions
-- **Form issues**: Inputs without labels, poor error messaging, missing required indicators
+- **Semantic HTML**: Improper heading hierarchy, missing landmarks, divs вместо buttons
+- **Alt text**: Missing или poor image descriptions
+- **Проблемы форм**: Inputs без labels, poor error messaging, missing required indicators
 
-**Score 0-4**: 0=Inaccessible (fails WCAG A), 1=Major gaps (few ARIA labels, no keyboard nav), 2=Partial (some a11y effort, significant gaps), 3=Good (WCAG AA mostly met, minor gaps), 4=Excellent (WCAG AA fully met, approaches AAA)
+**Оценка 0–4**: 0=Inaccessible (fails WCAG A), 1=Major gaps (мало ARIA labels, нет keyboard nav), 2=Partial (есть a11y effort, значительные gaps), 3=Good (WCAG AA mostly met, minor gaps), 4=Excellent (WCAG AA fully met, approaches AAA)
 
 ### 2. Performance
 
-**Check for**:
-- **Layout thrashing**: Reading/writing layout properties in loops
-- **Expensive animations**: Casual layout-property animation, unbounded blur/filter/shadow effects, or effects that visibly drop frames
-- **Missing optimization**: Images without lazy loading, unoptimized assets, missing will-change
+**Проверяйте**:
+- **Layout thrashing**: Reading/writing layout properties в циклах
+- **Expensive animations**: Casual layout-property animation, unbounded blur/filter/shadow effects или эффекты, visibly drop frames
+- **Missing optimization**: Images без lazy loading, unoptimized assets, missing will-change
 - **Bundle size**: Unnecessary imports, unused dependencies
 - **Render performance**: Unnecessary re-renders, missing memoization
 
-**Score 0-4**: 0=Severe issues (layout thrash, unoptimized everything), 1=Major problems (no lazy loading, expensive animations), 2=Partial (some optimization, gaps remain), 3=Good (mostly optimized, minor improvements possible), 4=Excellent (fast, lean, well-optimized)
+**Оценка 0–4**: 0=Severe issues (layout thrash, unoptimized everything), 1=Major problems (нет lazy loading, expensive animations), 2=Partial (есть optimization, gaps remain), 3=Good (mostly optimized, minor improvements possible), 4=Excellent (fast, lean, well-optimized)
 
 ### 3. Theming
 
-**Check for**:
-- **Hard-coded colors**: Colors not using design tokens
-- **Broken dark mode**: Missing dark mode variants, poor contrast in dark theme
-- **Inconsistent tokens**: Using wrong tokens, mixing token types
-- **Theme switching issues**: Values that don't update on theme change
+**Проверяйте**:
+- **Hard-coded colors**: Цвета без design tokens
+- **Broken dark mode**: Missing dark mode variants, poor contrast в dark theme
+- **Inconsistent tokens**: Wrong tokens, mixing token types
+- **Theme switching issues**: Values, которые не обновляются при смене theme
 
-**Score 0-4**: 0=No theming (hard-coded everything), 1=Minimal tokens (mostly hard-coded), 2=Partial (tokens exist but inconsistently used), 3=Good (tokens used, minor hard-coded values), 4=Excellent (full token system, dark mode works perfectly)
+**Оценка 0–4**: 0=No theming (hard-coded everything), 1=Minimal tokens (mostly hard-coded), 2=Partial (tokens exist but inconsistently used), 3=Good (tokens used, minor hard-coded values), 4=Excellent (full token system, dark mode works perfectly)
 
 ### 4. Responsive Design
 
-**Check for**:
-- **Fixed widths**: Hard-coded widths that break on mobile
+**Проверяйте**:
+- **Fixed widths**: Hard-coded widths, ломающиеся на mobile
 - **Touch targets**: Interactive elements < 44x44px
-- **Horizontal scroll**: Content overflow on narrow viewports
-- **Text scaling**: Layouts that break when text size increases
-- **Missing breakpoints**: No mobile/tablet variants
+- **Horizontal scroll**: Content overflow на узких viewports
+- **Text scaling**: Layouts, ломающиеся при увеличении text size
+- **Missing breakpoints**: Нет mobile/tablet variants
 
-**Score 0-4**: 0=Desktop-only (breaks on mobile), 1=Major issues (some breakpoints, many failures), 2=Partial (works on mobile, rough edges), 3=Good (responsive, minor touch target or overflow issues), 4=Excellent (fluid, all viewports, proper touch targets)
+**Оценка 0–4**: 0=Desktop-only (breaks on mobile), 1=Major issues (some breakpoints, many failures), 2=Partial (works on mobile, rough edges), 3=Good (responsive, minor touch target or overflow issues), 4=Excellent (fluid, all viewports, proper touch targets)
 
 ### 5. Anti-Patterns (CRITICAL)
 
-Check against ALL the **DON'T** guidelines from the parent impeccable skill (already loaded in this context). Look for AI slop tells (AI color palette, gradient text, glassmorphism, hero metrics, card grids, generic fonts) and general design anti-patterns (gray on color, nested cards, bounce easing, redundant copy).
+Проверьте против ВСЕХ **DON'T** guidelines из родительского impeccable skill (уже загружены в этом контексте). Ищите AI slop tells (AI color palette, gradient text, glassmorphism, hero metrics, card grids, generic fonts) и общие design anti-patterns (gray on color, nested cards, bounce easing, redundant copy).
 
-**Score 0-4**: 0=AI slop gallery (5+ tells), 1=Heavy AI aesthetic (3-4 tells), 2=Some tells (1-2 noticeable), 3=Mostly clean (subtle issues only), 4=No AI tells (distinctive, intentional design)
+**Оценка 0–4**: 0=AI slop gallery (5+ tells), 1=Heavy AI aesthetic (3–4 tells), 2=Some tells (1–2 noticeable), 3=Mostly clean (subtle issues only), 4=No AI tells (distinctive, intentional design)
 
-## Generate Report
+## Сгенерируйте Report
 
 ### Audit Health Score
 
@@ -69,65 +69,64 @@ Check against ALL the **DON'T** guidelines from the parent impeccable skill (alr
 | 5 | Anti-Patterns | ? | |
 | **Total** | | **??/20** | **[Rating band]** |
 
-**Rating bands**: 18-20 Excellent (minor polish), 14-17 Good (address weak dimensions), 10-13 Acceptable (significant work needed), 6-9 Poor (major overhaul), 0-5 Critical (fundamental issues)
+**Rating bands**: 18–20 Excellent (minor polish), 14–17 Good (address weak dimensions), 10–13 Acceptable (significant work needed), 6–9 Poor (major overhaul), 0–5 Critical (fundamental issues)
 
 ### Anti-Patterns Verdict
-**Start here.** Pass/fail: Does this look AI-generated? List specific tells. Be brutally honest.
+**Начните здесь.** Pass/fail: Выглядит ли это AI-generated? Перечислите конкретные tells. Будьте brutally honest.
 
 ### Executive Summary
 - Audit Health Score: **??/20** ([rating band])
-- Total issues found (count by severity: P0/P1/P2/P3)
-- Top 3-5 critical issues
+- Всего найдено issues (count by severity: P0/P1/P2/P3)
+- Top 3–5 critical issues
 - Recommended next steps
 
 ### Detailed Findings by Severity
 
-Tag every issue with **P0-P3 severity**:
-- **P0 Blocking**: Prevents task completion. Fix immediately
-- **P1 Major**: Significant difficulty or WCAG AA violation. Fix before release
-- **P2 Minor**: Annoyance, workaround exists. Fix in next pass
-- **P3 Polish**: Nice-to-fix, no real user impact. Fix if time permits
+Тегируйте каждый issue **severityстью P0–P3**:
+- **P0 Blocking**: Мешает завершению задачи. Исправляйте immediately
+- **P1 Major**: Значительная трудность или WCAG AA violation. Исправляйте before release
+- **P2 Minor**: Annoyance, workaround существует. Исправляйте в следующем проходе
+- **P3 Polish**: Nice-to-fix, нет реального user impact. Исправляйте если есть время
 
-For each issue, document:
+Для каждого issue документируйте:
 - **[P?] Issue name**
 - **Location**: Component, file, line
 - **Category**: Accessibility / Performance / Theming / Responsive / Anti-Pattern
-- **Impact**: How it affects users
-- **WCAG/Standard**: Which standard it violates (if applicable)
-- **Recommendation**: How to fix it
-- **Suggested command**: Which command to use (prefer: $impeccable adapt, $impeccable animate, $impeccable audit, $impeccable bolder, $impeccable clarify, $impeccable colorize, $impeccable critique, $impeccable delight, $impeccable distill, $impeccable document, $impeccable harden, $impeccable layout, $impeccable onboard, $impeccable optimize, $impeccable overdrive, $impeccable polish, $impeccable quieter, $impeccable shape, $impeccable typeset)
+- **Impact**: Как это влияет на пользователей
+- **WCAG/Standard**: Какой стандарт нарушает (если применимо)
+- **Recommendation**: Как исправить
+- **Suggested command**: Какую команду использовать (prefer: $impeccable adapt, $impeccable animate, $impeccable audit, $impeccable bolder, $impeccable clarify, $impeccable colorize, $impeccable critique, $impeccable delight, $impeccable distill, $impeccable document, $impeccable harden, $impeccable layout, $impeccable onboard, $impeccable optimize, $impeccable overdrive, $impeccable polish, $impeccable quieter, $impeccable shape, $impeccable typeset)
 
 ### Patterns & Systemic Issues
 
-Identify recurring problems that indicate systemic gaps rather than one-off mistakes:
-- "Hard-coded colors appear in 15+ components, should use design tokens"
-- "Touch targets consistently too small (<44px) throughout mobile experience"
+Выявите recurring problems, указывающие на systemic gaps, а не one-off mistakes:
+- «Hard-coded colors appear in 15+ components, should use design tokens»
+- «Touch targets consistently too small (<44px) throughout mobile experience»
 
 ### Positive Findings
 
-Note what's working well: good practices to maintain and replicate.
+Отметьте, что работает хорошо: good practices для поддержания и replication.
 
 ## Recommended Actions
 
-List recommended commands in priority order (P0 first, then P1, then P2):
+Перечислите recommended commands в порядке приоритета (P0 first, затем P1, затем P2):
 
 1. **[P?] `$command-name`**: Brief description (specific context from audit findings)
 2. **[P?] `$command-name`**: Brief description (specific context)
 
-**Rules**: Only recommend commands from: $impeccable adapt, $impeccable animate, $impeccable audit, $impeccable bolder, $impeccable clarify, $impeccable colorize, $impeccable critique, $impeccable delight, $impeccable distill, $impeccable document, $impeccable harden, $impeccable layout, $impeccable onboard, $impeccable optimize, $impeccable overdrive, $impeccable polish, $impeccable quieter, $impeccable shape, $impeccable typeset. Map findings to the most appropriate command. End with `$impeccable polish` as the final step if any fixes were recommended.
+**Rules**: Рекомендуйте только команды из: $impeccable adapt, $impeccable animate, $impeccable audit, $impeccable bolder, $impeccable clarify, $impeccable colorize, $impeccable critique, $impeccable delight, $impeccable distill, $impeccable document, $impeccable harden, $impeccable layout, $impeccable onboard, $impeccable optimize, $impeccable overdrive, $impeccable polish, $impeccable quieter, $impeccable shape, $impeccable typeset. Мапьте findings на наиболее подходящую команду. Заканчивайте `$impeccable polish` как финальный шаг, если рекомендовались любые fixes.
 
-After presenting the summary, tell the user:
+После представления summary скажите пользователю:
 
 > You can ask me to run these one at a time, all at once, or in any order you prefer.
 >
 > Re-run `$impeccable audit` after fixes to see your score improve.
 
-**IMPORTANT**: Be thorough but actionable. Too many P3 issues creates noise. Focus on what actually matters.
+**IMPORTANT**: Будьте thorough but actionable. Слишком много P3 issues создаёт шум. Фокусируйтесь на том, что действительно важно.
 
 **NEVER**:
-- Report issues without explaining impact (why does this matter?)
-- Provide generic recommendations (be specific and actionable)
-- Skip positive findings (celebrate what works)
-- Forget to prioritize (everything can't be P0)
-- Report false positives without verification
-
+- Не репортите issues без объяснения impact (почему это важно?)
+- Не давайте generic recommendations (будьте specific and actionable)
+- Не пропускайте positive findings (celebrate what works)
+- Не забывайте приоритизировать (не всё может быть P0)
+- Не репортите false positives без verification

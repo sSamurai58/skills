@@ -1,77 +1,77 @@
-> **Additional context needed**: what's appropriate for the domain (playful vs professional vs quirky vs elegant).
+> **Нужен дополнительный контекст**: что уместно для домена (playful vs professional vs quirky vs elegant).
 
-Find the moments where personality and unexpected polish would turn a functional interface into one users remember and tell other people about. Add only where the moment earns it; delight everywhere reads as noise.
+Найдите моменты, где personality и неожиданный polish превратят функциональный интерфейс в тот, который пользователи запоминают и рассказывают другим. Добавляйте только там, где момент это заслуживает; delight везде читается как шум.
 
 ---
 
 ## Register
 
-Brand: delight can be distributed across copy voice, section transitions, discovery rewards, seasonal touches, personality across the whole surface.
+Brand: delight может распределяться по copy voice, переходам секций, discovery rewards, сезонным touches, personality по всей поверхности.
 
-Product: delight at specific moments, not pages. Completion, first-time actions, error recovery, milestone crossings. Reliability and consistency carry the rest of the experience; delight pushed everywhere reads as noise.
+Product: delight в конкретных моментах, не на страницах. Completion, first-time actions, error recovery, пересечения milestone. Reliability и consistency несут остальной опыт; delight повсюду читается как шум.
 
 ---
 
 ## Assess Delight Opportunities
 
-Identify where delight would enhance (not distract from) the experience:
+Определите, где delight усилит (а не отвлечёт от) опыт:
 
-1. **Find natural delight moments**:
-   - **Success states**: Completed actions (save, send, publish)
-   - **Empty states**: First-time experiences, onboarding
-   - **Loading states**: Waiting periods that could be entertaining
-   - **Achievements**: Milestones, streaks, completions
-   - **Interactions**: Hover states, clicks, drags
-   - **Errors**: Softening frustrating moments
-   - **Easter eggs**: Hidden discoveries for curious users
+1. **Найдите естественные моменты delight**:
+   - **Success states**: завершённые действия (save, send, publish)
+   - **Empty states**: first-time experiences, онбординг
+   - **Loading states**: ожидания, которые можно сделать engaging
+   - **Achievements**: milestones, streaks, completions
+   - **Interactions**: hover states, clicks, drags
+   - **Errors**: смягчение раздражающих моментов
+   - **Easter eggs**: скрытые discoveries для любопытных пользователей
 
-2. **Understand the context**:
-   - What's the brand personality? (Playful? Professional? Quirky? Elegant?)
-   - Who's the audience? (Tech-savvy? Creative? Corporate?)
-   - What's the emotional context? (Accomplishment? Exploration? Frustration?)
-   - What's appropriate? (Banking app ≠ gaming app)
+2. **Поймите контекст**:
+   - Какова brand personality? (Playful? Professional? Quirky? Elegant?)
+   - Кто аудитория? (Tech-savvy? Creative? Corporate?)
+   - Каков эмоциональный контекст? (Accomplishment? Exploration? Frustration?)
+   - Что уместно? (Banking app ≠ gaming app)
 
-3. **Define delight strategy**:
-   - **Subtle sophistication**: Refined micro-interactions (luxury brands)
-   - **Playful personality**: Whimsical illustrations and copy (consumer apps)
-   - **Helpful surprises**: Anticipating needs before users ask (productivity tools)
-   - **Sensory richness**: Satisfying sounds, smooth animations (creative tools)
+3. **Определите delight strategy**:
+   - **Subtle sophistication**: refined micro-interactions (luxury brands)
+   - **Playful personality**: whimsical illustrations и copy (consumer apps)
+   - **Helpful surprises**: предвосхищение нужд до того, как спросят (productivity tools)
+   - **Sensory richness**: satisfying sounds, плавные анимации (creative tools)
 
-If any of these are unclear from the codebase, STOP and use Codex's structured user-input/question tool when available; if unavailable, ask directly in chat to clarify what you cannot infer.
+Если что-то из этого неясно из кодовой базы, ОСТАНОВИТЕСЬ и используйте structured user-input/question tool Codex, когда доступен; если недоступен — спросите прямо в чате, чтобы прояснить то, что нельзя вывести.
 
-**CRITICAL**: Delight should enhance usability, never obscure it. If users notice the delight more than accomplishing their goal, you've gone too far.
+**КРИТИЧНО**: delight должен усиливать usability, никогда не заслонять её. Если пользователи замечают delight больше, чем достижение цели — вы зашли слишком далеко.
 
 ## Delight Principles
 
-Follow these guidelines:
+Следуйте этим guidelines:
 
 ### Delight Amplifies, Never Blocks
-- Delight moments should be quick (< 1 second)
-- Never delay core functionality for delight
-- Make delight skippable or subtle
-- Respect user's time and task focus
+- Моменты delight должны быть быстрыми (< 1 секунды)
+- Никогда не задерживайте core functionality ради delight
+- Делайте delight skippable или subtle
+- Уважайте время пользователя и фокус на задаче
 
 ### Surprise and Discovery
-- Hide delightful details for users to discover
-- Reward exploration and curiosity
-- Don't announce every delight moment
-- Let users share discoveries with others
+- Прячьте delightful details для discovery
+- Награждайте exploration и curiosity
+- Не анонсируйте каждый момент delight
+- Пусть пользователи делятся discoveries с другими
 
 ### Appropriate to Context
-- Match delight to emotional moment (celebrate success, empathize with errors)
-- Respect the user's state (don't be playful during critical errors)
-- Match brand personality and audience expectations
-- Cultural sensitivity (what's delightful varies by culture)
+- Сопоставляйте delight эмоциональному моменту (celebrate success, empathize with errors)
+- Уважайте состояние пользователя (не будьте playful при критических ошибках)
+- Сопоставляйте brand personality и ожидания аудитории
+- Cultural sensitivity (что delightful, зависит от культуры)
 
 ### Compound Over Time
-- Delight should remain fresh with repeated use
-- Vary responses (not same animation every time)
-- Reveal deeper layers with continued use
-- Build anticipation through patterns
+- Delight должен оставаться свежим при повторном использовании
+- Варьируйте responses (не одна и та же анимация каждый раз)
+- Раскрывайте более глубокие слои при продолжении использования
+- Стройте anticipation через паттерны
 
 ## Delight Techniques
 
-Add personality and joy through these methods:
+Добавляйте personality и радость этими методами:
 
 ### Micro-interactions & Animation
 
@@ -95,22 +95,22 @@ Add personality and joy through these methods:
 ```
 
 **Loading delight**:
-- Playful loading animations (not just spinners)
-- Personality in loading messages (write product-specific ones, not generic AI filler)
-- Progress indication with encouraging messages
-- Skeleton screens with subtle animations
+- Playful loading animations (не только spinners)
+- Personality в loading messages (пишите product-specific, не generic AI filler)
+- Progress indication с encouraging messages
+- Skeleton screens с тонкими анимациями
 
 **Success animations**:
 - Checkmark draw animation
-- Confetti burst for major achievements
-- Gentle scale + fade for confirmation
+- Confetti burst для major achievements
+- Gentle scale + fade для confirmation
 - Satisfying sound effects (subtle)
 
 **Hover surprises**:
-- Icons that animate on hover
-- Color shifts or glow effects
-- Tooltip reveals with personality
-- Cursor changes (custom cursors for branded experiences)
+- Иконки, анимирующиеся на hover
+- Color shifts или glow effects
+- Tooltip reveals с personality
+- Cursor changes (custom cursors для branded experiences)
 
 ### Personality in Copy
 
@@ -141,21 +141,21 @@ Add personality and joy through these methods:
 "Rescue me" (tooltip)
 ```
 
-**IMPORTANT**: Match copy personality to brand. Banks shouldn't be wacky, but they can be warm.
+**ВАЖНО**: сопоставляйте copy personality бренду. Банки не должны быть wacky, но могут быть warm.
 
 ### Illustrations & Visual Personality
 
 **Custom illustrations**:
-- Empty state illustrations (not stock icons)
+- Empty state illustrations (не stock icons)
 - Error state illustrations (friendly monsters, quirky characters)
 - Loading state illustrations (animated characters)
 - Success state illustrations (celebrations)
 
 **Icon personality**:
-- Custom icon set matching brand personality
-- Animated icons (subtle motion on hover/click)
-- Illustrative icons (more detailed than generic)
-- Consistent style across all icons
+- Custom icon set под brand personality
+- Animated icons (тонкий motion на hover/click)
+- Illustrative icons (детализированнее generic)
+- Согласованный стиль всех иконок
 
 **Background effects**:
 - Subtle particle effects
@@ -167,52 +167,52 @@ Add personality and joy through these methods:
 ### Satisfying Interactions
 
 **Drag and drop delight**:
-- Lift effect on drag (shadow, scale)
-- Snap animation when dropped
+- Lift effect при drag (shadow, scale)
+- Snap animation при drop
 - Satisfying placement sound
 - Undo toast ("Dropped in wrong place? [Undo]")
 
 **Toggle switches**:
-- Smooth slide with spring physics
+- Плавный slide со spring physics
 - Color transition
-- Haptic feedback on mobile
-- Optional sound effect
+- Haptic feedback на mobile
+- Опциональный sound effect
 
 **Progress & achievements**:
-- Streak counters with celebratory milestones
-- Progress bars that "celebrate" at 100%
-- Badge unlocks with animation
+- Streak counters с celebratory milestones
+- Progress bars, которые «celebrate» на 100%
+- Badge unlocks с анимацией
 - Playful stats ("You're on fire! 5 days in a row")
 
 **Form interactions**:
-- Input fields that animate on focus
-- Checkboxes with a satisfying scale pulse when checked
-- Success state that celebrates valid input
+- Input fields, анимирующиеся на focus
+- Checkboxes с satisfying scale pulse при check
+- Success state, празднующий valid input
 - Auto-grow textareas
 
 ### Sound Design
 
-**Subtle audio cues** (when appropriate):
-- Notification sounds (distinctive but not annoying)
-- Success sounds (satisfying "ding")
-- Error sounds (empathetic, not harsh)
-- Typing sounds for chat/messaging
-- Ambient background audio (very subtle)
+**Subtle audio cues** (когда уместно):
+- Notification sounds (distinctive, но не раздражающие)
+- Success sounds (satisfying «ding»)
+- Error sounds (empathetic, не harsh)
+- Typing sounds для chat/messaging
+- Ambient background audio (очень subtle)
 
-**IMPORTANT**:
-- Respect system sound settings
-- Provide mute option
-- Keep volumes quiet (subtle cues, not alarms)
-- Don't play on every interaction (sound fatigue is real)
+**ВАЖНО**:
+- Уважайте system sound settings
+- Предоставляйте mute option
+- Держите громкость тихой (subtle cues, не alarms)
+- Не играйте на каждом взаимодействии (sound fatigue реальна)
 
 ### Easter Eggs & Hidden Delights
 
 **Discovery rewards**:
-- Konami code unlocks special theme
-- Hidden keyboard shortcuts (Cmd+K for special features)
-- Hover reveals on logos or illustrations
-- Alt text jokes on images (for screen reader users too!)
-- Console messages for developers ("Like what you see? We're hiring!")
+- Konami code разблокирует special theme
+- Скрытые keyboard shortcuts (Cmd+K для special features)
+- Hover reveals на логотипах или иллюстрациях
+- Alt text jokes на изображениях (и для пользователей screen reader!)
+- Console messages для разработчиков ("Like what you see? We're hiring!")
 
 **Seasonal touches**:
 - Holiday themes (subtle, tasteful)
@@ -221,19 +221,19 @@ Add personality and joy through these methods:
 - Time-based changes (dark at night, light during day)
 
 **Contextual personality**:
-- Different messages based on time of day
-- Responses to specific user actions
-- Randomized variations (not same every time)
-- Progressive reveals with continued use
+- Разные сообщения по времени суток
+- Responses на конкретные действия пользователя
+- Randomized variations (не одно и то же каждый раз)
+- Progressive reveals при продолжении использования
 
 ### Loading & Waiting States
 
-**Make waiting engaging**:
-- Interesting loading messages that rotate
-- Progress bars with personality
-- Mini-games during long loads
-- Fun facts or tips while waiting
-- Countdown with encouraging messages
+**Сделайте ожидание engaging**:
+- Interesting loading messages, которые ротируются
+- Progress bars с personality
+- Mini-games во время долгих loads
+- Fun facts или tips во время ожидания
+- Countdown с encouraging messages
 
 ```
 Loading messages: write ones specific to your product, not generic AI filler:
@@ -243,20 +243,20 @@ Loading messages: write ones specific to your product, not generic AI filler:
 - "Checking for updates since yesterday..."
 ```
 
-**WARNING**: Avoid cliched loading messages like "Herding pixels", "Teaching robots to dance", "Consulting the magic 8-ball", "Counting backwards from infinity". These are AI-slop copy, instantly recognizable as machine-generated. Write messages that are specific to what your product actually does.
+**ПРЕДУПРЕЖДЕНИЕ**: избегайте клишированных loading messages вроде «Herding pixels», «Teaching robots to dance», «Consulting the magic 8-ball», «Counting backwards from infinity». Это AI-slop copy, мгновенно узнаваемая как machine-generated. Пишите сообщения, специфичные для того, что продукт реально делает.
 
 ### Celebration Moments
 
 **Success celebrations**:
-- Confetti for major milestones
-- Animated checkmarks for completions
-- Progress bar celebrations at 100%
-- "Achievement unlocked" style notifications
+- Confetti для major milestones
+- Animated checkmarks для completions
+- Progress bar celebrations на 100%
+- Уведомления в стиле «Achievement unlocked»
 - Personalized messages ("You published your 10th article!")
 
 **Milestone recognition**:
-- First-time actions get special treatment
-- Streak tracking and celebration
+- First-time actions получают особое обращение
+- Streak tracking и celebration
 - Progress toward goals
 - Anniversary celebrations
 
@@ -276,27 +276,27 @@ Loading messages: write ones specific to your product, not generic AI filler:
 - React Spring (spring physics)
 - Popmotion (animation primitives)
 
-**IMPORTANT**: File size matters. Compress images, optimize animations, lazy load delight features.
+**ВАЖНО**: размер файлов важен. Сжимайте изображения, оптимизируйте анимации, lazy load delight features.
 
-**NEVER**:
-- Delay core functionality for delight
-- Force users through delightful moments (make skippable)
-- Use delight to hide poor UX
-- Overdo it (less is more)
-- Ignore accessibility (animate responsibly, provide alternatives)
-- Make every interaction delightful (special moments should be special)
-- Sacrifice performance for delight
-- Be inappropriate for context (read the room)
+**НИКОГДА**:
+- Не задерживайте core functionality ради delight
+- Не заставляйте проходить delightful moments (делайте skippable)
+- Не используйте delight, чтобы скрыть poor UX
+- Не переусердствуйте (less is more)
+- Не игнорируйте accessibility (анимируйте ответственно, давайте alternatives)
+- Не делайте каждое взаимодействие delightful (особые моменты должны быть особыми)
+- Не жертвуйте performance ради delight
+- Не будьте неуместны для контекста (read the room)
 
 ## Verify Delight Quality
 
-Test that delight actually delights:
+Проверьте, что delight реально радует:
 
-- **User reactions**: Do users smile? Share screenshots?
-- **Doesn't annoy**: Still pleasant after 100th time?
-- **Doesn't block**: Can users opt out or skip?
-- **Performant**: No jank, no slowdown
-- **Appropriate**: Matches brand and context
-- **Accessible**: Works with reduced motion, screen readers
+- **User reactions**: улыбаются ли? Делятся скриншотами?
+- **Doesn't annoy**: всё ещё приятно на 100-й раз?
+- **Doesn't block**: могут ли opt out или skip?
+- **Performant**: нет jank, нет slowdown
+- **Appropriate**: соответствует бренду и контексту
+- **Accessible**: работает с reduced motion, screen readers
 
-When the moments feel earned, hand off to `$impeccable polish` for the final pass.
+Когда моменты ощущаются earned — передайте `$impeccable polish` для финального прохода.

@@ -1,106 +1,106 @@
-# Cognitive Load Assessment
+# Оценка когнитивной нагрузки
 
-Cognitive load is the total mental effort required to use an interface. Overloaded users make mistakes, get frustrated, and leave. This reference helps identify and fix cognitive overload.
-
----
-
-## Three Types of Cognitive Load
-
-### Intrinsic Load: The Task Itself
-Complexity inherent to what the user is trying to do. You can't eliminate this, but you can structure it.
-
-**Manage it by**:
-- Breaking complex tasks into discrete steps
-- Providing scaffolding (templates, defaults, examples)
-- Progressive disclosure: show what's needed now, hide the rest
-- Grouping related decisions together
-
-### Extraneous Load: Bad Design
-Mental effort caused by poor design choices. **Eliminate this ruthlessly.** It's pure waste.
-
-**Common sources**:
-- Confusing navigation that requires mental mapping
-- Unclear labels that force users to guess meaning
-- Visual clutter competing for attention
-- Inconsistent patterns that prevent learning
-- Unnecessary steps between user intent and result
-
-### Germane Load: Learning Effort
-Mental effort spent building understanding. This is *good* cognitive load; it leads to mastery.
-
-**Support it by**:
-- Progressive disclosure that reveals complexity gradually
-- Consistent patterns that reward learning
-- Feedback that confirms correct understanding
-- Onboarding that teaches through action, not walls of text
+Когнитивная нагрузка — это суммарное ментальное усилие, требуемое для использования интерфейса. Перегруженные пользователи ошибаются, раздражаются и уходят. Этот reference помогает выявлять и исправлять когнитивную перегрузку.
 
 ---
 
-## Cognitive Load Checklist
+## Три типа когнитивной нагрузки
 
-Evaluate the interface against these 8 items:
+### Intrinsic Load: сама задача
+Сложность, присущая тому, что пользователь пытается сделать. Её нельзя устранить, но можно структурировать.
 
-- [ ] **Single focus**: Can the user complete their primary task without distraction from competing elements?
-- [ ] **Chunking**: Is information presented in digestible groups (≤4 items per group)?
-- [ ] **Grouping**: Are related items visually grouped together (proximity, borders, shared background)?
-- [ ] **Visual hierarchy**: Is it immediately clear what's most important on the screen?
-- [ ] **One thing at a time**: Can the user focus on a single decision before moving to the next?
-- [ ] **Minimal choices**: Are decisions simplified (≤4 visible options at any decision point)?
-- [ ] **Working memory**: Does the user need to remember information from a previous screen to act on the current one?
-- [ ] **Progressive disclosure**: Is complexity revealed only when the user needs it?
+**Управляйте ею через**:
+- Разбиение сложных задач на дискретные шаги
+- Scaffolding (шаблоны, defaults, примеры)
+- Progressive disclosure: показывать нужное сейчас, прятать остальное
+- Группировку связанных решений вместе
 
-**Scoring**: Count the failed items. 0–1 failures = low cognitive load (good). 2–3 = moderate (address soon). 4+ = high cognitive load (critical fix needed).
+### Extraneous Load: плохой дизайн
+Ментальное усилие из-за плохих дизайн-решений. **Устраняйте это беспощадно.** Это чистая потеря.
 
----
+**Частые источники**:
+- Навигация, которая требует ментальной карты
+- Неясные labels, заставляющие угадывать смысл
+- Визуальный clutter, конкурирующий за внимание
+- Несогласованные паттерны, мешающие обучению
+- Лишние шаги между намерением пользователя и результатом
 
-## The Working Memory Rule
+### Germane Load: усилие обучения
+Ментальное усилие на построение понимания. Это *хорошая* когнитивная нагрузка; она ведёт к mastery.
 
-**Humans can hold ≤4 items in working memory at once** (Miller's Law revised by Cowan, 2001).
-
-At any decision point, count the number of distinct options, actions, or pieces of information a user must simultaneously consider:
-- **≤4 items**: Within working memory limits, manageable
-- **5–7 items**: Pushing the boundary; consider grouping or progressive disclosure
-- **8+ items**: Overloaded; users will skip, misclick, or abandon
-
-**Practical applications**:
-- Navigation menus: ≤5 top-level items (group the rest under clear categories)
-- Form sections: ≤4 fields visible per group before a visual break
-- Action buttons: 1 primary, 1–2 secondary, group the rest in a menu
-- Dashboard widgets: ≤4 key metrics visible without scrolling
-- Pricing tiers: ≤3 options (more causes analysis paralysis)
+**Поддерживайте её через**:
+- Progressive disclosure, раскрывающий сложность постепенно
+- Согласованные паттерны, которые вознаграждают обучение
+- Feedback, подтверждающий правильное понимание
+- Onboarding, который учит через действие, а не стены текста
 
 ---
 
-## Common Cognitive Load Violations
+## Чеклист когнитивной нагрузки
 
-### 1. The Wall of Options
-**Problem**: Presenting 10+ choices at once with no hierarchy.
-**Fix**: Group into categories, highlight recommended, use progressive disclosure.
+Оцените интерфейс по этим 8 пунктам:
 
-### 2. The Memory Bridge
-**Problem**: User must remember info from step 1 to complete step 3.
-**Fix**: Keep relevant context visible, or repeat it where it's needed.
+- [ ] **Единый фокус**: Может ли пользователь выполнить основную задачу без отвлечения конкурирующими элементами?
+- [ ] **Chunking**: Информация представлена в удобоваримых группах (≤4 items на группу)?
+- [ ] **Группировка**: Связанные items визуально сгруппированы (proximity, borders, общий фон)?
+- [ ] **Визуальная иерархия**: Сразу ясно, что важнее всего на экране?
+- [ ] **Одно за раз**: Может ли пользователь сосредоточиться на одном решении, прежде чем перейти к следующему?
+- [ ] **Минимум выборов**: Решения упрощены (≤4 видимых options в любой точке решения)?
+- [ ] **Рабочая память**: Нужно ли пользователю помнить информацию с предыдущего экрана, чтобы действовать на текущем?
+- [ ] **Progressive disclosure**: Сложность раскрывается только когда пользователю она нужна?
 
-### 3. The Hidden Navigation
-**Problem**: User must build a mental map of where things are.
-**Fix**: Always show current location (breadcrumbs, active states, progress indicators).
+**Оценка**: Посчитайте failed items. 0–1 failures = низкая когнитивная нагрузка (хорошо). 2–3 = умеренная (исправьте скоро). 4+ = высокая когнитивная нагрузка (критичное исправление нужно).
 
-### 4. The Jargon Barrier
-**Problem**: Technical or domain language forces translation effort.
-**Fix**: Use plain language. If domain terms are unavoidable, define them inline.
+---
 
-### 5. The Visual Noise Floor
-**Problem**: Every element has the same visual weight; nothing stands out.
-**Fix**: Establish clear hierarchy: one primary element, 2–3 secondary, everything else muted.
+## Правило рабочей памяти
 
-### 6. The Inconsistent Pattern
-**Problem**: Similar actions work differently in different places.
-**Fix**: Standardize interaction patterns. Same type of action = same type of UI.
+**Люди удерживают ≤4 items в рабочей памяти одновременно** (закон Миллера в редакции Cowan, 2001).
 
-### 7. The Multi-Task Demand
-**Problem**: Interface requires processing multiple simultaneous inputs (reading + deciding + navigating).
-**Fix**: Sequence the steps. Let the user do one thing at a time.
+В любой точке решения посчитайте число различных options, действий или единиц информации, которые пользователь должен одновременно учитывать:
+- **≤4 items**: В пределах рабочей памяти, управляемо
+- **5–7 items**: На границе; рассмотрите группировку или progressive disclosure
+- **8+ items**: Перегрузка; пользователи будут пропускать, кликать мимо или уходить
 
-### 8. The Context Switch
-**Problem**: User must jump between screens/tabs/modals to gather info for a single decision.
-**Fix**: Co-locate the information needed for each decision. Reduce back-and-forth.
+**Практические применения**:
+- Навигационные меню: ≤5 top-level items (остальное группируйте под ясными категориями)
+- Секции форм: ≤4 fields видимы в группе до визуального разрыва
+- Action buttons: 1 primary, 1–2 secondary, остальное в меню
+- Dashboard widgets: ≤4 ключевых метрики без скролла
+- Pricing tiers: ≤3 options (больше вызывает analysis paralysis)
+
+---
+
+## Частые нарушения когнитивной нагрузки
+
+### 1. Стена вариантов
+**Проблема**: 10+ выборов сразу без иерархии.
+**Исправление**: Группируйте в категории, выделяйте recommended, используйте progressive disclosure.
+
+### 2. Мост памяти
+**Проблема**: Пользователь должен помнить информацию с шага 1, чтобы завершить шаг 3.
+**Исправление**: Держите релевантный контекст видимым или повторяйте его там, где он нужен.
+
+### 3. Скрытая навигация
+**Проблема**: Пользователь должен строить ментальную карту, где что находится.
+**Исправление**: Всегда показывайте текущее местоположение (breadcrumbs, active states, progress indicators).
+
+### 4. Барьер жаргона
+**Проблема**: Технический или domain-язык заставляет тратить усилие на перевод.
+**Исправление**: Используйте простой язык. Если domain-термины неизбежны, определяйте их inline.
+
+### 5. Пол визуального шума
+**Проблема**: У каждого элемента одинаковый визуальный вес; ничего не выделяется.
+**Исправление**: Установите ясную иерархию: один primary-элемент, 2–3 secondary, всё остальное приглушено.
+
+### 6. Несогласованный паттерн
+**Проблема**: Похожие действия работают по-разному в разных местах.
+**Исправление**: Стандартизируйте interaction patterns. Один тип действия = один тип UI.
+
+### 7. Требование мультизадачности
+**Проблема**: Интерфейс требует одновременной обработки нескольких входов (чтение + решение + навигация).
+**Исправление**: Последовательность шагов. Пусть пользователь делает одно за раз.
+
+### 8. Переключение контекста
+**Проблема**: Пользователь должен прыгать между экранами/вкладками/модалками, чтобы собрать информацию для одного решения.
+**Исправление**: Коллоцируйте информацию, нужную для каждого решения. Сократите хождение туда-сюда.

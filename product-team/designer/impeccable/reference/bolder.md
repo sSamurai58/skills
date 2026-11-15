@@ -1,113 +1,113 @@
-When asked for "bolder," AI defaults to the same tired tricks: cyan/purple gradients, glassmorphism, neon accents on dark backgrounds, gradient text on metrics. These are the opposite of bold. Reject them first, then increase visual impact and personality through stronger hierarchy, committed scale, and decisive type.
+Когда просят «bolder», AI по умолчанию тянется к одним и тем же уставшим трюкам: cyan/purple gradients, glassmorphism, neon accents на тёмных фонах, gradient text на метриках. Это противоположность bold. Сначала откажитесь от них, затем усиливайте визуальный impact и personality через более сильную иерархию, committed scale и решительный type.
 
 ---
 
 ## Register
 
-Brand: "bolder" means distinctive. Extreme scale, unexpected color, typographic risk, committed POV.
+Brand: «bolder» значит distinctive. Экстремальный scale, неожиданный цвет, типографический риск, committed POV.
 
-Product: "bolder" rarely means theatrics; those undermine trust. It means stronger hierarchy, clearer weight contrast, one sharper accent, more committed density. The amplification is in clarity, not drama.
+Product: «bolder» редко значит театральность; она подрывает доверие. Это значит более сильная иерархия, яснее weight contrast, один более острый accent, более committed плотность. Усиление — в ясности, а не в драме.
 
 ---
 
-## Assess Current State
+## Оцените текущее состояние
 
-Analyze what makes the design feel too safe or boring:
+Проанализируйте, из-за чего дизайн ощущается слишком безопасным или скучным:
 
-1. **Identify weakness sources**:
-   - **Generic choices**: System fonts, basic colors, standard layouts
-   - **Timid scale**: Everything is medium-sized with no drama
-   - **Low contrast**: Everything has similar visual weight
-   - **Static**: No motion, no energy, no life
-   - **Predictable**: Standard patterns with no surprises
-   - **Flat hierarchy**: Nothing stands out or commands attention
+1. **Определите источники слабости**:
+   - **Generic choices**: системные шрифты, базовые цвета, стандартные layouts
+   - **Timid scale**: всё среднего размера, без драмы
+   - **Низкий контраст**: у всего похожий визуальный вес
+   - **Static**: нет motion, нет энергии, нет жизни
+   - **Predictable**: стандартные паттерны без сюрпризов
+   - **Плоская иерархия**: ничего не выделяется и не захватывает внимание
 
-2. **Understand the context**:
-   - What's the brand personality? (How far can we push?)
-   - What's the purpose? (Marketing can be bolder than financial dashboards)
-   - Who's the audience? (What will resonate?)
-   - What are the constraints? (Brand guidelines, accessibility, performance)
+2. **Поймите контекст**:
+   - Какова personality бренда? (Насколько далеко можно толкать?)
+   - Какова цель? (Marketing может быть bolder, чем финансовые dashboards)
+   - Кто аудитория? (Что отзовётся?)
+   - Какие constraints? (Brand guidelines, accessibility, performance)
 
-If any of these are unclear from the codebase, STOP and use Codex's structured user-input/question tool when available; if unavailable, ask directly in chat to clarify what you cannot infer.
+Если что-то из этого неясно из codebase, ОСТАНОВИТЕСЬ и используйте структурированный инструмент вопросов Codex, когда он доступен; если недоступен, спросите напрямую в чате, чтобы уточнить то, что нельзя вывести.
 
-**CRITICAL**: "Bolder" doesn't mean chaotic or garish. It means distinctive, memorable, and confident. Think intentional drama, not random chaos.
+**КРИТИЧНО**: «Bolder» не значит хаотичный или кричащий. Это значит distinctive, memorable и уверенный. Думайте intentional drama, а не random chaos.
 
-**WARNING - AI SLOP TRAP**: Review ALL the DON'T guidelines from the parent impeccable skill (already loaded in this context) before proceeding. Bold means distinctive, not "more effects."
+**WARNING — AI SLOP TRAP**: Перед продолжением просмотрите ВСЕ DON'T-гайдлайны из родительского impeccable skill (уже загружены в этом контексте). Bold значит distinctive, а не «больше эффектов».
 
-## Plan Amplification
+## Спланируйте усиление
 
-Create a strategy to increase impact while maintaining coherence:
+Создайте стратегию роста impact при сохранении coherence:
 
-- **Focal point**: What should be the hero moment? (Pick ONE, make it amazing)
-- **Personality direction**: Maximalist chaos? Elegant drama? Playful energy? Dark moody? Choose a lane.
-- **Risk budget**: How experimental can we be? Push boundaries within constraints.
-- **Hierarchy amplification**: Make big things BIGGER, small things smaller (increase contrast)
+- **Focal point**: какой должен быть hero-момент? (Выберите ОДИН, сделайте его amazing)
+- **Направление personality**: Maximalist chaos? Elegant drama? Playful energy? Dark moody? Выберите lane.
+- **Risk budget**: насколько экспериментально можно быть? Толкайте границы внутри constraints.
+- **Усиление иерархии**: делайте большое БОЛЬШЕ, маленькое меньше (увеличьте контраст)
 
-**IMPORTANT**: Bold design must still be usable. Impact without function is just decoration.
+**ВАЖНО**: Bold design всё равно должен быть usable. Impact без функции — просто decoration.
 
-## Amplify the Design
+## Усильте дизайн
 
-Systematically increase impact across these dimensions:
+Системно повышайте impact по этим измерениям:
 
-### Typography Amplification
-- **Replace generic fonts**: Swap system fonts for distinctive choices (see the parent skill's typography guidelines and [typography.md](typography.md) for inspiration)
-- **Extreme scale**: Create dramatic size jumps (3x-5x differences, not 1.5x)
-- **Weight contrast**: Pair 900 weights with 200 weights, not 600 with 400
-- **Unexpected choices**: Variable fonts, display fonts for headlines, condensed/extended widths, monospace as intentional accent (not as lazy "dev tool" default)
+### Усиление типографики
+- **Замените generic fonts**: поменяйте системные шрифты на distinctive choices (см. typography guidelines родительского skill и [typography.md](typography.md) для вдохновения)
+- **Extreme scale**: создавайте драматические скачки размера (различия 3x–5x, не 1.5x)
+- **Weight contrast**: pairing 900 с 200, а не 600 с 400
+- **Неожиданные choices**: variable fonts, display fonts для headlines, condensed/extended widths, monospace как intentional accent (не как ленивый дефолт «dev tool»)
 
-### Color Intensification
-- **Increase saturation**: Shift to more vibrant, energetic colors (but not neon)
-- **Bold palette**: Introduce unexpected color combinations. Avoid the purple-blue gradient AI slop
-- **Dominant color strategy**: Let one bold color own 60% of the design
-- **Sharp accents**: High-contrast accent colors that pop
-- **Tinted neutrals**: Replace pure grays with tinted grays that harmonize with your palette
-- **Rich gradients**: Intentional multi-stop gradients (not generic purple-to-blue)
+### Интенсификация цвета
+- **Повысьте saturation**: сдвигайтесь к более vibrant, energetic цветам (но не neon)
+- **Bold palette**: вводите неожиданные цветовые комбинации. Избегайте purple-blue gradient AI slop
+- **Стратегия dominant color**: пусть один bold-цвет владеет 60% дизайна
+- **Острые accents**: high-contrast accent colors, которые pop
+- **Tinted neutrals**: замените pure grays тонированными серыми, гармонирующими с палитрой
+- **Rich gradients**: intentional multi-stop gradients (не generic purple-to-blue)
 
-### Spatial Drama
-- **Extreme scale jumps**: Make important elements 3-5x larger than surroundings
-- **Break the grid**: Let hero elements escape containers and cross boundaries
-- **Asymmetric layouts**: Replace centered, balanced layouts with tension-filled asymmetry
-- **Generous space**: Use white space dramatically (100-200px gaps, not 20-40px)
-- **Overlap**: Layer elements intentionally for depth
+### Пространственная драма
+- **Экстремальные скачки scale**: делайте важные элементы в 3–5 раз крупнее окружения
+- **Сломайте сетку**: пусть hero-элементы выходят из containers и пересекают границы
+- **Асимметричные layouts**: замените centered, balanced layouts асимметрией с напряжением
+- **Щедрое пространство**: используйте white space драматично (gaps 100–200px, не 20–40px)
+- **Overlap**: намеренно наслаивайте элементы для глубины
 
-### Visual Effects
-- **Dramatic shadows**: Large, soft shadows for elevation (but not generic drop shadows on rounded rectangles)
-- **Background treatments**: Mesh patterns, noise textures, geometric patterns, intentional gradients (not purple-to-blue)
-- **Texture & depth**: Grain, halftone, duotone, layered elements. NOT glassmorphism (it's overused AI slop)
-- **Borders & frames**: Thick borders, decorative frames, custom shapes (not rounded rectangles with colored border on one side)
-- **Custom elements**: Illustrative elements, custom icons, decorative details that reinforce brand
+### Визуальные эффекты
+- **Драматические shadows**: большие мягкие тени для elevation (но не generic drop shadows на rounded rectangles)
+- **Обработка фона**: mesh patterns, noise textures, geometric patterns, intentional gradients (не purple-to-blue)
+- **Texture & depth**: grain, halftone, duotone, layered elements. НЕ glassmorphism (это overused AI slop)
+- **Borders & frames**: толстые borders, decorative frames, custom shapes (не rounded rectangles с цветным border на одной стороне)
+- **Custom elements**: illustrative elements, custom icons, decorative details, усиливающие бренд
 
 ### Motion & Animation
-- **Entrance choreography**: Staggered, dramatic page load animations with 50-100ms delays
-- **Scroll effects**: Parallax, reveal animations, scroll-triggered sequences
-- **Micro-interactions**: Satisfying hover effects, click feedback, state changes
-- **Transitions**: Smooth, noticeable transitions using ease-out-quart/quint/expo (not bounce or elastic, which cheapen the effect)
+- **Хореография входа**: staggered, драматические page load animations с задержками 50–100ms
+- **Scroll effects**: parallax, reveal animations, scroll-triggered sequences
+- **Micro-interactions**: satisfying hover effects, click feedback, state changes
+- **Transitions**: плавные, заметные transitions с ease-out-quart/quint/expo (не bounce или elastic, которые удешевляют эффект)
 
-### Composition Boldness
-- **Hero moments**: Create clear focal points with dramatic treatment
-- **Diagonal flows**: Escape horizontal/vertical rigidity with diagonal arrangements
-- **Full-bleed elements**: Use full viewport width/height for impact
-- **Unexpected proportions**: Golden ratio? Throw it out. Try 70/30, 80/20 splits
+### Смелость композиции
+- **Hero moments**: создавайте ясные focal points с драматической обработкой
+- **Диагональные потоки**: уходите от горизонтальной/вертикальной жёсткости диагональными arrangements
+- **Full-bleed elements**: используйте полную ширину/высоту viewport для impact
+- **Неожиданные proportions**: golden ratio? Выбросьте. Попробуйте сплиты 70/30, 80/20
 
-**NEVER**:
-- Add effects randomly without purpose (chaos ≠ bold)
-- Sacrifice readability for aesthetics (body text must be readable)
-- Make everything bold (then nothing is bold; you need contrast)
-- Ignore accessibility (bold design must still meet WCAG standards)
-- Overwhelm with motion (animation fatigue is real)
-- Copy trendy aesthetics blindly (bold means distinctive, not derivative)
+**НИКОГДА**:
+- Не добавляйте эффекты случайно без цели (chaos ≠ bold)
+- Не жертвуйте читаемостью ради aesthetics (body text должен быть читаемым)
+- Не делайте всё bold (тогда ничего не bold; нужен контраст)
+- Не игнорируйте accessibility (bold design всё равно должен соответствовать WCAG)
+- Не перегружайте motion (animation fatigue реален)
+- Не копируйте trendy aesthetics вслепую (bold значит distinctive, не derivative)
 
-## Verify Quality
+## Проверьте качество
 
-Ensure amplification maintains usability and coherence:
+Убедитесь, что усиление сохраняет usability и coherence:
 
-- **NOT AI slop**: Does this look like every other AI-generated "bold" design? If yes, start over.
-- **Still functional**: Can users accomplish tasks without distraction?
-- **Coherent**: Does everything feel intentional and unified?
-- **Memorable**: Will users remember this experience?
-- **Performant**: Do all these effects run smoothly?
-- **Accessible**: Does it still meet accessibility standards?
+- **НЕ AI slop**: выглядит ли это как любой другой AI-generated «bold» дизайн? Если да — начните заново.
+- **Всё ещё functional**: пользователи могут выполнять задачи без отвлечения?
+- **Coherent**: всё ощущается intentional и unified?
+- **Memorable**: пользователи запомнят этот опыт?
+- **Performant**: все эти эффекты работают плавно?
+- **Accessible**: всё ещё соответствует стандартам accessibility?
 
-**The test**: If you showed this to someone and said "AI made this bolder," would they believe you immediately? If yes, you've failed. Bold means distinctive, not "more AI effects."
+**Тест**: если вы покажете это кому-то и скажете «AI сделал это bolder», поверят ли они сразу? Если да — вы провалились. Bold значит distinctive, а не «больше AI-эффектов».
 
-When the result feels right, hand off to `$impeccable polish` for the final pass.
+Когда результат ощущается правильным, передайте `$impeccable polish` для финального прохода.

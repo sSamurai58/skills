@@ -1,109 +1,109 @@
-> **Additional context needed**: performance constraints.
+> **Нужен дополнительный контекст**: performance constraints.
 
-Add motion that conveys state, gives feedback, and clarifies hierarchy. Cut motion that exists only for decoration. Animation fatigue is a real cost; spend the budget on the moments that need it.
+Добавляйте motion, который передаёт state, даёт feedback и проясняет иерархию. Убирайте motion, который существует только для decoration. Animation fatigue — реальная цена; тратьте budget на моменты, которым он нужен.
 
 ---
 
 ## Register
 
-Brand: orchestrated page-load sequences, staggered reveals, scroll-driven animation. Motion is part of the voice; one well-rehearsed entrance beats scattered micro-interactions.
+Brand: оркестрированные page-load sequences, staggered reveals, scroll-driven animation. Motion — часть voice; один хорошо отрепетированный entrance бьёт разбросанные micro-interactions.
 
-Product: 150–250 ms on most transitions. Motion conveys state: feedback, reveal, loading, transitions between views. No page-load choreography; users are in a task and won't wait for it.
+Product: 150–250 ms на большинстве transitions. Motion передаёт state: feedback, reveal, loading, transitions между views. Нет page-load choreography; пользователи в задаче и не будут ждать.
 
 ---
 
-## Assess Animation Opportunities
+## Оцените возможности Animation
 
-Analyze where motion would improve the experience:
+Проанализируйте, где motion улучшит опыт:
 
-1. **Identify static areas**:
-   - **Missing feedback**: Actions without visual acknowledgment (button clicks, form submission, etc.)
-   - **Jarring transitions**: Instant state changes that feel abrupt (show/hide, page loads, route changes)
-   - **Unclear relationships**: Spatial or hierarchical relationships that aren't obvious
-   - **Lack of delight**: Functional but joyless interactions
-   - **Missed guidance**: Opportunities to direct attention or explain behavior
+1. **Определите static areas**:
+   - **Missing feedback**: Действия без visual acknowledgment (button clicks, form submission и т.д.)
+   - **Jarring transitions**: Instant state changes, которые ощущаются abrupt (show/hide, page loads, route changes)
+   - **Unclear relationships**: Spatial или hierarchical relationships, которые не очевидны
+   - **Lack of delight**: Functional но joyless interactions
+   - **Missed guidance**: Возможности направить внимание или объяснить behavior
 
-2. **Understand the context**:
-   - What's the personality? (Playful vs serious, energetic vs calm)
-   - What's the performance budget? (Mobile-first? Complex page?)
-   - Who's the audience? (Motion-sensitive users? Power users who want speed?)
-   - What matters most? (One hero animation vs many micro-interactions?)
+2. **Поймите контекст**:
+   - Какова personality? (Playful vs serious, energetic vs calm)
+   - Каков performance budget? (Mobile-first? Complex page?)
+   - Кто аудитория? (Motion-sensitive users? Power users, которым нужна speed?)
+   - Что важнее всего? (Одна hero animation vs many micro-interactions?)
 
-If any of these are unclear from the codebase, STOP and use Codex's structured user-input/question tool when available; if unavailable, ask directly in chat to clarify what you cannot infer.
+Если что-то из этого неясно из codebase, ОСТАНОВИТЕСЬ и используйте структурированный инструмент вопросов Codex, когда он доступен; если недоступен, спросите напрямую в чате, чтобы уточнить то, что нельзя вывести.
 
-**CRITICAL**: Respect `prefers-reduced-motion`. Always provide non-animated alternatives for users who need them.
+**КРИТИЧНО**: Уважайте `prefers-reduced-motion`. Всегда предоставляйте non-animated alternatives для пользователей, которым они нужны.
 
-## Plan Animation Strategy
+## Спланируйте Animation Strategy
 
-Create a purposeful animation plan:
+Создайте purposeful план анимации:
 
-- **Hero moment**: What's the ONE signature animation? (Page load? Hero section? Key interaction?)
-- **Feedback layer**: Which interactions need acknowledgment?
-- **Transition layer**: Which state changes need smoothing?
-- **Delight layer**: Where can we surprise and delight?
+- **Hero moment**: Какова ОДНА signature animation? (Page load? Hero section? Key interaction?)
+- **Feedback layer**: Каким interactions нужно acknowledgment?
+- **Transition layer**: Какие state changes нуждаются в smoothing?
+- **Delight layer**: Где можно surprise and delight?
 
-**IMPORTANT**: One well-orchestrated experience beats scattered animations everywhere. Focus on high-impact moments.
+**ВАЖНО**: Один хорошо оркестрированный опыт бьёт разбросанные animations everywhere. Фокусируйтесь на high-impact moments.
 
-## Implement Animations
+## Реализуйте Animations
 
-Add motion systematically across these categories:
+Добавляйте motion системно по этим категориям:
 
 ### Entrance Animations
-- **Page load choreography**: Stagger element reveals (100-150ms delays), fade + slide combinations
-- **Hero section**: Dramatic entrance for primary content (scale, parallax, or creative effects)
-- **Content reveals**: Scroll-triggered animations using intersection observer
+- **Page load choreography**: Stagger element reveals (задержки 100–150ms), комбинации fade + slide
+- **Hero section**: Dramatic entrance для primary content (scale, parallax или creative effects)
+- **Content reveals**: Scroll-triggered animations с intersection observer
 - **Modal/drawer entry**: Smooth slide + fade, backdrop fade, focus management
 
 ### Micro-interactions
 - **Button feedback**:
-  - Hover: Subtle scale (1.02-1.05), color shift, shadow increase
+  - Hover: Subtle scale (1.02–1.05), color shift, shadow increase
   - Click: Quick scale down then up (0.95 → 1), ripple effect
-  - Loading: Spinner or pulse state
+  - Loading: Spinner или pulse state
 - **Form interactions**:
-  - Input focus: Border color transition, slight scale or glow
+  - Input focus: Border color transition, slight scale или glow
   - Validation: Shake on error, check mark on success, smooth color transitions
-- **Toggle switches**: Smooth slide + color transition (200-300ms)
+- **Toggle switches**: Smooth slide + color transition (200–300ms)
 - **Checkboxes/radio**: Check mark animation, ripple effect
 - **Like/favorite**: Scale + rotation, particle effects, color transition
 
 ### State Transitions
-- **Show/hide**: Fade + slide (not instant), appropriate timing (200-300ms)
-- **Expand/collapse**: Height transition with overflow handling, icon rotation
+- **Show/hide**: Fade + slide (не instant), appropriate timing (200–300ms)
+- **Expand/collapse**: Height transition с overflow handling, icon rotation
 - **Loading states**: Skeleton screen fades, spinner animations, progress bars
 - **Success/error**: Color transitions, icon animations, gentle scale pulse
 - **Enable/disable**: Opacity transitions, cursor changes
 
 ### Navigation & Flow
-- **Page transitions**: Crossfade between routes, shared element transitions
+- **Page transitions**: Crossfade между routes, shared element transitions
 - **Tab switching**: Slide indicator, content fade/slide
 - **Carousel/slider**: Smooth transforms, snap points, momentum
-- **Scroll effects**: Parallax layers, sticky headers with state changes, scroll progress indicators
+- **Scroll effects**: Parallax layers, sticky headers с state changes, scroll progress indicators
 
 ### Feedback & Guidance
 - **Hover hints**: Tooltip fade-ins, cursor changes, element highlights
 - **Drag & drop**: Lift effect (shadow + scale), drop zone highlights, smooth repositioning
-- **Copy/paste**: Brief highlight flash on paste, "copied" confirmation
-- **Focus flow**: Highlight path through form or workflow
+- **Copy/paste**: Brief highlight flash on paste, «copied» confirmation
+- **Focus flow**: Highlight path через form или workflow
 
 ### Delight Moments
-- **Empty states**: Subtle floating animations on illustrations
+- **Empty states**: Subtle floating animations на illustrations
 - **Completed actions**: Confetti, check mark flourish, success celebrations
-- **Easter eggs**: Hidden interactions for discovery
+- **Easter eggs**: Hidden interactions для discovery
 - **Contextual animation**: Weather effects, time-of-day themes, seasonal touches
 
 ## Technical Implementation
 
-Use appropriate techniques for each animation:
+Используйте appropriate techniques для каждой анимации:
 
 ### Timing & Easing
 
 **Durations by purpose:**
-- **100-150ms**: Instant feedback (button press, toggle)
-- **200-300ms**: State changes (hover, menu open)
-- **300-500ms**: Layout changes (accordion, modal)
-- **500-800ms**: Entrance animations (page load)
+- **100–150ms**: Instant feedback (button press, toggle)
+- **200–300ms**: State changes (hover, menu open)
+- **300–500ms**: Layout changes (accordion, modal)
+- **500–800ms**: Entrance animations (page load)
 
-**Easing curves (use these, not CSS defaults):**
+**Easing curves (используйте эти, не CSS defaults):**
 ```css
 /* Recommended: natural deceleration */
 --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);    /* Smooth */
@@ -115,7 +115,7 @@ Use appropriate techniques for each animation:
 /* elastic: cubic-bezier(0.68, -0.6, 0.32, 1.6); */
 ```
 
-**Exit animations are faster than entrances.** Use ~75% of enter duration.
+**Exit animations быстрее entrances.** Используйте ~75% enter duration.
 
 ### CSS Animations
 ```css
@@ -135,11 +135,11 @@ Use appropriate techniques for each animation:
 ```
 
 ### Performance
-- **Motion materials**: Use transform/opacity for reliable movement, but use blur, filters, masks, shadows, and color shifts when they materially improve the effect
-- **Layout safety**: Avoid casual animation of layout-driving properties (`width`, `height`, `top`, `left`, margins)
-- **will-change**: Add sparingly for known expensive animations
-- **Bound expensive effects**: Keep blur/filter/shadow areas small or isolated, use `contain` where appropriate
-- **Monitor FPS**: Ensure 60fps on target devices
+- **Motion materials**: Используйте transform/opacity для reliable movement, но используйте blur, filters, masks, shadows и color shifts, когда они materially улучшают эффект
+- **Layout safety**: Избегайте casual animation layout-driving properties (`width`, `height`, `top`, `left`, margins)
+- **will-change**: Добавляйте sparingly для known expensive animations
+- **Bound expensive effects**: Держите blur/filter/shadow areas small или isolated, используйте `contain` где appropriate
+- **Monitor FPS**: Обеспечьте 60fps на target devices
 
 ### Accessibility
 ```css
@@ -152,24 +152,24 @@ Use appropriate techniques for each animation:
 }
 ```
 
-**NEVER**:
-- Use bounce or elastic easing curves; they feel dated and draw attention to the animation itself
-- Animate layout properties casually (`width`, `height`, `top`, `left`, margins) when transform, FLIP, or grid-based techniques would work
-- Use durations over 500ms for feedback (it feels laggy)
-- Animate without purpose (every animation needs a reason)
-- Ignore `prefers-reduced-motion` (this is an accessibility violation)
-- Animate everything (animation fatigue makes interfaces feel exhausting)
-- Block interaction during animations unless intentional
+**НИКОГДА**:
+- Не используйте bounce или elastic easing curves; они ощущаются dated и привлекают внимание к самой анимации
+- Не анимируйте layout properties casually (`width`, `height`, `top`, `left`, margins), когда transform, FLIP или grid-based techniques сработали бы
+- Не используйте durations over 500ms для feedback (ощущается laggy)
+- Не анимируйте без цели (каждой анимации нужна reason)
+- Не игнорируйте `prefers-reduced-motion` (это accessibility violation)
+- Не анимируйте всё (animation fatigue делает интерфейсы exhausting)
+- Не блокируйте interaction во время animations, если не intentional
 
-## Verify Quality
+## Проверьте качество
 
-Test animations thoroughly:
+Тщательно тестируйте анимации:
 
-- **Smooth at 60fps**: No jank on target devices
-- **Feels natural**: Easing curves feel organic, not robotic
-- **Appropriate timing**: Not too fast (jarring) or too slow (laggy)
-- **Reduced motion works**: Animations disabled or simplified appropriately
-- **Doesn't block**: Users can interact during/after animations
-- **Adds value**: Makes interface clearer or more delightful
+- **Smooth at 60fps**: Нет jank на target devices
+- **Feels natural**: Easing curves ощущаются organic, не robotic
+- **Appropriate timing**: Не слишком fast (jarring) и не слишком slow (laggy)
+- **Reduced motion works**: Animations disabled или simplified appropriately
+- **Doesn't block**: Пользователи могут interact during/after animations
+- **Adds value**: Делает интерфейс clearer или more delightful
 
-When the motion clarifies state instead of decorating it, hand off to `$impeccable polish` for the final pass.
+Когда motion проясняет state вместо того, чтобы декорировать его, передайте `$impeccable polish` для финального прохода.

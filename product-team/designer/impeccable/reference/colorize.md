@@ -1,53 +1,53 @@
-> **Additional context needed**: existing brand colors.
+> **Нужен дополнительный контекст**: существующие brand colors.
 
-Replace timid grayscale or single-accent designs with a strategic palette: pick a color strategy, choose a hue family that fits the brand, then apply color with intent. More color ≠ better. Strategic color beats rainbow vomit.
+Замените робкие grayscale или single-accent дизайны стратегической палитрой: выберите color strategy, выберите hue family, подходящую бренду, затем применяйте цвет с намерением. Больше цвета ≠ лучше. Strategic color бьёт rainbow vomit.
 
 ---
 
 ## Register
 
-Brand: palette IS voice. Pick a color strategy first per SKILL.md (Restrained / Committed / Full palette / Drenched) and follow its dosage. Committed, Full palette, and Drenched deliberately exceed the ≤10% rule; that rule is Restrained only. Unexpected combinations are allowed; a dominant color can own the page when the chosen strategy calls for it.
+Brand: палитра И ЕСТЬ voice. Сначала выберите color strategy по SKILL.md (Restrained / Committed / Full palette / Drenched) и следуйте её dosage. Committed, Full palette и Drenched намеренно превышают правило ≤10%; это правило только для Restrained. Неожиданные комбинации разрешены; dominant color может владеть страницей, когда выбранная стратегия этого требует.
 
-Product: semantic-first and almost always Restrained. Accent color is reserved for primary action, current selection, and state indicators. Not decoration. Every color has a consistent meaning across every screen.
+Product: semantic-first и почти всегда Restrained. Accent color зарезервирован для primary action, current selection и state indicators. Не decoration. Каждый цвет имеет consistent meaning на каждом экране.
 
 ---
 
-## Assess Color Opportunity
+## Оцените возможность цвета
 
-Analyze the current state and identify opportunities:
+Проанализируйте текущее состояние и найдите возможности:
 
-1. **Understand current state**:
-   - **Color absence**: Pure grayscale? Limited neutrals? One timid accent?
-   - **Missed opportunities**: Where could color add meaning, hierarchy, or delight?
-   - **Context**: What's appropriate for this domain and audience?
-   - **Brand**: Are there existing brand colors we should use?
+1. **Поймите текущее состояние**:
+   - **Отсутствие цвета**: Pure grayscale? Limited neutrals? Один робкий accent?
+   - **Упущенные возможности**: Где цвет мог бы добавить meaning, hierarchy или delight?
+   - **Контекст**: Что уместно для этого domain и аудитории?
+   - **Бренд**: Есть ли существующие brand colors, которые следует использовать?
 
-2. **Identify where color adds value**:
+2. **Определите, где цвет добавляет ценность**:
    - **Semantic meaning**: Success (green), error (red), warning (yellow/orange), info (blue)
-   - **Hierarchy**: Drawing attention to important elements
-   - **Categorization**: Different sections, types, or states
+   - **Hierarchy**: Привлечение внимания к важным элементам
+   - **Categorization**: Разные секции, типы или состояния
    - **Emotional tone**: Warmth, energy, trust, creativity
-   - **Wayfinding**: Helping users navigate and understand structure
-   - **Delight**: Moments of visual interest and personality
+   - **Wayfinding**: Помощь пользователям навигировать и понимать структуру
+   - **Delight**: Моменты визуального интереса и personality
 
-If any of these are unclear from the codebase, STOP and use Codex's structured user-input/question tool when available; if unavailable, ask directly in chat to clarify what you cannot infer.
+Если что-то из этого неясно из codebase, ОСТАНОВИТЕСЬ и используйте структурированный инструмент вопросов Codex, когда он доступен; если недоступен, спросите напрямую в чате, чтобы уточнить то, что нельзя вывести.
 
-**CRITICAL**: More color ≠ better. Strategic color beats rainbow vomit every time. Every color should have a purpose.
+**КРИТИЧНО**: Больше цвета ≠ лучше. Strategic color бьёт rainbow vomit каждый раз. У каждого цвета должна быть цель.
 
-## Plan Color Strategy
+## Спланируйте Color Strategy
 
-Create a purposeful color introduction plan:
+Создайте purposeful план введения цвета:
 
-- **Color palette**: What colors match the brand/context? (Choose 2-4 colors max beyond neutrals)
-- **Dominant color**: Which color owns 60% of colored elements?
-- **Accent colors**: Which colors provide contrast and highlights? (30% and 10%)
-- **Application strategy**: Where does each color appear and why?
+- **Color palette**: Какие цвета соответствуют brand/context? (Выберите максимум 2–4 цвета beyond neutrals)
+- **Dominant color**: Какой цвет владеет 60% colored elements?
+- **Accent colors**: Какие цвета дают contrast и highlights? (30% и 10%)
+- **Application strategy**: Где появляется каждый цвет и почему?
 
-**IMPORTANT**: Color should enhance hierarchy and meaning, not create chaos. Less is more when it matters more.
+**ВАЖНО**: Цвет должен усиливать иерархию и meaning, а не создавать chaos. Less is more, когда это matters more.
 
-## Introduce Color Strategically
+## Вводите цвет стратегически
 
-Add color systematically across these dimensions:
+Добавляйте цвет системно по этим измерениям:
 
 ### Semantic Color
 - **State indicators**:
@@ -55,100 +55,100 @@ Add color systematically across these dimensions:
   - Error: Red/pink tones (rose, crimson, coral)
   - Warning: Orange/amber tones
   - Info: Blue tones (sky, ocean, indigo)
-  - Neutral: Gray/slate for inactive states
+  - Neutral: Gray/slate для inactive states
 
-- **Status badges**: Colored backgrounds or borders for states (active, pending, completed, etc.)
-- **Progress indicators**: Colored bars, rings, or charts showing completion or health
+- **Status badges**: Colored backgrounds или borders для states (active, pending, completed и т.д.)
+- **Progress indicators**: Colored bars, rings или charts, показывающие completion или health
 
-### Accent Color Application
-- **Primary actions**: Color the most important buttons/CTAs
-- **Links**: Add color to clickable text (maintain accessibility)
-- **Icons**: Colorize key icons for recognition and personality
-- **Headers/titles**: Add color to section headers or key labels
-- **Hover states**: Introduce color on interaction
+### Применение Accent Color
+- **Primary actions**: Окрашивайте самые важные buttons/CTAs
+- **Links**: Добавляйте цвет к clickable text (maintain accessibility)
+- **Icons**: Colorize key icons для recognition и personality
+- **Headers/titles**: Добавляйте цвет к section headers или key labels
+- **Hover states**: Вводите цвет при interaction
 
 ### Background & Surfaces
-- **Tinted backgrounds**: Replace pure gray (`#f5f5f5`) with warm neutrals (`oklch(97% 0.01 60)`) or cool tints (`oklch(97% 0.01 250)`)
-- **Colored sections**: Use subtle background colors to separate areas
-- **Gradient backgrounds**: Add depth with subtle, intentional gradients (not generic purple-blue)
-- **Cards & surfaces**: Tint cards or surfaces slightly for warmth
+- **Tinted backgrounds**: Замените pure gray (`#f5f5f5`) тёплыми нейтралами (`oklch(97% 0.01 60)`) или cool tints (`oklch(97% 0.01 250)`)
+- **Colored sections**: Используйте subtle background colors для разделения областей
+- **Gradient backgrounds**: Добавляйте depth subtle, intentional gradients (не generic purple-blue)
+- **Cards & surfaces**: Чуть тонируйте cards или surfaces для warmth
 
-**Use OKLCH for color**: It's perceptually uniform, meaning equal steps in lightness *look* equal. Great for generating harmonious scales.
+**Используйте OKLCH для цвета**: Он perceptually uniform — равные шаги lightness *выглядят* равными. Отлично для генерации гармоничных scales.
 
 ### Data Visualization
-- **Charts & graphs**: Use color to encode categories or values
-- **Heatmaps**: Color intensity shows density or importance
-- **Comparison**: Color coding for different datasets or timeframes
+- **Charts & graphs**: Используйте цвет для encoding categories или values
+- **Heatmaps**: Color intensity показывает density или importance
+- **Comparison**: Color coding для разных datasets или timeframes
 
 ### Borders & Accents
-- **Hairline borders**: 1px colored borders on full perimeter (not side-stripes; see the absolute ban on `border-left/right > 1px`)
-- **Underlines**: Color underlines for emphasis or active states
-- **Dividers**: Subtle colored dividers instead of gray lines
+- **Hairline borders**: 1px colored borders по полному периметру (не side-stripes; см. absolute ban на `border-left/right > 1px`)
+- **Underlines**: Color underlines для emphasis или active states
+- **Dividers**: Subtle colored dividers вместо gray lines
 - **Focus rings**: Colored focus indicators matching brand
-- **Surface tints**: A 4-8% background wash of the accent color instead of a stripe
+- **Surface tints**: 4–8% background wash accent color вместо stripe
 
-**NEVER**: `border-left` or `border-right` greater than 1px as a colored accent stripe. This is one of the three absolute bans in the parent skill. If you want to mark a card as "active" or "warning", use a full hairline border, a background tint, a leading glyph, or a numbered prefix. Not a side stripe.
+**НИКОГДА**: `border-left` или `border-right` greater than 1px как colored accent stripe. Это один из трёх absolute bans в родительском skill. Если хотите пометить card как «active» или «warning», используйте full hairline border, background tint, leading glyph или numbered prefix. Не side stripe.
 
 ### Typography Color
-- **Colored headings**: Use brand colors for section headings (maintain contrast)
-- **Highlight text**: Color for emphasis or categories
-- **Labels & tags**: Small colored labels for metadata or categories
+- **Colored headings**: Используйте brand colors для section headings (maintain contrast)
+- **Highlight text**: Цвет для emphasis или categories
+- **Labels & tags**: Small colored labels для metadata или categories
 
 ### Decorative Elements
-- **Illustrations**: Add colored illustrations or icons
-- **Shapes**: Geometric shapes in brand colors as background elements
-- **Gradients**: Colorful gradient overlays or mesh backgrounds
-- **Blobs/organic shapes**: Soft colored shapes for visual interest
+- **Illustrations**: Добавляйте colored illustrations или icons
+- **Shapes**: Geometric shapes в brand colors как background elements
+- **Gradients**: Colorful gradient overlays или mesh backgrounds
+- **Blobs/organic shapes**: Soft colored shapes для visual interest
 
 ## Balance & Refinement
 
-Ensure color addition improves rather than overwhelms:
+Убедитесь, что добавление цвета улучшает, а не overwhelms:
 
 ### Maintain Hierarchy
-- **Dominant color** (60%): Primary brand color or most used accent
-- **Secondary color** (30%): Supporting color for variety
-- **Accent color** (10%): High contrast for key moments
-- **Neutrals** (remaining): Gray/black/white for structure
+- **Dominant color** (60%): Primary brand color или most used accent
+- **Secondary color** (30%): Supporting color для variety
+- **Accent color** (10%): High contrast для key moments
+- **Neutrals** (остальное): Gray/black/white для structure
 
 ### Accessibility
-- **Contrast ratios**: Ensure WCAG compliance (4.5:1 for text, 3:1 for UI components)
-- **Don't rely on color alone**: Use icons, labels, or patterns alongside color
-- **Test for color blindness**: Verify red/green combinations work for all users
+- **Contrast ratios**: Обеспечьте WCAG compliance (4.5:1 для text, 3:1 для UI components)
+- **Не полагайтесь только на цвет**: Используйте icons, labels или patterns alongside color
+- **Тестируйте на color blindness**: Проверьте, что red/green combinations работают для всех пользователей
 
 ### Cohesion
-- **Consistent palette**: Use colors from defined palette, not arbitrary choices
-- **Systematic application**: Same color meanings throughout (green always = success)
-- **Temperature consistency**: Warm palette stays warm, cool stays cool
+- **Consistent palette**: Используйте цвета из определённой палитры, не arbitrary choices
+- **Systematic application**: Одинаковые значения цветов throughout (green always = success)
+- **Temperature consistency**: Warm palette остаётся warm, cool остаётся cool
 
-**NEVER**:
-- Use every color in the rainbow (choose 2-4 colors beyond neutrals)
-- Apply color randomly without semantic meaning
-- Put gray text on colored backgrounds. It looks washed out; use a darker shade of the background color or transparency instead
-- Use pure gray for neutrals. Add subtle color tint (warm or cool) for depth
-- Use pure black (`#000`) or pure white (`#fff`) for large areas
-- Violate WCAG contrast requirements
-- Use color as the only indicator (accessibility issue)
-- Make everything colorful (defeats the purpose)
-- Default to purple-blue gradients (AI slop aesthetic)
+**НИКОГДА**:
+- Не используйте каждый цвет радуги (выберите 2–4 цвета beyond neutrals)
+- Не применяйте цвет randomly без semantic meaning
+- Не ставьте gray text на colored backgrounds. Выглядит washed out; используйте darker shade цвета фона или transparency
+- Не используйте pure gray для neutrals. Добавьте subtle color tint (warm или cool) для depth
+- Не используйте pure black (`#000`) или pure white (`#fff`) для больших областей
+- Не нарушайте WCAG contrast requirements
+- Не используйте цвет как единственный indicator (accessibility issue)
+- Не делайте всё colorful (defeats the purpose)
+- Не дефолтьте к purple-blue gradients (AI slop aesthetic)
 
-## Verify Color Addition
+## Проверьте добавление цвета
 
-Test that colorization improves the experience:
+Протестируйте, что colorization улучшает опыт:
 
-- **Better hierarchy**: Does color guide attention appropriately?
-- **Clearer meaning**: Does color help users understand states/categories?
-- **More engaging**: Does the interface feel warmer and more inviting?
-- **Still accessible**: Do all color combinations meet WCAG standards?
-- **Not overwhelming**: Is color balanced and purposeful?
+- **Better hierarchy**: Цвет направляет внимание appropriately?
+- **Clearer meaning**: Цвет помогает понимать states/categories?
+- **More engaging**: Интерфейс ощущается warmer и more inviting?
+- **Still accessible**: Все color combinations соответствуют WCAG?
+- **Not overwhelming**: Цвет balanced и purposeful?
 
-When the palette earns its place, hand off to `$impeccable polish` for the final pass.
+Когда палитра заслуживает своё место, передайте `$impeccable polish` для финального прохода.
 
 ## Live-mode signature params
 
-When invoked from live mode, each variant MUST declare a `color-amount` param so the user can dial between a restrained accent and a drenched surface without regeneration. Author the variant's CSS against `var(--p-color-amount, 0.5)`, typically as the alpha multiplier on backgrounds, or as a scaling factor on the chroma axis in an OKLCH expression. 0 = neutral/monochrome, 1 = full saturation / dominant coverage.
+Когда вызван из live mode, каждый variant MUST declare `color-amount` param, чтобы пользователь мог dial между restrained accent и drenched surface без regeneration. Author CSS варианта против `var(--p-color-amount, 0.5)`, обычно как alpha multiplier на backgrounds или как scaling factor на chroma axis в OKLCH expression. 0 = neutral/monochrome, 1 = full saturation / dominant coverage.
 
 ```json
 {"id":"color-amount","kind":"range","min":0,"max":1,"step":0.05,"default":0.5,"label":"Color amount"}
 ```
 
-Layer 1-2 variant-specific params on top: palette selection (`steps` with named options), temperature warmth, or tint vs. true color. See `reference/live.md` for the full params contract.
+Layer 1–2 variant-specific params сверху: palette selection (`steps` с named options), temperature warmth или tint vs. true color. См. `reference/live.md` для полного params contract.

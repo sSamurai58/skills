@@ -1,134 +1,134 @@
-Space is the most underused design tool. Find the layout's actual problem (monotone spacing, weak hierarchy, identical card grids, the centered-stack default) and fix the structure, not the surface.
+Пространство — самый недоиспользованный дизайн-инструмент. Найдите реальную проблему layout (monotone spacing, слабая иерархия, identical card grids, centered-stack default) и исправьте структуру, а не поверхность.
 
 ---
 
 ## Register
 
-Brand: asymmetric compositions, fluid spacing with `clamp()`, intentional grid-breaking for emphasis. Rhythm through contrast: tight groupings paired with generous separations.
+Brand: асимметричные композиции, fluid spacing с `clamp()`, intentional grid-breaking для emphasis. Ритм через контраст: tight groupings paired с generous separations.
 
-Product: predictable grids, consistent densities, familiar navigation patterns. Responsive behavior is structural (collapse sidebar, responsive table), not fluid typography. Consistency IS an affordance.
+Product: предсказуемые grids, consistent densities, знакомые navigation patterns. Responsive behavior структурный (collapse sidebar, responsive table), а не fluid typography. Consistency И ЕСТЬ affordance.
 
 ---
 
-## Assess Current Layout
+## Оцените текущий Layout
 
-Analyze what's weak about the current spatial design:
+Проанализируйте, что слабо в текущем spatial design:
 
 1. **Spacing**:
-   - Is spacing consistent or arbitrary? (Random padding/margin values)
-   - Is all spacing the same? (Equal padding everywhere = no rhythm)
-   - Are related elements grouped tightly, with generous space between groups?
+   - Spacing consistent или arbitrary? (Random padding/margin values)
+   - Весь spacing одинаковый? (Equal padding everywhere = нет ритма)
+   - Связанные элементы сгруппированы tightly, с generous space между группами?
 
-2. **Visual hierarchy**:
-   - Apply the squint test: blur your (metaphorical) eyes. Can you still identify the most important element, second most important, and clear groupings?
-   - Is hierarchy achieved effectively? (Space and weight alone can be enough; is the current approach working?)
-   - Does whitespace guide the eye to what matters?
+2. **Визуальная иерархия**:
+   - Примените squint test: размойте (метафорически) глаза. Всё ещё можете определить самый важный элемент, второй по важности и ясные группировки?
+   - Иерархия достигнута эффективно? (Space и weight сами по себе могут быть достаточны; работает ли текущий подход?)
+   - Направляет ли whitespace глаз к важному?
 
 3. **Grid & structure**:
-   - Is there a clear underlying structure, or does the layout feel random?
-   - Are identical card grids used everywhere? (Icon + heading + text, repeated endlessly)
-   - Is everything centered? (Left-aligned with asymmetric layouts feels more designed, but not a hard and fast rule)
+   - Есть ясная underlying structure, или layout ощущается random?
+   - Identical card grids используются везде? (Icon + heading + text, repeated endlessly)
+   - Всё centered? (Left-aligned с асимметричными layouts ощущается более designed, но это не hard and fast rule)
 
 4. **Rhythm & variety**:
-   - Does the layout have visual rhythm? (Alternating tight/generous spacing)
-   - Is every section structured the same way? (Monotonous repetition)
-   - Are there intentional moments of surprise or emphasis?
+   - Есть у layout визуальный ритм? (Alternating tight/generous spacing)
+   - Каждая секция структурирована одинаково? (Monotonous repetition)
+   - Есть intentional моменты surprise или emphasis?
 
 5. **Density**:
-   - Is the layout too cramped? (Not enough breathing room)
-   - Is the layout too sparse? (Excessive whitespace without purpose)
-   - Does density match the content type? (Data-dense UIs need tighter spacing; marketing pages need more air)
+   - Layout слишком cramped? (Недостаточно breathing room)
+   - Layout слишком sparse? (Excessive whitespace без цели)
+   - Density соответствует типу контента? (Data-dense UIs нуждаются в tighter spacing; marketing pages нуждаются в большем air)
 
-**CRITICAL**: Layout problems are often the root cause of interfaces feeling "off" even when colors and fonts are fine. Space is a design material; use it with intention.
+**КРИТИЧНО**: Проблемы layout часто — root cause ощущения, что интерфейсы «off», даже когда цвета и шрифты в порядке. Пространство — design material; используйте его с намерением.
 
-## Plan Layout Improvements
+## Спланируйте улучшения Layout
 
-Consult the [spatial design reference](spatial-design.md) for detailed guidance on grids, rhythm, and container queries.
+Обратитесь к [spatial design reference](spatial-design.md) за detailed guidance по grids, rhythm и container queries.
 
-Create a systematic plan:
+Создайте системный план:
 
-- **Spacing system**: Use a consistent scale (a framework's built-in scale like Tailwind's, rem-based tokens, or a custom system). The specific values matter less than consistency.
-- **Hierarchy strategy**: How will space communicate importance?
-- **Layout approach**: What structure fits the content? Flex for 1D, Grid for 2D, named areas for complex page layouts.
-- **Rhythm**: Where should spacing be tight vs generous?
+- **Spacing system**: Используйте consistent scale (встроенная scale framework вроде Tailwind, rem-based tokens или custom system). Конкретные значения важны меньше consistency.
+- **Hierarchy strategy**: Как пространство будет сообщать importance?
+- **Layout approach**: Какая структура подходит контенту? Flex для 1D, Grid для 2D, named areas для сложных page layouts.
+- **Rhythm**: Где spacing должен быть tight vs generous?
 
-## Improve Layout Systematically
+## Улучшайте Layout системно
 
-### Establish a Spacing System
+### Установите Spacing System
 
-- Use a consistent spacing scale (framework scales like Tailwind, rem-based tokens, or a custom scale all work). What matters is that values come from a defined set, not arbitrary numbers.
-- Name tokens semantically if using custom properties: `--space-xs` through `--space-xl`, not `--spacing-8`
-- Use `gap` for sibling spacing instead of margins; eliminates margin collapse hacks
-- Apply `clamp()` for fluid spacing that breathes on larger screens
+- Используйте consistent spacing scale (framework scales вроде Tailwind, rem-based tokens или custom scale — все работают). Важно, чтобы значения шли из определённого набора, а не произвольных чисел.
+- Называйте tokens семантически при custom properties: `--space-xs` through `--space-xl`, не `--spacing-8`
+- Используйте `gap` для sibling spacing вместо margins; устраняет margin collapse hacks
+- Применяйте `clamp()` для fluid spacing, который дышит на больших экранах
 
-### Create Visual Rhythm
+### Создайте визуальный ритм
 
-- **Tight grouping** for related elements (8-12px between siblings)
-- **Generous separation** between distinct sections (48-96px)
-- **Varied spacing** within sections (not every row needs the same gap)
-- **Asymmetric compositions**: break the predictable centered-content pattern when it makes sense
+- **Tight grouping** для связанных элементов (8–12px между siblings)
+- **Generous separation** между distinct sections (48–96px)
+- **Varied spacing** внутри секций (не каждому row нужен одинаковый gap)
+- **Асимметричные композиции**: ломайте предсказуемый centered-content pattern, когда это имеет смысл
 
-### Choose the Right Layout Tool
+### Выберите правильный Layout Tool
 
-- **Use Flexbox for 1D layouts**: Rows of items, nav bars, button groups, card contents, most component internals. Flex is simpler and more appropriate for the majority of layout tasks.
-- **Use Grid for 2D layouts**: Page-level structure, dashboards, data-dense interfaces, anything where rows AND columns need coordinated control.
-- **Don't default to Grid** when Flexbox with `flex-wrap` would be simpler and more flexible.
-- Use `repeat(auto-fit, minmax(280px, 1fr))` for responsive grids without breakpoints.
-- Use named grid areas (`grid-template-areas`) for complex page layouts; redefine at breakpoints.
+- **Используйте Flexbox для 1D layouts**: Rows of items, nav bars, button groups, card contents, большинство component internals. Flex проще и уместнее для большинства layout tasks.
+- **Используйте Grid для 2D layouts**: Page-level structure, dashboards, data-dense interfaces, всё где rows И columns нуждаются в coordinated control.
+- **Не дефолтьте к Grid**, когда Flexbox с `flex-wrap` был бы проще и гибче.
+- Используйте `repeat(auto-fit, minmax(280px, 1fr))` для responsive grids без breakpoints.
+- Используйте named grid areas (`grid-template-areas`) для сложных page layouts; переопределяйте на breakpoints.
 
-### Break Card Grid Monotony
+### Сломайте монотонность Card Grid
 
-- Don't default to card grids for everything; spacing and alignment create visual grouping naturally
-- Use cards only when content is truly distinct and actionable. Never nest cards inside cards
-- Vary card sizes, span columns, or mix cards with non-card content to break repetition
+- Не дефолтьте к card grids для всего; spacing и alignment создают визуальную группировку естественно
+- Используйте cards только когда контент действительно distinct и actionable. Никогда не вкладывайте cards внутрь cards
+- Варьируйте размеры cards, span columns или смешивайте cards с non-card контентом, чтобы сломать repetition
 
-### Strengthen Visual Hierarchy
+### Усильте визуальную иерархию
 
-- Use the fewest dimensions needed for clear hierarchy. Space alone can be enough; generous whitespace around an element draws the eye. Some of the most polished designs achieve rhythm with just space and weight. Add color or size contrast only when simpler means aren't sufficient.
-- Be aware of reading flow: in LTR languages, the eye naturally scans top-left to bottom-right, but primary action placement depends on context (e.g., bottom-right in dialogs, top in navigation).
-- Create clear content groupings through proximity and separation.
+- Используйте наименьшее число измерений, нужных для ясной иерархии. Space само по себе может быть достаточным; generous whitespace вокруг элемента притягивает глаз. Некоторые из самых polished designs достигают ритма только через space и weight. Добавляйте color или size contrast только когда более простых средств недостаточно.
+- Учитывайте reading flow: в LTR языках глаз naturally scans top-left to bottom-right, но placement primary action зависит от контекста (например bottom-right в dialogs, top в navigation).
+- Создавайте ясные content groupings через proximity и separation.
 
-### Manage Depth & Elevation
+### Управляйте Depth & Elevation
 
-- Create a semantic z-index scale (dropdown → sticky → modal-backdrop → modal → toast → tooltip)
-- Build a consistent shadow scale (sm → md → lg → xl); shadows should be subtle
-- Use elevation to reinforce hierarchy, not as decoration
+- Создайте semantic z-index scale (dropdown → sticky → modal-backdrop → modal → toast → tooltip)
+- Постройте consistent shadow scale (sm → md → lg → xl); shadows должны быть subtle
+- Используйте elevation для усиления иерархии, а не как decoration
 
 ### Optical Adjustments
 
-- If an icon looks visually off-center despite being geometrically centered, nudge it. But only if you're confident it actually looks wrong. Don't adjust speculatively.
+- Если icon выглядит visually off-center несмотря на геометрический центр — сдвиньте. Но только если уверены, что действительно выглядит неправильно. Не adjust'ьте speculative.
 
-**NEVER**:
-- Use arbitrary spacing values outside your scale
-- Make all spacing equal (variety creates hierarchy)
-- Wrap everything in cards (not everything needs a container)
-- Nest cards inside cards (use spacing and dividers for hierarchy within)
-- Use identical card grids everywhere (icon + heading + text, repeated)
-- Center everything (left-aligned with asymmetry feels more designed)
-- Default to the hero metric layout (big number, small label, stats, gradient) as a template. If showing real user data, a prominent metric can work, but it should display actual data, not decorative numbers.
-- Default to CSS Grid when Flexbox would be simpler; use the simplest tool for the job
-- Use arbitrary z-index values (999, 9999); build a semantic scale
+**НИКОГДА**:
+- Не используйте arbitrary spacing values вне вашей scale
+- Не делайте весь spacing equal (variety создаёт иерархию)
+- Не оборачивайте всё в cards (не всему нужен container)
+- Не вкладывайте cards внутрь cards (используйте spacing и dividers для иерархии внутри)
+- Не используйте identical card grids везде (icon + heading + text, repeated)
+- Не центрируйте всё (left-aligned с asymmetry ощущается более designed)
+- Не дефолтьте к hero metric layout (big number, small label, stats, gradient) как template. Если показываете real user data, prominent metric может работать, но должен показывать actual data, а не decorative numbers.
+- Не дефолтьте к CSS Grid, когда Flexbox был бы проще; используйте simplest tool for the job
+- Не используйте arbitrary z-index values (999, 9999); стройте semantic scale
 
-## Verify Layout Improvements
+## Проверьте улучшения Layout
 
-- **Squint test**: Can you identify primary, secondary, and groupings with blurred vision?
-- **Rhythm**: Does the page have a satisfying beat of tight and generous spacing?
-- **Hierarchy**: Is the most important content obvious within 2 seconds?
-- **Breathing room**: Does the layout feel comfortable, not cramped or wasteful?
-- **Consistency**: Is the spacing system applied uniformly?
-- **Responsiveness**: Does the layout adapt gracefully across screen sizes?
+- **Squint test**: Можете определить primary, secondary и groupings с blurred vision?
+- **Rhythm**: Есть у страницы satisfying beat из tight и generous spacing?
+- **Hierarchy**: Самый важный контент очевиден за 2 секунды?
+- **Breathing room**: Layout ощущается comfortable, не cramped и не wasteful?
+- **Consistency**: Spacing system применена равномерно?
+- **Responsiveness**: Layout адаптируется gracefully across screen sizes?
 
-When the rhythm and hierarchy land, hand off to `$impeccable polish` for the final pass.
+Когда ритм и иерархия сели, передайте `$impeccable polish` для финального прохода.
 
 ## Live-mode signature params
 
-Each variant MUST declare a `density` param. Drive all spacing tokens in the variant's scoped CSS through `calc(var(--p-density, 1) * <base>)`: paddings, gaps, column widths. Users slide from airy to packed and see layout re-breathe with no regeneration.
+Каждый variant MUST declare `density` param. Drive all spacing tokens в scoped CSS варианта через `calc(var(--p-density, 1) * <base>)`: paddings, gaps, column widths. Пользователи скользят от airy к packed и видят, как layout re-breathe без regeneration.
 
 ```json
 {"id":"density","kind":"range","min":0.6,"max":1.4,"step":0.05,"default":1,"label":"Density"}
 ```
 
-For variants whose topology genuinely changes (stacked vs. side-by-side, grid vs. bento), use a `steps` param whose scoped CSS branches via `:scope[data-p-structure="X"]`. One structure param + one density param is a powerful combo; resist adding a third.
+Для variants, чья топология genuinely меняется (stacked vs. side-by-side, grid vs. bento), используйте `steps` param, чей scoped CSS branches через `:scope[data-p-structure="X"]`. Один structure param + один density param — мощная combo; resist добавлять третий.
 
 ```json
 {"id":"structure","kind":"steps","default":"grid","label":"Structure","options":[
@@ -138,4 +138,4 @@ For variants whose topology genuinely changes (stacked vs. side-by-side, grid vs
 ]}
 ```
 
-See `reference/live.md` for the full params contract.
+См. `reference/live.md` для полного params contract.

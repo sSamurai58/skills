@@ -1,76 +1,76 @@
-# Heuristics Scoring Guide
+# Гайд по Heuristics Scoring
 
-Score each of Nielsen's 10 Usability Heuristics on a 0–4 scale. Be honest: a 4 means genuinely excellent, not "good enough."
+Оценивайте каждую из 10 Usability Heuristics Нильсена по шкале 0–4. Будьте честны: 4 значит genuinely excellent, а не «good enough».
 
-## Nielsen's 10 Heuristics
+## 10 Heuristics Нильсена
 
 ### 1. Visibility of System Status
 
-Keep users informed about what's happening through timely, appropriate feedback.
+Держите пользователей informed о том, что происходит, через timely, appropriate feedback.
 
-**Check for**:
-- Loading indicators during async operations
-- Confirmation of user actions (save, submit, delete)
-- Progress indicators for multi-step processes
-- Current location in navigation (breadcrumbs, active states)
-- Form validation feedback (inline, not just on submit)
+**Проверяйте**:
+- Loading indicators во время async operations
+- Confirmation действий пользователя (save, submit, delete)
+- Progress indicators для multi-step processes
+- Current location в navigation (breadcrumbs, active states)
+- Form validation feedback (inline, не только on submit)
 
 **Scoring**:
 | Score | Criteria |
 |-------|----------|
-| 0 | No feedback; user is guessing what happened |
-| 1 | Rare feedback; most actions produce no visible response |
-| 2 | Partial; some states communicated, major gaps remain |
-| 3 | Good; most operations give clear feedback, minor gaps |
-| 4 | Excellent; every action confirms, progress is always visible |
+| 0 | Нет feedback; пользователь угадывает, что произошло |
+| 1 | Rare feedback; большинство действий не дают visible response |
+| 2 | Partial; некоторые states communicated, major gaps remain |
+| 3 | Good; большинство operations дают clear feedback, minor gaps |
+| 4 | Excellent; каждое действие confirms, progress всегда visible |
 
 ### 2. Match Between System and Real World
 
-Speak the user's language. Follow real-world conventions. Information appears in natural, logical order.
+Говорите языком пользователя. Следуйте real-world conventions. Информация появляется в natural, logical order.
 
-**Check for**:
-- Familiar terminology (no unexplained jargon)
+**Проверяйте**:
+- Familiar terminology (без unexplained jargon)
 - Logical information order matching user expectations
-- Recognizable icons and metaphors
-- Domain-appropriate language for the target audience
+- Recognizable icons и metaphors
+- Domain-appropriate language для target audience
 - Natural reading flow (left-to-right, top-to-bottom priority)
 
 **Scoring**:
 | Score | Criteria |
 |-------|----------|
-| 0 | Pure tech jargon, alien to users |
-| 1 | Mostly confusing; requires domain expertise to navigate |
-| 2 | Mixed; some plain language, some jargon leaks through |
-| 3 | Mostly natural; occasional term needs context |
-| 4 | Speaks the user's language fluently throughout |
+| 0 | Pure tech jargon, alien для пользователей |
+| 1 | Mostly confusing; нужна domain expertise, чтобы navigate |
+| 2 | Mixed; есть plain language, но jargon leaks through |
+| 3 | Mostly natural; occasional term нуждается в context |
+| 4 | Говорит языком пользователя fluently throughout |
 
 ### 3. User Control and Freedom
 
-Users need a clear "emergency exit" from unwanted states without extended dialogue.
+Пользователям нужен ясный «emergency exit» из unwanted states без extended dialogue.
 
-**Check for**:
+**Проверяйте**:
 - Undo/redo functionality
-- Cancel buttons on forms and modals
+- Cancel buttons на forms и modals
 - Clear navigation back to safety (home, previous)
-- Easy way to clear filters, search, selections
-- Escape from long or multi-step processes
+- Easy way очистить filters, search, selections
+- Escape из long или multi-step processes
 
 **Scoring**:
 | Score | Criteria |
 |-------|----------|
-| 0 | Users get trapped; no way out without refreshing |
-| 1 | Difficult exits; must find obscure paths to escape |
-| 2 | Some exits; main flows have escape, edge cases don't |
-| 3 | Good control; users can exit and undo most actions |
-| 4 | Full control; undo, cancel, back, and escape everywhere |
+| 0 | Пользователи trapped; нет выхода без refreshing |
+| 1 | Difficult exits; нужно искать obscure paths to escape |
+| 2 | Some exits; main flows имеют escape, edge cases — нет |
+| 3 | Good control; пользователи могут exit и undo most actions |
+| 4 | Full control; undo, cancel, back и escape everywhere |
 
 ### 4. Consistency and Standards
 
-Users shouldn't wonder whether different words, situations, or actions mean the same thing.
+Пользователи не должны гадать, означают ли разные слова, ситуации или действия одно и то же.
 
-**Check for**:
-- Consistent terminology throughout the interface
-- Same actions produce same results everywhere
+**Проверяйте**:
+- Consistent terminology throughout интерфейса
+- Same actions дают same results everywhere
 - Platform conventions followed (standard UI patterns)
 - Visual consistency (colors, typography, spacing, components)
 - Consistent interaction patterns (same gesture = same behavior)
@@ -78,129 +78,129 @@ Users shouldn't wonder whether different words, situations, or actions mean the 
 **Scoring**:
 | Score | Criteria |
 |-------|----------|
-| 0 | Inconsistent everywhere; feels like different products stitched together |
+| 0 | Inconsistent everywhere; ощущается как разные продукты, сшитые вместе |
 | 1 | Many inconsistencies; similar things look/behave differently |
 | 2 | Partially consistent; main flows match, details diverge |
-| 3 | Mostly consistent; occasional deviation, nothing confusing |
+| 3 | Mostly consistent; occasional deviation, ничего confusing |
 | 4 | Fully consistent; cohesive system, predictable behavior |
 
 ### 5. Error Prevention
 
-Better than good error messages is a design that prevents problems in the first place.
+Лучше good error messages — дизайн, который предотвращает проблемы заранее.
 
-**Check for**:
-- Confirmation before destructive actions (delete, overwrite)
-- Constraints preventing invalid input (date pickers, dropdowns)
-- Smart defaults that reduce errors
-- Clear labels that prevent misunderstanding
-- Autosave and draft recovery
+**Проверяйте**:
+- Confirmation перед destructive actions (delete, overwrite)
+- Constraints, предотвращающие invalid input (date pickers, dropdowns)
+- Smart defaults, снижающие errors
+- Clear labels, предотвращающие misunderstanding
+- Autosave и draft recovery
 
 **Scoring**:
 | Score | Criteria |
 |-------|----------|
-| 0 | Errors easy to make; no guardrails anywhere |
-| 1 | Few safeguards; some inputs validated, most aren't |
+| 0 | Errors легко сделать; нет guardrails anywhere |
+| 1 | Few safeguards; некоторые inputs validated, большинство — нет |
 | 2 | Partial prevention; common errors caught, edge cases slip |
-| 3 | Good prevention; most error paths blocked proactively |
-| 4 | Excellent; errors nearly impossible through smart constraints |
+| 3 | Good prevention; большинство error paths blocked proactively |
+| 4 | Excellent; errors nearly impossible через smart constraints |
 
 ### 6. Recognition Rather Than Recall
 
-Minimize memory load. Make objects, actions, and options visible or easily retrievable.
+Минимизируйте memory load. Делайте objects, actions и options visible или easily retrievable.
 
-**Check for**:
-- Visible options (not buried in hidden menus)
+**Проверяйте**:
+- Visible options (не buried в hidden menus)
 - Contextual help when needed (tooltips, inline hints)
-- Recent items and history
-- Autocomplete and suggestions
-- Labels on icons (not icon-only navigation)
+- Recent items и history
+- Autocomplete и suggestions
+- Labels на icons (не icon-only navigation)
 
 **Scoring**:
 | Score | Criteria |
 |-------|----------|
-| 0 | Heavy memorization; users must remember paths and commands |
-| 1 | Mostly recall; many hidden features, few visible cues |
+| 0 | Heavy memorization; пользователи должны помнить paths и commands |
+| 1 | Mostly recall; много hidden features, мало visible cues |
 | 2 | Some aids; main actions visible, secondary features hidden |
-| 3 | Good recognition; most things discoverable, few memory demands |
-| 4 | Everything discoverable; users never need to memorize |
+| 3 | Good recognition; большинство вещей discoverable, мало memory demands |
+| 4 | Everything discoverable; пользователям никогда не нужно memorize |
 
 ### 7. Flexibility and Efficiency of Use
 
-Accelerators, invisible to novices, speed up expert interaction.
+Accelerators, невидимые для novices, ускоряют expert interaction.
 
-**Check for**:
-- Keyboard shortcuts for common actions
+**Проверяйте**:
+- Keyboard shortcuts для common actions
 - Customizable interface elements
-- Recent items and favorites
+- Recent items и favorites
 - Bulk/batch actions
-- Power user features that don't complicate the basics
+- Power user features, которые не усложняют basics
 
 **Scoring**:
 | Score | Criteria |
 |-------|----------|
-| 0 | One rigid path; no shortcuts or alternatives |
-| 1 | Limited flexibility; few alternatives to the main path |
+| 0 | One rigid path; нет shortcuts или alternatives |
+| 1 | Limited flexibility; мало alternatives к main path |
 | 2 | Some shortcuts; basic keyboard support, limited bulk actions |
-| 3 | Good accelerators; keyboard nav, some customization |
+| 3 | Good accelerators; keyboard nav, некоторая customization |
 | 4 | Highly flexible; multiple paths, power features, customizable |
 
 ### 8. Aesthetic and Minimalist Design
 
-Interfaces should not contain irrelevant or rarely needed information. Every element should serve a purpose.
+Интерфейсы не должны содержать irrelevant или rarely needed information. Каждый элемент должен служить цели.
 
-**Check for**:
-- Only necessary information visible at each step
-- Clear visual hierarchy directing attention
-- Purposeful use of color and emphasis
-- No decorative clutter competing for attention
+**Проверяйте**:
+- Только necessary information visible на каждом шаге
+- Clear visual hierarchy, направляющая attention
+- Purposeful use of color и emphasis
+- Нет decorative clutter, конкурирующего за attention
 - Focused, uncluttered layouts
 
 **Scoring**:
 | Score | Criteria |
 |-------|----------|
-| 0 | Overwhelming; everything competes for attention equally |
-| 1 | Cluttered; too much noise, hard to find what matters |
+| 0 | Overwhelming; всё конкурирует за attention equally |
+| 1 | Cluttered; слишком много noise, трудно найти what matters |
 | 2 | Some clutter; main content clear, periphery noisy |
 | 3 | Mostly clean; focused design, minor visual noise |
-| 4 | Perfectly minimal; every element earns its pixel |
+| 4 | Perfectly minimal; каждый элемент earns its pixel |
 
 ### 9. Help Users Recognize, Diagnose, and Recover from Errors
 
-Error messages should use plain language, precisely indicate the problem, and constructively suggest a solution.
+Error messages должны использовать plain language, precisely указывать проблему и constructively предлагать решение.
 
-**Check for**:
-- Plain language error messages (no error codes for users)
-- Specific problem identification ("Email is missing @" not "Invalid input")
+**Проверяйте**:
+- Plain language error messages (нет error codes для пользователей)
+- Specific problem identification («Email is missing @» не «Invalid input»)
 - Actionable recovery suggestions
 - Errors displayed near the source of the problem
-- Non-blocking error handling (don't wipe the form)
+- Non-blocking error handling (не wipe the form)
 
 **Scoring**:
 | Score | Criteria |
 |-------|----------|
-| 0 | Cryptic errors; codes, jargon, or no message at all |
-| 1 | Vague errors; "Something went wrong" with no guidance |
-| 2 | Clear but unhelpful; names the problem but not the fix |
-| 3 | Clear with suggestions; identifies problem and offers next steps |
+| 0 | Cryptic errors; codes, jargon или вообще нет message |
+| 1 | Vague errors; «Something went wrong» без guidance |
+| 2 | Clear but unhelpful; называет проблему, но не fix |
+| 3 | Clear with suggestions; identifies problem и offers next steps |
 | 4 | Perfect recovery; pinpoints issue, suggests fix, preserves user work |
 
 ### 10. Help and Documentation
 
-Even if the system is usable without docs, help should be easy to find, task-focused, and concise.
+Даже если система usable без docs, help должен быть easy to find, task-focused и concise.
 
-**Check for**:
-- Searchable help or documentation
+**Проверяйте**:
+- Searchable help или documentation
 - Contextual help (tooltips, inline hints, guided tours)
-- Task-focused organization (not feature-organized)
+- Task-focused organization (не feature-organized)
 - Concise, scannable content
-- Easy access without leaving current context
+- Easy access без leaving current context
 
 **Scoring**:
 | Score | Criteria |
 |-------|----------|
-| 0 | No help available anywhere |
-| 1 | Help exists but hard to find or irrelevant |
-| 2 | Basic help; FAQ or docs exist, not contextual |
+| 0 | Help недоступен nowhere |
+| 1 | Help существует, но hard to find или irrelevant |
+| 2 | Basic help; FAQ или docs существуют, не contextual |
 | 3 | Good documentation; searchable, mostly task-focused |
 | 4 | Excellent contextual help; right info at the right moment |
 
@@ -222,13 +222,13 @@ Even if the system is usable without docs, help should be easy to find, task-foc
 
 ## Issue Severity (P0–P3)
 
-Tag each individual issue found during scoring with a priority level:
+Тегируйте каждый individual issue, найденный во время scoring, уровнем priority:
 
 | Priority | Name | Description | Action |
 |----------|------|-------------|--------|
-| **P0** | Blocking | Prevents task completion entirely | Fix immediately; this is a showstopper |
-| **P1** | Major | Causes significant difficulty or confusion | Fix before release |
-| **P2** | Minor | Annoyance, but workaround exists | Fix in next pass |
-| **P3** | Polish | Nice-to-fix, no real user impact | Fix if time permits |
+| **P0** | Blocking | Полностью предотвращает завершение задачи | Fix immediately; это showstopper |
+| **P1** | Major | Вызывает significant difficulty или confusion | Fix before release |
+| **P2** | Minor | Annoyance, но workaround существует | Fix in next pass |
+| **P3** | Polish | Nice-to-fix, нет реального user impact | Fix if time permits |
 
-**Tip**: If you're unsure between two levels, ask: "Would a user contact support about this?" If yes, it's at least P1.
+**Tip**: Если не уверены между двумя уровнями, спросите: «Обратятся ли пользователи в support из-за этого?» Если да — это минимум P1.

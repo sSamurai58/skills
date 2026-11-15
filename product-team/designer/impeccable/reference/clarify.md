@@ -1,45 +1,45 @@
-> **Additional context needed**: audience technical level and users' mental state in context.
+> **Нужен дополнительный контекст**: технический уровень аудитории и mental state пользователей в контексте.
 
-Find the unclear, confusing, or poorly written interface text and rewrite it. Vague copy creates support tickets and abandonment; specific copy gets users through the task.
+Найдите неясный, confusing или плохо написанный interface text и перепишите его. Vague copy создаёт support tickets и abandonment; specific copy проводит пользователей через задачу.
 
 
 ---
 
-## Assess Current Copy
+## Оцените текущий Copy
 
-Identify what makes the text unclear or ineffective:
+Определите, что делает текст неясным или неэффективным:
 
-1. **Find clarity problems**:
-   - **Jargon**: Technical terms users won't understand
-   - **Ambiguity**: Multiple interpretations possible
-   - **Passive voice**: "Your file has been uploaded" vs "We uploaded your file"
-   - **Length**: Too wordy or too terse
-   - **Assumptions**: Assuming user knowledge they don't have
-   - **Missing context**: Users don't know what to do or why
-   - **Tone mismatch**: Too formal, too casual, or inappropriate for situation
+1. **Найдите проблемы ясности**:
+   - **Jargon**: Технические термины, которые пользователи не поймут
+   - **Ambiguity**: Возможны multiple interpretations
+   - **Passive voice**: «Your file has been uploaded» vs «We uploaded your file»
+   - **Length**: Слишком wordy или слишком terse
+   - **Assumptions**: Предположение знания, которого у пользователя нет
+   - **Missing context**: Пользователи не знают, что делать или почему
+   - **Tone mismatch**: Слишком formal, слишком casual или inappropriate для ситуации
 
-2. **Understand the context**:
-   - Who's the audience? (Technical? General? First-time users?)
-   - What's the user's mental state? (Stressed during error? Confident during success?)
-   - What's the action? (What do we want users to do?)
-   - What's the constraint? (Character limits? Space limitations?)
+2. **Поймите контекст**:
+   - Кто аудитория? (Technical? General? First-time users?)
+   - Каков mental state пользователя? (Stressed во время error? Confident во время success?)
+   - Каково действие? (Что мы хотим, чтобы пользователи сделали?)
+   - Каков constraint? (Character limits? Space limitations?)
 
-**CRITICAL**: Clear copy helps users succeed. Unclear copy creates frustration, errors, and support tickets.
+**КРИТИЧНО**: Clear copy помогает пользователям succeed. Unclear copy создаёт frustration, errors и support tickets.
 
-## Plan Copy Improvements
+## Спланируйте улучшения Copy
 
-Create a strategy for clearer communication:
+Создайте стратегию clearer communication:
 
-- **Primary message**: What's the ONE thing users need to know?
-- **Action needed**: What should users do next (if anything)?
-- **Tone**: How should this feel? (Helpful? Apologetic? Encouraging?)
+- **Primary message**: Что ОДНО пользователям нужно знать?
+- **Action needed**: Что пользователи должны сделать дальше (если что-то)?
+- **Tone**: Каким это должно ощущаться? (Helpful? Apologetic? Encouraging?)
 - **Constraints**: Length limits, brand voice, localization considerations
 
-**IMPORTANT**: Good UX writing is invisible. Users should understand immediately without noticing the words.
+**ВАЖНО**: Good UX writing невидима. Пользователи должны понимать immediately, не замечая слов.
 
-## Improve Copy Systematically
+## Улучшайте Copy системно
 
-Refine text across these common areas:
+Уточняйте текст по этим распространённым областям:
 
 ### Error Messages
 **Bad**: "Error 403: Forbidden"
@@ -49,11 +49,11 @@ Refine text across these common areas:
 **Good**: "Email addresses need an @ symbol. Try: name@example.com"
 
 **Principles**:
-- Explain what went wrong in plain language
-- Suggest how to fix it
-- Don't blame the user
-- Include examples when helpful
-- Link to help/support if applicable
+- Объясняйте, что пошло не так, plain language
+- Предлагайте, как исправить
+- Не вините пользователя
+- Включайте examples, когда helpful
+- Ссылайтесь на help/support, если applicable
 
 ### Form Labels & Instructions
 **Bad**: "DOB (MM/DD/YYYY)"
@@ -63,112 +63,112 @@ Refine text across these common areas:
 **Good**: "Your email address" or "Company name"
 
 **Principles**:
-- Use clear, specific labels (not generic placeholders)
-- Show format expectations with examples
-- Explain why you're asking (when not obvious)
-- Put instructions before the field, not after
-- Keep required field indicators clear
+- Используйте clear, specific labels (не generic placeholders)
+- Показывайте format expectations с examples
+- Объясняйте, зачем спрашиваете (когда не obvious)
+- Ставьте instructions before the field, не after
+- Держите required field indicators ясными
 
 ### Button & CTA Text
 **Bad**: "Click here" | "Submit" | "OK"
 **Good**: "Create account" | "Save changes" | "Got it, thanks"
 
 **Principles**:
-- Describe the action specifically
-- Use active voice (verb + noun)
-- Match user's mental model
-- Be specific ("Save" is better than "OK")
+- Описывайте действие specifically
+- Используйте active voice (verb + noun)
+- Match mental model пользователя
+- Будьте specific («Save» лучше «OK»)
 
 ### Help Text & Tooltips
 **Bad**: "This is the username field"
 **Good**: "Choose a username. You can change this later in Settings."
 
 **Principles**:
-- Add value (don't just repeat the label)
-- Answer the implicit question ("What is this?" or "Why do you need this?")
-- Keep it brief but complete
-- Link to detailed docs if needed
+- Добавляйте value (не просто повторяйте label)
+- Отвечайте на implicit question («What is this?» или «Why do you need this?»)
+- Держите brief but complete
+- Ссылайтесь на detailed docs при необходимости
 
 ### Empty States
 **Bad**: "No items"
 **Good**: "No projects yet. Create your first project to get started."
 
 **Principles**:
-- Explain why it's empty (if not obvious)
-- Show next action clearly
-- Make it welcoming, not dead-end
+- Объясняйте, почему пусто (если не obvious)
+- Ясно показывайте next action
+- Делайте welcoming, не dead-end
 
 ### Success Messages
 **Bad**: "Success"
 **Good**: "Settings saved! Your changes will take effect immediately."
 
 **Principles**:
-- Confirm what happened
-- Explain what happens next (if relevant)
-- Be brief but complete
-- Match the user's emotional moment (celebrate big wins)
+- Подтверждайте, что произошло
+- Объясняйте, что будет дальше (если relevant)
+- Будьте brief but complete
+- Match эмоциональный момент пользователя (celebrate big wins)
 
 ### Loading States
 **Bad**: "Loading..." (for 30+ seconds)
 **Good**: "Analyzing your data... this usually takes 30-60 seconds"
 
 **Principles**:
-- Set expectations (how long?)
-- Explain what's happening (when it's not obvious)
-- Show progress when possible
-- Offer escape hatch if appropriate ("Cancel")
+- Задавайте expectations (how long?)
+- Объясняйте, что происходит (когда не obvious)
+- Показывайте progress когда возможно
+- Предлагайте escape hatch если appropriate («Cancel»)
 
 ### Confirmation Dialogs
 **Bad**: "Are you sure?"
 **Good**: "Delete 'Project Alpha'? This can't be undone."
 
 **Principles**:
-- State the specific action
-- Explain consequences (especially for destructive actions)
-- Use clear button labels ("Delete project" not "Yes")
-- Don't overuse confirmations (only for risky actions)
+- Указывайте specific action
+- Объясняйте consequences (особенно для destructive actions)
+- Используйте clear button labels («Delete project» не «Yes»)
+- Не overuse confirmations (только для risky actions)
 
 ### Navigation & Wayfinding
 **Bad**: Generic labels like "Items" | "Things" | "Stuff"
 **Good**: Specific labels like "Your projects" | "Team members" | "Settings"
 
 **Principles**:
-- Be specific and descriptive
-- Use language users understand (not internal jargon)
-- Make hierarchy clear
-- Consider information scent (breadcrumbs, current location)
+- Будьте specific and descriptive
+- Используйте язык, который пользователи понимают (не internal jargon)
+- Делайте hierarchy clear
+- Учитывайте information scent (breadcrumbs, current location)
 
-## Apply Clarity Principles
+## Применяйте принципы Clarity
 
-Every piece of copy should follow these rules:
+Каждый кусок copy должен следовать этим правилам:
 
-1. **Be specific**: "Enter email" not "Enter value"
-2. **Be concise**: Cut unnecessary words (but don't sacrifice clarity)
-3. **Be active**: "Save changes" not "Changes will be saved"
-4. **Be human**: "Oops, something went wrong" not "System error encountered"
-5. **Tell users what to do**, not just what happened
-6. **Be consistent**: Use same terms throughout (don't vary for variety)
+1. **Be specific**: «Enter email» не «Enter value»
+2. **Be concise**: Убирайте unnecessary words (но не жертвуйте clarity)
+3. **Be active**: «Save changes» не «Changes will be saved»
+4. **Be human**: «Oops, something went wrong» не «System error encountered»
+5. **Tell users what to do**, не только what happened
+6. **Be consistent**: Используйте одни и те же terms throughout (не варьируйте ради variety)
 
-**NEVER**:
-- Use jargon without explanation
-- Blame users ("You made an error" → "This field is required")
-- Be vague ("Something went wrong" without explanation)
-- Use passive voice unnecessarily
-- Write overly long explanations (be concise)
-- Use humor for errors (be empathetic instead)
-- Assume technical knowledge
-- Vary terminology (pick one term and stick with it)
-- Repeat information (headers restating intros, redundant explanations)
-- Use placeholders as the only labels (they disappear when users type)
+**НИКОГДА**:
+- Не используйте jargon без explanation
+- Не вините пользователей («You made an error» → «This field is required»)
+- Не будьте vague («Something went wrong» без explanation)
+- Не используйте passive voice unnecessarily
+- Не пишите overly long explanations (будьте concise)
+- Не используйте humor для errors (будьте empathetic instead)
+- Не предполагайте technical knowledge
+- Не варьируйте terminology (выберите один term и stick with it)
+- Не повторяйте information (headers restating intros, redundant explanations)
+- Не используйте placeholders как единственные labels (они исчезают, когда пользователи печатают)
 
-## Verify Improvements
+## Проверьте улучшения
 
-Test that copy improvements work:
+Протестируйте, что улучшения copy работают:
 
-- **Comprehension**: Can users understand without context?
-- **Actionability**: Do users know what to do next?
-- **Brevity**: Is it as short as possible while remaining clear?
-- **Consistency**: Does it match terminology elsewhere?
-- **Tone**: Is it appropriate for the situation?
+- **Comprehension**: Пользователи понимают без context?
+- **Actionability**: Пользователи знают, что делать дальше?
+- **Brevity**: Настолько short, насколько возможно, оставаясь clear?
+- **Consistency**: Match terminology elsewhere?
+- **Tone**: Appropriate для ситуации?
 
-When the copy reads cleanly, hand off to `$impeccable polish` for the final pass.
+Когда copy читается cleanly, передайте `$impeccable polish` для финального прохода.
