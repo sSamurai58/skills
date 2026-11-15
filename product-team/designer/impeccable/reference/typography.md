@@ -4,13 +4,13 @@
 
 ### Vertical Rhythm
 
-Your line-height should be the base unit for ALL vertical spacing. If body text has `line-height: 1.5` on `16px` type (= 24px), spacing values should be multiples of 24px. This creates subconscious harmony; text and space share a mathematical foundation.
+Ваш line-height должен быть базовой единицей ВСЕХ вертикальных отступов. Если body text имеет `line-height: 1.5` на type `16px` (= 24px), значения spacing должны быть кратны 24px. Это создаёт подсознательную гармонию; текст и пространство делят математическую основу.
 
 ### Modular Scale & Hierarchy
 
-The common mistake: too many font sizes that are too close together (14px, 15px, 16px, 18px...). This creates muddy hierarchy.
+Частая ошибка: слишком много размеров шрифта, слишком близких друг к другу (14px, 15px, 16px, 18px...). Это создаёт muddy hierarchy.
 
-**Use fewer sizes with more contrast.** A 5-size system covers most needs:
+**Используйте меньше размеров с большим контрастом.** Система из 5 размеров покрывает большинство нужд:
 
 | Role | Typical Ratio | Use Case |
 |------|---------------|----------|
@@ -20,43 +20,43 @@ The common mistake: too many font sizes that are too close together (14px, 15px,
 | lg | 1.25-1.5rem | Subheadings, lead text |
 | xl+ | 2-4rem | Headlines, hero text |
 
-Popular ratios: 1.25 (major third), 1.333 (perfect fourth), 1.5 (perfect fifth). Pick one and commit.
+Популярные соотношения: 1.25 (major third), 1.333 (perfect fourth), 1.5 (perfect fifth). Выберите одно и придерживайтесь.
 
 ### Readability & Measure
 
-Use `ch` units for character-based measure (`max-width: 65ch`). Line-height scales inversely with line length: narrow columns need tighter leading, wide columns need more.
+Используйте единицы `ch` для character-based measure (`max-width: 65ch`). Line-height масштабируется обратно длине строки: узким колонкам нужен tighter leading, широким — больше.
 
-**Non-obvious**: Light text on dark backgrounds needs compensation on three axes, not just one. Bump line-height by 0.05–0.1, add a touch of letter-spacing (0.01–0.02em), and optionally step the body weight up one notch (regular → medium). The perceived weight drops across all three; fix all three.
+**Неочевидно**: светлый текст на тёмном фоне нуждается в компенсации по трём осям, не по одной. Поднимите line-height на 0.05–0.1, добавьте чуть letter-spacing (0.01–0.02em) и опционально поднимите body weight на одну ступень (regular → medium). Воспринимаемый вес падает по всем трём; чините все три.
 
-**Paragraph rhythm**: Pick either space between paragraphs OR first-line indentation. Never both. Digital usually wants space; editorial/long-form can justify indent-only.
+**Paragraph rhythm**: выбирайте либо space между абзацами, ЛИБО first-line indentation. Никогда оба. Digital обычно хочет space; editorial/long-form может оправдать только indent.
 
 ## Font Selection & Pairing
 
-The tactical selection procedure and the reflex-reject list live in [reference/brand.md](brand.md) under **Font selection procedure** and **Reflex-reject list** (loaded for brand-register tasks). The rest of this section covers the adjacent knowledge: anti-reflex corrections, system font use, and pairing rules.
+Тактическая процедура выбора и reflex-reject list живут в [reference/brand.md](brand.md) в секциях **Font selection procedure** и **Reflex-reject list** (загружаются для brand-register задач). Остальная часть этой секции покрывает смежные знания: anti-reflex corrections, использование system fonts и правила pairing.
 
-### Anti-reflexes worth defending against
+### Anti-reflexes, от которых стоит защищаться
 
-- A technical/utilitarian brief does NOT need a serif "for warmth." Most tech tools should look like tech tools.
-- An editorial/premium brief does NOT need the same expressive serif everyone is using right now. Premium can be Swiss-modern, can be neo-grotesque, can be a literal monospace, can be a quiet humanist sans.
-- A children's product does NOT need a rounded display font. Kids' books use real type.
-- A "modern" brief does NOT need a geometric sans. The most modern thing you can do is not use the font everyone else is using.
+- Technical/utilitarian brief НЕ нуждается в serif «for warmth». Большинство tech tools должны выглядеть как tech tools.
+- Editorial/premium brief НЕ нуждается в том же expressive serif, который все используют прямо сейчас. Premium может быть Swiss-modern, neo-grotesque, буквальным monospace, тихим humanist sans.
+- Детский продукт НЕ нуждается в rounded display font. Книги для детей используют настоящий type.
+- «Modern» brief НЕ нуждается в geometric sans. Самое modern — не использовать шрифт, который используют все остальные.
 
-**System fonts are underrated**: `-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui` looks native, loads instantly, and is highly readable. Consider this for apps where performance > personality.
+**System fonts недооценены**: `-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui` выглядит native, грузится мгновенно и очень читаем. Рассмотрите для apps, где performance > personality.
 
 ### Pairing Principles
 
-**The non-obvious truth**: You often don't need a second font. One well-chosen font family in multiple weights creates cleaner hierarchy than two competing typefaces. Only add a second font when you need genuine contrast (e.g., display headlines + body serif).
+**Неочевидная правда**: часто второй шрифт не нужен. Одна хорошо выбранная font family в нескольких весах создаёт более чистую иерархию, чем два конкурирующих typefaces. Добавляйте второй шрифт только когда нужен настоящий контраст (например display headlines + body serif).
 
-When pairing, contrast on multiple axes:
+При pairing контрастируйте по нескольким осям:
 - Serif + Sans (structure contrast)
 - Geometric + Humanist (personality contrast)
 - Condensed display + Wide body (proportion contrast)
 
-**Never pair fonts that are similar but not identical** (e.g., two geometric sans-serifs). They create visual tension without clear hierarchy.
+**Никогда не pair шрифты, похожие, но не идентичные** (например два geometric sans-serifs). Они создают visual tension без ясной иерархии.
 
 ### Web Font Loading
 
-The layout shift problem: fonts load late, text reflows, and users see content jump. Here's the fix:
+Проблема layout shift: шрифты грузятся поздно, текст перетекает, пользователи видят прыжок контента. Вот фикс:
 
 ```css
 /* 1. Use font-display: swap for visibility */
@@ -81,31 +81,31 @@ body {
 }
 ```
 
-Tools like [Fontaine](https://github.com/unjs/fontaine) calculate these overrides automatically.
+Инструменты вроде [Fontaine](https://github.com/unjs/fontaine) считают эти overrides автоматически.
 
-**`swap` vs `optional`**: `swap` shows fallback text immediately and FOUT-swaps when the web font arrives. `optional` uses the fallback if the web font misses a small load budget (~100ms) and avoids the shift entirely. Pick `optional` when zero layout shift matters more than seeing the branded font on slow networks.
+**`swap` vs `optional`**: `swap` сразу показывает fallback text и FOUT-swaps, когда web font прибывает. `optional` использует fallback, если web font промахивается мимо малого load budget (~100ms), и избегает shift целиком. Выбирайте `optional`, когда zero layout shift важнее branded font на медленных сетях.
 
-**Preload the critical weight only**: typically the regular-weight body font used above the fold. Preloading every weight costs more bandwidth than it saves.
+**Preload только критичный вес**: обычно regular-weight body font выше fold. Preload каждого веса стоит больше bandwidth, чем экономит.
 
-**Variable fonts for 3+ weights or styles**: a single variable font file is usually smaller than three static weight files, gives fractional weight control, and pairs well with `font-optical-sizing: auto`. For 1–2 weights, static is fine.
+**Variable fonts для 3+ весов или стилей**: один файл variable font обычно меньше трёх static weight files, даёт fractional weight control и хорошо сочетается с `font-optical-sizing: auto`. Для 1–2 весов static достаточно.
 
 ## Modern Web Typography
 
 ### Fluid Type
 
-Fluid typography via `clamp(min, preferred, max)` scales text smoothly with the viewport. The middle value (e.g., `5vw + 1rem`) controls scaling rate (higher vw = faster scaling). Add a rem offset so it doesn't collapse to 0 on small screens.
+Fluid typography через `clamp(min, preferred, max)` плавно масштабирует текст с viewport. Среднее значение (например `5vw + 1rem`) контролирует скорость масштабирования (выше vw = быстрее). Добавьте rem offset, чтобы не схлопывалось в 0 на маленьких экранах.
 
-**Use fluid type for**: Headings and display text on marketing/content pages where text dominates the layout and needs to breathe across viewport sizes.
+**Используйте fluid type для**: Headings и display text на marketing/content страницах, где текст доминирует в layout и должен дышать across viewport sizes.
 
-**Use fixed `rem` scales for**: App UIs, dashboards, and data-dense interfaces. No major app design system (Material, Polaris, Primer, Carbon) uses fluid type in product UI; fixed scales with optional breakpoint adjustments give the spatial predictability that container-based layouts need. Body text should also be fixed even on marketing pages, since the size difference across viewports is too small to warrant it.
+**Используйте фиксированные `rem` scales для**: App UIs, dashboards и data-dense интерфейсов. Ни одна крупная app design system (Material, Polaris, Primer, Carbon) не использует fluid type в product UI; фиксированные scales с опциональными breakpoint adjustments дают spatial predictability, нужную container-based layouts. Body text тоже должен быть фиксированным даже на marketing pages, потому что разница размеров across viewports слишком мала, чтобы оправдать fluid.
 
-**Bound your clamp()**: keep `max-size ≤ ~2.5 × min-size`. Wider ratios break the browser's zoom and reflow behaviour and make large viewports feel like the page is shouting.
+**Ограничивайте clamp()**: держите `max-size ≤ ~2.5 × min-size`. Более широкие соотношения ломают zoom и reflow браузера и заставляют крупные viewports ощущаться так, будто страница кричит.
 
-**Scale container width and font-size together** so effective character measure stays in the 45–75ch band at every viewport. A heading that widens faster than its container drifts out of the comfortable measure at the top end.
+**Масштабируйте container width и font-size вместе**, чтобы effective character measure оставался в диапазоне 45–75ch на каждом viewport. Заголовок, который расширяется быстрее контейнера, уходит из комфортного measure на верхнем конце.
 
 ### OpenType Features
 
-Most developers don't know these exist. Use them for polish:
+Большинство разработчиков не знают, что они существуют. Используйте для polish:
 
 ```css
 /* Tabular numbers for data alignment */
@@ -124,7 +124,7 @@ code { font-variant-ligatures: none; }
 body { font-kerning: normal; }
 ```
 
-Check what features your font supports at [Wakamai Fondue](https://wakamaifondue.com/).
+Проверяйте, какие features поддерживает ваш шрифт, на [Wakamai Fondue](https://wakamaifondue.com/).
 
 ### Rendering polish
 
@@ -139,21 +139,21 @@ article p { text-wrap: pretty; }
 body { font-optical-sizing: auto; }
 ```
 
-**ALL-CAPS tracking**: capitals sit too close at default spacing. Add 5–12% letter-spacing (`letter-spacing: 0.05em` to `0.12em`) to short all-caps labels, eyebrows, and small headings. Real small caps (via `font-variant-caps`) need the same treatment, slightly gentler.
+**ALL-CAPS tracking**: capitals сидят слишком близко при default spacing. Добавьте 5–12% letter-spacing (`letter-spacing: 0.05em` до `0.12em`) коротким all-caps labels, eyebrows и мелким headings. Настоящие small caps (через `font-variant-caps`) нуждаются в том же, чуть мягче.
 
 ## Typography System Architecture
 
-Name tokens semantically (`--text-body`, `--text-heading`), not by value (`--font-size-16`). Include font stacks, size scale, weights, line-heights, and letter-spacing in your token system.
+Именуйте токены семантически (`--text-body`, `--text-heading`), не по значению (`--font-size-16`). Включайте font stacks, size scale, weights, line-heights и letter-spacing в вашу token system.
 
 ## Accessibility Considerations
 
-Beyond contrast ratios (which are well-documented), consider:
+Помимо contrast ratios (которые хорошо задокументированы), учитывайте:
 
-- **Never disable zoom**: `user-scalable=no` breaks accessibility. If your layout breaks at 200% zoom, fix the layout.
-- **Use rem/em for font sizes**: This respects user browser settings. Never `px` for body text.
-- **Minimum 16px body text**: Smaller than this strains eyes and fails WCAG on mobile.
-- **Adequate touch targets**: Text links need padding or line-height that creates 44px+ tap targets.
+- **Никогда не отключайте zoom**: `user-scalable=no` ломает accessibility. Если layout ломается при zoom 200% — чините layout.
+- **Используйте rem/em для размеров шрифта**: это уважает настройки браузера пользователя. Никогда `px` для body text.
+- **Минимум 16px body text**: меньше напрягает глаза и проваливает WCAG на mobile.
+- **Adequate touch targets**: текстовым ссылкам нужен padding или line-height, создающий tap targets 44px+.
 
 ---
 
-**Avoid**: More than 2-3 font families per project. Skipping fallback font definitions. Ignoring font loading performance (FOUT/FOIT). Using decorative fonts for body text.
+**Избегайте**: больше 2–3 font families на проект. Пропуск определений fallback fonts. Игнорирование производительности font loading (FOUT/FOIT). Decorative fonts для body text.

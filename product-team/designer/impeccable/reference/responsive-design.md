@@ -1,16 +1,16 @@
 # Responsive Design
 
-## Mobile-First: Write It Right
+## Mobile-First: пишите правильно
 
-Start with base styles for mobile, use `min-width` queries to layer complexity. Desktop-first (`max-width`) means mobile loads unnecessary styles first.
+Начинайте с базовых стилей для mobile, наслаивайте сложность через `min-width` queries. Desktop-first (`max-width`) значит, что mobile сначала грузит ненужные стили.
 
-## Breakpoints: Content-Driven
+## Breakpoints: от контента
 
-Don't chase device sizes; let content tell you where to break. Start narrow, stretch until design breaks, add breakpoint there. Three breakpoints usually suffice (640, 768, 1024px). Use `clamp()` for fluid values without breakpoints.
+Не гонитесь за размерами устройств; пусть контент скажет, где ломаться. Начните узко, растягивайте, пока дизайн не сломается, добавьте breakpoint там. Обычно хватает трёх breakpoints (640, 768, 1024px). Используйте `clamp()` для fluid-значений без breakpoints.
 
-## Detect Input Method, Not Just Screen Size
+## Определяйте метод ввода, не только размер экрана
 
-**Screen size doesn't tell you input method.** A laptop with touchscreen, a tablet with keyboard. Use pointer and hover queries:
+**Размер экрана не говорит о методе ввода.** Ноутбук с touchscreen, планшет с клавиатурой. Используйте pointer и hover queries:
 
 ```css
 /* Fine pointer (mouse, trackpad) */
@@ -34,11 +34,11 @@ Don't chase device sizes; let content tell you where to break. Start narrow, str
 }
 ```
 
-**Critical**: Don't rely on hover for functionality. Touch users can't hover.
+**Критично**: не опирайтесь на hover для функциональности. Touch-пользователи не могут hover.
 
-## Safe Areas: Handle the Notch
+## Safe Areas: учтите notch
 
-Modern phones have notches, rounded corners, and home indicators. Use `env()`:
+У современных телефонов notches, скруглённые углы и home indicators. Используйте `env()`:
 
 ```css
 body {
@@ -54,14 +54,14 @@ body {
 }
 ```
 
-**Enable viewport-fit** in your meta tag:
+**Включите viewport-fit** в meta tag:
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 ```
 
-## Responsive Images: Get It Right
+## Responsive Images: сделайте правильно
 
-### srcset with Width Descriptors
+### srcset с Width Descriptors
 
 ```html
 <img
@@ -76,14 +76,14 @@ body {
 >
 ```
 
-**How it works**:
-- `srcset` lists available images with their actual widths (`w` descriptors)
-- `sizes` tells the browser how wide the image will display
-- Browser picks the best file based on viewport width AND device pixel ratio
+**Как это работает**:
+- `srcset` перечисляет доступные изображения с их фактическими ширинами (`w` descriptors)
+- `sizes` говорит браузеру, какой ширины изображение будет отображаться
+- Браузер выбирает лучший файл по ширине viewport И device pixel ratio
 
-### Picture Element for Art Direction
+### Picture Element для Art Direction
 
-When you need different crops/compositions (not just resolutions):
+Когда нужны разные кадры/композиции (не только разрешения):
 
 ```html
 <picture>
@@ -93,22 +93,22 @@ When you need different crops/compositions (not just resolutions):
 </picture>
 ```
 
-## Layout Adaptation Patterns
+## Паттерны адаптации layout
 
-**Navigation**: Three stages: hamburger + drawer on mobile, horizontal compact on tablet, full with labels on desktop. **Tables**: Transform to cards on mobile using `display: block` and `data-label` attributes. **Progressive disclosure**: Use `<details>/<summary>` for content that can collapse on mobile.
+**Navigation**: три стадии: hamburger + drawer на mobile, горизонтальный compact на tablet, полный с labels на desktop. **Tables**: превращайте в cards на mobile через `display: block` и атрибуты `data-label`. **Progressive disclosure**: используйте `<details>/<summary>` для контента, который можно свернуть на mobile.
 
-## Testing: Don't Trust DevTools Alone
+## Testing: не доверяйте только DevTools
 
-DevTools device emulation is useful for layout but misses:
+Эмуляция устройств в DevTools полезна для layout, но пропускает:
 
-- Actual touch interactions
-- Real CPU/memory constraints
-- Network latency patterns
-- Font rendering differences
-- Browser chrome/keyboard appearances
+- Реальные touch-взаимодействия
+- Реальные ограничения CPU/memory
+- Паттерны network latency
+- Разницу в font rendering
+- Появление browser chrome/keyboard
 
-**Test on at least**: One real iPhone, one real Android, a tablet if relevant. Cheap Android phones reveal performance issues you'll never see on simulators.
+**Тестируйте как минимум**: один реальный iPhone, один реальный Android, планшет если релевантно. Дешёвые Android-телефоны вскрывают проблемы производительности, которых никогда не увидите на симуляторах.
 
 ---
 
-**Avoid**: Desktop-first design. Device detection instead of feature detection. Separate mobile/desktop codebases. Ignoring tablet and landscape. Assuming all mobile devices are powerful.
+**Избегайте**: desktop-first design. Device detection вместо feature detection. Отдельные codebases mobile/desktop. Игнорирование tablet и landscape. Предположение, что все mobile-устройства мощные.

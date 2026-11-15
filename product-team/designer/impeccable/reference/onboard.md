@@ -1,234 +1,234 @@
-> **Additional context needed**: the "aha moment" you want users to reach, and users' experience level.
+> **Нужен дополнительный контекст**: «aha moment», к которому вы хотите привести пользователей, и уровень их опыта.
 
-Get users to first value as fast as possible. Onboarding's job is not to teach the product. Its job is to get people to the moment that proves the product is worth their time.
+Доведите пользователей до первой ценности как можно быстрее. Задача онбординга — не научить продукту. Его задача — привести людей к моменту, который доказывает: продукт стоит их времени.
 
-## Assess Onboarding Needs
+## Оцените потребности онбординга
 
-Understand what users need to learn and why:
+Поймите, чему нужно научить пользователей и зачем:
 
-1. **Identify the challenge**:
-   - What are users trying to accomplish?
-   - What's confusing or unclear about current experience?
-   - Where do users get stuck or drop off?
-   - What's the "aha moment" we want users to reach?
+1. **Определите вызов**:
+   - Что пользователи пытаются сделать?
+   - Что запутанно или неясно в текущем опыте?
+   - Где пользователи застревают или уходят?
+   - Какой «aha moment» мы хотим, чтобы они достигли?
 
-2. **Understand the users**:
-   - What's their experience level? (Beginners, power users, mixed?)
-   - What's their motivation? (Excited and exploring? Required by work?)
-   - What's their time commitment? (5 minutes? 30 minutes?)
-   - What alternatives do they know? (Coming from competitor? New to category?)
+2. **Поймите пользователей**:
+   - Какой у них уровень опыта? (Новички, power users, смешанная аудитория?)
+   - Какова их мотивация? (Воодушевлены и исследуют? Обязаны по работе?)
+   - Сколько времени они готовы вложить? (5 минут? 30 минут?)
+   - Какие альтернативы они знают? (Пришли от конкурента? Новички в категории?)
 
-3. **Define success**:
-   - What's the minimum users need to learn to be successful?
-   - What's the key action we want them to take? (First project? First invite?)
-   - How do we know onboarding worked? (Completion rate? Time to value?)
+3. **Определите успех**:
+   - Какой минимум нужно освоить, чтобы добиться успеха?
+   - Какое ключевое действие мы хотим от них? (Первый проект? Первое приглашение?)
+   - Как понять, что онбординг сработал? (Completion rate? Time to value?)
 
-**CRITICAL**: Onboarding should get users to value as quickly as possible, not teach everything possible.
+**КРИТИЧНО**: онбординг должен как можно быстрее довести пользователей до ценности, а не обучить всему возможному.
 
-## Onboarding Principles
+## Принципы онбординга
 
-Follow these core principles:
+Следуйте этим базовым принципам:
 
-### Show, Don't Tell
-- Demonstrate with working examples, not just descriptions
-- Provide real functionality in onboarding, not separate tutorial mode
-- Use progressive disclosure, teach one thing at a time
+### Показывайте, а не рассказывайте
+- Демонстрируйте на рабочих примерах, а не только описаниями
+- Давайте реальную функциональность в онбординге, а не отдельный tutorial mode
+- Используйте progressive disclosure — учите по одному за раз
 
-### Make It Optional (When Possible)
-- Let experienced users skip onboarding
-- Don't block access to product
-- Provide "Skip" or "I'll explore on my own" options
+### Делайте опциональным (когда возможно)
+- Позвольте опытным пользователям пропустить онбординг
+- Не блокируйте доступ к продукту
+- Предоставляйте варианты «Skip» или «I'll explore on my own»
 
 ### Time to Value
-- Get users to their "aha moment" ASAP
-- Front-load most important concepts
-- Teach 20% that delivers 80% of value
-- Save advanced features for contextual discovery
+- Доведите пользователей до «aha moment» ASAP
+- Вынесите вперёд самые важные концепции
+- Научите 20%, которые дают 80% ценности
+- Оставьте продвинутые функции для контекстного discovery
 
-### Context Over Ceremony
-- Teach features when users need them, not upfront
-- Empty states are onboarding opportunities
-- Tooltips and hints at point of use
+### Контекст важнее церемонии
+- Учите функциям, когда они нужны, а не заранее
+- Empty states — возможности для онбординга
+- Tooltips и подсказки в точке использования
 
-### Respect User Intelligence
-- Don't patronize or over-explain
-- Be concise and clear
-- Assume users can figure out standard patterns
+### Уважайте интеллект пользователя
+- Не покровительствуйте и не переобъясняйте
+- Будьте краткими и ясными
+- Предполагайте, что пользователи разберутся со стандартными паттернами
 
-## Design Onboarding Experiences
+## Проектируйте опыт онбординга
 
-Create appropriate onboarding for the context:
+Создавайте подходящий онбординг под контекст:
 
-### Initial Product Onboarding
+### Первичный онбординг продукта
 
 **Welcome Screen**:
-- Clear value proposition (what is this product?)
-- What users will learn/accomplish
-- Time estimate (honest about commitment)
-- Option to skip (for experienced users)
+- Чёткое ценностное предложение (что это за продукт?)
+- Чему пользователи научатся / чего достигнут
+- Оценка времени (честно о затратах)
+- Возможность пропустить (для опытных пользователей)
 
 **Account Setup**:
-- Minimal required information (collect more later)
-- Explain why you're asking for each piece of information
-- Smart defaults where possible
-- Social login when appropriate
+- Минимум обязательной информации (остальное соберите позже)
+- Объясняйте, зачем спрашиваете каждый пункт
+- Умные defaults, где возможно
+- Social login, когда уместно
 
-**Core Concept Introduction**:
-- Introduce 1-3 core concepts (not everything)
-- Use simple language and examples
-- Interactive when possible (do, don't just read)
-- Progress indication (step 1 of 3)
+**Введение в ключевые концепции**:
+- Представьте 1–3 ключевые концепции (не всё сразу)
+- Простой язык и примеры
+- Интерактивность, когда возможно (делать, а не только читать)
+- Индикация прогресса (шаг 1 из 3)
 
-**First Success**:
-- Guide users to accomplish something real
-- Pre-populated examples or templates
-- Celebrate completion (but don't overdo it)
-- Clear next steps
+**Первый успех**:
+- Проведите пользователей к реальному результату
+- Предзаполненные примеры или шаблоны
+- Отпразднуйте завершение (но без перегиба)
+- Понятные следующие шаги
 
-### Feature Discovery & Adoption
+### Discovery и adoption функций
 
 **Empty States**:
-Instead of blank space, show:
-- What will appear here (description + screenshot/illustration)
-- Why it's valuable
-- Clear CTA to create first item
-- Example or template option
+Вместо пустого пространства покажите:
+- Что здесь появится (описание + скриншот/иллюстрация)
+- Почему это ценно
+- Чёткий CTA для создания первого элемента
+- Вариант примера или шаблона
 
-Example:
+Пример:
 ```
 No projects yet
 Projects help you organize your work and collaborate with your team.
 [Create your first project] or [Start from template]
 ```
 
-**Contextual Tooltips**:
-- Appear at relevant moment (first time user sees feature)
-- Point directly at relevant UI element
-- Brief explanation + benefit
-- Dismissable (with "Don't show again" option)
-- Optional "Learn more" link
+**Контекстные tooltips**:
+- Появляются в нужный момент (первый раз, когда пользователь видит функцию)
+- Указывают прямо на релевантный UI-элемент
+- Краткое объяснение + польза
+- Можно закрыть (с опцией «Don't show again»)
+- Опциональная ссылка «Learn more»
 
-**Feature Announcements**:
-- Highlight new features when they're released
-- Show what's new and why it matters
-- Let users try immediately
-- Dismissable
+**Анонсы функций**:
+- Подсвечивайте новые функции при релизе
+- Показывайте, что нового и почему это важно
+- Дайте попробовать сразу
+- Можно закрыть
 
-**Progressive Onboarding**:
-- Teach features when users encounter them
-- Badges or indicators on new/unused features
-- Unlock complexity gradually (don't show all options immediately)
+**Progressive onboarding**:
+- Учите функциям, когда пользователи с ними сталкиваются
+- Badges или индикаторы на новых/неиспользованных функциях
+- Раскрывайте сложность постепенно (не показывайте все опции сразу)
 
-### Guided Tours & Walkthroughs
+### Guided tours и walkthroughs
 
-**When to use**:
-- Complex interfaces with many features
-- Significant changes to existing product
-- Industry-specific tools needing domain knowledge
+**Когда использовать**:
+- Сложные интерфейсы со множеством функций
+- Значительные изменения существующего продукта
+- Отраслевые инструменты, требующие доменных знаний
 
-**How to design**:
-- Spotlight specific UI elements (dim rest of page)
-- Keep steps short (3-7 steps max per tour)
-- Allow users to click through tour freely
-- Include "Skip tour" option
-- Make replayable (help menu)
+**Как проектировать**:
+- Spotlight конкретных UI-элементов (затемняйте остальное)
+- Короткие шаги (максимум 3–7 на тур)
+- Позвольте свободно кликать по туру
+- Включайте опцию «Skip tour»
+- Сделайте повторяемым (меню помощи)
 
-**Best practices**:
-- Interactive over passive (let users click real buttons)
-- Focus on workflow, not features ("Create a project" not "This is the project button")
-- Provide sample data so actions work
+**Лучшие практики**:
+- Интерактивность важнее пассивности (пусть кликают реальные кнопки)
+- Фокус на workflow, а не на функциях («Create a project», а не «This is the project button»)
+- Давайте sample data, чтобы действия работали
 
-### Interactive Tutorials
+### Интерактивные туториалы
 
-**When to use**:
-- Users need hands-on practice
-- Concepts are complex or unfamiliar
-- High stakes (better to practice in safe environment)
+**Когда использовать**:
+- Нужна практика руками
+- Концепции сложны или незнакомы
+- Высокие ставки (лучше потренироваться в безопасной среде)
 
-**How to design**:
-- Sandbox environment with sample data
-- Clear objectives ("Create a chart showing sales by region")
-- Step-by-step guidance
-- Validation (confirm they did it right)
-- Graduation moment (you're ready!)
+**Как проектировать**:
+- Sandbox-среда с sample data
+- Понятные цели («Create a chart showing sales by region»)
+- Пошаговое сопровождение
+- Валидация (подтвердите, что сделали правильно)
+- Момент «выпуска» (you're ready!)
 
-### Documentation & Help
+### Документация и помощь
 
-**In-product help**:
-- Contextual help links throughout interface
-- Keyboard shortcut reference
-- Search-able help center
-- Video tutorials for complex workflows
+**Помощь в продукте**:
+- Контекстные ссылки на помощь по всему интерфейсу
+- Справка по keyboard shortcuts
+- Поисковый help center
+- Видеотуториалы для сложных workflows
 
-**Help patterns**:
-- `?` icon near complex features
-- "Learn more" links in tooltips
-- Keyboard shortcut hints (`⌘K` shown on search box)
+**Паттерны помощи**:
+- Иконка `?` рядом со сложными функциями
+- Ссылки «Learn more» в tooltips
+- Подсказки keyboard shortcuts (`⌘K` на поле поиска)
 
-## Empty State Design
+## Дизайн empty state
 
-Every empty state needs:
+Каждый empty state нуждается в:
 
-### What Will Be Here
+### Что здесь будет
 "Your recent projects will appear here"
 
-### Why It Matters
+### Почему это важно
 "Projects help you organize your work and collaborate with your team"
 
-### How to Get Started
+### Как начать
 [Create project] or [Import from template]
 
-### Visual Interest
-Illustration or icon (not just text on blank page)
+### Визуальный интерес
+Иллюстрация или иконка (не просто текст на пустой странице)
 
-### Contextual Help
+### Контекстная помощь
 "Need help getting started? [Watch 2-min tutorial]"
 
-**Empty state types**:
-- **First use**: Never used this feature (emphasize value, provide template)
-- **User cleared**: Intentionally deleted everything (light touch, easy to recreate)
-- **No results**: Search or filter returned nothing (suggest different query, clear filters)
-- **No permissions**: Can't access (explain why, how to get access)
-- **Error state**: Failed to load (explain what happened, retry option)
+**Типы empty state**:
+- **First use**: функцию никогда не использовали (подчеркните ценность, дайте шаблон)
+- **User cleared**: намеренно всё удалили (лёгкий тон, легко воссоздать)
+- **No results**: поиск или фильтр ничего не вернул (предложите другой запрос, сброс фильтров)
+- **No permissions**: нет доступа (объясните почему и как получить)
+- **Error state**: не удалось загрузить (объясните, что случилось, опция retry)
 
-## Implementation Patterns
+## Паттерны реализации
 
-### Technical approaches:
+### Технические подходы:
 
 **Tooltip libraries**: Tippy.js, Popper.js
 **Tour libraries**: Intro.js, Shepherd.js, React Joyride
-**Modal patterns**: Focus trap, backdrop, ESC to close
-**Progress tracking**: LocalStorage for "seen" states
-**Analytics**: Track completion, drop-off points
+**Modal patterns**: Focus trap, backdrop, ESC для закрытия
+**Progress tracking**: LocalStorage для состояний «seen»
+**Analytics**: отслеживайте completion, точки drop-off
 
-**Storage patterns**:
+**Паттерны хранения**:
 ```javascript
 // Track which onboarding steps user has seen
 localStorage.setItem('onboarding-completed', 'true');
 localStorage.setItem('feature-tooltip-seen-reports', 'true');
 ```
 
-**IMPORTANT**: Don't show same onboarding twice (annoying). Track completion and respect dismissals.
+**ВАЖНО**: не показывайте один и тот же онбординг дважды (раздражает). Отслеживайте completion и уважайте dismissals.
 
-**NEVER**:
-- Force users through long onboarding before they can use product
-- Patronize users with obvious explanations
-- Show same tooltip repeatedly (respect dismissals)
-- Block all UI during tour (let users explore)
-- Create separate tutorial mode disconnected from real product
-- Overwhelm with information upfront (progressive disclosure!)
-- Hide "Skip" or make it hard to find
-- Forget about returning users (don't show initial onboarding again)
+**НИКОГДА**:
+- Не заставляйте проходить длинный онбординг до использования продукта
+- Не покровительствуйте очевидными объяснениями
+- Не показывайте один и тот же tooltip повторно (уважайте dismissals)
+- Не блокируйте весь UI во время тура (дайте исследовать)
+- Не создавайте отдельный tutorial mode, оторванный от реального продукта
+- Не перегружайте информацией заранее (progressive disclosure!)
+- Не прячьте «Skip» и не усложняйте его поиск
+- Не забывайте о возвращающихся пользователях (не показывайте начальный онбординг снова)
 
-## Verify Onboarding Quality
+## Проверьте качество онбординга
 
-Test with real users:
+Тестируйте с реальными пользователями:
 
-- **Time to completion**: Can users complete onboarding quickly?
-- **Comprehension**: Do users understand after completing?
-- **Action**: Do users take desired next step?
-- **Skip rate**: Are too many users skipping? (Maybe it's too long or not valuable)
-- **Completion rate**: Are users completing? (If low, simplify)
-- **Time to value**: How long until users get first value?
+- **Time to completion**: быстро ли завершают онбординг?
+- **Comprehension**: понимают ли после завершения?
+- **Action**: делают ли желаемый следующий шаг?
+- **Skip rate**: слишком ли многие пропускают? (Возможно, слишком длинно или бесполезно)
+- **Completion rate**: завершают ли? (Если низко — упростите)
+- **Time to value**: сколько до первой ценности?
 
-When users hit the aha moment fast and don't drop off, hand off to `$impeccable polish` for the final pass.
+Когда пользователи быстро достигают aha moment и не уходят — передайте `$impeccable polish` для финального прохода.

@@ -2,52 +2,52 @@
 
 ## Spacing Systems
 
-### Use 4pt Base, Not 8pt
+### Используйте базу 4pt, не 8pt
 
-8pt systems are too coarse; you'll frequently need 12px (between 8 and 16). Use 4pt for granularity: 4, 8, 12, 16, 24, 32, 48, 64, 96px.
+Системы 8pt слишком грубые; часто нужен 12px (между 8 и 16). Используйте 4pt для гранулярности: 4, 8, 12, 16, 24, 32, 48, 64, 96px.
 
-### Name Tokens Semantically
+### Именуйте токены семантически
 
-Name by relationship (`--space-sm`, `--space-lg`), not value (`--spacing-8`). Use `gap` instead of margins for sibling spacing; it eliminates margin collapse and cleanup hacks.
+Именуйте по отношению (`--space-sm`, `--space-lg`), не по значению (`--spacing-8`). Используйте `gap` вместо margins для spacing между siblings; это устраняет margin collapse и cleanup hacks.
 
 ## Grid Systems
 
-### The Self-Adjusting Grid
+### Self-Adjusting Grid
 
-Use `repeat(auto-fit, minmax(280px, 1fr))` for responsive grids without breakpoints. Columns are at least 280px, as many as fit per row, leftovers stretch. For complex layouts, use named grid areas (`grid-template-areas`) and redefine them at breakpoints.
+Используйте `repeat(auto-fit, minmax(280px, 1fr))` для responsive grids без breakpoints. Колонки минимум 280px, столько, сколько помещается в ряд, остатки растягиваются. Для сложных layouts используйте named grid areas (`grid-template-areas`) и переопределяйте их на breakpoints.
 
 ## Visual Hierarchy
 
 ### The Squint Test
 
-Blur your eyes (or screenshot and blur). Can you still identify:
-- The most important element?
-- The second most important?
-- Clear groupings?
+Размойте глаза (или сделайте screenshot и blur). Всё ещё можете определить:
+- Самый важный элемент?
+- Второй по важности?
+- Ясные группировки?
 
-If everything looks the same weight blurred, you have a hierarchy problem.
+Если в размытии всё одной тяжести — у вас проблема иерархии.
 
-### Hierarchy Through Multiple Dimensions
+### Иерархия через несколько измерений
 
-Don't rely on size alone. Combine:
+Не опирайтесь только на размер. Комбинируйте:
 
 | Tool | Strong Hierarchy | Weak Hierarchy |
 |------|------------------|----------------|
-| **Size** | 3:1 ratio or more | <2:1 ratio |
+| **Size** | соотношение 3:1 или больше | соотношение <2:1 |
 | **Weight** | Bold vs Regular | Medium vs Regular |
-| **Color** | High contrast | Similar tones |
+| **Color** | High contrast | Похожие тона |
 | **Position** | Top/left (primary) | Bottom/right |
-| **Space** | Surrounded by white space | Crowded |
+| **Space** | Окружено white space | Crowded |
 
-**The best hierarchy uses 2-3 dimensions at once**: A heading that's larger, bolder, AND has more space above it.
+**Лучшая иерархия использует 2–3 измерения сразу**: заголовок, который крупнее, жирнее И с большим пространством сверху.
 
-### Cards Are Not Required
+### Cards не обязательны
 
-Cards are overused. Spacing and alignment create visual grouping naturally. Use cards only when content is truly distinct and actionable, items need visual comparison in a grid, or content needs clear interaction boundaries. **Never nest cards inside cards.** Use spacing, typography, and subtle dividers for hierarchy within a card.
+Cards переиспользуют слишком часто. Spacing и alignment создают visual grouping естественно. Используйте cards только когда контент действительно distinct и actionable, элементам нужно визуальное сравнение в grid, или контенту нужны ясные границы взаимодействия. **Никогда не вкладывайте cards в cards.** Используйте spacing, typography и тонкие dividers для иерархии внутри card.
 
 ## Container Queries
 
-Viewport queries are for page layouts. **Container queries are for components**:
+Viewport queries — для page layouts. **Container queries — для компонентов**:
 
 ```css
 .card-container {
@@ -67,15 +67,15 @@ Viewport queries are for page layouts. **Container queries are for components**:
 }
 ```
 
-**Why this matters**: A card in a narrow sidebar stays compact, while the same card in a main content area expands automatically, without viewport hacks.
+**Почему это важно**: card в узком sidebar остаётся компактной, а та же card в main content area расширяется автоматически — без viewport hacks.
 
 ## Optical Adjustments
 
-Text at `margin-left: 0` looks indented due to letterform whitespace; use negative margin (`-0.05em`) to optically align. Geometrically centered icons often look off-center; play icons need to shift right, arrows shift toward their direction.
+Текст при `margin-left: 0` выглядит с отступом из-за whitespace букв; используйте negative margin (`-0.05em`) для оптического выравнивания. Геометрически центрированные иконки часто выглядят off-center; play-иконкам нужен сдвиг вправо, стрелкам — в направлении.
 
 ### Touch Targets vs Visual Size
 
-Buttons can look small but need large touch targets (44px minimum). Use padding or pseudo-elements:
+Кнопки могут выглядеть маленькими, но нуждаются в больших touch targets (минимум 44px). Используйте padding или pseudo-elements:
 
 ```css
 .icon-button {
@@ -93,8 +93,8 @@ Buttons can look small but need large touch targets (44px minimum). Use padding 
 
 ## Depth & Elevation
 
-Create semantic z-index scales (dropdown → sticky → modal-backdrop → modal → toast → tooltip) instead of arbitrary numbers. For shadows, create a consistent elevation scale (sm → md → lg → xl). **Key insight**: Shadows should be subtle. If you can clearly see it, it's probably too strong.
+Создавайте семантические z-index scales (dropdown → sticky → modal-backdrop → modal → toast → tooltip) вместо произвольных чисел. Для теней — согласованная elevation scale (sm → md → lg → xl). **Ключевой insight**: тени должны быть тонкими. Если её явно видно — вероятно, слишком сильная.
 
 ---
 
-**Avoid**: Arbitrary spacing values outside your scale. Making all spacing equal (variety creates hierarchy). Creating hierarchy through size alone - combine size, weight, color, and space.
+**Избегайте**: произвольных значений spacing вне вашей scale. Делать весь spacing одинаковым (variety создаёт иерархию). Создавать иерархию только через размер — комбинируйте size, weight, color и space.

@@ -1,37 +1,37 @@
-Performance is a feature. Identify the actual bottleneck for THIS interface, fix it, then measure. Don't optimize what isn't slow.
+Производительность — это функция. Найдите реальный bottleneck для ЭТОГО интерфейса, исправьте, затем измерьте. Не оптимизируйте то, что не медленное.
 
-## Assess Performance Issues
+## Оцените проблемы производительности
 
-Understand current performance and identify problems:
+Поймите текущую производительность и выявите проблемы:
 
-1. **Measure current state**:
+1. **Измерьте текущее состояние**:
    - **Core Web Vitals**: LCP, FID/INP, CLS scores
    - **Load time**: Time to interactive, first contentful paint
-   - **Bundle size**: JavaScript, CSS, image sizes
-   - **Runtime performance**: Frame rate, memory usage, CPU usage
-   - **Network**: Request count, payload sizes, waterfall
+   - **Bundle size**: размеры JavaScript, CSS, изображений
+   - **Runtime performance**: frame rate, memory usage, CPU usage
+   - **Network**: число запросов, размеры payload, waterfall
 
-2. **Identify bottlenecks**:
-   - What's slow? (Initial load? Interactions? Animations?)
-   - What's causing it? (Large images? Expensive JavaScript? Layout thrashing?)
-   - How bad is it? (Perceivable? Annoying? Blocking?)
-   - Who's affected? (All users? Mobile only? Slow connections?)
+2. **Определите bottlenecks**:
+   - Что медленно? (Initial load? Взаимодействия? Анимации?)
+   - Что вызывает это? (Большие изображения? Дорогой JavaScript? Layout thrashing?)
+   - Насколько плохо? (Заметно? Раздражает? Блокирует?)
+   - Кого затрагивает? (Всех? Только mobile? Медленные соединения?)
 
-**CRITICAL**: Measure before and after. Premature optimization wastes time. Optimize what actually matters.
+**КРИТИЧНО**: измеряйте до и после. Premature optimization тратит время. Оптимизируйте то, что действительно важно.
 
-## Optimization Strategy
+## Стратегия оптимизации
 
-Create systematic improvement plan:
+Создайте системный план улучшений:
 
 ### Loading Performance
 
-**Optimize Images**:
-- Use modern formats (WebP, AVIF)
-- Proper sizing (don't load 3000px image for 300px display)
-- Lazy loading for below-fold images
-- Responsive images (`srcset`, `picture` element)
-- Compress images (80-85% quality is usually imperceptible)
-- Use CDN for faster delivery
+**Оптимизируйте изображения**:
+- Используйте современные форматы (WebP, AVIF)
+- Правильные размеры (не грузите изображение 3000px для отображения 300px)
+- Lazy loading для изображений ниже fold
+- Responsive images (`srcset`, элемент `picture`)
+- Сжимайте изображения (качество 80–85% обычно незаметно)
+- Используйте CDN для быстрой доставки
 
 ```html
 <img 
@@ -43,30 +43,30 @@ Create systematic improvement plan:
 />
 ```
 
-**Reduce JavaScript Bundle**:
-- Code splitting (route-based, component-based)
-- Tree shaking (remove unused code)
-- Remove unused dependencies
-- Lazy load non-critical code
-- Use dynamic imports for large components
+**Уменьшите JavaScript Bundle**:
+- Code splitting (по маршрутам, по компонентам)
+- Tree shaking (удаляйте неиспользуемый код)
+- Удаляйте неиспользуемые зависимости
+- Lazy load некритичного кода
+- Используйте dynamic imports для тяжёлых компонентов
 
 ```javascript
 // Lazy load heavy component
 const HeavyChart = lazy(() => import('./HeavyChart'));
 ```
 
-**Optimize CSS**:
-- Remove unused CSS
-- Critical CSS inline, rest async
-- Minimize CSS files
-- Use CSS containment for independent regions
+**Оптимизируйте CSS**:
+- Удаляйте неиспользуемый CSS
+- Critical CSS inline, остальное async
+- Минимизируйте CSS-файлы
+- Используйте CSS containment для независимых регионов
 
-**Optimize Fonts**:
-- Use `font-display: swap` or `optional`
-- Subset fonts (only characters you need)
-- Preload critical fonts
-- Use system fonts when appropriate
-- Limit font weights loaded
+**Оптимизируйте шрифты**:
+- Используйте `font-display: swap` или `optional`
+- Subset шрифтов (только нужные символы)
+- Preload критичных шрифтов
+- Используйте system fonts, когда уместно
+- Ограничивайте загружаемые начертания
 
 ```css
 @font-face {
@@ -77,16 +77,16 @@ const HeavyChart = lazy(() => import('./HeavyChart'));
 }
 ```
 
-**Optimize Loading Strategy**:
-- Critical resources first (async/defer non-critical)
-- Preload critical assets
-- Prefetch likely next pages
-- Service worker for offline/caching
-- HTTP/2 or HTTP/3 for multiplexing
+**Оптимизируйте стратегию загрузки**:
+- Сначала критичные ресурсы (async/defer для некритичных)
+- Preload критичных assets
+- Prefetch вероятных следующих страниц
+- Service worker для offline/caching
+- HTTP/2 или HTTP/3 для multiplexing
 
 ### Rendering Performance
 
-**Avoid Layout Thrashing**:
+**Избегайте Layout Thrashing**:
 ```javascript
 // ❌ Bad: Alternating reads and writes (causes reflows)
 elements.forEach(el => {
@@ -101,20 +101,20 @@ elements.forEach((el, i) => {
 });
 ```
 
-**Optimize Rendering**:
-- Use CSS `contain` property for independent regions
-- Minimize DOM depth (flatter is faster)
-- Reduce DOM size (fewer elements)
-- Use `content-visibility: auto` for long lists
-- Virtual scrolling for very long lists (react-window, react-virtualized)
+**Оптимизируйте рендеринг**:
+- Используйте CSS-свойство `contain` для независимых регионов
+- Минимизируйте глубину DOM (площе — быстрее)
+- Уменьшайте размер DOM (меньше элементов)
+- Используйте `content-visibility: auto` для длинных списков
+- Virtual scrolling для очень длинных списков (react-window, react-virtualized)
 
-**Reduce Paint & Composite**:
-- Use `transform` and `opacity` for reliable movement, but allow blur, filters, masks, clip paths, shadows, and color shifts when they create meaningful polish
-- Avoid casual animation of layout-driving properties (`width`, `height`, `top`, `left`, margins)
-- Use `will-change` sparingly for known expensive operations
-- Bound expensive paint areas for blur/filter/shadow effects (smaller and isolated is faster)
+**Снижайте Paint & Composite**:
+- Используйте `transform` и `opacity` для надёжного движения, но допускайте blur, filters, masks, clip paths, shadows и сдвиги цвета, когда они дают осмысленный polish
+- Избегайте casual-анимации свойств, управляющих layout (`width`, `height`, `top`, `left`, margins)
+- Используйте `will-change` скупо для заведомо дорогих операций
+- Ограничивайте дорогие области paint для эффектов blur/filter/shadow (меньше и изолированнее — быстрее)
 
-### Animation Performance
+### Производительность анимаций
 
 **GPU Acceleration**:
 ```css
@@ -131,12 +131,12 @@ elements.forEach((el, i) => {
 }
 ```
 
-**Smooth 60fps**:
-- Target 16ms per frame (60fps)
-- Use `requestAnimationFrame` for JS animations
+**Плавные 60fps**:
+- Цель — 16ms на кадр (60fps)
+- Используйте `requestAnimationFrame` для JS-анимаций
 - Debounce/throttle scroll handlers
-- Use CSS animations when possible
-- Avoid long-running JavaScript during animations
+- Предпочитайте CSS-анимации, когда возможно
+- Избегайте долгого JavaScript во время анимаций
 
 **Intersection Observer**:
 ```javascript
@@ -150,64 +150,64 @@ const observer = new IntersectionObserver((entries) => {
 });
 ```
 
-### React/Framework Optimization
+### Оптимизация React/фреймворков
 
 **React-specific**:
-- Use `memo()` for expensive components
-- `useMemo()` and `useCallback()` for expensive computations
-- Virtualize long lists
-- Code split routes
-- Avoid inline function creation in render
-- Use React DevTools Profiler
+- Используйте `memo()` для дорогих компонентов
+- `useMemo()` и `useCallback()` для дорогих вычислений
+- Виртуализируйте длинные списки
+- Code split маршрутов
+- Избегайте создания inline-функций в render
+- Используйте React DevTools Profiler
 
 **Framework-agnostic**:
-- Minimize re-renders
-- Debounce expensive operations
-- Memoize computed values
-- Lazy load routes and components
+- Минимизируйте re-renders
+- Debounce дорогих операций
+- Мемоизируйте вычисленные значения
+- Lazy load маршрутов и компонентов
 
-### Network Optimization
+### Оптимизация сети
 
-**Reduce Requests**:
-- Combine small files
-- Use SVG sprites for icons
-- Inline small critical assets
-- Remove unused third-party scripts
+**Снижайте число запросов**:
+- Объединяйте мелкие файлы
+- Используйте SVG sprites для иконок
+- Inline мелких критичных assets
+- Удаляйте неиспользуемые сторонние скрипты
 
-**Optimize APIs**:
-- Use pagination (don't load everything)
-- GraphQL to request only needed fields
-- Response compression (gzip, brotli)
+**Оптимизируйте API**:
+- Используйте pagination (не грузите всё)
+- GraphQL — запрашивайте только нужные поля
+- Сжатие ответов (gzip, brotli)
 - HTTP caching headers
-- CDN for static assets
+- CDN для статичных assets
 
-**Optimize for Slow Connections**:
-- Adaptive loading based on connection (navigator.connection)
+**Оптимизируйте под медленные соединения**:
+- Adaptive loading по типу соединения (navigator.connection)
 - Optimistic UI updates
-- Request prioritization
+- Приоритизация запросов
 - Progressive enhancement
 
-## Core Web Vitals Optimization
+## Оптимизация Core Web Vitals
 
 ### Largest Contentful Paint (LCP < 2.5s)
-- Optimize hero images
+- Оптимизируйте hero-изображения
 - Inline critical CSS
-- Preload key resources
-- Use CDN
+- Preload ключевых ресурсов
+- Используйте CDN
 - Server-side rendering
 
 ### First Input Delay (FID < 100ms) / INP (< 200ms)
-- Break up long tasks
-- Defer non-critical JavaScript
-- Use web workers for heavy computation
-- Reduce JavaScript execution time
+- Разбивайте длинные задачи
+- Defer некритичного JavaScript
+- Используйте web workers для тяжёлых вычислений
+- Сокращайте время выполнения JavaScript
 
 ### Cumulative Layout Shift (CLS < 0.1)
-- Set dimensions on images and videos
-- Don't inject content above existing content
-- Use `aspect-ratio` CSS property
-- Reserve space for ads/embeds
-- Avoid animations that cause layout shifts
+- Задавайте размеры изображениям и видео
+- Не вставляйте контент выше уже существующего
+- Используйте CSS-свойство `aspect-ratio`
+- Резервируйте место под ads/embeds
+- Избегайте анимаций, вызывающих layout shifts
 
 ```css
 /* Reserve space for image */
@@ -216,16 +216,16 @@ const observer = new IntersectionObserver((entries) => {
 }
 ```
 
-## Performance Monitoring
+## Мониторинг производительности
 
-**Tools to use**:
+**Инструменты**:
 - Chrome DevTools (Lighthouse, Performance panel)
 - WebPageTest
 - Core Web Vitals (Chrome UX Report)
 - Bundle analyzers (webpack-bundle-analyzer)
 - Performance monitoring (Sentry, DataDog, New Relic)
 
-**Key metrics**:
+**Ключевые метрики**:
 - LCP, FID/INP, CLS (Core Web Vitals)
 - Time to Interactive (TTI)
 - First Contentful Paint (FCP)
@@ -233,26 +233,26 @@ const observer = new IntersectionObserver((entries) => {
 - Bundle size
 - Request count
 
-**IMPORTANT**: Measure on real devices with real network conditions. Desktop Chrome with fast connection isn't representative.
+**ВАЖНО**: измеряйте на реальных устройствах с реальными сетевыми условиями. Desktop Chrome с быстрым соединением не репрезентативен.
 
-**NEVER**:
-- Optimize without measuring (premature optimization)
-- Sacrifice accessibility for performance
-- Break functionality while optimizing
-- Use `will-change` everywhere (creates new layers, uses memory)
-- Lazy load above-fold content
-- Optimize micro-optimizations while ignoring major issues (optimize the biggest bottleneck first)
-- Forget about mobile performance (often slower devices, slower connections)
+**НИКОГДА**:
+- Не оптимизируйте без измерений (premature optimization)
+- Не жертвуйте accessibility ради производительности
+- Не ломайте функциональность при оптимизации
+- Не используйте `will-change` везде (создаёт новые слои, расходует память)
+- Не lazy load контента above-the-fold
+- Не увлекайтесь микрооптимизациями, игнорируя главные проблемы (сначала самый большой bottleneck)
+- Не забывайте о mobile-производительности (часто более слабые устройства и соединения)
 
-## Verify Improvements
+## Проверьте улучшения
 
-Test that optimizations worked:
+Убедитесь, что оптимизации сработали:
 
-- **Before/after metrics**: Compare Lighthouse scores
-- **Real user monitoring**: Track improvements for real users
-- **Different devices**: Test on low-end Android, not just flagship iPhone
-- **Slow connections**: Throttle to 3G, test experience
-- **No regressions**: Ensure functionality still works
-- **User perception**: Does it *feel* faster?
+- **Before/after metrics**: сравните Lighthouse scores
+- **Real user monitoring**: отслеживайте улучшения для реальных пользователей
+- **Разные устройства**: тестируйте на low-end Android, не только на flagship iPhone
+- **Медленные соединения**: throttle до 3G, проверьте опыт
+- **Нет регрессий**: функциональность всё ещё работает
+- **Восприятие пользователя**: *ощущается* ли быстрее?
 
-When the user-facing numbers move, hand off to `$impeccable polish` for the final pass.
+Когда пользовательские цифры сдвинулись — передайте `$impeccable polish` для финального прохода.

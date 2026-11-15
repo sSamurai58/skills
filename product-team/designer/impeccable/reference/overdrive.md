@@ -1,91 +1,91 @@
-Start your response with:
+Начните ответ с:
 
 ```
 ──────────── ⚡ OVERDRIVE ─────────────
 》》》 Entering overdrive mode...
 ```
 
-Push an interface past conventional limits. This isn't just about visual effects. It's about using the full power of the browser to make any part of an interface feel extraordinary: a table that handles a million rows, a dialog that morphs from its trigger, a form that validates in real-time with streaming feedback, a page transition that feels cinematic.
+Выведите интерфейс за привычные пределы. Это не только про визуальные эффекты. Это про использование всей мощи браузера, чтобы любая часть интерфейса ощущалась выдающейся: таблица на миллион строк, диалог, который морфится из своего триггера, форма с realtime-валидацией и streaming-обратной связью, page transition с кинематографическим ощущением.
 
-**EXTRA IMPORTANT FOR THIS COMMAND**: Context determines what "extraordinary" means. A particle system on a creative portfolio is impressive. The same particle system on a settings page is embarrassing. But a settings page with instant optimistic saves and animated state transitions? That's extraordinary too. Understand the project's personality and goals before deciding what's appropriate.
+**ОСОБО ВАЖНО ДЛЯ ЭТОЙ КОМАНДЫ**: контекст определяет, что значит «extraordinary». Particle system на креативном портфолио впечатляет. Тот же particle system на странице настроек — стыдно. Но страница настроек с мгновенными optimistic saves и анимированными переходами состояний? Это тоже extraordinary. Поймите личность и цели проекта, прежде чем решать, что уместно.
 
-### Propose Before Building
+### Предложите до реализации
 
-This command has the highest potential to misfire. Do NOT jump straight into implementation. You MUST:
+У этой команды самый высокий риск промаха. НЕ прыгайте сразу в реализацию. Вы ОБЯЗАНЫ:
 
-1. **Think through 2-3 different directions**: consider different techniques, levels of ambition, and aesthetic approaches. For each direction, briefly describe what the result would look and feel like.
-2. **STOP and use Codex's structured user-input/question tool when available; if unavailable, ask directly in chat to clarify what you cannot infer.** to present these directions and get the user's pick before writing any code. Explain trade-offs (browser support, performance cost, complexity).
-3. Only proceed with the direction the user confirms.
+1. **Продумать 2–3 разных направления**: разные техники, уровни амбиции и эстетические подходы. Для каждого кратко опишите, как результат будет выглядеть и ощущаться.
+2. **ОСТАНОВИТЕСЬ и используйте structured user-input/question tool Codex, когда доступен; если недоступен — спросите прямо в чате**, чтобы прояснить то, что нельзя вывести. Представьте направления и получите выбор пользователя до любого кода. Объясните trade-offs (browser support, стоимость производительности, сложность).
+3. Продолжайте только в направлении, которое подтвердил пользователь.
 
-Skipping this step risks building something embarrassing that needs to be thrown away.
+Пропуск этого шага рискует построить что-то стыдное, что придётся выбросить.
 
-### Iterate with Browser Automation
+### Итерируйте с browser automation
 
-Technically ambitious effects almost never work on the first try. You MUST actively use browser automation tools to preview your work, visually verify the result, and iterate. Do not assume the effect looks right, check it. Expect multiple rounds of refinement. The gap between "technically works" and "looks extraordinary" is closed through visual iteration, not code alone.
+Технически амбициозные эффекты почти никогда не работают с первого раза. Вы ОБЯЗАНЫ активно использовать browser automation для превью, визуальной проверки результата и итераций. Не предполагайте, что эффект выглядит правильно — проверяйте. Ожидайте несколько раундов доработки. Разрыв между «технически работает» и «выглядит extraordinary» закрывается визуальной итерацией, а не одним только кодом.
 
 ---
 
-## Assess What "Extraordinary" Means Here
+## Оцените, что значит «Extraordinary» здесь
 
-The right kind of technical ambition depends entirely on what you're working with. Before choosing a technique, ask: **what would make a user of THIS specific interface say "wow, that's nice"?**
+Правильный вид технической амбиции целиком зависит от того, с чем вы работаете. Прежде чем выбирать технику, спросите: **что заставит пользователя ИМЕННО этого интерфейса сказать «wow, that's nice»?**
 
-### For visual/marketing surfaces
-Pages, hero sections, landing pages, portfolios: the "wow" is often sensory: a scroll-driven reveal, a shader background, a cinematic page transition, generative art that responds to the cursor.
+### Для visual/marketing surfaces
+Страницы, hero-секции, лендинги, портфолио: «wow» часто сенсорный — scroll-driven reveal, фон на шейдере, кинематографический page transition, generative art, реагирующий на курсор.
 
-### For functional UI
-Tables, forms, dialogs, navigation: the "wow" is in how it FEELS: a dialog that morphs from the button that triggered it via View Transitions, a data table that renders 100k rows at 60fps via virtual scrolling, a form with streaming validation that feels instant, drag-and-drop with spring physics.
+### Для functional UI
+Таблицы, формы, диалоги, навигация: «wow» в том, как это ОЩУЩАЕТСЯ — диалог, морфящийся из кнопки через View Transitions; таблица данных, рендерящая 100k строк при 60fps через virtual scrolling; форма со streaming-валидацией, ощущающаяся мгновенной; drag-and-drop с spring physics.
 
-### For performance-critical UI
-The "wow" is invisible but felt: a search that filters 50k items without a flicker, a complex form that never blocks the main thread, an image editor that processes in near-real-time. The interface just never hesitates.
+### Для performance-critical UI
+«Wow» невидим, но ощутим: поиск, фильтрующий 50k элементов без мерцания; сложная форма, которая никогда не блокирует main thread; редактор изображений с near-realtime обработкой. Интерфейс просто никогда не запинается.
 
-### For data-heavy interfaces
-Charts and dashboards: the "wow" is in fluidity: GPU-accelerated rendering via Canvas/WebGL for massive datasets, animated transitions between data states, force-directed graph layouts that settle naturally.
+### Для data-heavy interfaces
+Charts и dashboards: «wow» в текучести — GPU-accelerated rendering через Canvas/WebGL для огромных датасетов, анимированные переходы между состояниями данных, force-directed graph layouts, которые естественно успокаиваются.
 
-**The common thread**: something about the implementation goes beyond what users expect from a web interface. The technique serves the experience, not the other way around.
+**Общая нить**: что-то в реализации выходит за ожидания пользователей от веб-интерфейса. Техника служит опыту, а не наоборот.
 
-## The Toolkit
+## Инструментарий
 
-Organized by what you're trying to achieve, not by technology name.
+Организован по цели, а не по названию технологии.
 
-### Make transitions feel cinematic
-- **View Transitions API** (same-document: all browsers; cross-document: no Firefox): shared element morphing between states. A list item expanding into a detail page. A button morphing into a dialog. This is the closest thing to native FLIP animations.
-- **`@starting-style`** (all browsers): animate elements from `display: none` to visible with CSS only, including entry keyframes
-- **Spring physics**: natural motion with mass, tension, and damping instead of cubic-bezier. Libraries: motion (formerly Framer Motion), GSAP, or roll your own spring solver.
+### Сделайте переходы кинематографическими
+- **View Transitions API** (same-document: все браузеры; cross-document: нет Firefox): shared element morphing между состояниями. Элемент списка расширяется в detail page. Кнопка морфится в диалог. Ближайший аналог native FLIP-анимаций.
+- **`@starting-style`** (все браузеры): анимируйте элементы из `display: none` в visible только на CSS, включая entry keyframes
+- **Spring physics**: естественное движение с mass, tension и damping вместо cubic-bezier. Библиотеки: motion (ранее Framer Motion), GSAP, или свой spring solver.
 
-### Tie animation to scroll position
-- **Scroll-driven animations** (`animation-timeline: scroll()`): CSS-only, no JS. Parallax, progress bars, reveal sequences all driven by scroll position. (Chrome/Edge/Safari; Firefox: flag only; always provide a static fallback)
+### Привяжите анимацию к позиции скролла
+- **Scroll-driven animations** (`animation-timeline: scroll()`): только CSS, без JS. Parallax, progress bars, reveal-последовательности — всё от позиции скролла. (Chrome/Edge/Safari; Firefox: только за флагом; всегда давайте статичный fallback)
 
-### Render beyond CSS
-- **WebGL** (all browsers): shader effects, post-processing, particle systems. Libraries: Three.js, OGL (lightweight), regl. Use for effects CSS can't express.
-- **WebGPU** (Chrome/Edge; Safari partial; Firefox: flag only): next-gen GPU compute. More powerful than WebGL but limited browser support. Always fall back to WebGL2.
-- **Canvas 2D / OffscreenCanvas**: custom rendering, pixel manipulation, or moving heavy rendering off the main thread entirely via Web Workers + OffscreenCanvas.
-- **SVG filter chains**: displacement maps, turbulence, morphology for organic distortion effects. CSS-animatable.
+### Рендерьте за пределами CSS
+- **WebGL** (все браузеры): shader-эффекты, post-processing, particle systems. Библиотеки: Three.js, OGL (lightweight), regl. Для эффектов, которые CSS не выражает.
+- **WebGPU** (Chrome/Edge; Safari partial; Firefox: только за флагом): next-gen GPU compute. Мощнее WebGL, но ограниченная поддержка браузеров. Всегда fallback на WebGL2.
+- **Canvas 2D / OffscreenCanvas**: кастомный рендеринг, pixel manipulation или вынос тяжёлого рендеринга с main thread через Web Workers + OffscreenCanvas.
+- **SVG filter chains**: displacement maps, turbulence, morphology для органических искажений. Анимируются через CSS.
 
-### Make data feel alive
-- **Virtual scrolling**: render only visible rows for tables/lists with tens of thousands of items. No library required for simple cases; TanStack Virtual for complex ones.
-- **GPU-accelerated charts**: Canvas or WebGL-rendered data visualization for datasets too large for SVG/DOM. Libraries: deck.gl, regl-based custom renderers.
-- **Animated data transitions**: morph between chart states rather than replacing. D3's `transition()` or View Transitions for DOM-based charts.
+### Сделайте данные живыми
+- **Virtual scrolling**: рендерьте только видимые строки для таблиц/списков на десятки тысяч элементов. Для простых случаев библиотека не нужна; TanStack Virtual — для сложных.
+- **GPU-accelerated charts**: визуализация данных на Canvas или WebGL для датасетов, слишком больших для SVG/DOM. Библиотеки: deck.gl, кастомные regl-рендереры.
+- **Animated data transitions**: морфите между состояниями chart, а не заменяйте. D3 `transition()` или View Transitions для DOM-based charts.
 
-### Animate complex properties
-- **`@property`** (all browsers): register custom CSS properties with types, enabling animation of gradients, colors, and complex values that CSS can't normally interpolate.
-- **Web Animations API** (all browsers): JavaScript-driven animations with the performance of CSS. Composable, cancellable, reversible. The foundation for complex choreography.
+### Анимируйте сложные свойства
+- **`@property`** (все браузеры): регистрируйте custom CSS properties с типами, позволяя анимировать градиенты, цвета и сложные значения, которые CSS обычно не интерполирует.
+- **Web Animations API** (все браузеры): JS-анимации с производительностью CSS. Composable, cancellable, reversible. Основа сложной хореографии.
 
-### Push performance boundaries
-- **Web Workers**: move computation off the main thread. Heavy data processing, image manipulation, search indexing: anything that would cause jank.
-- **OffscreenCanvas**: render in a Worker thread. The main thread stays free while complex visuals render in the background.
-- **WASM**: near-native performance for computation-heavy features. Image processing, physics simulations, codecs.
+### Раздвигайте границы производительности
+- **Web Workers**: выносите вычисления с main thread. Тяжёлая обработка данных, манипуляции с изображениями, search indexing — всё, что вызывает jank.
+- **OffscreenCanvas**: рендерьте в Worker thread. Main thread свободен, пока сложная графика рисуется в фоне.
+- **WASM**: near-native производительность для compute-heavy функций. Обработка изображений, физические симуляции, codecs.
 
-### Interact with the device
-- **Web Audio API**: spatial audio, audio-reactive visualizations, sonic feedback. Requires user gesture to start.
-- **Device APIs**: orientation, ambient light, geolocation. Use sparingly and always with user permission.
+### Взаимодействуйте с устройством
+- **Web Audio API**: spatial audio, audio-reactive визуализации, sonic feedback. Требует user gesture для старта.
+- **Device APIs**: orientation, ambient light, geolocation. Используйте скупо и всегда с разрешением пользователя.
 
-**NOTE**: This command is about enhancing how an interface FEELS, not changing what a product DOES. Adding real-time collaboration, offline support, or new backend capabilities are product decisions, not UI enhancements. Focus on making existing features feel extraordinary.
+**ПРИМЕЧАНИЕ**: эта команда про то, как интерфейс ОЩУЩАЕТСЯ, а не про то, что продукт ДЕЛАЕТ. Добавление realtime collaboration, offline support или новых backend-возможностей — продуктовые решения, не UI-улучшения. Фокус — сделать существующие функции ощущающимися extraordinary.
 
-## Implement with Discipline
+## Реализуйте с дисциплиной
 
-### Progressive enhancement is non-negotiable
+### Progressive enhancement обязателен
 
-Every technique must degrade gracefully. The experience without the enhancement must still be good.
+Каждая техника должна деградировать изящно. Опыт без enhancement всё равно должен быть хорошим.
 
 ```css
 @supports (animation-timeline: scroll()) {
@@ -99,32 +99,32 @@ else if (canvas.getContext('webgl2')) { /* WebGL2 fallback */ }
 /* CSS-only fallback must still look good */
 ```
 
-### Performance rules
+### Правила производительности
 
-- Target 60fps. If dropping below 50, simplify.
-- Respect `prefers-reduced-motion`, always. Provide a beautiful static alternative.
-- Lazy-initialize heavy resources (WebGL contexts, WASM modules) only when near viewport.
-- Pause off-screen rendering. Kill what you can't see.
-- Test on real mid-range devices, not just your development machine.
+- Цель — 60fps. Если падает ниже 50 — упрощайте.
+- Уважайте `prefers-reduced-motion` всегда. Давайте красивую статичную альтернативу.
+- Lazy-initialize тяжёлые ресурсы (WebGL contexts, WASM modules) только рядом с viewport.
+- Останавливайте off-screen rendering. Убивайте то, чего не видно.
+- Тестируйте на реальных mid-range устройствах, не только на машине разработки.
 
-### Polish is the difference
+### Polish — это разница
 
-The gap between "cool" and "extraordinary" is in the last 20% of refinement: the easing curve on a spring animation, the timing offset in a staggered reveal, the subtle secondary motion that makes a transition feel physical. Don't ship the first version that works; ship the version that feels inevitable.
+Разрыв между «cool» и «extraordinary» — в последних 20% доработки: easing curve spring-анимации, timing offset в staggered reveal, тонкое вторичное движение, делающее переход физичным. Не шипьте первую рабочую версию — шипьте ту, что ощущается неизбежной.
 
-**NEVER**:
-- Ignore `prefers-reduced-motion`. This is an accessibility requirement, not a suggestion
-- Ship effects that cause jank on mid-range devices
-- Use bleeding-edge APIs without a functional fallback
-- Add sound without explicit user opt-in
-- Use technical ambition to mask weak design fundamentals; fix those first with other commands
-- Layer multiple competing extraordinary moments. Focus creates impact, excess creates noise
+**НИКОГДА**:
+- Не игнорируйте `prefers-reduced-motion`. Это требование accessibility, не совет
+- Не шипьте эффекты, вызывающие jank на mid-range устройствах
+- Не используйте bleeding-edge API без функционального fallback
+- Не добавляйте звук без явного opt-in пользователя
+- Не маскируйте слабые основы дизайна технической амбицией; сначала исправьте их другими командами
+- Не наслаивайте несколько конкурирующих extraordinary-моментов. Фокус создаёт impact, избыток — шум
 
-## Verify the Result
+## Проверьте результат
 
-- **The wow test**: Show it to someone who hasn't seen it. Do they react?
-- **The removal test**: Take it away. Does the experience feel diminished, or does nobody notice?
-- **The device test**: Run it on a phone, a tablet, a Chromebook. Still smooth?
-- **The accessibility test**: Enable reduced motion. Still beautiful?
-- **The context test**: Does this make sense for THIS brand and audience?
+- **The wow test**: покажите тому, кто не видел. Есть реакция?
+- **The removal test**: уберите. Опыт ощущается обеднённым — или никто не замечает?
+- **The device test**: запустите на телефоне, планшете, Chromebook. Всё ещё плавно?
+- **The accessibility test**: включите reduced motion. Всё ещё красиво?
+- **The context test**: это имеет смысл для ЭТОГО бренда и аудитории?
 
-"Technically extraordinary" isn't about using the newest API. It's about making an interface do something users didn't think a website could do.
+«Technically extraordinary» — не про новейший API. Это про то, чтобы интерфейс делал то, что пользователи не считали возможным для сайта.

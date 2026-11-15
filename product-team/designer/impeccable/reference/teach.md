@@ -1,104 +1,104 @@
 # Teach Flow
 
-Gathers design context for a project and writes two complementary files at the project root:
+Собирает design context проекта и пишет два взаимодополняющих файла в корне проекта:
 
-- **PRODUCT.md** (strategic): root project file for register, target users, product purpose, brand personality, anti-references, strategic design principles. Answers "who/what/why".
-- **DESIGN.md** (visual): root project file for visual theme, color palette, typography, components, layout. Follows the [Google Stitch DESIGN.md format](https://stitch.withgoogle.com/docs/design-md/format/). Answers "how it looks".
+- **PRODUCT.md** (strategic): корневой файл проекта для register, целевых пользователей, product purpose, brand personality, anti-references, стратегических design principles. Отвечает на «who/what/why».
+- **DESIGN.md** (visual): корневой файл проекта для visual theme, color palette, typography, components, layout. Следует [формату Google Stitch DESIGN.md](https://stitch.withgoogle.com/docs/design-md/format/). Отвечает на «how it looks».
 
-Every other impeccable command reads these files before doing any work.
+Каждая другая команда impeccable читает эти файлы перед любой работой.
 
 ## Step 1: Load current state
 
-Run the shared loader first so you know what already exists:
+Сначала запустите shared loader, чтобы знать, что уже есть:
 
 ```bash
 node .agents/skills/impeccable/scripts/load-context.mjs
 ```
 
-The output tells you whether PRODUCT.md and/or DESIGN.md already exist. If `migrated: true`, legacy `.impeccable.md` was auto-renamed to `PRODUCT.md`. Mention this once to the user.
+Output говорит, существуют ли уже PRODUCT.md и/или DESIGN.md. Если `migrated: true`, legacy `.impeccable.md` был автоматически переименован в `PRODUCT.md`. Упомяните это пользователю один раз.
 
 Decision tree:
-- **Neither file exists (empty project or no context yet)**: do Steps 2-4 (write PRODUCT.md), then decide on DESIGN.md based on whether there's code to analyze.
-- **PRODUCT.md exists, DESIGN.md missing**: skip to Step 5 and offer to run `$impeccable document` for DESIGN.md.
-- **PRODUCT.md exists but has no `## Register` section (legacy)**: add it. Infer a hypothesis from the codebase (see Step 2), confirm with the user, write the field.
-- **Both exist**: STOP and use Codex's structured user-input/question tool when available; if unavailable, ask directly in chat to clarify what you cannot infer. Ask which file to refresh. Skip the one the user doesn't want changed.
-- **Just DESIGN.md exists (unusual)**: do Steps 2-4 to produce PRODUCT.md.
+- **Ни одного файла нет (пустой проект или ещё нет контекста)**: сделайте Steps 2–4 (напишите PRODUCT.md), затем решите по DESIGN.md в зависимости от того, есть ли код для анализа.
+- **PRODUCT.md есть, DESIGN.md нет**: перейдите к Step 5 и предложите запустить `$impeccable document` для DESIGN.md.
+- **PRODUCT.md есть, но без секции `## Register` (legacy)**: добавьте её. Выведите гипотезу из кодовой базы (см. Step 2), подтвердите с пользователем, запишите поле.
+- **Оба есть**: ОСТАНОВИТЕСЬ и используйте structured user-input/question tool Codex, когда доступен; если недоступен — спросите прямо в чате, чтобы прояснить то, что нельзя вывести. Спросите, какой файл обновить. Пропустите тот, который пользователь не хочет менять.
+- **Есть только DESIGN.md (unusual)**: сделайте Steps 2–4, чтобы получить PRODUCT.md.
 
-Never silently overwrite an existing file. Always confirm first.
+Никогда не перезаписывайте существующий файл молча. Всегда подтверждайте сначала.
 
-If teach was invoked as a setup blocker by another command, such as `$impeccable craft landing page`, pause that command here. Complete teach, re-run the loader, then resume the original command with the freshly loaded context. For craft, resume into shape next; teach creates project context, but it is not a substitute for the task-specific shape interview and confirmed design brief.
+Если teach вызван как setup blocker другой командой, например `$impeccable craft landing page`, поставьте ту команду на паузу здесь. Завершите teach, перезапустите loader, затем возобновите исходную команду со свежезагруженным контекстом. Для craft возобновляйте дальше в shape; teach создаёт project context, но не заменяет task-specific shape interview и подтверждённый design brief.
 
 ## Step 2: Explore the codebase
 
-Before asking questions, thoroughly scan the project to discover what you can:
+Перед вопросами тщательно просканируйте проект, чтобы обнаружить, что можете:
 
-- **README and docs**: Project purpose, target audience, any stated goals
-- **Package.json / config files**: Tech stack, dependencies, existing design libraries
-- **Existing components**: Current design patterns, spacing, typography in use
-- **Brand assets**: Logos, favicons, color values already defined
-- **Design tokens / CSS variables**: Existing color palettes, font stacks, spacing scales
-- **Any style guides or brand documentation**
+- **README и docs**: purpose проекта, целевая аудитория, заявленные цели
+- **Package.json / config files**: tech stack, зависимости, существующие design libraries
+- **Existing components**: текущие design patterns, spacing, typography в использовании
+- **Brand assets**: логотипы, favicons, уже определённые color values
+- **Design tokens / CSS variables**: существующие color palettes, font stacks, spacing scales
+- **Любые style guides или brand documentation**
 
-Also form a **register hypothesis** from what you find:
+Также сформируйте **register hypothesis** из найденного:
 
-- Brand signals: `/`, `/about`, `/pricing`, `/blog/*`, `/docs/*`, hero sections, big typography, scroll-driven sections, landing-page-shaped content.
+- Brand signals: `/`, `/about`, `/pricing`, `/blog/*`, `/docs/*`, hero sections, крупная typography, scroll-driven sections, landing-page-shaped content.
 - Product signals: `/app/*`, `/dashboard`, `/settings`, `/(auth)`, forms, data tables, side/top nav, app-shell components.
 
-Register is a hypothesis at this point, not a decision; Step 3 confirms it.
+Register на этом этапе — гипотеза, не решение; Step 3 подтверждает её.
 
-Note what you've learned and what remains unclear. This exploration feeds both PRODUCT.md and DESIGN.md.
+Зафиксируйте, что узнали и что остаётся неясным. Это исследование питает и PRODUCT.md, и DESIGN.md.
 
-## Step 3: Ask strategic questions (for PRODUCT.md)
+## Step 3: Ask strategic questions (для PRODUCT.md)
 
-STOP and use Codex's structured user-input/question tool when available; if unavailable, ask directly in chat to clarify what you cannot infer. Ask only about what you couldn't infer from the codebase.
+ОСТАНОВИТЕСЬ и используйте structured user-input/question tool Codex, когда доступен; если недоступен — спросите прямо в чате, чтобы прояснить то, что нельзя вывести. Спрашивайте только о том, что не удалось вывести из кодовой базы.
 
-### Interview mode, not confirmation mode
+### Interview mode, не confirmation mode
 
-If the repo is empty or the user's brief is sparse, run a short interview before proposing PRODUCT.md. Do **not** turn a one-sentence request into a complete inferred PRODUCT.md and ask for blanket confirmation.
+Если репозиторий пуст или brief пользователя sparse, проведите короткое интервью до предложения PRODUCT.md. **Не** превращайте одно предложение запроса в полностью выведенный PRODUCT.md и не просите blanket confirmation.
 
-- Use the harness's structured question tool when one exists. Otherwise, ask directly in chat and stop.
-- Ask **2-3 questions per round**, then wait for answers.
-- Use inferred answers as hypotheses or options, not as finished facts.
-- Complete at least one real user-answer round before drafting PRODUCT.md, unless every required answer is directly discoverable from repo docs.
-- Round 1 should establish register, users/purpose, and desired outcome.
-- Round 2 should establish brand personality or references, anti-references, and accessibility needs.
+- Используйте structured question tool harness, когда он есть. Иначе спросите прямо в чате и остановитесь.
+- Задавайте **2–3 вопроса за раунд**, затем ждите ответов.
+- Используйте выведенные ответы как гипотезы или опции, не как готовые факты.
+- Завершите как минимум один реальный раунд ответа пользователя до черновика PRODUCT.md, если каждый required ответ не discoverable напрямую из docs репозитория.
+- Round 1 должен установить register, users/purpose и desired outcome.
+- Round 2 должен установить brand personality или references, anti-references и accessibility needs.
 
 ### Minimum viable interview
 
-Ask enough to complete PRODUCT.md. At minimum, cover register confirmation, users and purpose, brand personality, anti-references, and accessibility needs unless each answer is directly discoverable from repo context. After at least one interview round, you may propose inferred answers, but the user must confirm them before you write PRODUCT.md. Never synthesize PRODUCT.md from the original task prompt alone.
+Спросите достаточно, чтобы завершить PRODUCT.md. Как минимум: подтверждение register, users и purpose, brand personality, anti-references и accessibility needs — если каждый ответ не discoverable напрямую из контекста репозитория. После как минимум одного раунда интервью можете предложить выведенные ответы, но пользователь должен подтвердить их до записи PRODUCT.md. Никогда не синтезируйте PRODUCT.md только из исходного task prompt.
 
-### Register (ask first; it shapes everything below)
+### Register (спрашивайте первым; это формирует всё ниже)
 
-Every design task is either **brand** (marketing, landing, campaign, long-form content, portfolio: design IS the product) or **product** (app UI, admin, dashboards, tools: design SERVES the product).
+Каждая дизайн-задача — либо **brand** (marketing, landing, campaign, long-form content, portfolio: дизайн И ЕСТЬ продукт), либо **product** (app UI, admin, dashboards, tools: дизайн СЛУЖИТ продукту).
 
-If Step 2 produced a clear hypothesis, lead with it: *"From the codebase, this looks like a [brand / product] surface. Does that match your intent, or should we treat it differently?"*
+Если Step 2 дал ясную гипотезу, начните с неё: *«From the codebase, this looks like a [brand / product] surface. Does that match your intent, or should we treat it differently?»*
 
-If the signal is genuinely split (e.g. a product with a big marketing landing), STOP and use Codex's structured user-input/question tool when available; if unavailable, ask directly in chat to clarify what you cannot infer. Ask which register describes the **primary** surface. The register can be overridden per task later, but PRODUCT.md carries one default.
+Если сигнал genuinely split (например product с большим marketing landing), ОСТАНОВИТЕСЬ и используйте structured user-input/question tool Codex, когда доступен; если недоступен — спросите прямо в чате, чтобы прояснить то, что нельзя вывести. Спросите, какой register описывает **primary** поверхность. Register можно переопределить per task позже, но PRODUCT.md несёт один default.
 
 ### Users & Purpose
-- Who uses this? What's their context when using it?
-- What job are they trying to get done?
-- For brand: what emotions should the interface evoke? (confidence, delight, calm, urgency)
-- For product: what workflow are they in? What's the primary task on any given screen?
+- Кто это использует? В каком контексте?
+- Какую работу они пытаются сделать?
+- Для brand: какие эмоции должен вызывать интерфейс? (confidence, delight, calm, urgency)
+- Для product: в каком workflow они? Какова primary task на данном экране?
 
 ### Brand & Personality
-- How would you describe the brand personality in 3 words?
-- Reference sites or apps that capture the right feel? What specifically about them?
-  - For brand, push for real-world references in the right lane (tech-minimal, editorial-magazine, consumer-warm, brutalist-grid, etc.), not generic "modern" adjectives.
-  - For product, push for category best-tool references (Linear, Figma, Notion, Raycast, Stripe).
-- What should this explicitly NOT look like? Any anti-references?
+- Как бы вы описали brand personality в 3 словах?
+- Reference sites или apps, которые передают нужное ощущение? Что конкретно в них?
+  - Для brand тяните к real-world references в нужной lane (tech-minimal, editorial-magazine, consumer-warm, brutalist-grid и т.д.), не к generic «modern» прилагательным.
+  - Для product тяните к category best-tool references (Linear, Figma, Notion, Raycast, Stripe).
+- Чем это явно НЕ должно выглядеть? Есть anti-references?
 
 ### Accessibility & Inclusion
-- Specific accessibility requirements? (WCAG level, known user needs)
-- Considerations for reduced motion, color blindness, or other accommodations?
+- Конкретные требования accessibility? (WCAG level, известные user needs)
+- Соображения по reduced motion, color blindness или другим accommodations?
 
-Skip questions where the answer is already clear. **Do NOT ask about colors, fonts, radii, or visual styling here.** Those belong in DESIGN.md, not PRODUCT.md.
+Пропускайте вопросы, где ответ уже ясен. **НЕ спрашивайте здесь про colors, fonts, radii или visual styling.** Это принадлежит DESIGN.md, не PRODUCT.md.
 
 ## Step 4: Write PRODUCT.md
 
-Write PRODUCT.md only after the user has confirmed the strategic answers from Step 3. If an inferred answer is uncertain or unconfirmed, ask before writing.
+Пишите PRODUCT.md только после того, как пользователь подтвердил стратегические ответы из Step 3. Если выведенный ответ неуверен или неподтверждён — спросите до записи.
 
-Synthesize into a strategic document:
+Синтезируйте в стратегический документ:
 
 ```markdown
 # Product
@@ -126,31 +126,31 @@ product
 [WCAG level, known user needs, considerations]
 ```
 
-Register is either `brand` or `product` as a bare value. No prose, no commentary.
+Register — либо `brand`, либо `product` как голое значение. Без prose, без commentary.
 
-Write to `PROJECT_ROOT/PRODUCT.md`. If `.impeccable.md` existed, the loader already renamed it; merge into that content rather than starting from scratch.
+Пишите в `PROJECT_ROOT/PRODUCT.md`. Если существовал `.impeccable.md`, loader уже переименовал его; мержите в этот контент, а не начинайте с нуля.
 
 ## Step 5: Decide on DESIGN.md
 
-Offer `$impeccable document` either way. Two paths:
+Предложите `$impeccable document` в любом случае. Два пути:
 
-- **Code exists** (CSS tokens, components, a running site): "I can generate a DESIGN.md that captures your visual system (colors, typography, components) so variants stay on-brand. Want to do that now?"
-- **Pre-implementation** (empty project): "I can seed a starter DESIGN.md from five quick questions about color strategy, type direction, motion energy, and references. You can re-run once there's code, to capture the real tokens. Want to do that now?"
+- **Код есть** (CSS tokens, components, работающий сайт): «I can generate a DESIGN.md that captures your visual system (colors, typography, components) so variants stay on-brand. Want to do that now?»
+- **Pre-implementation** (пустой проект): «I can seed a starter DESIGN.md from five quick questions about color strategy, type direction, motion energy, and references. You can re-run once there's code, to capture the real tokens. Want to do that now?»
 
-If the user agrees, delegate to `$impeccable document` (it auto-detects scan vs seed). Load its reference and follow that flow.
+Если пользователь согласен, делегируйте `$impeccable document` (он auto-detects scan vs seed). Загрузите его reference и следуйте тому flow.
 
-If the user prefers to skip, mention they can run `$impeccable document` any time later.
+Если предпочитает пропустить, упомяните, что можно запустить `$impeccable document` позже в любое время.
 
 ## Step 6: Confirm and wrap up
 
-Summarize:
-- Register captured (brand / product)
-- What was written (PRODUCT.md, DESIGN.md, or both)
-- The 3-5 strategic principles from PRODUCT.md that will guide future work
-- If DESIGN.md is pending, remind the user how to generate it later
+Резюмируйте:
+- Зафиксированный register (brand / product)
+- Что написано (PRODUCT.md, DESIGN.md, или оба)
+- 3–5 стратегических principles из PRODUCT.md, которые будут вести будущую работу
+- Если DESIGN.md pending — напомните, как сгенерировать позже
 
-**Critical: re-run the loader to refresh session context.** After writing PRODUCT.md, run `node .agents/skills/impeccable/scripts/load-context.mjs` one final time and let its full JSON output land in conversation. This ensures subsequent commands in this session use the freshly-written PRODUCT.md, not a stale earlier version.
+**Критично: перезапустите loader, чтобы обновить session context.** После записи PRODUCT.md запустите `node .agents/skills/impeccable/scripts/load-context.mjs` ещё раз и дайте полному JSON output попасть в разговор. Это гарантирует, что последующие команды в сессии используют свежезаписанный PRODUCT.md, а не устаревшую раннюю версию.
 
-If teach was invoked as a blocker by another impeccable command (e.g. the user ran `$impeccable polish` with no PRODUCT.md), resume that original task now with the fresh context.
+Если teach вызван как blocker другой командой impeccable (например пользователь запустил `$impeccable polish` без PRODUCT.md), возобновите исходную задачу сейчас со свежим контекстом.
 
-Optionally STOP and use Codex's structured user-input/question tool when available; if unavailable, ask directly in chat to clarify what you cannot infer. Ask whether they'd like a brief summary of PRODUCT.md appended to AGENTS.md for easier agent reference. If yes, append a short **Design Context** pointer section there.
+Опционально ОСТАНОВИТЕСЬ и используйте structured user-input/question tool Codex, когда доступен; если недоступен — спросите прямо в чате, чтобы прояснить то, что нельзя вывести. Спросите, хотят ли краткое резюме PRODUCT.md в AGENTS.md для удобной agent reference. Если да, добавьте туда короткий указатель **Design Context**.

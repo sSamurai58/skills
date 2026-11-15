@@ -1,29 +1,29 @@
 # Motion Design
 
-## Duration: The 100/300/500 Rule
+## Duration: правило 100/300/500
 
-Timing matters more than easing. These durations feel right for most UI:
+Тайминг важнее easing. Эти длительности ощущаются правильно для большинства UI:
 
 | Duration | Use Case | Examples |
 |----------|----------|----------|
-| **100-150ms** | Instant feedback | Button press, toggle, color change |
-| **200-300ms** | State changes | Menu open, tooltip, hover states |
-| **300-500ms** | Layout changes | Accordion, modal, drawer |
-| **500-800ms** | Entrance animations | Page load, hero reveals |
+| **100-150ms** | Мгновенная обратная связь | Нажатие кнопки, toggle, смена цвета |
+| **200-300ms** | Смена состояния | Открытие меню, tooltip, hover-состояния |
+| **300-500ms** | Изменения layout | Accordion, modal, drawer |
+| **500-800ms** | Анимации появления | Загрузка страницы, hero reveals |
 
-**Exit animations are faster than entrances.** Use ~75% of enter duration.
+**Анимации выхода быстрее входа.** Используйте ~75% от длительности входа.
 
-## Easing: Pick the Right Curve
+## Easing: выберите правильную кривую
 
-**Don't use `ease`.** It's a compromise that's rarely optimal. Instead:
+**Не используйте `ease`.** Это компромисс, который редко оптимален. Вместо этого:
 
 | Curve | Use For | CSS |
 |-------|---------|-----|
-| **ease-out** | Elements entering | `cubic-bezier(0.16, 1, 0.3, 1)` |
-| **ease-in** | Elements leaving | `cubic-bezier(0.7, 0, 0.84, 0)` |
-| **ease-in-out** | State toggles (there → back) | `cubic-bezier(0.65, 0, 0.35, 1)` |
+| **ease-out** | Элементы, входящие на экран | `cubic-bezier(0.16, 1, 0.3, 1)` |
+| **ease-in** | Элементы, уходящие с экрана | `cubic-bezier(0.7, 0, 0.84, 0)` |
+| **ease-in-out** | Переключения состояния (туда → обратно) | `cubic-bezier(0.65, 0, 0.35, 1)` |
 
-**For micro-interactions, use exponential curves.** They feel natural because they mimic real physics (friction, deceleration):
+**Для микро-взаимодействий используйте экспоненциальные кривые.** Они ощущаются естественно, потому что имитируют реальную физику (трение, замедление):
 
 ```css
 /* Quart out - smooth, refined (recommended default) */
@@ -36,29 +36,29 @@ Timing matters more than easing. These durations feel right for most UI:
 --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 ```
 
-**Avoid bounce and elastic curves.** They were trendy in 2015 but now feel tacky and amateurish. Real objects don't bounce when they stop; they decelerate smoothly. Overshoot effects draw attention to the animation itself rather than the content.
+**Избегайте bounce- и elastic-кривых.** Они были в тренде в 2015, но сейчас выглядят дешёво и любительски. Реальные объекты не отскакивают при остановке — они плавно замедляются. Эффекты overshoot привлекают внимание к самой анимации, а не к контенту.
 
-## Premium Motion Materials
+## Премиальные материалы motion
 
-Transform and opacity are reliable defaults, not the whole palette. Premium interfaces often need atmospheric properties: blur reveals, backdrop-filter panels, saturation or brightness shifts, shadow bloom, SVG filters, masks, clip paths, gradient-position movement, and variable font or shader-driven effects.
+Transform и opacity — надёжные значения по умолчанию, но не вся палитра. Премиальным интерфейсам часто нужны атмосферные свойства: blur reveals, панели с backdrop-filter, сдвиги saturation или brightness, bloom теней, SVG-фильтры, masks, clip paths, движение позиции градиента, а также эффекты на variable fonts или шейдерах.
 
-Use the right material for the effect:
+Выбирайте материал под эффект:
 
-- **Transform / opacity**: movement, press feedback, simple reveals, list choreography.
-- **Blur / filter / backdrop-filter**: focus pulls, depth, glass or lens effects, softened entrances, atmospheric transitions.
-- **Clip path / masks**: wipes, reveals, editorial cropping, product-like transitions.
-- **Shadow / glow / color filters**: energy, affordance, focus, warmth, active state.
-- **Grid-template rows or FLIP-style transforms**: expanding and reflowing layout without animating `height` directly.
+- **Transform / opacity**: движение, feedback нажатия, простые появления, хореография списков.
+- **Blur / filter / backdrop-filter**: притяжение фокуса, глубина, glass- или lens-эффекты, смягчённые входы, атмосферные переходы.
+- **Clip path / masks**: wipes, reveals, editorial-кадрирование, product-like переходы.
+- **Shadow / glow / color filters**: энергия, affordance, фокус, теплота, активное состояние.
+- **Grid-template rows или FLIP-style transforms**: расширение и перестроение layout без прямой анимации `height`.
 
-The hard rule is not "transform and opacity only." The hard rule is: avoid animating layout-driving properties casually (`width`, `height`, `top`, `left`, margins), keep expensive effects bounded to small or isolated areas, and verify in-browser that the result is smooth on the target viewports. If blur/filter makes the interaction feel significantly more premium and remains smooth, use it.
+Жёсткое правило — не «только transform и opacity». Жёсткое правило: не анимируйте casually свойства, управляющие layout (`width`, `height`, `top`, `left`, margins), ограничивайте дорогие эффекты небольшими или изолированными областями и проверяйте в браузере, что результат плавный на целевых viewport. Если blur/filter заметно усиливает ощущение премиальности и остаётся плавным — используйте.
 
-## Staggered Animations
+## Staggered-анимации
 
-Use CSS custom properties for cleaner stagger: `animation-delay: calc(var(--i, 0) * 50ms)` with `style="--i: 0"` on each item. **Cap total stagger time**: 10 items at 50ms = 500ms total. For many items, reduce per-item delay or cap staggered count.
+Используйте CSS custom properties для чистого stagger: `animation-delay: calc(var(--i, 0) * 50ms)` с `style="--i: 0"` на каждом элементе. **Ограничивайте суммарное время stagger**: 10 элементов по 50ms = 500ms всего. При большом числе элементов уменьшайте delay на элемент или ограничивайте число stagger-элементов.
 
 ## Reduced Motion
 
-This is not optional. Vestibular disorders affect ~35% of adults over 40.
+Это не опционально. Вестибулярные расстройства затрагивают ~35% взрослых старше 40 лет.
 
 ```css
 /* Define animations normally */
@@ -82,28 +82,28 @@ This is not optional. Vestibular disorders affect ~35% of adults over 40.
 }
 ```
 
-**What to preserve**: Functional animations like progress bars, loading spinners (slowed down), and focus indicators should still work, just without spatial movement.
+**Что сохранить**: функциональные анимации вроде progress bars, loading spinners (замедленные) и focus indicators должны продолжать работать — просто без пространственного движения.
 
-## Perceived Performance
+## Воспринимаемая производительность
 
-**Nobody cares how fast your site is, just how fast it feels.** Perception can be as effective as actual performance.
+**Никого не волнует, насколько быстр ваш сайт — важно, насколько быстрым он ощущается.** Восприятие может быть столь же эффективным, как и реальная производительность.
 
-**The 80ms threshold**: Our brains buffer sensory input for ~80ms to synchronize perception. Anything under 80ms feels instant and simultaneous. This is your target for micro-interactions.
+**Порог 80ms**: мозг буферизует сенсорный ввод ~80ms, чтобы синхронизировать восприятие. Всё быстрее 80ms ощущается мгновенным и одновременным. Это ваша цель для микро-взаимодействий.
 
-**Active vs passive time**: Passive waiting (staring at a spinner) feels longer than active engagement. Strategies to shift the balance:
+**Активное vs пассивное время**: пассивное ожидание (смотреть на spinner) ощущается дольше активного вовлечения. Стратегии сдвига баланса:
 
-- **Preemptive start**: Begin transitions immediately while loading (iOS app zoom, skeleton UI). Users perceive work happening.
-- **Early completion**: Show content progressively, don't wait for everything. Video buffering, progressive images, streaming HTML.
-- **Optimistic UI**: Update the interface immediately, handle failures gracefully. Instagram likes work offline; the UI updates instantly, syncs later. Use for low-stakes actions; avoid for payments or destructive operations.
+- **Упреждающий старт**: начинайте переходы сразу во время загрузки (iOS app zoom, skeleton UI). Пользователи воспринимают, что работа идёт.
+- **Раннее завершение**: показывайте контент постепенно, не ждите всего. Буферизация видео, progressive images, streaming HTML.
+- **Optimistic UI**: обновляйте интерфейс сразу, обрабатывайте ошибки изящно. Лайки Instagram работают офлайн: UI обновляется мгновенно, синхронизация позже. Используйте для низкорисковых действий; избегайте для платежей и разрушительных операций.
 
-**Easing affects perceived duration**: Ease-in (accelerating toward completion) makes tasks feel shorter because the peak-end effect weights final moments heavily. Ease-out feels satisfying for entrances, but ease-in toward a task's end compresses perceived time.
+**Easing влияет на воспринимаемую длительность**: ease-in (ускорение к завершению) делает задачи короче из-за peak-end effect, который сильно взвешивает финальные моменты. Ease-out приятен для входов, но ease-in к концу задачи сжимает воспринимаемое время.
 
-**Caution**: Too-fast responses can decrease perceived value. Users may distrust instant results for complex operations (search, analysis). Sometimes a brief delay signals "real work" is happening.
+**Осторожно**: слишком быстрые ответы могут снижать воспринимаемую ценность. Пользователи могут не доверять мгновенным результатам сложных операций (поиск, анализ). Иногда короткая задержка сигнализирует, что «идёт настоящая работа».
 
-## Performance
+## Производительность
 
-Don't use `will-change` preemptively, only when animation is imminent (`:hover`, `.animating`). For scroll-triggered animations, use Intersection Observer instead of scroll events; unobserve after animating once. Create motion tokens for consistency (durations, easings, common transitions).
+Не используйте `will-change` заранее — только когда анимация вот-вот начнётся (`:hover`, `.animating`). Для scroll-triggered анимаций используйте Intersection Observer вместо scroll events; отписывайтесь после однократной анимации. Создавайте motion tokens для согласованности (durations, easings, распространённые transitions).
 
 ---
 
-**Avoid**: Animating everything (animation fatigue is real). Using >500ms for UI feedback. Ignoring `prefers-reduced-motion`. Using animation to hide slow loading.
+**Избегайте**: анимировать всё подряд (animation fatigue реальна). Использовать >500ms для UI feedback. Игнорировать `prefers-reduced-motion`. Использовать анимацию, чтобы скрыть медленную загрузку.

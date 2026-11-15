@@ -1,242 +1,242 @@
-> **Additional context needed**: quality bar (MVP vs flagship).
+> **Нужен дополнительный контекст**: планка качества (MVP vs flagship).
 
-Perform a meticulous final pass to catch all the small details that separate good work from great work. The difference between shipped and polished.
+Сделайте тщательный финальный проход, чтобы поймать все мелкие детали, отделяющие хорошую работу от отличной. Разница между shipped и polished.
 
-Detector and automated QA output are defect evidence only. A clean script result is never proof that the design is strong; gather browser evidence and inspect the real interaction path.
+Detector и automated QA — только доказательства дефектов. Чистый результат скрипта никогда не доказывает сильный дизайн; соберите browser evidence и проверьте реальный путь взаимодействия.
 
 ## Design System Discovery
 
-Aligning the feature to the design system is **not optional**. Polish without alignment is decoration on top of drift, and it makes the next person's job harder. Discovery comes before any other polish work.
+Выравнивание фичи под design system — **не опционально**. Polish без выравнивания — декор поверх drift, и усложняет работу следующему. Discovery идёт до любой другой polish-работы.
 
-1. **Find the design system**: Search for design system documentation, component libraries, style guides, or token definitions. Study the core patterns: design principles, target audience, color tokens, spacing scale, typography styles, component API, motion conventions.
-2. **Note the conventions**: How are shared components imported? What spacing scale is used? Which colors come from tokens vs hard-coded values? What motion and interaction patterns are established? What flow shapes are used for comparable actions (modal vs full-page, inline vs route, save-on-blur vs explicit submit)?
-3. **Identify drift, then name the root cause**: For every deviation, classify it as a **missing token** (the value should exist in the system but doesn't), a **one-off implementation** (a shared component already exists but wasn't used), or a **conceptual misalignment** (the feature's flow, IA, or hierarchy doesn't match neighboring features). The fix differs by category: patch the value, swap to the shared component, or rework the flow. Fixing the symptom without naming the cause is how drift compounds.
+1. **Найдите design system**: ищите документацию design system, component libraries, style guides или определения токенов. Изучите ключевые паттерны: design principles, целевая аудитория, color tokens, spacing scale, typography styles, component API, motion conventions.
+2. **Зафиксируйте conventions**: как импортируются shared components? Какая spacing scale? Какие цвета из токенов, а какие hard-coded? Какие паттерны motion и взаимодействия устоялись? Какие формы flow для сопоставимых действий (modal vs full-page, inline vs route, save-on-blur vs explicit submit)?
+3. **Выявите drift, затем назовите корневую причину**: для каждого отклонения классифицируйте как **missing token** (значение должно быть в системе, но его нет), **one-off implementation** (shared component уже есть, но не использован) или **conceptual misalignment** (flow, IA или иерархия фичи не совпадает с соседними). Фикс зависит от категории: поправить значение, перейти на shared component или переработать flow. Лечить симптом без названия причины — как drift накапливается.
 
-If a design system exists, polish **must** align the feature with it. If none exists, polish against the conventions visible in the codebase. **If anything about the system is ambiguous, ask. Never guess at design system principles.**
+Если design system есть, polish **должен** выровнять фичу под него. Если нет — polish против conventions, видимых в кодовой базе. **Если что-то в системе неоднозначно — спросите. Никогда не угадывайте принципы design system.**
 
 ## Pre-Polish Assessment
 
-Understand the current state and goals before touching anything:
+Поймите текущее состояние и цели, прежде чем трогать что-либо:
 
-1. **Review completeness**:
-   - Is it functionally complete?
-   - Are there known issues to preserve (mark with TODOs)?
-   - What's the quality bar? (MVP vs flagship feature?)
-   - When does it ship? (How much time for polish?)
+1. **Проверьте completeness**:
+   - Функционально ли завершено?
+   - Есть ли известные issues, которые нужно сохранить (пометить TODO)?
+   - Какова планка качества? (MVP vs flagship feature?)
+   - Когда шипится? (Сколько времени на polish?)
 
-2. **Think experience-first**: Who actually uses this, and what's the best possible experience for them? Effective design beats decorative polish; a feature that looks beautiful but fights the user's flow is not polished. Walk the path from their perspective before opening DevTools.
+2. **Думайте experience-first**: кто реально это использует, и какой лучший возможный опыт для них? Эффективный дизайн бьёт декоративный polish; фича, которая красива, но борется с потоком пользователя, не polished. Пройдите путь с их точки зрения до открытия DevTools.
 
-3. **Identify polish areas**:
-   - Visual inconsistencies
-   - Spacing and alignment issues
-   - Interaction state gaps
-   - Copy inconsistencies
-   - Edge cases and error states
-   - Loading and transition smoothness
-   - Information architecture and flow drift (does this feature reveal complexity the way neighboring features do?)
+3. **Определите области polish**:
+   - Визуальные несогласованности
+   - Проблемы spacing и alignment
+   - Пробелы в interaction states
+   - Несогласованности copy
+   - Edge cases и error states
+   - Плавность loading и transitions
+   - Drift information architecture и flow (раскрывает ли фича сложность так же, как соседние?)
 
-4. **Pull in any prior critique** (optional signal): If `$impeccable critique` has been run on the same target, its priority issues are a useful prior for what to address first. Resolve the target to a file path or URL, then:
+4. **Подтяните предыдущий critique** (опциональный сигнал): если `$impeccable critique` уже запускался на ту же цель, его priority issues — полезный prior для того, что чинить первым. Разрешите цель в file path или URL, затем:
    ```bash
    slug=$(node .agents/skills/impeccable/scripts/critique-storage.mjs slug "<resolved>")
    node .agents/skills/impeccable/scripts/critique-storage.mjs latest "$slug"
    ```
-   Exit 0 with body = found; fold the P0/P1 items into your polish list and mention the snapshot path so the user sees what you read. Exit 2 = no snapshot, continue without it. The critique is one input among many. Do your own pass either way.
+   Exit 0 с телом = найдено; включите P0/P1 в ваш polish list и укажите путь к snapshot, чтобы пользователь видел, что вы прочитали. Exit 2 = нет snapshot, продолжайте без него. Critique — один вход среди многих. В любом случае делайте свой проход.
 
-5. **Triage cosmetic vs functional**: Classify each issue as **cosmetic** (looks off, doesn't impede the user) or **functional** (breaks, blocks, or confuses the experience). When polish time is tight, functional issues ship first; cosmetic ones can land in a follow-up. Quality should be consistent; never perfect one corner while leaving another rough.
+5. **Триаж cosmetic vs functional**: классифицируйте каждый issue как **cosmetic** (выглядит странно, не мешает) или **functional** (ломает, блокирует или путает опыт). Когда времени мало, functional шипится первым; cosmetic могут уйти в follow-up. Качество должно быть согласованным; никогда не идеализируйте один угол, оставляя другой грубым.
 
-**CRITICAL**: Polish is the last step, not the first. Don't polish work that's not functionally complete.
+**КРИТИЧНО**: polish — последний шаг, не первый. Не полируйте работу, которая не функционально завершена.
 
-## Polish Systematically
+## Полируйте системно
 
-Work through these dimensions methodically:
+Проходите эти измерения методично:
 
 ### Visual Alignment & Spacing
 
-- **Pixel-perfect alignment**: Everything lines up to grid
-- **Consistent spacing**: All gaps use spacing scale (no random 13px gaps)
-- **Optical alignment**: Adjust for visual weight (icons may need offset for optical centering)
-- **Responsive consistency**: Spacing and alignment work at all breakpoints
-- **Grid adherence**: Elements snap to baseline grid
+- **Pixel-perfect alignment**: всё выровнено по сетке
+- **Consistent spacing**: все gaps из spacing scale (никаких случайных 13px)
+- **Optical alignment**: корректируйте под visual weight (иконкам может нужен offset для оптического центрирования)
+- **Responsive consistency**: spacing и alignment работают на всех breakpoints
+- **Grid adherence**: элементы привязаны к baseline grid
 
 **Check**:
-- Enable grid overlay and verify alignment
-- Check spacing with browser inspector
-- Test at multiple viewport sizes
-- Look for elements that "feel" off
+- Включите grid overlay и проверьте alignment
+- Проверьте spacing inspector'ом браузера
+- Тестируйте на нескольких размерах viewport
+- Ищите элементы, которые «ощущаются» не так
 
 ### Information Architecture & Flow
 
-Visual polish on a misshapen flow is wasted work. Match the *shape* of the experience to the system, not just the surface.
+Визуальный polish на кривом flow — впустую. Сопоставляйте *форму* опыта с системой, не только поверхность.
 
-- **Progressive disclosure**: Match how much is revealed when, compared to neighboring features. A settings page exposing 40 fields when the rest of the app reveals 5 at a time is drift, even if every field is perfectly styled.
-- **Established user flows**: Multi-step actions follow the same shape as comparable flows elsewhere: modal vs full-page, inline edit vs separate route, save-on-blur vs explicit submit, optimistic vs pessimistic updates.
-- **Hierarchy & complexity**: The same conceptual weight gets the same visual weight throughout. Primary actions don't become tertiary in one corner of the product, and tertiary actions don't shout.
-- **Empty, loading, and arrival transitions**: How content arrives, updates, and leaves matches how it does in adjacent features.
-- **Naming and mental model**: The feature uses the same nouns and verbs as the rest of the system. A "Workspace" here shouldn't be a "Project" three screens away.
+- **Progressive disclosure**: сколько и когда раскрывается — как у соседних фич. Settings page с 40 полями, когда остальной app показывает по 5 за раз — это drift, даже если каждое поле идеально стилизовано.
+- **Устоявшиеся user flows**: multi-step действия той же формы, что сопоставимые flows elsewhere: modal vs full-page, inline edit vs separate route, save-on-blur vs explicit submit, optimistic vs pessimistic updates.
+- **Hierarchy & complexity**: одинаковый conceptual weight получает одинаковый visual weight. Primary actions не становятся tertiary в одном углу продукта, а tertiary не кричат.
+- **Empty, loading и arrival transitions**: как контент появляется, обновляется и уходит — как в соседних фичах.
+- **Naming and mental model**: фича использует те же существительные и глаголы, что остальная система. «Workspace» здесь не должен быть «Project» тремя экранами дальше.
 
 ### Typography Refinement
 
-- **Hierarchy consistency**: Same elements use same sizes/weights throughout
-- **Line length**: 45-75 characters for body text
-- **Line height**: Appropriate for font size and context
-- **Widows & orphans**: No single words on last line
-- **Hyphenation**: Appropriate for language and column width
-- **Kerning**: Adjust letter spacing where needed (especially headlines)
-- **Font loading**: No FOUT/FOIT flashes
+- **Hierarchy consistency**: одни и те же элементы — одни размеры/веса повсюду
+- **Line length**: 45–75 символов для body text
+- **Line height**: подходящий для размера шрифта и контекста
+- **Widows & orphans**: нет одиноких слов на последней строке
+- **Hyphenation**: уместно для языка и ширины колонки
+- **Kerning**: корректируйте letter spacing где нужно (особенно headlines)
+- **Font loading**: нет вспышек FOUT/FOIT
 
 ### Color & Contrast
 
-- **Contrast ratios**: All text meets WCAG standards
-- **Consistent token usage**: No hard-coded colors, all use design tokens
-- **Theme consistency**: Works in all theme variants
-- **Color meaning**: Same colors mean same things throughout
-- **Accessible focus**: Focus indicators visible with sufficient contrast
-- **Tinted neutrals**: No pure gray or pure black; add subtle color tint (0.01 chroma)
-- **Gray on color**: Never put gray text on colored backgrounds; use a shade of that color or transparency
+- **Contrast ratios**: весь текст соответствует WCAG
+- **Consistent token usage**: нет hard-coded цветов, всё через design tokens
+- **Theme consistency**: работает во всех вариантах темы
+- **Color meaning**: одни цвета значат одно и то же повсюду
+- **Accessible focus**: focus indicators видимы с достаточным контрастом
+- **Tinted neutrals**: никакого pure gray или pure black; лёгкий цветовой tint (0.01 chroma)
+- **Gray on color**: никогда серый текст на цветных фонах; используйте оттенок этого цвета или transparency
 
 ### Interaction States
 
-Every interactive element needs all states:
+У каждого interactive element должны быть все состояния:
 
-- **Default**: Resting state
-- **Hover**: Subtle feedback (color, scale, shadow)
-- **Focus**: Keyboard focus indicator (never remove without replacement)
-- **Active**: Click/tap feedback
-- **Disabled**: Clearly non-interactive
-- **Loading**: Async action feedback
-- **Error**: Validation or error state
-- **Success**: Successful completion
+- **Default**: состояние покоя
+- **Hover**: тонкий feedback (color, scale, shadow)
+- **Focus**: keyboard focus indicator (никогда не убирайте без замены)
+- **Active**: feedback клика/тапа
+- **Disabled**: явно неинтерактивно
+- **Loading**: feedback async-действия
+- **Error**: validation или error state
+- **Success**: успешное завершение
 
-**Missing states create confusion and broken experiences**.
+**Пропущенные состояния создают путаницу и сломанный опыт**.
 
 ### Micro-interactions & Transitions
 
-- **Smooth transitions**: All state changes animated appropriately (150-300ms)
-- **Consistent easing**: Use ease-out-quart/quint/expo for natural deceleration. Never bounce or elastic; they feel dated.
-- **No jank**: Smooth animations; use atmospheric blur/filter/mask/shadow effects when they add polish, but bound expensive paint areas and avoid casual layout-property animation
-- **Appropriate motion**: Motion serves purpose, not decoration
-- **Reduced motion**: Respects `prefers-reduced-motion`
+- **Smooth transitions**: все смены состояний анимированы уместно (150–300ms)
+- **Consistent easing**: используйте ease-out-quart/quint/expo для естественного замедления. Никогда bounce или elastic; они выглядят устаревшими.
+- **No jank**: плавные анимации; используйте атмосферные blur/filter/mask/shadow, когда они добавляют polish, но ограничивайте дорогие области paint и избегайте casual layout-property animation
+- **Appropriate motion**: motion служит цели, не декору
+- **Reduced motion**: уважает `prefers-reduced-motion`
 
 ### Content & Copy
 
-- **Consistent terminology**: Same things called same names throughout
-- **Consistent capitalization**: Title Case vs Sentence case applied consistently
-- **Grammar & spelling**: No typos
-- **Appropriate length**: Not too wordy, not too terse
-- **Punctuation consistency**: Periods on sentences, not on labels (unless all labels have them)
+- **Consistent terminology**: одно и то же называется одинаково повсюду
+- **Consistent capitalization**: Title Case vs Sentence case применяется согласованно
+- **Grammar & spelling**: без опечаток
+- **Appropriate length**: не слишком многословно, не слишком сжато
+- **Punctuation consistency**: точки в предложениях, не на labels (если только все labels не с точками)
 
 ### Icons & Images
 
-- **Consistent style**: All icons from same family or matching style
-- **Appropriate sizing**: Icons sized consistently for context
-- **Proper alignment**: Icons align with adjacent text optically
-- **Alt text**: All images have descriptive alt text
-- **Loading states**: Images don't cause layout shift, proper aspect ratios
-- **Retina support**: 2x assets for high-DPI screens
+- **Consistent style**: все иконки из одной семьи или matching style
+- **Appropriate sizing**: иконки согласованно размера для контекста
+- **Proper alignment**: иконки оптически выровнены с соседним текстом
+- **Alt text**: у всех изображений описательный alt text
+- **Loading states**: изображения не вызывают layout shift, правильные aspect ratios
+- **Retina support**: 2x assets для high-DPI экранов
 
 ### Forms & Inputs
 
-- **Label consistency**: All inputs properly labeled
-- **Required indicators**: Clear and consistent
-- **Error messages**: Helpful and consistent
-- **Tab order**: Logical keyboard navigation
-- **Auto-focus**: Appropriate (don't overuse)
-- **Validation timing**: Consistent (on blur vs on submit)
+- **Label consistency**: все inputs правильно подписаны
+- **Required indicators**: ясные и согласованные
+- **Error messages**: полезные и согласованные
+- **Tab order**: логичная keyboard navigation
+- **Auto-focus**: уместно (не злоупотребляйте)
+- **Validation timing**: согласованно (on blur vs on submit)
 
 ### Edge Cases & Error States
 
-- **Loading states**: All async actions have loading feedback
-- **Empty states**: Helpful empty states, not just blank space
-- **Error states**: Clear error messages with recovery paths
-- **Success states**: Confirmation of successful actions
-- **Long content**: Handles very long names, descriptions, etc.
-- **No content**: Handles missing data gracefully
-- **Offline**: Appropriate offline handling (if applicable)
+- **Loading states**: у всех async-действий есть loading feedback
+- **Empty states**: полезные empty states, не просто пустое место
+- **Error states**: ясные сообщения об ошибках с путями recovery
+- **Success states**: подтверждение успешных действий
+- **Long content**: обрабатывает очень длинные имена, описания и т.д.
+- **No content**: изящно обрабатывает отсутствующие данные
+- **Offline**: уместная offline-обработка (если применимо)
 
 ### Responsiveness
 
-- **All breakpoints**: Test mobile, tablet, desktop
-- **Touch targets**: 44x44px minimum on touch devices
-- **Readable text**: No text smaller than 14px on mobile
-- **No horizontal scroll**: Content fits viewport
-- **Appropriate reflow**: Content adapts logically
+- **All breakpoints**: тестируйте mobile, tablet, desktop
+- **Touch targets**: минимум 44x44px на touch-устройствах
+- **Readable text**: нет текста меньше 14px на mobile
+- **No horizontal scroll**: контент помещается в viewport
+- **Appropriate reflow**: контент адаптируется логично
 
 ### Performance
 
-- **Fast initial load**: Optimize critical path
-- **No layout shift**: Elements don't jump after load (CLS)
-- **Smooth interactions**: No lag or jank
-- **Optimized images**: Appropriate formats and sizes
-- **Lazy loading**: Off-screen content loads lazily
+- **Fast initial load**: оптимизируйте critical path
+- **No layout shift**: элементы не прыгают после загрузки (CLS)
+- **Smooth interactions**: нет lag или jank
+- **Optimized images**: подходящие форматы и размеры
+- **Lazy loading**: off-screen контент грузится лениво
 
 ### Code Quality
 
-- **Remove console logs**: No debug logging in production
-- **Remove commented code**: Clean up dead code
-- **Remove unused imports**: Clean up unused dependencies
-- **Consistent naming**: Variables and functions follow conventions
-- **Type safety**: No TypeScript `any` or ignored errors
-- **Accessibility**: Proper ARIA labels and semantic HTML
+- **Remove console logs**: нет debug logging в production
+- **Remove commented code**: уберите мёртвый код
+- **Remove unused imports**: уберите неиспользуемые зависимости
+- **Consistent naming**: переменные и функции следуют conventions
+- **Type safety**: нет TypeScript `any` или игнорируемых ошибок
+- **Accessibility**: правильные ARIA labels и semantic HTML
 
 ## Polish Checklist
 
-Go through systematically:
+Проходите системно:
 
-- [ ] Aligned to the design system (drift named and resolved by root cause)
-- [ ] Information architecture and flow shape match neighboring features
-- [ ] Visual alignment perfect at all breakpoints
-- [ ] Spacing uses design tokens consistently
-- [ ] Typography hierarchy consistent
-- [ ] All interactive states implemented
-- [ ] All transitions smooth (60fps)
-- [ ] Copy is consistent and polished
-- [ ] Icons are consistent and properly sized
-- [ ] All forms properly labeled and validated
-- [ ] Error states are helpful
-- [ ] Loading states are clear
-- [ ] Empty states are welcoming
-- [ ] Touch targets are 44x44px minimum
-- [ ] Contrast ratios meet WCAG AA
-- [ ] Keyboard navigation works
-- [ ] Focus indicators visible
-- [ ] No console errors or warnings
-- [ ] No layout shift on load
-- [ ] Works in all supported browsers
-- [ ] Respects reduced motion preference
-- [ ] Code is clean (no TODOs, console.logs, commented code)
+- [ ] Выровнено под design system (drift назван и решён по корневой причине)
+- [ ] Information architecture и форма flow совпадают с соседними фичами
+- [ ] Visual alignment идеален на всех breakpoints
+- [ ] Spacing использует design tokens согласованно
+- [ ] Typography hierarchy согласована
+- [ ] Все interactive states реализованы
+- [ ] Все transitions плавные (60fps)
+- [ ] Copy согласован и отполирован
+- [ ] Иконки согласованы и правильного размера
+- [ ] Все формы правильно подписаны и валидированы
+- [ ] Error states полезны
+- [ ] Loading states ясны
+- [ ] Empty states гостеприимны
+- [ ] Touch targets минимум 44x44px
+- [ ] Contrast ratios соответствуют WCAG AA
+- [ ] Keyboard navigation работает
+- [ ] Focus indicators видимы
+- [ ] Нет console errors или warnings
+- [ ] Нет layout shift при загрузке
+- [ ] Работает во всех поддерживаемых браузерах
+- [ ] Уважается preference reduced motion
+- [ ] Код чист (нет TODOs, console.logs, закомментированного кода)
 
-**IMPORTANT**: Polish is about details. Zoom in. Squint at it. Use it yourself. The little things add up.
+**ВАЖНО**: polish — про детали. Приближайтесь. Прищурьтесь. Пользуйтесь сами. Мелочи складываются.
 
-Sweat the details. Zoom in until the alignment is right and the spacing reads as deliberate. Then ship.
+Потратьте усилия на детали. Приближайтесь, пока alignment не станет верным, а spacing — намеренным. Затем шипьте.
 
-**NEVER**:
-- Polish before it's functionally complete
-- Polish without aligning to the design system; that's decoration on drift
-- Guess at design system principles instead of asking when something is ambiguous
-- Spend hours on polish if it ships in 30 minutes (triage)
-- Introduce bugs while polishing (test thoroughly)
-- Ignore systematic issues (if spacing is off everywhere, fix the system, not just one screen)
-- Perfect one thing while leaving others rough (consistent quality level)
-- Create new one-off components when design system equivalents exist
-- Hard-code values that should use design tokens
-- Introduce new patterns or flows that diverge from established ones
+**НИКОГДА**:
+- Не полируйте до функциональной завершённости
+- Не полируйте без выравнивания под design system; это декор поверх drift
+- Не угадывайте принципы design system вместо вопроса при неоднозначности
+- Не тратьте часы на polish, если шипится через 30 минут (триаж)
+- Не вносите баги при polish (тщательно тестируйте)
+- Не игнорируйте системные проблемы (если spacing везде off — чините систему, не один экран)
+- Не идеализируйте одно, оставляя другое грубым (согласованный уровень качества)
+- Не создавайте новые one-off компоненты, когда есть эквиваленты design system
+- Не hard-code значений, которые должны быть design tokens
+- Не вводите новые паттерны или flows, расходящиеся с устоявшимися
 
 ## Final Verification
 
-Before marking as done:
+Перед тем как отметить done:
 
-- **Use it yourself**: Actually interact with the feature.
-- **Test on real devices**: Not just browser DevTools.
-- **Ask someone else to review**: Fresh eyes catch things.
-- **Compare to design**: Match intended design.
-- **Check all states**: Don't just test happy path.
-- **Treat automation carefully**: Run detector or QA commands when they are available and relevant, fix their defects, but never cite a clean result as proof that the work is polished.
+- **Пользуйтесь сами**: реально взаимодействуйте с фичей.
+- **Тестируйте на реальных устройствах**: не только browser DevTools.
+- **Попросите кого-то ещё посмотреть**: свежий взгляд ловит детали.
+- **Сравните с дизайном**: соответствие задуманному.
+- **Проверьте все состояния**: не только happy path.
+- **Осторожно с automation**: запускайте detector или QA, когда доступны и уместны, чините их дефекты, но никогда не цитируйте чистый результат как доказательство, что работа polished.
 
 ## Clean Up
 
-After polishing, ensure code quality:
+После polish обеспечьте качество кода:
 
-- **Replace custom implementations**: If the design system provides a component you reimplemented, switch to the shared version.
-- **Remove orphaned code**: Delete unused styles, components, or files made obsolete by polish.
-- **Consolidate tokens**: If you introduced new values, check whether they should be tokens.
-- **Verify DRYness**: Look for duplication introduced during polishing and consolidate.
+- **Replace custom implementations**: если design system даёт компонент, который вы переписали — переключитесь на shared версию.
+- **Remove orphaned code**: удалите неиспользуемые стили, компоненты или файлы, устаревшие после polish.
+- **Consolidate tokens**: если ввели новые значения, проверьте, должны ли они быть токенами.
+- **Verify DRYness**: ищите дублирование, появившееся при polish, и консолидируйте.

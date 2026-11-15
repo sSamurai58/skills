@@ -1,99 +1,99 @@
-Quiet design is harder than bold design. Subtlety needs precision. Reduce visual intensity in designs that are too loud, aggressive, or overstimulating without losing personality or making the result generic.
+Quiet design сложнее bold design. Тонкость требует точности. Снижайте визуальную интенсивность в дизайнах, которые слишком громкие, агрессивные или overstimulating, не теряя личность и не делая результат generic.
 
 ---
 
 ## Register
 
-Brand: "quieter" means more restrained palette, more whitespace, more typographic air. Drama is reduced, not eliminated; the POV stays intact.
+Brand: «quieter» значит более сдержанная палитра, больше whitespace, больше типографического воздуха. Драма снижена, не устранена; POV остаётся.
 
-Product: "quieter" means reducing visual noise. Fewer background accents, flatter cards, less color, less motion. The tool should disappear more completely into the task.
+Product: «quieter» значит меньше визуального шума. Меньше фоновых акцентов, более плоские cards, меньше цвета, меньше motion. Инструмент должен ещё полнее раствориться в задаче.
 
 ---
 
 ## Assess Current State
 
-Analyze what makes the design feel too intense:
+Проанализируйте, что делает дизайн слишком интенсивным:
 
-1. **Identify intensity sources**:
-   - **Color saturation**: Overly bright or saturated colors
-   - **Contrast extremes**: Too much high-contrast juxtaposition
-   - **Visual weight**: Too many bold, heavy elements competing
-   - **Animation excess**: Too much motion or overly dramatic effects
-   - **Complexity**: Too many visual elements, patterns, or decorations
-   - **Scale**: Everything is large and loud with no hierarchy
+1. **Определите источники интенсивности**:
+   - **Color saturation**: чрезмерно яркие или насыщенные цвета
+   - **Contrast extremes**: слишком много high-contrast juxtapositions
+   - **Visual weight**: слишком много bold, тяжёлых элементов в конкуренции
+   - **Animation excess**: слишком много motion или чрезмерно драматичные эффекты
+   - **Complexity**: слишком много визуальных элементов, паттернов или декора
+   - **Scale**: всё крупное и громкое без иерархии
 
-2. **Understand the context**:
-   - What's the purpose? (Marketing vs tool vs reading experience)
-   - Who's the audience? (Some contexts need energy)
-   - What's working? (Don't throw away good ideas)
-   - What's the core message? (Preserve what matters)
+2. **Поймите контекст**:
+   - Какова цель? (Marketing vs tool vs reading experience)
+   - Кто аудитория? (Некоторым контекстам нужна энергия)
+   - Что работает? (Не выбрасывайте хорошие идеи)
+   - Какое core message? (Сохраните важное)
 
-If any of these are unclear from the codebase, STOP and use Codex's structured user-input/question tool when available; if unavailable, ask directly in chat to clarify what you cannot infer.
+Если что-то из этого неясно из кодовой базы, ОСТАНОВИТЕСЬ и используйте structured user-input/question tool Codex, когда доступен; если недоступен — спросите прямо в чате, чтобы прояснить то, что нельзя вывести.
 
-**CRITICAL**: "Quieter" doesn't mean boring or generic. It means refined and easier on the eyes. Think luxury, not laziness.
+**КРИТИЧНО**: «Quieter» не значит скучный или generic. Значит refined и легче для глаз. Думайте luxury, не laziness.
 
 ## Plan Refinement
 
-Create a strategy to reduce intensity while maintaining impact:
+Создайте стратегию снижения интенсивности с сохранением impact:
 
-- **Color approach**: Desaturate or shift to more restrained tones?
-- **Hierarchy approach**: Which elements should stay bold (very few), which should recede?
-- **Simplification approach**: What can be removed entirely?
-- **Sophistication approach**: How can we signal quality through restraint?
+- **Color approach**: десатурировать или сдвинуть к более сдержанным тонам?
+- **Hierarchy approach**: какие элементы остаются bold (очень мало), какие отступают?
+- **Simplification approach**: что можно убрать целиком?
+- **Sophistication approach**: как сигнализировать качество через restraint?
 
-**IMPORTANT**: Subtlety requires precision. Quiet without intent collapses to generic.
+**ВАЖНО**: тонкость требует точности. Quiet без намерения схлопывается в generic.
 
 ## Refine the Design
 
-Systematically reduce intensity across these dimensions:
+Системно снижайте интенсивность по этим измерениям:
 
 ### Color Refinement
-- **Reduce saturation**: Shift from fully saturated to 70-85% saturation
-- **Soften palette**: Replace bright colors with muted tones
-- **Reduce color variety**: Use fewer colors more thoughtfully
-- **Neutral dominance**: Let neutrals do more work, use color as accent (10% rule)
-- **Gentler contrasts**: High contrast only where it matters most
-- **Tinted grays**: Use warm or cool tinted grays instead of pure gray. Adds depth without loudness
-- **Never gray on color**: If you have gray text on a colored background, use a darker shade of that color or transparency instead
+- **Reduce saturation**: сдвиг от полной насыщенности к 70–85%
+- **Soften palette**: замените яркие цвета на muted tones
+- **Reduce color variety**: меньше цветов, осознаннее
+- **Neutral dominance**: пусть нейтрали делают больше работы, цвет — как акцент (правило 10%)
+- **Gentler contrasts**: high contrast только там, где важнее всего
+- **Tinted grays**: тёплые или холодные tinted grays вместо pure gray. Добавляют глубину без громкости
+- **Never gray on color**: если серый текст на цветном фоне — используйте более тёмный оттенок этого цвета или transparency
 
 ### Visual Weight Reduction
-- **Typography**: Reduce font weights (900 → 600, 700 → 500), decrease sizes where appropriate
-- **Hierarchy through subtlety**: Use weight, size, and space instead of color and boldness
-- **White space**: Increase breathing room, reduce density
-- **Borders & lines**: Reduce thickness, decrease opacity, or remove entirely
+- **Typography**: снижайте font weights (900 → 600, 700 → 500), уменьшайте размеры где уместно
+- **Hierarchy through subtlety**: вес, размер и пространство вместо цвета и boldness
+- **White space**: больше дыхания, меньше плотности
+- **Borders & lines**: тоньше, ниже opacity, или уберите совсем
 
 ### Simplification
-- **Remove decorative elements**: Gradients, shadows, patterns, textures that don't serve purpose
-- **Simplify shapes**: Reduce border radius extremes, simplify custom shapes
-- **Reduce layering**: Flatten visual hierarchy where possible
-- **Clean up effects**: Reduce or remove blur effects, glows, multiple shadows
+- **Remove decorative elements**: градиенты, тени, паттерны, текстуры без цели
+- **Simplify shapes**: меньше крайностей border radius, проще кастомные формы
+- **Reduce layering**: уплощайте visual hierarchy где возможно
+- **Clean up effects**: снижайте или убирайте blur, glows, multiple shadows
 
 ### Motion Reduction
-- **Reduce animation intensity**: Shorter distances (10-20px instead of 40px), gentler easing
-- **Remove decorative animations**: Keep functional motion, remove flourishes
-- **Subtle micro-interactions**: Replace dramatic effects with gentle feedback
-- **Refined easing**: Use ease-out-quart for smooth, understated motion. Never bounce or elastic
-- **Remove animations entirely** if they're not serving a clear purpose
+- **Reduce animation intensity**: короче дистанции (10–20px вместо 40px), мягче easing
+- **Remove decorative animations**: оставляйте functional motion, убирайте flourishes
+- **Subtle micro-interactions**: драматичные эффекты → мягкий feedback
+- **Refined easing**: ease-out-quart для плавного, сдержанного motion. Никогда bounce или elastic
+- **Remove animations entirely**, если они не служат ясной цели
 
 ### Composition Refinement
-- **Reduce scale jumps**: Smaller contrast between sizes creates calmer feeling
-- **Align to grid**: Bring rogue elements back into systematic alignment
-- **Even out spacing**: Replace extreme spacing variations with consistent rhythm
+- **Reduce scale jumps**: меньший контраст размеров — спокойнее ощущение
+- **Align to grid**: верните rogue-элементы в системное выравнивание
+- **Even out spacing**: крайние вариации spacing → согласованный ритм
 
-**NEVER**:
-- Make everything the same size/weight (hierarchy still matters)
-- Remove all color (quiet ≠ grayscale)
-- Eliminate all personality (maintain character through refinement)
-- Sacrifice usability for aesthetics (functional elements still need clear affordances)
-- Make everything small and light (some anchors needed)
+**НИКОГДА**:
+- Не делайте всё одного размера/веса (иерархия всё ещё важна)
+- Не убирайте весь цвет (quiet ≠ grayscale)
+- Не устраняйте всю личность (характер через refinement)
+- Не жертвуйте usability ради эстетики (функциональным элементам нужны ясные affordances)
+- Не делайте всё мелким и лёгким (нужны якоря)
 
 ## Verify Quality
 
-Ensure refinement maintains quality:
+Убедитесь, что refinement сохраняет качество:
 
-- **Still functional**: Can users still accomplish tasks easily?
-- **Still distinctive**: Does it have character, or is it generic now?
-- **Better reading**: Is text easier to read for extended periods?
-- **Restrained, not absent**: Does the POV survive the cuts?
+- **Still functional**: пользователи всё ещё легко выполняют задачи?
+- **Still distinctive**: есть характер, или стало generic?
+- **Better reading**: текст легче читать долго?
+- **Restrained, not absent**: POV пережил сокращения?
 
-When the result feels right, hand off to `$impeccable polish` for the final pass.
+Когда результат ощущается верным — передайте `$impeccable polish` для финального прохода.
