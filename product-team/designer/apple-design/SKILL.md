@@ -1,32 +1,32 @@
 ---
 name: team-designer-apple-design
-description: Apple's approach to interface design and fluid, physical motion, translated for the web. Use when building or reviewing gesture-driven UI, spring animations, drag/swipe/sheet interactions, momentum and interruptible transitions, translucent materials and depth, typography (optical sizing, tracking, leading), reduced-motion, or the design foundations (feedback, spatial consistency, restraint) behind Apple-style interfaces.
+description: Подход Apple к дизайну интерфейсов и плавному, физичному движению — адаптированный для веба. Используй при создании или ревью жестового UI, spring-анимаций, взаимодействий drag/swipe/sheet, импульса и прерываемых переходов, полупрозрачных материалов и глубины, типографики (оптический размер, трекинг, интерлиньяж), reduced-motion, а также дизайн-оснований (обратная связь, пространственная согласованность, сдержанность), стоящих за интерфейсами в стиле Apple.
 ---
 
-> Nested under `product-team/designer`. Apply the craft rules immediately; do not stop at a standalone greeting. Final delivery still follows `designer/SKILL.md` and returns to the manager.
+> Вложено в `product-team/designer`. Сразу применяй правила мастерства; не останавливайся на отдельном приветствии. Финальная сдача по-прежнему следует `designer/SKILL.md` и возвращается к менеджеру.
 
 
 # Apple Design
 
-How Apple builds interfaces that stop feeling like a computer and start feeling like an extension of you. This knowledge comes from Apple's WWDC design talks — chiefly *Designing Fluid Interfaces* (WWDC 2018) — distilled and translated into the web platform (CSS, Pointer Events, `requestAnimationFrame`, spring libraries like Motion/Framer Motion).
+Как Apple создаёт интерфейсы, которые перестают ощущаться компьютером и начинают ощущаться продолжением тебя. Эти знания взяты из дизайн-докладов Apple на WWDC — прежде всего *Designing Fluid Interfaces* (WWDC 2018) — сведены и переведены на веб-платформу (CSS, Pointer Events, `requestAnimationFrame`, spring-библиотеки вроде Motion/Framer Motion).
 
-The through-line: **an interface feels alive when motion starts from the current on-screen value, inherits the user's velocity, projects momentum forward, and can be grabbed and reversed at any instant.** Springs are the tool that makes all of this natural, because they are inherently interruptible and velocity-aware.
+Сквозная идея: **интерфейс ощущается живым, когда движение начинается от текущего значения на экране, наследует скорость пользователя, проецирует импульс вперёд и в любой момент может быть схвачено и развёрнуто назад.** Springs — инструмент, который делает всё это естественным, потому что они по своей природе прерываемы и учитывают скорость.
 
-## The Core Idea
+## Главная идея
 
-> "When we align the interface to the way we think and move, something magical happens — it stops feeling like a computer and starts feeling like a seamless extension of us."
+> «Когда мы выравниваем интерфейс с тем, как мы думаем и двигаемся, происходит нечто волшебное — он перестаёт ощущаться компьютером и начинает ощущаться бесшовным продолжением нас.»
 
-An interface is fluid when it behaves like the physical world: things respond instantly, move continuously, carry momentum, resist at boundaries, and can be redirected mid-motion. Everything below is a way to get closer to that.
+Интерфейс текуч, когда ведёт себя как физический мир: вещи отвечают мгновенно, движутся непрерывно, несут импульс, сопротивляются на границах и могут быть перенаправлены в середине движения. Всё ниже — способы приблизиться к этому.
 
-Apple frames design as serving four human needs: **safety/predictability, understanding, achievement, and joy.** Every rule here serves one of them.
+Apple формулирует дизайн как служение четырём человеческим потребностям: **безопасность/предсказуемость, понимание, достижение и радость.** Каждое правило здесь служит одной из них.
 
-## 1. Response — kill latency
+## 1. Отклик — убери задержку
 
-The moment lag appears, the feeling of directness "falls off a cliff." Response is the foundation everything else is built on.
+В момент, когда появляется лаг, ощущение непосредственности «срывается с обрыва.» Отклик — фундамент, на котором строится всё остальное.
 
-- **Respond on pointer-down, not on release.** Highlight a button the instant it's pressed. Waiting for `click`/touch-up to show feedback feels dead.
-- **Be vigilant about every latency.** Audit debounces, artificial timers, transition waits, and the ~300ms tap delay. Anything on the input path that isn't essential is a regression.
-- **Feedback must be continuous *during* the interaction, not just at the end.** For a drag, slider, or drawer, update the UI 1:1 with the pointer the whole way through — never animate only when the gesture completes.
+- **Отвечай на pointer-down, а не на отпускание.** Подсвечивай кнопку в мгновение нажатия. Ждать `click`/touch-up, чтобы показать обратную связь, — ощущается мёртвым.
+- **Будь бдителен к каждой задержке.** Проверяй debounce, искусственные таймеры, ожидания transition и ~300ms задержку тапа. Всё на пути ввода, что не существенно, — регрессия.
+- **Обратная связь должна быть непрерывной *во время* взаимодействия, а не только в конце.** Для drag, слайдера или drawer обновляй UI 1:1 с указателем на всём пути — никогда не анимируй только когда жест завершён.
 
 ```css
 /* Feedback lives on the press, and it's instant */
@@ -36,14 +36,14 @@ The moment lag appears, the feeling of directness "falls off a cliff." Response 
 }
 ```
 
-## 2. Direct manipulation — 1:1 tracking
+## 2. Прямое манипулирование — трекинг 1:1
 
-> "Touch and content should move together."
+> «Касание и контент должны двигаться вместе.»
 
-When the user drags something, it must stay glued to the finger — and respect the offset from *where they grabbed it*. Snapping to the element's center on grab breaks the illusion immediately.
+Когда пользователь тащит что-то, оно должно оставаться приклеенным к пальцу — и уважать смещение от *того места, где его схватили*. Привязка к центру элемента при захвате мгновенно ломает иллюзию.
 
-- Use Pointer Events with `setPointerCapture` so tracking continues even when the pointer leaves the element's bounds.
-- Track a short **velocity/position history** (last few `pointermove` events), not just the current point — you'll need velocity at release.
+- Используй Pointer Events с `setPointerCapture`, чтобы отслеживание продолжалось даже когда указатель выходит за границы элемента.
+- Отслеживай короткую **историю скорости/позиции** (последние несколько событий `pointermove`), а не только текущую точку — скорость понадобится при отпускании.
 
 ```js
 el.addEventListener('pointerdown', (e) => {
@@ -53,42 +53,42 @@ el.addEventListener('pointerdown', (e) => {
 });
 ```
 
-## 3. Interruptibility — the single most important principle
+## 3. Прерываемость — самый важный принцип
 
-> "The thought and the gesture happen in parallel."
+> «Мысль и жест происходят параллельно.»
 
-Every animation must be interruptible and redirectable at any moment. A user must be able to grab a moving element mid-flight and reverse it without waiting for the animation to finish. A closing modal the user grabs again should follow the finger — not finish closing first, then reopen.
+Каждая анимация должна быть прерываемой и перенаправляемой в любой момент. Пользователь должен иметь возможность схватить движущийся элемент в полёте и развернуть его, не дожидаясь окончания анимации. Закрывающаяся модалка, которую пользователь снова хватает, должна следовать за пальцем — а не сначала дозакрыться, а потом открыться заново.
 
-- **Never lock out input during a transition.**
-- **Always animate from the *presentation* (current) value, never the target value.** On interrupt, read the element's live on-screen transform and start the new animation from there. Starting from the logical/target value causes a visible jump.
-- **Avoid CSS transitions and `@keyframes` for anything gesture-driven** — they can't be smoothly grabbed and reversed mid-flight. Springs animate from the current value by default, which is exactly what interruption needs.
-- **When a gesture reverses, blend velocity — don't hard-cut it.** Replacing one animation with another at a reversal creates a velocity discontinuity, a "brick wall." Spring libraries that carry velocity through a re-target avoid it. (This is what iOS's *additive animations* do natively; on the web, choose a spring library that re-targets from the current velocity.)
-- **Decompose 2D motion into independent X and Y springs.** A single spring on a 2D distance desyncs when X and Y have different velocities.
+- **Никогда не блокируй ввод во время перехода.**
+- **Всегда анимируй от *presentation* (текущего) значения, никогда от целевого.** При прерывании читай живой on-screen transform элемента и начинай новую анимацию оттуда. Старт от логического/целевого значения даёт видимый скачок.
+- **Избегай CSS transitions и `@keyframes` для всего жестового** — их нельзя плавно схватить и развернуть в полёте. Springs по умолчанию анимируют от текущего значения — именно то, что нужно для прерывания.
+- **Когда жест разворачивается, смешивай скорость — не обрезай её жёстко.** Замена одной анимации другой при развороте создаёт разрыв скорости, «кирпичную стену.» Spring-библиотеки, которые переносят скорость через re-target, избегают этого. (Так же работают *additive animations* в iOS нативно; в вебе выбирай spring-библиотеку, которая перенацеливается от текущей скорости.)
+- **Разложи 2D-движение на независимые X- и Y-springs.** Один spring на 2D-расстояние рассинхронизируется, когда у X и Y разные скорости.
 
-## 4. Behavior over animation — use springs
+## 4. Поведение важнее анимации — используй springs
 
-> "Think of animation as a conversation between you and the object, not something prescribed by the interface."
+> «Думай об анимации как о разговоре между тобой и объектом, а не о чём-то, что предписано интерфейсом.»
 
-A pre-scripted, fixed-duration animation can't respond to new input. A spring can — new input just changes the target, and the motion stays continuous. Reach for springs for anything a user can touch.
+Заранее прописанная анимация с фиксированной длительностью не может ответить на новый ввод. Spring может — новый ввод просто меняет цель, а движение остаётся непрерывным. Бери springs для всего, к чему пользователь может прикоснуться.
 
-Apple deliberately replaced the physics triplet (mass/stiffness/damping) with two designer-friendly parameters. Think in these:
+Apple намеренно заменила физическую тройку (mass/stiffness/damping) двумя удобными для дизайнера параметрами. Думай в этих терминах:
 
-- **Damping ratio** — controls overshoot. `1.0` = critically damped, no bounce, smooth settle. `< 1.0` = overshoots and oscillates. Lower = bouncier.
-- **Response** — how quickly the value reaches the target, in seconds. Lower = snappier. **This is not "duration"** — a spring has no fixed duration; its settle time emerges from the parameters.
+- **Damping ratio** — управляет overshoot. `1.0` = критически затухающий, без отскока, плавное settle. `< 1.0` = перелетает и осциллирует. Ниже = прыгучее.
+- **Response** — как быстро значение достигает цели, в секундах. Ниже = резче. **Это не «duration»** — у spring нет фиксированной длительности; время settle возникает из параметров.
 
-**Defaults:**
-- Start most UI at **damping `1.0`** (critically damped) — graceful and non-distracting.
-- Add bounce (**damping ~`0.8`**) **only when the gesture itself carried momentum** (a flick, a throw, a drag release). Overshoot on a menu that just faded in feels wrong; overshoot on a card you flicked feels right.
+**Значения по умолчанию:**
+- Начинай большую часть UI с **damping `1.0`** (критически затухающий) — изящно и не отвлекает.
+- Добавляй bounce (**damping ~`0.8`**) **только когда сам жест нёс импульс** (flick, бросок, отпускание drag). Overshoot у меню, которое просто появилось fade-ом, ощущается неправильно; overshoot у карточки, которую ты щёлкнул, — правильно.
 
-**Concrete values Apple ships:**
+**Конкретные значения, которые поставляет Apple:**
 
-| Interaction | Damping | Response |
+| Взаимодействие | Damping | Response |
 | --- | --- | --- |
-| Move / reposition (e.g. PiP) | `1.0` | `0.4` |
+| Move / reposition (напр. PiP) | `1.0` | `0.4` |
 | Rotation | `0.8` | `0.4` |
 | Drawer / sheet | `0.8` | `0.3` |
 
-**Web mapping (Motion / Framer Motion):** the `bounce` + `duration` spring API maps closely to Apple's damping + response. A safe house style is `bounce: 0` springs everywhere by default (Motion's `damping` is a physics coefficient, not Apple's damping ratio); reserve bounce for momentum-driven, physical interactions.
+**Веб-маппинг (Motion / Framer Motion):** API spring `bounce` + `duration` близко соответствует damping + response Apple. Безопасный house style — springs с `bounce: 0` везде по умолчанию (`damping` в Motion — физический коэффициент, не damping ratio Apple); оставляй bounce для импульсных, физических взаимодействий.
 
 ```js
 import { animate } from 'motion';
@@ -100,25 +100,25 @@ animate(el, { y: 0 }, { type: 'spring', bounce: 0, duration: 0.4 });
 animate(el, { y: target }, { type: 'spring', bounce: 0.2, duration: 0.4 });
 ```
 
-## 5. Velocity handoff — the seam between drag and animation
+## 5. Передача скорости — шов между drag и анимацией
 
-When a gesture ends, the animation must **continue at the finger's exact velocity**, so there's no visible seam between dragging and animating. This is the detail that most separates "fluid" from "fine."
+Когда жест заканчивается, анимация должна **продолжиться с точной скоростью пальца**, чтобы не было видимого шва между dragging и animating. Это та деталь, которая сильнее всего отделяет «fluid» от «fine.»
 
-Pass the pointer's release velocity as the spring's initial velocity. Some spring APIs want **relative** velocity — normalize it by the remaining distance to the target:
+Передай скорость отпускания указателя как начальную скорость spring. Некоторые spring API хотят **относительную** скорость — нормализуй её на оставшееся расстояние до цели:
 
 ```
 relativeVelocity = gestureVelocity / (targetValue − currentValue)
 ```
 
-Example: element at `y=50`, target `y=150` (100px to go), finger moving 50px/s → initial spring velocity = `50 / 100 = 0.5`. Framer Motion / Motion take absolute px/s velocity directly (`velocity` option), so you usually hand it the raw value.
+Пример: элемент при `y=50`, цель `y=150` (осталось 100px), палец движется 50px/s → начальная скорость spring = `50 / 100 = 0.5`. Framer Motion / Motion принимают абсолютную скорость в px/s напрямую (опция `velocity`), так что обычно передаёшь сырое значение.
 
-## 6. Momentum projection — animate to where the gesture is *going*
+## 6. Проекция импульса — анимируй туда, куда жест *идёт*
 
-> "Take a small input and make a big output."
+> «Возьми маленький ввод и сделай большой вывод.»
 
-Don't snap to the nearest boundary from the *release point*. Use velocity to **project the resting position** — exactly like scroll deceleration — then snap to the target nearest that projected point. This is what makes a flick feel like it throws the element.
+Не snap к ближайшей границе от *точки отпускания*. Используй скорость, чтобы **спроецировать resting position** — точно как deceleration скролла — затем snap к цели, ближайшей к этой спроецированной точке. Именно это делает flick ощущением броска элемента.
 
-Apple's exact projection function (from the *Designing Fluid Interfaces* sample code):
+Точная функция проекции Apple (из sample code *Designing Fluid Interfaces*):
 
 ```js
 // decelerationRate ≈ 0.998 for normal scroll feel; 0.99 for snappier
@@ -131,22 +131,22 @@ const target = nearestSnapPoint(projectedEndpoint);   // choose target from the 
 animateSpringTo(target, { velocity: releaseVelocity }); // then hand off velocity (§5)
 ```
 
-Note: the physics-textbook `v²/(2·decel)` is *not* what Apple ships — use the exponential-decay form above. This is the standard behavior in good bottom-sheets and carousels (Vaul, Embla).
+Примечание: учебниковая физика `v²/(2·decel)` — *не* то, что поставляет Apple — используй форму экспоненциального затухания выше. Это стандартное поведение хороших bottom-sheet и каруселей (Vaul, Embla).
 
-## 7. Spatial consistency — symmetric paths, anchored origins
+## 7. Пространственная согласованность — симметричные пути, якоря origin
 
-> "If something disappears one way, we expect it to emerge from where it came."
+> «Если что-то исчезает одним путём, мы ожидаем, что оно появится оттуда, откуда пришло.»
 
-- **Enter and exit along the same path.** A panel that slides in from the right must dismiss to the right. In-from-right / out-the-bottom feels disconnected and confusing.
-- **Anchor interactions to their source.** A menu, popover, or sheet should originate from the element that triggered it — set `transform-origin` to the trigger, so the spatial relationship between button and content is obvious. (This is the same origin-awareness point as popovers scaling from their trigger, not their center.)
+- **Вход и выход по одному пути.** Панель, которая выезжает справа, должна уходить вправо. Вход справа / выход снизу ощущается разорванным и запутывает.
+- **Якори взаимодействия к их источнику.** Меню, popover или sheet должны исходить из элемента, который их вызвал — задай `transform-origin` на триггер, чтобы пространственная связь между кнопкой и контентом была очевидна. (Та же идея origin-awareness, что и у popover, масштабирующихся от триггера, а не от центра.)
 
-## 8. Hint in the direction of the gesture
+## 8. Намекай в направлении жеста
 
-Humans predict a final state from a trajectory. Intermediate motion should telegraph where things are going — Control Center modules "grow up and out toward your finger." Make the in-between frames point at the outcome, not just interpolate blindly to it.
+Люди предсказывают конечное состояние по траектории. Промежуточное движение должно телеграфировать, куда всё идёт — модули Control Center «растут вверх и наружу к пальцу.» Сделай промежуточные кадры указывающими на исход, а не просто слепо интерполируй к нему.
 
-## 9. Rubber-banding — soft boundaries
+## 9. Rubber-banding — мягкие границы
 
-At an edge, resist progressively instead of stopping hard. A hard stop reads as "frozen"; continuous resistance reads as "responsive, but there's nothing more here." Apply damping that increases the further past the boundary the user drags.
+На краю сопротивляйся прогрессивно, а не останавливайся жёстко. Жёсткая остановка читается как «заморожено»; непрерывное сопротивление — как «отзывчиво, но дальше некуда.» Применяй damping, который растёт по мере того, как пользователь тянет дальше за границу.
 
 ```js
 // The further past the bound, the less the element follows — real things slow before they stop
@@ -155,31 +155,31 @@ function rubberband(overshoot, dimension, constant = 0.55) {
 }
 ```
 
-## 10. Gesture design details (the "feel" checklist)
+## 10. Детали дизайна жестов (чеклист «ощущения»)
 
-- **Tap:** highlight on touch-*down* (instant), commit on touch-*up*. Add ~10px of hysteresis/hit padding around the target, and allow cancel-by-dragging-away and back.
-- **Drag/swipe:** require a small movement threshold (hysteresis, ~10px) before committing to a direction, then track 1:1.
-- **Detect all plausible gestures in parallel from the first move**, then confidently cancel the losers once intent is clear. Avoid recognizers that only report a *final* state (`swipeleft`-type events) — they throw away the continuous tracking you need for feedback.
-- **Minimize disambiguation delays.** Double-tap detection unavoidably delays single taps; only pay that cost where double-tap truly exists.
+- **Tap:** подсветка на touch-*down* (мгновенно), commit на touch-*up*. Добавь ~10px гистерезиса/hit padding вокруг цели и разреши отмену уводом и возвратом.
+- **Drag/swipe:** требуй небольшой порог движения (гистерезис, ~10px) перед commit направления, затем отслеживай 1:1.
+- **Обнаруживай все правдоподобные жесты параллельно с первого движения**, затем уверенно отменяй проигравших, когда намерение ясно. Избегай recognizer'ов, которые сообщают только *финальное* состояние (события типа `swipeleft`) — они выбрасывают непрерывное отслеживание, нужное для обратной связи.
+- **Минимизируй задержки disambiguation.** Детекция double-tap неизбежно задерживает одиночные тапы; плати эту цену только там, где double-tap действительно есть.
 
-## 11. Frame-level smoothness
+## 11. Плавность на уровне кадра
 
-Smoothness is about *what's in the frames*, not just the frame rate.
+Плавность — про *то, что в кадрах*, а не только про частоту кадров.
 
-- For very fast motion, a subtle **motion blur / stretch** encodes speed and reads better than a hard sharp streak.
-- `requestAnimationFrame` is the web's display-synced clock (Apple uses `CADisplayLink`). Animate only compositor-friendly properties — `transform` and `opacity` — and add `will-change` only after you measure a shift or dropped frames (see `../animation-performance/SKILL.md`).
+- Для очень быстрого движения тонкий **motion blur / stretch** кодирует скорость и читается лучше, чем жёсткий острый штрих.
+- `requestAnimationFrame` — синхронизированные с дисплеем часы веба (Apple использует `CADisplayLink`). Анимируй только compositor-friendly свойства — `transform` и `opacity` — и добавляй `will-change` только после того, как измеришь сдвиг или дроп кадров (см. `../animation-performance/SKILL.md`).
 
-## 12. Materials & depth — translucency conveys hierarchy
+## 12. Материалы и глубина — полупрозрачность передаёт иерархию
 
-Apple uses translucent materials as a floating functional layer that brings structure without stealing focus. On the web, approximate with `backdrop-filter`.
+Apple использует полупрозрачные материалы как плавающий функциональный слой, который даёт структуру, не крадя фокус. В вебе приближайся через `backdrop-filter`.
 
-- **Build nav/toolbars/sheets as translucent layers** (`backdrop-filter: blur()` + a semi-transparent background) with content scrolling underneath — not opaque bars that consume a fixed strip.
-- **Material weight encodes hierarchy:** darker/heavier materials separate structural regions (sidebars); lighter materials draw attention to interactive elements (buttons). **Never stack a light translucent surface on another** — legibility collapses.
-- **Bigger surfaces should read as thicker:** stronger blur + a deeper shadow than small chips. Consider context-aware shadow — heavier over busy/text content for separation, lighter over plain backgrounds.
-- **Dim to focus, separate to keep flow.** A modal task pairs the surface with a dimming scrim and pushes the background back/down. A parallel, non-blocking panel uses translucency and offset *without* a scrim so the flow isn't broken. For stacked sheets, progressively dim and push back each parent layer.
-- **Vibrancy keeps text legible over changing backgrounds.** Over blurred/translucent surfaces, don't use flat gray text — use higher-contrast, slightly heavier weight, and a small letter-spacing bump. Put color on a solid layer, not the translucent foreground.
-- **Scroll edge effects, not hard dividers.** Instead of a 1px border under a sticky header, fade a small blur/gradient mask where content meets floating chrome — only where floating UI actually overlaps content.
-- **Materialize, don't just fade.** For glass/blur surfaces, animate blur radius and scale together on enter/exit, so the surface reads as a real material arriving rather than a plain opacity fade.
+- **Строй nav/toolbars/sheets как полупрозрачные слои** (`backdrop-filter: blur()` + полупрозрачный фон) с контентом, скроллящимся под ними — не как непрозрачные полосы, съедающие фиксированную полоску.
+- **Вес материала кодирует иерархию:** более тёмные/тяжёлые материалы разделяют структурные регионы (сайдбары); более лёгкие привлекают внимание к интерактивным элементам (кнопки). **Никогда не ставь светлую полупрозрачную поверхность на другую** — читаемость рушится.
+- **Большие поверхности должны читаться толще:** сильнее blur + глубже тень, чем у маленьких chip. Учитывай context-aware shadow — тяжелее над busy/текстовым контентом для разделения, легче над простыми фонами.
+- **Dim для фокуса, separate чтобы сохранить поток.** Модальная задача сочетает поверхность с dimming scrim и отодвигает фон назад/вниз. Параллельная, неблокирующая панель использует полупрозрачность и смещение *без* scrim, чтобы поток не рвался. Для stacked sheets прогрессивно затемняй и отодвигай каждый родительский слой.
+- **Vibrancy сохраняет читаемость текста над меняющимися фонами.** Над blurred/полупрозрачными поверхностями не используй плоский серый текст — бери более высокий контраст, чуть более тяжёлый вес и небольшой bump letter-spacing. Клади цвет на solid-слой, не на полупрозрачный foreground.
+- **Эффекты на краю скролла, а не жёсткие разделители.** Вместо 1px border под sticky header — fade небольшого blur/gradient mask там, где контент встречается с плавающим chrome — только где floating UI реально перекрывает контент.
+- **Materialize, не просто fade.** Для glass/blur поверхностей анимируй blur radius и scale вместе при enter/exit, чтобы поверхность читалась как настоящий материал, прибывающий, а не как простой opacity fade.
 
 ```css
 .toolbar {
@@ -189,23 +189,23 @@ Apple uses translucent materials as a floating functional layer that brings stru
 }
 ```
 
-## 13. Multimodal feedback — motion + sound + haptics
+## 13. Мультимодальная обратная связь — motion + звук + haptics
 
-Three rules for combining senses (from *Designing Audio-Haptic Experiences*):
+Три правила сочетания чувств (из *Designing Audio-Haptic Experiences*):
 
-1. **Causality** — it must be obvious what caused the feedback. Trigger it on the actual causal event (the toggle flipping, the item snapping home), and match its character to the action's physicality.
-2. **Harmony** — the visual, the sound, and the haptic must fire on the **same frame**. Latency between them destroys the illusion. Don't let a CSS transition lag the audio/haptic (Vibration API).
-3. **Utility** — add feedback only where it earns its place. Reserve haptics/sound for meaningful moments (success, error, commit, snap). Over-feedback trains users to ignore all of it.
+1. **Causality** — должно быть очевидно, что вызвало обратную связь. Триггерь её на реальном причинном событии (переключение toggle, snap элемента на место) и согласуй её характер с физичностью действия.
+2. **Harmony** — визуал, звук и haptic должны срабатывать в **одном кадре**. Задержка между ними разрушает иллюзию. Не дай CSS transition отставать от audio/haptic (Vibration API).
+3. **Utility** — добавляй обратную связь только там, где она оправдывает место. Оставляй haptics/звук для значимых моментов (success, error, commit, snap). Избыточная обратная связь учит пользователей игнорировать всю её.
 
-## 14. Reduced motion & accessibility
+## 14. Reduced motion и accessibility
 
-Reduced motion doesn't mean *no* feedback — it means a gentler, non-vestibular equivalent. Respond to three independent signals and bake them into your components:
+Reduced motion не значит *никакой* обратной связи — значит более мягкий, не-вестибулярный эквивалент. Отвечай на три независимых сигнала и зашивай их в компоненты:
 
-- **`prefers-reduced-motion: reduce`** — replace slides/springs/parallax with short opacity **cross-fades or static transitions**. Drop elastic/overshoot. Keep opacity/color changes that aid comprehension.
-- **`prefers-reduced-transparency: reduce`** — make translucent surfaces frostier/solid: raise background opacity, drop the blur.
-- **`prefers-contrast: more`** — near-solid backgrounds with a defined, contrasting border.
+- **`prefers-reduced-motion: reduce`** — замени slides/springs/parallax короткими opacity **cross-fade или статическими переходами**. Убери elastic/overshoot. Сохрани изменения opacity/цвета, которые помогают пониманию.
+- **`prefers-reduced-transparency: reduce`** — сделай полупрозрачные поверхности более матовыми/solid: подними opacity фона, убери blur.
+- **`prefers-contrast: more`** — почти solid фоны с чёткой контрастной границей.
 
-Also: avoid full-viewport moving backgrounds, slow looping oscillations (near 0.2 Hz / one cycle per 5s), and abrupt brightness jumps (ease dark↔light theme changes). Make large moving objects semi-transparent while they travel, and fade big surfaces out during a large reposition and back in once settled.
+Также: избегай полноэкранных движущихся фонов, медленных зацикленных осцилляций (около 0.2 Hz / один цикл за 5с) и резких скачков яркости (плавно ease смены тёмной↔светлой темы). Делай крупные движущиеся объекты полупрозрачными во время движения и fade большие поверхности наружу при крупном reposition и обратно внутрь, когда settle.
 
 ```css
 @media (prefers-reduced-motion: reduce) {
@@ -216,15 +216,15 @@ Also: avoid full-viewport moving backgrounds, slow looping oscillations (near 0.
 }
 ```
 
-## 15. Typography — optical sizing, tracking, leading
+## 15. Типографика — optical sizing, tracking, leading
 
-Apple designs type to change shape with size; the same discipline applies on the web. (From *The Details of UI Typography*, WWDC 2020.)
+Apple проектирует шрифт так, чтобы форма менялась с размером; та же дисциплина применима в вебе. (Из *The Details of UI Typography*, WWDC 2020.)
 
-- **Tracking (letter-spacing) is size-specific — never one value for all sizes.** Large display text wants *negative* tracking (letters read too far apart as they grow); small text wants slightly *positive* tracking for legibility. A fixed `letter-spacing` is wrong somewhere. Tighten headings, leave body near `0`.
-- **Leading (line-height) tracks size inversely.** Tight on large headings, looser on body copy. Increase it for scripts with tall ascenders/descenders; tighten it for dense, information-heavy UI.
-- **Build hierarchy from weight + size + leading as a set,** not size alone. Emphasize with weight — it adds presence without taking more space.
-- **Respect the user's text-size setting** (Dynamic Type). Scale layout *with* the text — spacing in `rem`/`em`, not fixed px — so a larger font doesn't break the layout.
-- **Default to the platform's system font** before a custom face; it already ships optical sizing, tracking tables, and legibility tuning. Override only with a reason.
+- **Tracking (letter-spacing) зависит от размера — никогда одно значение для всех размеров.** Крупный display-текст хочет *отрицательный* tracking (буквы читаются слишком далеко друг от друга по мере роста); мелкий текст хочет слегка *положительный* tracking для читаемости. Фиксированный `letter-spacing` где-то неверен. Tight заголовки, body около `0`.
+- **Leading (line-height) обратно зависит от размера.** Tight на крупных заголовках, looser на body. Увеличь для скриптов с высокими ascenders/descenders; tighten для плотного, информационно насыщенного UI.
+- **Строй иерархию из weight + size + leading как набора,** не только из size. Акцентируй весом — он добавляет присутствие, не занимая больше места.
+- **Уважай настройку размера текста пользователя** (Dynamic Type). Масштабируй layout *вместе* с текстом — отступы в `rem`/`em`, не фиксированные px — чтобы больший шрифт не ломал layout.
+- **По умолчанию бери системный шрифт платформы** до кастомного лица; он уже поставляет optical sizing, таблицы tracking и настройку читаемости. Переопределяй только с причиной.
 
 ```css
 :root { font: 100%/1.5 system-ui, sans-serif; } /* body: system font, comfortable leading */
@@ -237,46 +237,46 @@ Apple designs type to change shape with size; the same discipline applies on the
 }
 ```
 
-## 16. Design foundations — the eight principles
+## 16. Основы дизайна — восемь принципов
 
-The motion and craft above serve Apple's eight design principles (*Principles of Great Design*, WWDC 2026). Use these as the names you reason with:
+Движение и craft выше служат восьми дизайн-принципам Apple (*Principles of Great Design*, WWDC 2026). Используй эти имена как те, которыми рассуждаешь:
 
-1. **Purpose.** Make with intention; decide what *not* to build. Every feature asks for the user's time, attention, and trust — spend that budget only where it pays off.
-2. **Agency.** Keep people in control: offer choices, don't force a single path. Back it with forgiveness — easy undo for slips, a confirmation dialog only for genuinely destructive, irreversible actions (use sparingly; overusing it trains people to click through).
-3. **Responsibility.** Act in the user's interest. Privacy: ask at the right moment, only for what's needed, transparently. Safety: anticipate misuse and harm — especially with AI (an allergy-aware recipe app must not suggest a harmful ingredient). Add previews, confirmations, disclaimers; cut a feature whose risk outweighs its value.
-4. **Familiarity.** Build on what people already know. Use metaphors that are neither too literal nor too abstract (a trash can means delete), and honor their physics. Be consistent: things that look the same must behave the same and live in the same place (close is always top-left on macOS) so people can predict what happens next. Only break a familiar pattern if you can prove it's better — then test it, don't assume.
-5. **Flexibility.** Design for different contexts, devices, and the full range of abilities. Adapt to the platform (iPhone = quick touch; desktop = deep workflows with precise pointer control) and to the situation. Design inclusively (age, language, expertise, accessibility). When no single layout fits everyone, let people personalize — rearrange controls, hide what they don't use.
-6. **Simplicity — not minimalism.** Strip the unnecessary so the core purpose shines; burying everything in one place looks minimal but isn't simple. Be concise (plain language, no jargon, fewer steps) and clear (use hierarchy — order, spacing, contrast — so the most important thing is the most obvious). Every element earns its place; sometimes *adding* context simplifies (a video scrubber that shows time remaining). Show the common path first, advanced options one level deeper.
-7. **Craft.** Uncompromising attention to detail builds trust. Beautiful typography, colors that adapt to light/dark, clear iconography, and responsive animations that give immediate, natural feedback. Nothing is random — every spacing, timing, and alignment value is a deliberate choice you can defend. Jittery scroll, misaligned icons, and layouts that break on rotation read as carelessness. Craft needs iteration and longevity — keep evolving the design as features and hardware change.
-8. **Delight.** The result of getting the other seven right, not confetti tacked on top. Decide the emotion you want people to feel (calm, confident, excited) and reinforce it in every decision.
+1. **Purpose.** Делай с намерением; решай, что *не* строить. Каждая фича просит время, внимание и доверие пользователя — трать этот бюджет только там, где он окупается.
+2. **Agency.** Держи людей под контролем: предлагай выборы, не навязывай один путь. Подкрепляй прощением — лёгкий undo для оговорок, confirmation dialog только для по-настоящему деструктивных, необратимых действий (используй скупо; чрезмерное использование учит кликать насквозь).
+3. **Responsibility.** Действуй в интересах пользователя. Privacy: спрашивай в нужный момент, только то, что нужно, прозрачно. Safety: предвосхищай misuse и вред — особенно с AI (allergy-aware приложение рецептов не должно предлагать вредный ингредиент). Добавляй previews, confirmations, disclaimers; режь фичу, чей риск перевешивает ценность.
+4. **Familiarity.** Строй на том, что люди уже знают. Используй метафоры, которые ни слишком буквальны, ни слишком абстрактны (корзина значит delete), и уважай их физику. Будь последователен: вещи, которые выглядят одинаково, должны вести себя одинаково и жить в одном месте (close всегда top-left на macOS), чтобы люди могли предсказать, что будет дальше. Ломай знакомый паттерн только если можешь доказать, что он лучше — затем тестируй, не предполагай.
+5. **Flexibility.** Проектируй для разных контекстов, устройств и полного спектра способностей. Адаптируйся к платформе (iPhone = быстрый touch; desktop = глубокие workflows с точным pointer) и к ситуации. Проектируй инклюзивно (возраст, язык, экспертиза, accessibility). Когда один layout не подходит всем, дай персонализировать — переставлять controls, скрывать неиспользуемое.
+6. **Simplicity — не минимализм.** Срезай лишнее, чтобы ядро цели сияло; закапывать всё в одно место выглядит минималистично, но не просто. Будь краток (простой язык, без жаргона, меньше шагов) и ясен (используй иерархию — порядок, отступы, контраст — чтобы самое важное было самым очевидным). Каждый элемент зарабатывает место; иногда *добавление* контекста упрощает (video scrubber, показывающий оставшееся время). Покажи обычный путь первым, advanced options на уровень глубже.
+7. **Craft.** Бескомпромиссное внимание к деталям строит доверие. Красивая типографика, цвета, адаптирующиеся к light/dark, ясная иконографика и отзывчивые анимации, дающие мгновенную, естественную обратную связь. Ничто не случайно — каждое значение отступа, тайминга и выравнивания — осознанный выбор, который можно защитить. Дёрганый скролл, смещённые иконки и layout, ломающийся при повороте, читаются как небрежность. Craft нуждается в итерации и долговечности — продолжай эволюционировать дизайн по мере смены фич и железа.
+8. **Delight.** Результат правильного выполнения остальных семи, а не конфетти, наклеенные сверху. Реши, какую эмоцию люди должны чувствовать (спокойствие, уверенность, возбуждение), и усиливай её в каждом решении.
 
-Tactical rules that serve these:
+Тактические правила, которые служат этому:
 
-- **Feedback comes in four kinds:** status, completion, warning, error. Confirm meaningful actions, expose ongoing status, warn before problems, validate inline (not on submit).
-- **Wayfinding.** Every screen should answer: Where am I? Where can I go? What's there? How do I get out? Never trap the user.
-- **Grouping & mapping.** Proximity implies relationship; place a control near what it affects and arrange controls to mirror what they change. If you need a label to explain a control, the mapping is weak.
-- **Direct, specific labels beat safe generic ones.** Name nav items for their contents ("Progress", "Library"), not vague umbrellas ("Home"). Specificity creates predictability.
+- **Обратная связь бывает четырёх видов:** status, completion, warning, error. Подтверждай значимые действия, показывай ongoing status, предупреждай до проблем, валидируй inline (не на submit).
+- **Wayfinding.** Каждый экран должен отвечать: Где я? Куда могу пойти? Что там? Как выйти? Никогда не лови пользователя в ловушку.
+- **Grouping & mapping.** Близость подразумевает связь; ставь control рядом с тем, на что он влияет, и располагай controls так, чтобы они зеркалили то, что меняют. Если нужен label, чтобы объяснить control, mapping слаб.
+- **Прямые, конкретные labels бьют безопасные общие.** Называй nav items по содержимому («Progress», «Library»), а не размытыми зонтиками («Home»). Конкретность создаёт предсказуемость.
 
-## 17. Process
+## 17. Процесс
 
-- **Prototype interactively — an interactive demo is worth "a million static designs."** You discover the interface by building and playing with it; a working prototype also sets a concrete bar that prevents a mediocre final implementation.
-- **Design interaction and visuals together.** "You shouldn't be able to tell where one ends and the other begins." Motion is not a layer added after the pixels.
-- **Test with real people in real context**, and review motion with fresh eyes — play it in slow motion / frame-by-frame to catch what's invisible at full speed.
+- **Прототипируй интерактивно — интерактивное демо стоит «миллиона статичных дизайнов.»** Ты открываешь интерфейс, строя и играя с ним; рабочий прототип также задаёт конкретную планку, которая не даёт посредственной финальной реализации.
+- **Проектируй interaction и visuals вместе.** «Не должно быть видно, где одно кончается и начинается другое.» Motion — не слой, добавленный после пикселей.
+- **Тестируй с реальными людьми в реальном контексте** и ревьюй motion свежим взглядом — проигрывай в slow motion / кадр за кадром, чтобы поймать то, что невидимо на полной скорости.
 
-## Quick Reference
+## Краткая справка
 
-| Need | Technique | Concrete value |
+| Нужно | Техника | Конкретное значение |
 | --- | --- | --- |
-| Default UI spring | Critically damped, no overshoot | `damping 1.0`, `response 0.3–0.4` |
-| Momentum / flick spring | Under-damped, slight bounce | `damping ~0.8`, `response 0.3–0.4` |
-| Gesture → spring velocity | Hand off release velocity | `gestureVelocity / (target − current)` if normalized |
-| Flick landing point | Project momentum | `current + (v/1000)·d/(1−d)`, `d ≈ 0.998` |
-| Interrupt cleanly | Start from presentation (live) value | read the on-screen transform |
-| Avoid reversal "brick wall" | Carry velocity through re-target | spring that blends velocity |
-| Decide reverse vs. commit | Snap to the point nearest the projected endpoint | at release |
-| 1:1 drag | Pointer Events + capture | respect the grab offset |
-| Feedback | On pointer-down, continuous | never only at the end |
-| Boundary | Rubber-band, don't hard-stop | progressive resistance |
-| Translucent chrome | `backdrop-filter` layer | content scrolls under |
-| Type tracking | Size-specific, never fixed | tighten large text (`-0.02em`), body near `0` |
-| Reduced motion | Cross-fade, not slide/spring | `@media (prefers-reduced-motion)` |
+| Default UI spring | Критически затухающий, без overshoot | `damping 1.0`, `response 0.3–0.4` |
+| Momentum / flick spring | Under-damped, лёгкий bounce | `damping ~0.8`, `response 0.3–0.4` |
+| Gesture → spring velocity | Передай скорость отпускания | `gestureVelocity / (target − current)` если нормализовано |
+| Flick landing point | Проецируй импульс | `current + (v/1000)·d/(1−d)`, `d ≈ 0.998` |
+| Чистый interrupt | Старт от presentation (live) значения | читай on-screen transform |
+| Избегай «кирпичной стены» при развороте | Неси скорость через re-target | spring, который смешивает скорость |
+| Reverse vs. commit | Snap к точке, ближайшей к projected endpoint | при отпускании |
+| Drag 1:1 | Pointer Events + capture | уважай grab offset |
+| Feedback | На pointer-down, непрерывно | никогда только в конце |
+| Граница | Rubber-band, не hard-stop | прогрессивное сопротивление |
+| Полупрозрачный chrome | слой `backdrop-filter` | контент скроллится под |
+| Type tracking | Зависит от размера, никогда fixed | tighten крупный текст (`-0.02em`), body около `0` |
+| Reduced motion | Cross-fade, не slide/spring | `@media (prefers-reduced-motion)` |
